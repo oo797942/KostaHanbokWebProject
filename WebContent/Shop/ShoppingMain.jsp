@@ -24,15 +24,15 @@
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-					<td><a href="#">LOGIN</a></td>
+					<td><a href="#">LOGIN  </a></td>
 					<td class="gray">l</td>
 					<td><a href="#">JOIN</a></td>
 					<td class="gray">l</td>
 					<td><a href="#">CART</a></td>
 					<td class="gray">l</td>
 					<td><a href="#">MY PAGE</a></td>
-					<td class="gray">l</td>
-					<td><a href="#">Q&A</a></td>
+					<td class="gray"></td>
+					<td><a href="#">Q&A <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></a></td>
 				</tr>
 			</table>
 
