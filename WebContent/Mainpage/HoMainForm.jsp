@@ -116,11 +116,11 @@
 					</tr>
 					<tr>
 						<td>id</td>
-						<td><input type="text" name="loginid" id="adid" /></td>
+						<td><input type="text" name="adid" id="adid" /></td>
 					</tr>
 					<tr>
 						<td>pw &nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td><input type="text" id="loginpw" name="adpw" /></td>
+						<td><input type="text" id="adpw" name="adpw" /></td>
 					</tr>
 					<tr>
 						<td></td>
