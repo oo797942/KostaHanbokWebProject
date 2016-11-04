@@ -1,0 +1,234 @@
+@CHARSET "UTF-8";
+@font-face{font-family:'CODEBold'; src:url('../font/CODEBold.otf')}
+*{
+	margin : 0px;
+	padding : 0px;
+}
+
+header{
+   /* Set rules to fill background */
+   min-height: 100%;
+   min-width: 1024px;
+   
+   /* Set up proportionate scaling */
+   width: 100%;
+   height: auto;
+   
+   /* Set up positioning */
+   position: fixed;
+   top: 0;
+   left: 0;
+}
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+   header {
+      left: 50%;
+      margin-left: -512px;   /* 50% */
+   }
+}
+
+#logoimg{
+	position: absolute;
+	top : 20px;
+}
+
+#slide_banner{
+	position: absolute;
+} 
+.sm1{
+	position: absolute;
+	font-family: 'CODEBold';
+	font-weight: bold;
+	color : black;
+	left : 50px;
+	top : 400px;
+	font-size: 25px;
+	z-index : 10;
+}
+
+#menu{
+	position : absolute ;
+	top : 20px;
+	left : 1400px;
+	font-size: 25px;
+	color : red;
+	z-index : 10;
+}
+
+#topMenu{
+   position:absolute;
+   top : 0px;
+   width : 100% ;
+   height : 300px;
+   background: white;
+   z-index : 10;
+}
+
+#topCate{
+   position:absolute;
+   top : 45px;
+   left : 500px;
+   font-size : 20px;
+}
+
+#ContentBackground{
+	position : absolute;
+	background: black;
+	width : 100%;
+	height : 100%;	
+	top:0px;
+	opacity: 0.2;
+	display : none;
+	z-index : 1;
+}
+
+#topCate-Cate1{
+	position:absolute;
+	top : 45px;
+	left : 650px;
+	font-size : 20px;
+}
+#topCate-Cate2{
+	position:absolute;
+	top : 95px;
+	left : 650px;
+	font-size : 20px;
+ 
+}
+#topCate-Cate3{
+	position:absolute;
+	top : 150px;
+	left : 650px;
+	font-size : 20px;
+}
+#topCate-Cate4{
+	position:absolute;
+	top : 200px;
+	left : 650px;
+	font-size : 20px;
+}
+#topXbutton{
+	position:absolute;
+	width:50px;
+	top : 270px;
+	left : 1450px;
+	font-size : 20px;	
+	border-radius:5px; 
+    background:#000; 
+    border:none; 
+    color:#fff; 
+    font-weight:bold; 
+	text-align: center;
+}
+
+.contentXbutton{
+	position:absolute;
+	top: 20px;
+	width:50px;
+	left :930px;
+	font-size : 20px;	
+	border-radius:5px; 
+    background:#000; 
+    border:none; 
+    color:#fff; 
+    font-weight:bold; 
+	text-align: center;
+}
+
+#Menuimg{
+	position:absolute;
+	top:20px;
+	z-index : 10;
+}
+
+#newsContent,#storeContent,#aboutContent,#productContent{
+	position:	absolute;
+	top : 0px;
+	left : 300px;
+	width : 1000px;
+	height : 800px;
+	background: white;
+   	display : none;
+}
+
+#logoimg,#Menuimg {
+	z-index : 10;
+	cursor : pointer;
+}
+
+.Content {
+	z-index:10;
+}
+
+#admin{
+   position : absolute;
+   top: 94%;
+   left: 1400px;
+   font-size : 30px;
+   font-family: 'CODEBold';
+   font-weight: bold;
+   color : black;   
+}
+
+#footmenu{
+   position:absolute;
+   bottom:1px;
+   right:0px;
+   width:274px; 
+   height:160px;
+   background : white;
+   font-size:20px;
+   border-left:1px solid #8ce0e4; 
+   padding:15px;
+}
+#login_f{
+   height:40px;
+   background:rgba(0,0,0,0.1); 
+   float:right; 
+   border-radius:10px; 
+   box-shadow:inset 1px 1px 1px rgba(0,0,0,0.1); }
+#adid, #adpw{
+   background:none; 
+   width:160px; 
+   height:30px; 
+   padding:5px 10px; 
+   border:none; color:#222;}
+#ok{
+   width:50px; 
+   height:30px; 
+   float:right; 
+   margin-top:5px; 
+   margin-right:5px; 
+   border-radius:5px; 
+   background:#000; 
+   border:none; 
+   color:#fff; 
+   font-weight:bold;
+  }
+#footmenux{
+	position : relative;
+	left : 30px;
+}
+#foottop{
+   width:50px; 
+   height:30px; 
+   float:right; 
+   border-radius:5px; 
+   background:#000; 
+   border:none; 
+   color:#fff; 
+   font-weight:bold; 
+}
+#topimage{
+	position : absolute;
+	top : 300px;
+	width: 100%;
+	height: 500px;
+	border:none;
+}
+
+#top-CateItem1,#top-CateItem2,#top-CateItem3,
+#top-CateItem4,#top-CateItem5,.man,.woman{
+	font-family: 'CODEBold';
+	font-weight: bold;
+}
+
