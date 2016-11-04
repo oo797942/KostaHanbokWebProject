@@ -7,6 +7,15 @@ section {
 	width: 1024px;
 }
 
+
+/* 아래로는 header, footer */
+.hotItem {
+	margin: 5px;
+	margin-top: 15px;
+	width: 240px;
+	height: 240px;
+}
+
 a {
 	text-decoration: none;
 	color: #000000;
@@ -19,15 +28,6 @@ a:visited, a:focus, a:active {
 a:hover {
 	text-decoration: underline;
 }
-
-.hotItem {
-	margin: 5px;
-	margin-top: 15px;
-	width: 240px;
-	height: 240px;
-}
-
-/* 아래로는 header, footer */
 
 header {
 	width: 1024px;
@@ -100,25 +100,25 @@ hr {
 	float: left;
 }
 
-.searchLabel{
-	float:left;
-	margin-top:10px;
-	margin-left:5px;
+.searchLabel {
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
 }
 
-#titleSearch{
-	margin-top:14px;
-	margin-left:10px;
+#titleSearch {
+	margin-top: 14px;
+	margin-left: 10px;
 }
 
-
-#contentSearch{
-	margin-top:14px;
-	margin-left:5px;
+#contentSearch {
+	margin-top: 14px;
+	margin-left: 5px;
 }
-#contentSearch{
-	margin-top:14px;
-	margin-left:10px;
+
+#contentSearch {
+	margin-top: 14px;
+	margin-left: 10px;
 }
 
 #searchInput {
