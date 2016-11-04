@@ -108,11 +108,16 @@ $(function() {
 		if ($("#searchBtn").text() == "search") {
 			$("#topSearch").slideDown(500);
 			$("#searchInput").focus();
+			$("#searchInput").select();
 			$("#searchBtn").text("close");
 		} else {
 			$("#topSearch").slideUp(500);
 			$("#searchBtn").text("search");
 		}
+	});
+	
+	$(".hotItem").click(function(){
+		alert($(this).attr('name'));
 	});
 
 });
