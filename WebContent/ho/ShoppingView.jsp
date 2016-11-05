@@ -1,11 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<% String projectName = "/HoProject";%>
+<%
+	String projectName = "/HoProject";
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>뷰</title>
-<link href="<%=projectName%>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css"
+	rel="stylesheet" />
 <link href="<%=projectName%>/ho/css/main.css" rel="stylesheet" />
 <link href="<%=projectName%>/ho/css/view.css" rel="stylesheet" />
 <script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
@@ -13,6 +16,35 @@
 <script src="<%=projectName%>/ho/js/main.js"></script>
 </head>
 <body>
+
+	<nav>
+		<table id="shoppingBag" cellspacing="0">
+			<tr>
+				<td height="10px"></td>
+			</tr>
+			<tr>
+				<td style="background: #696969;"><a href="#"
+					style="color: white;">장바구니</a></td>
+			</tr>
+			<tr>
+				<td>
+					<table cellspacing="15" width="125px">
+						<tr>
+							<td class="shoppingBagItem"><img
+								src="<%=projectName%>/ho/img/banner_image_01.jpeg" width="90px"
+								height="90px" /></td>
+						</tr>
+						<tr>
+							<td class="shoppingBagItem"></td>
+						</tr>
+						<tr>
+							<td class="shoppingBagItem"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</nav>
 
 	<header>
 		<div id="menu">
@@ -123,7 +155,8 @@
 					src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
 				<td width="33%"><img class="infoImage"
 					src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
-				<td><img class="infoImage" src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
+				<td><img class="infoImage"
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
 			</tr>
 		</table>
 		<img width="1024px" src="<%=projectName%>/ho/img/refund_info.png" />
@@ -137,8 +170,7 @@
 		</table>
 		<br /> <input type="text" autocomplete="off"
 			placeholder="후기를 입력해 주세요." id="replyInput" name="replyInput" /><a
-			id="insertReply" href="#">입력</a> <br />
-		<br />
+			id="insertReply" href="#">입력</a> <br /> <br />
 	</section>
 	<footer>
 		<div id="footertitle">

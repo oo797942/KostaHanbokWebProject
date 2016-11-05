@@ -1,12 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<% String projectName = "/HoProject";%>
+<%
+	String projectName = "/HoProject";
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>검색결과</title>
 
-<link href="<%=projectName%>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css"
+	rel="stylesheet" />
 <link href="<%=projectName%>/ho/css/main.css" rel="stylesheet" />
 <link href="<%=projectName%>/ho/css/search.css" rel="stylesheet" />
 <script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
@@ -15,6 +18,35 @@
 <script src="<%=projectName%>/ho/js/search.js"></script>
 </head>
 <body>
+
+	<nav>
+		<table id="shoppingBag" cellspacing="0">
+			<tr>
+				<td height="10px"></td>
+			</tr>
+			<tr>
+				<td style="background: #696969;"><a href="#" style ="color: white;">장바구니</a></td>
+			</tr>
+			<tr>
+				<td>
+					<table cellspacing="15" width="125px">
+						<tr>
+							<td class="shoppingBagItem">
+							<img src="<%=projectName %>/ho/img/banner_image_01.jpeg" width="90px" height="90px"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="shoppingBagItem"></td>
+						</tr>
+						<tr>
+							<td class="shoppingBagItem"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</nav>
+
 	<header>
 		<div id="menu">
 			<img src="<%=projectName%>/ho/img/topMenu.png" />
@@ -80,47 +112,63 @@
 		<div id="searchPageTop">
 			<p>통합검색 > 무슨한복 > 여자</p>
 		</div>
-<br/>
+		<br />
 		<table id="itemTable" cellspacing="0">
 			<tr>
 				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 			</tr>
 			<tr>
 				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 			</tr>
 			<tr>
 				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 			</tr>
 			<tr>
 				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
+					class="123"><strong>AK-123</strong><br />12,300</label></td>
 			</tr>
 		</table>
 	</section>
