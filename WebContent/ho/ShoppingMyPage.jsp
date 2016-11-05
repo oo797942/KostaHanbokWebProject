@@ -89,20 +89,40 @@
 			</table>
 		</div>
 
-		<table id="myPageMainBodyTable" cellspacing="15">
+		<table id="myPageMainBodyTable" cellspacing="15" >
 
 			<tr>
-				<td class="BodyTableStyle" width="50%"><span><strong>회원이름</strong>님의
-						정보</span> <br /> <br />
-					<table>
+				<td class="BodyTableStyle" width="50%">
+				<span id="titleSpan"><strong>회원이름</strong>님의 정보</span> <br />
+				 <br />
+					<table id="VipTable">
 						<tr>
-							<td rowspan="2"><img src="/HoProject/ho/img/vip_king.png" /></td>
+							<td rowspan="2" width="55px"><img id="vipLogo" src="/HoProject/ho/img/vip_king.png" /></td>
 							<td>VIP등급 : KING</td>
 						</tr>
-						<tr><td>상위: 1%</td></tr>
+						<tr><td>EXP: 18,392,482,034</td></tr>
 					</table>
+					<br/>
+					<span style="font-size: 20pt;">보유 코인:</span>
+					<br/>
+					<span style="font-size:13pt;">12,312,312,123,123</span>
+					<br/><br/>
+
+					<button class="changeBtn" style="float:right; margin-top: 16px;">비밀번호 변경</button>
 					</td>
-				<td class="BodyTableStyle">우측</td>
+				<td class="BodyTableStyle">
+				<span id="titleSpan">연락처 및 거주지</span>
+				<br /><br />
+				이메일:
+				<input type="text" id="myPageemail" value="email@email.com" readonly="readonly"/><br/><br/>
+				전화번호:
+				<input type="text" id="myPagetel" value="010-1234-5678" readonly="readonly"/><br/><br/>
+				주소:<br/>
+				<input type="text" id="myPageaddr" value="서울특별시 무슨구 무슨동 123-45 무슨무슨아파트 3층 B01호" readonly="readonly"/><br/><br/>
+					<button class="changeBtn" style="margin-left:15px; margin-top: 10px; float:right;">이메일 변경</button>
+					<button class="changeBtn" style="margin-left:15px; margin-top: 10px; float:right;">전화번호 변경</button>
+					<button class="changeBtn" style="margin-top:10px; float:right;">주소 변경</button>
+				</td>
 			</tr>
 
 

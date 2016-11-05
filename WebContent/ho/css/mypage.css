@@ -12,16 +12,73 @@ section {
 	width: 100%;
 }
 
+#vipLogo {
+	width: 50px;
+	height: 50px;
+}
+
+#VipTable {
+	width: 100%;
+}
+
+#VipTable td {
+	text-align: left;
+}
+
+.changeBtn {
+	text-decoration: none;
+	text-indent: 0px;
+	line-height: 30px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	font-size: 12px;
+	color: #000000;
+	width: 100px;
+	height: 40px;
+	padding: 5px;
+	border-color: #c9c9c9;
+	border-width: 2px;
+	border-style: solid;
+	background: #f5f5f5;
+}
+
+.changeBtn:hover {
+	transition: 0.5s;
+	background: #b0c4de;
+}
+
+#myPageemail {
+	width: 300px;
+	text-align: left;
+	height: 20px;
+}
+
+#myPageaddr {
+	width: 355px;
+	text-align: left;
+	height: 20px;
+}
+
+#myPagetel {
+	width: 284px;
+	text-align: left;
+	height: 20px;
+}
+
 .BodyTableStyle {
 	border: 1px solid #c0c0c0;
-	height: 300px;
+	height: 250px;
 	background: white;
 	text-align: left;
 	vertical-align: text-top;
-	padding: 10px;
+	padding: 20px;
 }
 
-.BodyTableStyle span {
+#titleSpan {
 	font-size: 20pt;
 }
 
