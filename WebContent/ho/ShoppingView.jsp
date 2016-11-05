@@ -1,24 +1,25 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<% String projectName = "/HoProject";%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>뷰</title>
-<link href="/HoProject/ho/css/jquery.bxslider.css" rel="stylesheet" />
-<link href="/HoProject/ho/css/main.css" rel="stylesheet" />
-<link href="/HoProject/ho/css/view.css" rel="stylesheet" />
-<script src="/HoProject/ho/js/jquery-1.10.2.min.js"></script>
-<script src="/HoProject/ho/js/jquery.bxslider.min.js"></script>
-<script src="/HoProject/ho/js/main.js"></script>
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/main.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/view.css" rel="stylesheet" />
+<script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
+<script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
+<script src="<%=projectName%>/ho/js/main.js"></script>
 </head>
 <body>
 
 	<header>
 		<div id="menu">
-			<img src="/HoProject/ho/img/topMenu.png" />
+			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="/HoProject/ho/img/logo.png" /></a>
+			<a href="#"><img id="logo" src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
@@ -77,7 +78,7 @@
 		<table id="viewTable" cellspacing="0">
 			<tr>
 				<td id="viewTableImg" rowspan="8"><img id="itemView"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /></td>
 				<td class="viewInfo" colspan="2">한복이름-123</td>
 			</tr>
 			<tr>
@@ -119,13 +120,13 @@
 		<table width="1024px" cellspacing="0">
 			<tr>
 				<td width="33%"><img class="infoImage"
-					src="/HoProject/ho/img/banner_image_01.jpeg"></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
 				<td width="33%"><img class="infoImage"
-					src="/HoProject/ho/img/banner_image_01.jpeg"></td>
-				<td><img class="infoImage" src="/HoProject/ho/img/banner_image_01.jpeg"></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
+				<td><img class="infoImage" src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
 			</tr>
 		</table>
-		<img width="1024px" src="/HoProject/ho/img/refund_info.png" />
+		<img width="1024px" src="<%=projectName%>/ho/img/refund_info.png" />
 		<table width="1024px" cellspacing="0" border="1">
 			<tr>
 				<td width="20%">등록일</td>
@@ -141,7 +142,7 @@
 	</section>
 	<footer>
 		<div id="footertitle">
-			<a href="#"><img src="/HoProject/ho/img/footerTitle.png" /></a>
+			<a href="#"><img src="<%=projectName%>/ho/img/footerTitle.png" /></a>
 		</div>
 		<div id="topfooter">
 			<table id="footerTable">
