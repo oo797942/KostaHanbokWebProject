@@ -3,22 +3,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>뷰</title>
-<link href="./css/jquery.bxslider.css" rel="stylesheet" />
-<link href="./css/main.css" rel="stylesheet" />
-<link href="./css/view.css" rel="stylesheet" />
-<script src="./js/jquery-1.10.2.min.js"></script>
-<script src="./js/jquery.bxslider.min.js"></script>
-<script src="./js/script.js"></script>
+<title>마이페이지</title>
+<link href="/HoProject/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="/HoProject/ho/css/main.css" rel="stylesheet" />
+<link href="/HoProject/ho/css/mypage.css" rel="stylesheet" />
+<script src="/HoProject/ho/js/jquery-1.10.2.min.js"></script>
+<script src="/HoProject/ho/js/jquery.bxslider.min.js"></script>
+<script src="/HoProject/ho/js/main.js"></script>
 </head>
 <body>
 
 	<header>
 		<div id="menu">
-			<img src="../img/topMenu.png" />
+			<img src="/HoProject/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="../img/logo.png" /></a>
+			<a href="#"><img id="logo" src="/HoProject/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
@@ -74,73 +74,42 @@
 		</div>
 	</header>
 	<section>
-		<table id="viewTable" cellspacing="0">
+		<div id="myPageTop">
+			<p>MY PAGE</p>
+		</div>
+
+		<div id="myPageTopMenu">
+			<table id="myPageTopTable">
+				<tr>
+					<td class="topTableBtn">회원정보</td>
+					<td class="topTableBtn">쇼핑내역</td>
+					<td class="topTableBtn">보안설정</td>
+					<td width="70%"></td>
+				</tr>
+			</table>
+		</div>
+
+		<table id="myPageMainBodyTable" cellspacing="15">
+
 			<tr>
-				<td id="viewTableImg" rowspan="8"><img id="itemView"
-					src="../img/banner_image_01.jpeg" /></td>
-				<td class="viewInfo" colspan="2">한복이름-123</td>
+				<td class="BodyTableStyle">좌측</td>
+				<td class="BodyTableStyle">우측</td>
 			</tr>
-			<tr>
-				<td class="viewInfo" colspan="2">카테고리</td>
-			</tr>
-			<tr id="pinkColor">
-				<td class="viewInfo">판매가</td>
-				<td class="viewInfo">123원</td>
-			</tr>
-			<tr>
-				<td class="viewInfo">택배비</td>
-				<td class="viewInfo">123원</td>
-			</tr>
-			<tr>
-				<td class="viewInfo">원단</td>
-				<td class="viewInfo"><select id="colorSelect">
-						<option>- [필수] 원단 선택 -</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td colspan="2">여기도 결국 표가 들어올 예정입니다. 헬이다 헬</td>
-			</tr>
-			<tr>
-				<td class="viewInfo">총액</td>
-				<td class="viewInfo">123원</td>
-			</tr>
-			<tr>
-				<td id="btnTableTd" colspan="2">
-					<table id="btnTable" width="100%" cellspacing="0">
-						<tr>
-							<td class="tdBtn" width="50%" style="text-align: center;">바로구매</td>
-							<td class="tdBtn" style="text-align: center;">장바구니</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
+
+
 		</table>
+
 		<br />
-		<table width="1024px" cellspacing="0">
+		<table id="myPageContent" cellspacing="0" border="1">
 			<tr>
-				<td width="33%"><img class="infoImage"
-					src="../img/banner_image_01.jpeg"></td>
-				<td width="33%"><img class="infoImage"
-					src="../img/banner_image_01.jpeg"></td>
-				<td><img class="infoImage" src="../img/banner_image_01.jpeg"></td>
+				<td id="myPageContentMenu">좌측 메뉴 !</td>
+				<td>우측 본문</td>
 			</tr>
 		</table>
-		<img width="1024px" src="../img/refund_info.png" />
-		<table width="1024px" cellspacing="0" border="1">
-			<tr>
-				<td width="20%">등록일</td>
-				<td width="20%">아이디</td>
-				<td>평점</td>
-				<td width="50%">내용</td>
-			</tr>
-		</table>
-		<br/>
-		<input type="text" autocomplete="off" placeholder="후기를 입력해 주세요." id="replyInput" name="replyInput"/><a id="insertReply" href="#">입력</a>
-		<br/><br/>
 	</section>
 	<footer>
 		<div id="footertitle">
-			<a href="#"><img src="../img/footerTitle.png" /></a>
+			<a href="#"><img src="/HoProject/ho/img/footerTitle.png" /></a>
 		</div>
 		<div id="topfooter">
 			<table id="footerTable">

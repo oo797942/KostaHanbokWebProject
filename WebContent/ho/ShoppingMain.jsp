@@ -5,21 +5,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<link href="./css/jquery.bxslider.css" rel="stylesheet" />
-<link href="./css/main.css" rel="stylesheet" />
-<script src="./js/jquery-1.10.2.min.js"></script>
-<script src="./js/jquery.bxslider.min.js"></script>
-<script src="./js/script.js"></script>
+<link href="/HoProject/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="/HoProject/ho/css/main.css" rel="stylesheet" />
+<script src="/HoProject/ho/js/jquery-1.10.2.min.js"></script>
+<script src="/HoProject/ho/js/jquery.bxslider.min.js"></script>
+<script src="/HoProject/ho/js/main.js"></script>
 
 
 </head>
 <body>
 	<header>
 		<div id="menu">
-			<img src="../img/topMenu.png" />
+			<img src="/HoProject/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="../img/logo.png" /></a>
+			<a href="#"><img id="logo" src="/HoProject/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
@@ -67,23 +67,23 @@
 				<option value="fu">퓨전한복</option>
 				<option value="ah">아동한복</option>
 				<option value="ak"">악세서리</option>
-			</select>
-			<input type="radio" id="titleSearch" name="searchRadio" value="제목"  class="searchRadio"/>
-			<label class ="searchLabel" for="titleSearch" >제목</label>
-			<input type="radio" id="contentSearch" name="searchRadio" value="내용"  class="searchRadio"/>
-			<label class ="searchLabel" for="contentSearch" class="searchRadio">내용</label>
+			</select> <input type="radio" id="titleSearch" name="searchRadio" value="제목"
+				class="searchRadio" /> <label class="searchLabel" for="titleSearch">제목</label>
+			<input type="radio" id="contentSearch" name="searchRadio" value="내용"
+				class="searchRadio" /> <label class="searchLabel"
+				for="contentSearch" class="searchRadio">내용</label>
 		</div>
 
 	</header>
 	<section>
 		<div id="banner_wrap">
 			<ul id="slide_banner">
-				<li><img class="slide" src="../img/banner_image_01.jpeg"
-					alt="사진1" /></li>
-				<li><img class="slide" src="../img/banner_image_02.png"
-					alt="사진2" /></li>
-				<li><img class="slide" src="../img/banner_image_03.jpg"
-					alt="사진2" /></li>
+				<li><img class="slide"
+					src="/HoProject/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
+				<li><img class="slide"
+					src="/HoProject/ho/img/banner_image_02.png" alt="사진2" /></li>
+				<li><img class="slide"
+					src="/HoProject/ho/img/banner_image_03.jpg" alt="사진2" /></li>
 			</ul>
 		</div>
 		<table id="slidefocus">
@@ -103,15 +103,19 @@
 				<td id="slide5">아프지말고</td>
 			</tr>
 		</table>
-		<img src="../img/banner_image_01.jpeg" class="hotItem" name="hot1" />
-		<img src="../img/banner_image_01.jpeg" class="hotItem" name="hot2" />
-		<img src="../img/banner_image_01.jpeg" class="hotItem" name="hot3" />
-		<img src="../img/banner_image_01.jpeg" class="hotItem" name="hot4" />
+
+		<img src="/HoProject/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot1" /> <img src="/HoProject/ho/img/banner_image_01.jpeg"
+			class="hotItem" name="hot2" /> <img
+			src="/HoProject/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot3" /> <img src="/HoProject/ho/img/banner_image_01.jpeg"
+			class="hotItem" name="hot4" />
+
 
 	</section>
 	<footer>
 		<div id="footertitle">
-			<a href="#"><img src="../img/footerTitle.png" /></a>
+			<a href="#"><img src="/HoProject/ho/img/footerTitle.png" /></a>
 		</div>
 		<div id="topfooter">
 			<table id="footerTable">
