@@ -7,7 +7,7 @@
 <title></title>
 </head>
 <body>
-<%
+<% 
 
 	// 실제로는 DB에서 가져와야하는 값
 // 	String saveUser = "rkdans79";
@@ -27,7 +27,7 @@
 		session.setAttribute("yourid",hm.getMemId());
 		
 		// #1. 로그인 성공하면 바로 MainPage.jsp를 요청
-		response.sendRedirect("/HoCopy2/Mainpage/HoMainForm.jsp");
+		response.sendRedirect("/HoProject/Mainpage/HoMainForm.jsp");
 	} else {
 		System.out.println("로그인실패");
 		// #1. 로그인에 실패하면 바로 LoginForm.jsp을 요청

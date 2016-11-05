@@ -92,7 +92,16 @@
 		<table id="myPageMainBodyTable" cellspacing="15">
 
 			<tr>
-				<td class="BodyTableStyle">좌측</td>
+				<td class="BodyTableStyle" width="50%"><span><strong>회원이름</strong>님의
+						정보</span> <br /> <br />
+					<table>
+						<tr>
+							<td rowspan="2"><img src="/HoProject/ho/img/vip_king.png" /></td>
+							<td>VIP등급 : KING</td>
+						</tr>
+						<tr><td>상위: 1%</td></tr>
+					</table>
+					</td>
 				<td class="BodyTableStyle">우측</td>
 			</tr>
 

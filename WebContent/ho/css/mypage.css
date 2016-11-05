@@ -16,6 +16,13 @@ section {
 	border: 1px solid #c0c0c0;
 	height: 300px;
 	background: white;
+	text-align: left;
+	vertical-align: text-top;
+	padding: 10px;
+}
+
+.BodyTableStyle span {
+	font-size: 20pt;
 }
 
 #myPageTopMenu {
