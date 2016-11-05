@@ -20,7 +20,7 @@ import ho.command.CommandNull;
 public class HoControl extends HttpServlet {
 	
 	private HashMap commandMap;
-	private String	jspDir = "/Mainpage/";
+	private String	jspDir = "/ho/";
 	private String  error = "error.jsp";
 	
 
