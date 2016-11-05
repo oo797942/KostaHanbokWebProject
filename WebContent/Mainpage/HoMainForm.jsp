@@ -1,23 +1,64 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
+<%
+	String projectName = "/HoProject"; 
+	String sessionValue = null;
+	String loginCk="LOGIN";
+	//# 1."yourid"로 저장된 세션값을 얻어온다.
+	Object sess = session.getAttribute("yourid");
+	//# 2. 값이 null이라면 LoginForm.jsp로 페이지 이동
+	//# 3. null이 아니라면 String 형변환하여 변수에 지정
+	System.out.println("세션값"+sess);
+	if(sess != null){
+		sessionValue = (String)sess;
+		loginCk="LOGOUT";
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=text/html; charset=UTF-8">
 <title>Ho</title>
-<link rel="stylesheet" type="text/css" href="./css/jquery.bxslider.css"
+<link rel="stylesheet" type="text/css" href="<%= projectName %>/Mainpage/css/jquery.bxslider.css"
 	media="all" />
-<link rel="stylesheet" type="text/css" href="./css/main.css" media="all" />
-<script src="./js/jquery-3.1.1.min.js"></script>
-<script src="./plugin/jquery.bxslider.min.js"></script>
-<script src="./plugin/jquery.fitvids.js"></script>
-<script type="text/javascript" src="./js/main.js">
+<link rel="stylesheet" type="text/css" href="<%= projectName %>/Mainpage/css/main.css" media="all" />
+<script src="<%= projectName %>/Mainpage/js/jquery-3.1.1.min.js"></script>
+<script src="<%= projectName %>/Mainpage/plugin/jquery.bxslider.min.js"></script>
+<script src="<%= projectName %>/Mainpage/plugin/jquery.fitvids.js"></script>
+<script type="text/javascript" src="<%= projectName %>/Mainpage/js/main.js"></script>
+<script type="text/javascript">	
+$(function(){
 	
+	var a = "<%=loginCk%>";
+	if(a=="LOGOUT"){
+		$("#adlogin").attr('name',"logout");
+	}else{
+		
+	}
+	
+	$('[name="logout"]').click(function() {
+		var param = {a:"<%=sess%>"};
+		$.get("<%=projectName%>/logout.ho?cmd=logout-page",param,kkk);
+		$("#footmenu").hide();
+	}).css('cursor','pointer');
+
+});
+	function kkk(){
+		
+	<%if(sess==null){%>
+		$("#adlogin").attr("name","login");
+	<%loginCk="LOGIN";
+			System.out.println(loginCk);%>
+			<%}%>
+			$("#cmd").attr("name","main-page");
+			document.log_f.action="<%= projectName %>/xxxxx.ho?";
+			document.log_f.submit();
+	}
 </script>
 </head>
 <body>
-
 	<header>
 		<div>
 			<ul id="slide_banner">
@@ -28,16 +69,16 @@
 					</div>
 					</iframe></li>
 				<li><img width=100% height=100% alt="사진1"
-					src="./img/slideimg1.jpg"></li>
+					src="<%= projectName %>/img/slideimg1.jpg"></li>
 				<li><img width=100% height=100% alt="사진2"
-					src="./img/slideimg2.jpg"></li>
+					src="<%= projectName %>/img/slideimg2.jpg"></li>
 				<li><img width=100% height=100% alt="사진3"
-					src="./img/slideimg3.jpg"></li>
+					src="<%= projectName %>/img/slideimg3.jpg"></li>
 			</ul>
 		</div>
 
 		<div id="logoimg">
-			<a href="NewFile.jsp"><img src="./img/logo.jpg"></a>
+			<a href="HoMainForm.jsp"><img src="<%= projectName %>/img/logo.jpg"></a>
 		</div>
 
 
@@ -51,13 +92,13 @@
 		</div>
 
 		<div id="menu">
-			<img src="./img/menu.png">
+			<img src="<%= projectName %>/img/menu.png">
 		</div>
 
 
 		<div id="topMenu">
 			<div id="Menuimg">
-				<a href="NewFile.jsp"><img src="./img/logo.jpg"></a>
+				<a href="HoMainForm.jsp"><img src="<%= projectName %>/img/logo.jpg"></a>
 			</div>
 			<div id="topCate">
 				<a id="top-CateItem1">개량한복</a> <br />
@@ -87,27 +128,82 @@
 
 		<div id="ContentBackground"></div>
 		<div id=newsContent class="Content">
-			<a class="contentXbutton">X</a> newsContent 내용
+			<div class="path">
+				<img alt="NEWS" src="/HoCopy2/Mainpage/img/company1.jpg">
+				<img alt="NEWS" src="/HoCopy2/Mainpage/img/NEWS.jpg">
+			</div>
+			<a class="contentXbutton">X</a>
+			<img alt="NEWS" src="<%= projectName %>/Mainpage/img/depart.jpg">
+			<img alt="NEWS" src="<%= projectName %>/Mainpage/img/depart2.jpg">
+			<hr size="3"><br/>
+			<img alt="NEWS" src="<%= projectName %>/Mainpage/img/day.jpg">
+			<table>
+			<tr>
+			<td><img alt="NEWS" src="<%= projectName %>/Mainpage/img/day2.jpg" ></td>
+			<td><img alt="NEWS" src="<%= projectName %>/Mainpage/img/day1.png"></td>
+			</tr>
+			</table>	 
+		
 		</div>
 		<div id=storeContent class="Content">
+			<div class="path">
+			</div>
 			<a class="contentXbutton">X</a> storeContent 내용
 		</div>
 
 		<div id=aboutContent class="Content">
-			<a class="contentXbutton">X</a> aboutContent 내용
+			<div class="path">
+			<img alt="회사소개" src="<%= projectName %>/Mainpage/img/company1.jpg">
+			<img alt="회사소개" src="<%= projectName %>/Mainpage/img/about.jpg">
+			</div>
+			<a class="contentXbutton">X</a> 
+			<img alt="회사소개" src="<%= projectName %>/Mainpage/img/Company.jpg" class="align"><br/>
+			<img alt="회사소개글" src="<%= projectName %>/Mainpage/img/HO_text.png" class="align">
+			<img alt="회사소개글" src="<%= projectName %>/Mainpage/img/HO_text2.png" class="align" >
 		</div>
 
 		<div id=productContent class="Content">
-			<a class="contentXbutton">X</a> productContent 내용
+			<a class="contentXbutton">X</a> 
+			<div class="path">
+			<img alt="상품" src="<%= projectName %>/Mainpage/img/company1.jpg">
+			<img alt="상품" src="<%= projectName %>/Mainpage/img/product.jpg">
+			</div>
+				<img alt="수지" src="<%= projectName %>/Mainpage/img/tableproduct.jpg">		
+			<a class="contentXbutton">X</a>
+				<!-- img 사이즈 180x180 가로 5장 세로 3장 -->
+				<table style="border: 1px solid white-space; width:60%; height: 100px; margin: auto; ">
+				<tr >
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg">	</td>	
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg">	</td>	
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg">	</td>	
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg"></td>			
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg">	</td>
+				</tr>
+				<tr>
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg">	</td>	
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg"></td>			
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg"></td>			
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg"></td>			
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg">	</td>
+				</tr>
+					<tr>
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg">	</td>	
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg"></td>			
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg"></td>			
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg"></td>			
+					<td><img alt="수지" src="<%= projectName %>/Mainpage/img/suzi.jpg">	</td>
+				</tr>
+				</table>
 		</div>
 
 	</header>
 
 	<footer>
 		<div id="admin">
-			<a id="adlogin">login</a>
+			<text id="adlogin" name= "login"><%=loginCk%></text>
 		</div>
-		<form action="NewFile.jsp" method="get" name="log_f" id="login_f">
+		<form action="<%= projectName %>/xxxxx.ho?" method="get" name="log_f" id="login_f">
+			<input type="hidden" id="cmd" name="cmd" value="login-page" >
 			<div id="footmenu">
 				<table>
 					<tr>
@@ -129,6 +225,8 @@
 				</table>
 			</div>
 		</form>
+
+		
 	</footer>
 
 
