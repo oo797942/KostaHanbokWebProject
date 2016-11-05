@@ -7,11 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<link href="/HoProject/ho/css/jquery.bxslider.css" rel="stylesheet" />
-<link href="/HoProject/ho/css/main.css" rel="stylesheet" />
-<script src="/HoProject/ho/js/jquery-1.10.2.min.js"></script>
-<script src="/HoProject/ho/js/jquery.bxslider.min.js"></script>
-<script src="/HoProject/ho/js/main.js"></script>
+<link href="<%=projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName %>/ho/css/main.css" rel="stylesheet" />
+<script src="<%=projectName %>/ho/js/jquery-1.10.2.min.js"></script>
+<script src="<%=projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<script src="<%=projectName %>/ho/js/main.js"></script>
 
 
 </head>
