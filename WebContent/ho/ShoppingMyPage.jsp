@@ -1,24 +1,26 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
+<% String projectName = "/HoProject"; %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>마이페이지</title>
-<link href="/HoProject/ho/css/jquery.bxslider.css" rel="stylesheet" />
-<link href="/HoProject/ho/css/main.css" rel="stylesheet" />
-<link href="/HoProject/ho/css/mypage.css" rel="stylesheet" />
-<script src="/HoProject/ho/js/jquery-1.10.2.min.js"></script>
-<script src="/HoProject/ho/js/jquery.bxslider.min.js"></script>
-<script src="/HoProject/ho/js/main.js"></script>
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/main.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/mypage.css" rel="stylesheet" />
+<script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
+<script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
+<script src="<%=projectName%>/ho/js/main.js"></script>
 </head>
 <body>
 
 	<header>
 		<div id="menu">
-			<img src="/HoProject/ho/img/topMenu.png" />
+			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="/HoProject/ho/img/logo.png" /></a>
+			<a href="#"><img id="logo" src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
@@ -97,7 +99,9 @@
 				 <br />
 					<table id="VipTable">
 						<tr>
-							<td rowspan="2" width="55px"><img id="vipLogo" src="/HoProject/ho/img/vip_king.png" /></td>
+
+							<td rowspan="2" width="55px"><img id="vipLogo" src="<%=projectName %>/ho/img/vip_king.png" /></td>
+
 							<td>VIP등급 : KING</td>
 						</tr>
 						<tr><td>EXP: 18,392,482,034</td></tr>
@@ -138,7 +142,7 @@
 	</section>
 	<footer>
 		<div id="footertitle">
-			<a href="#"><img src="/HoProject/ho/img/footerTitle.png" /></a>
+			<a href="#"><img src="<%=projectName%>/ho/img/footerTitle.png" /></a>
 		</div>
 		<div id="topfooter">
 			<table id="footerTable">

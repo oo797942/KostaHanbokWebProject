@@ -1,25 +1,26 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<% String projectName = "/HoProject";%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>검색결과</title>
 
-<link href="/HoProject/ho/css/jquery.bxslider.css" rel="stylesheet" />
-<link href="/HoProject/ho/css/main.css" rel="stylesheet" />
-<link href="/HoProject/ho/css/search.css" rel="stylesheet" />
-<script src="/HoProject/ho/js/jquery-1.10.2.min.js"></script>
-<script src="/HoProject/ho/js/jquery.bxslider.min.js"></script>
-<script src="/HoProject/ho/js/main.js"></script>
-<script src="/HoProject/ho/js/search.js"></script>
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/main.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/search.css" rel="stylesheet" />
+<script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
+<script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
+<script src="<%=projectName%>/ho/js/main.js"></script>
+<script src="<%=projectName%>/ho/js/search.js"></script>
 </head>
 <body>
 	<header>
 		<div id="menu">
-			<img src="/HoProject/ho/img/topMenu.png" />
+			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="/HoProject/ho/img/logo.png" /></a>
+			<a href="#"><img id="logo" src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
@@ -83,49 +84,49 @@
 		<table id="itemTable" cellspacing="0">
 			<tr>
 				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 			</tr>
 			<tr>
 				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 			</tr>
 			<tr>
 				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 			</tr>
 			<tr>
 				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="/HoProject/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label class="123"><strong>AK-123</strong><br />12,300</label></td>
 			</tr>
 		</table>
 	</section>
 	<footer>
 		<div id="footertitle">
-			<a href="#"><img src="/HoProject/ho/img/footerTitle.png" /></a>
+			<a href="#"><img src="<%=projectName%>/ho/img/footerTitle.png" /></a>
 		</div>
 		<div id="topfooter">
 			<table id="footerTable">

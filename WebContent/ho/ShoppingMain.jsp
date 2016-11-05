@@ -1,25 +1,27 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
+<% String projectName = "/HoProject"; %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<link href="/HoProject/ho/css/jquery.bxslider.css" rel="stylesheet" />
-<link href="/HoProject/ho/css/main.css" rel="stylesheet" />
-<script src="/HoProject/ho/js/jquery-1.10.2.min.js"></script>
-<script src="/HoProject/ho/js/jquery.bxslider.min.js"></script>
-<script src="/HoProject/ho/js/main.js"></script>
+<link href="<%=projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName %>/ho/css/main.css" rel="stylesheet" />
+<script src="<%=projectName %>/ho/js/jquery-1.10.2.min.js"></script>
+<script src="<%=projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<script src="<%=projectName %>/ho/js/main.js"></script>
 
 
 </head>
 <body>
 	<header>
 		<div id="menu">
-			<img src="/HoProject/ho/img/topMenu.png" />
+			<img src="<%=projectName %>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="/HoProject/ho/img/logo.png" /></a>
+			<a href="#"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
@@ -79,11 +81,11 @@
 		<div id="banner_wrap">
 			<ul id="slide_banner">
 				<li><img class="slide"
-					src="/HoProject/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
+					src="<%=projectName %>/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
 				<li><img class="slide"
-					src="/HoProject/ho/img/banner_image_02.png" alt="사진2" /></li>
+					src="<%=projectName %>/ho/img/banner_image_02.png" alt="사진2" /></li>
 				<li><img class="slide"
-					src="/HoProject/ho/img/banner_image_03.jpg" alt="사진2" /></li>
+					src="<%=projectName %>/ho/img/banner_image_03.jpg" alt="사진2" /></li>
 			</ul>
 		</div>
 		<table id="slidefocus">
@@ -104,18 +106,18 @@
 			</tr>
 		</table>
 
-		<img src="/HoProject/ho/img/banner_image_01.jpeg" class="hotItem"
-			name="hot1" /> <img src="/HoProject/ho/img/banner_image_01.jpeg"
+		<img src="<%=projectName %>/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot1" /> <img src="<%=projectName %>/ho/img/banner_image_01.jpeg"
 			class="hotItem" name="hot2" /> <img
-			src="/HoProject/ho/img/banner_image_01.jpeg" class="hotItem"
-			name="hot3" /> <img src="/HoProject/ho/img/banner_image_01.jpeg"
+			src="<%=projectName %>/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot3" /> <img src="<%=projectName %>/ho/img/banner_image_01.jpeg"
 			class="hotItem" name="hot4" />
 
 
 	</section>
 	<footer>
 		<div id="footertitle">
-			<a href="#"><img src="/HoProject/ho/img/footerTitle.png" /></a>
+			<a href="#"><img src="<%=projectName %>/ho/img/footerTitle.png" /></a>
 		</div>
 		<div id="topfooter">
 			<table id="footerTable">
