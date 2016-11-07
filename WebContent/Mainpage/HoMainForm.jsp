@@ -88,6 +88,7 @@
 		<div id="ContentBackground"></div>
 		<div id=newsContent class="Content">
 			<a class="contentXbutton">X</a> newsContent 내용
+			
 		</div>
 		<div id=storeContent class="Content">
 			<a class="contentXbutton">X</a> storeContent 내용
