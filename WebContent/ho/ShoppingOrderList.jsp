@@ -1,12 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<% String projectName = "/HoProject"; %>
+<%
+	String projectName = "/HoProject";
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>마이페이지</title>
-<link href="<%=projectName%>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css"
+	rel="stylesheet" />
 <link href="<%=projectName%>/ho/css/main.css" rel="stylesheet" />
 <link href="<%=projectName%>/ho/css/mypage.css" rel="stylesheet" />
 <script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
@@ -75,7 +78,7 @@
 				for="contentSearch" class="searchRadio">내용</label>
 		</div>
 	</header>
-	<section style="background: #f5f5f5;">
+	<section>
 		<div id="myPageTop">
 			<p>MY PAGE</p>
 		</div>
@@ -90,60 +93,49 @@
 			</table>
 		</div>
 
-		<table id="myPageMainBodyTable" cellspacing="15" >
 
+		<table id="orderTableTop" cellspacing="0">
 			<tr>
-				<td class="BodyTableStyle" width="50%">
-				<span id="titleSpan"><strong>회원이름</strong>님의 정보</span> <br />
-				 <br />
-					<table id="VipTable">
-						<tr>
-							<td rowspan="2" width="55px"><img id="vipLogo" src="<%=projectName %>/ho/img/vip_king.png" /></td>
-							<td>VIP등급 : KING</td>
-						</tr>
-						<tr><td>EXP: 18,392,482,034</td></tr>
-					</table>
-					<br/>
-					<span style="font-size: 20pt;">보유 코인:</span>
-					<br/>
-					<span style="font-size:13pt;">12,312,312,123,123</span>
-					<br/><br/>
-
-					<button class="changeBtn" style="float:right; margin-top: 16px;">비밀번호 변경</button>
-					</td>
-				<td class="BodyTableStyle">
-				<span id="titleSpan">연락처</span>
-				<br /><br />
-				이메일:
-				<input type="text" id="myPageemail" value="email@email.com" readonly="readonly"/><br/><br/><br/>
-				전화번호:
-				<input type="text" id="myPagetel" value="010-1234-5678" readonly="readonly"/><br/><br/><br/>
-					<br/>
-					<button class="changeBtn" style="margin-left:15px; margin-top: 15px; float:right;">이메일 변경</button>
-					<button class="changeBtn" style="margin-left:15px; margin-top: 15px; float:right;">전화번호 변경</button>
-				</td>
+				<td width="24%">입금대기: <span style="color: red;">0</span></td>
+				<td class="gray">l</td>
+				<td width="24%">상품준비중: <span style="color: red;">0</span></td>
+				<td class="gray">l</td>
+				<td width="24%">배송중: <span style="color: red;">0</span></td>
+				<td class="gray">l</td>
+				<td width="24%">배송완료: <span style="color: red;">0</span></td>
 			</tr>
-			<tr>
-			<td class="BodyTableStyle">
-			<span id="titleSpan">거주지 및 신체정보</span><br/><br/>
-			주소:<br/>
-			<input type="text" id="myPageaddr" value="서울특별시 무슨구 무슨동 123-45 무슨무슨아파트 3층 B01호" readonly="readonly"/>
-			<br/><br/>
-			키: <input type="text" size="12"  readonly="readonly" value="135"/> 
-			가슴: <input type="text" size="12" readonly="readonly" value="55"/> 
-			어깨: <input type="text" size="12" readonly="readonly" value="50"/>
-			
-			<br/><br/><br/>
-			<button class="changeBtn" style="margin-left:15px; margin-top: 25px; float:right;">어깨 변경</button>
-			<button class="changeBtn" style="margin-left:15px; margin-top: 25px; float:right;">가슴 변경</button>
-			<button class="changeBtn" style="margin-left:15px; margin-top:25px; float:right;">키 변경</button>
-			<button class="changeBtn" style="margin-top:25px; float:right;">주소 변경</button>
-			</td>
-			<td class="BodyTableStyle">우</td>
-			</tr>
-
-
 		</table>
+
+		<h2 style="text-align: left; margin-left: 15px; margin-top: 5px;">주문
+			내역</h2>
+
+		<table id="orderListTable" cellspacing="0">
+			<tr id="orderListTableTop">
+				<td width="15%">주문일자</td>
+				<td>상품명/수량/주문번호</td>
+				<td width="20%">결제액</td>
+				<td width="20%">주문상태</td>
+			</tr>
+			<tr>
+				<td class="orderListTd">2016-04-30</td>
+				<td class="orderListTd">
+					<table width="100%" cellspacing="0" style="padding: 1px;">
+						<tr>
+							<td class="textLeftAlign" rowspan="2" width="45px"><img
+								id="orderListimg1" class="orderListimg"
+								src="<%=projectName%>/ho/img/banner_image_01.jpeg" /></td>
+							<td class="textLeftAlign">[123123123] AK-123</td>
+						</tr>
+						<tr>
+							<td class="textLeftAlign">3개</td>
+						</tr>
+					</table>
+				</td>
+				<td class="orderListTd">100,000,000원</td>
+				<td class="orderListTd">배송 대기중</td>
+			</tr>
+		</table>
+
 	</section>
 	<footer>
 		<div id="footertitle">

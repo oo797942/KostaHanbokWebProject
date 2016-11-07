@@ -16,6 +16,8 @@
 
 </head>
 <body>
+
+
 	<header>
 		<div id="menu">
 			<img src="<%=projectName %>/ho/img/topMenu.png" />
@@ -81,11 +83,11 @@
 		<div id="banner_wrap">
 			<ul id="slide_banner">
 				<li><img class="slide"
-					src="/HoProject/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
+					src="<%=projectName %>/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
 				<li><img class="slide"
-					src="/HoProject/ho/img/banner_image_02.png" alt="사진2" /></li>
+					src="<%=projectName %>/ho/img/banner_image_02.png" alt="사진2" /></li>
 				<li><img class="slide"
-					src="/HoProject/ho/img/banner_image_03.jpg" alt="사진2" /></li>
+					src="<%=projectName %>/ho/img/banner_image_03.jpg" alt="사진2" /></li>
 			</ul>
 		</div>
 		<table id="slidefocus">
@@ -106,18 +108,18 @@
 			</tr>
 		</table>
 
-		<img src="/HoProject/ho/img/banner_image_01.jpeg" class="hotItem"
-			name="hot1" /> <img src="/HoProject/ho/img/banner_image_01.jpeg"
+		<img src="<%=projectName %>/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot1" /> <img src="<%=projectName %>/ho/img/banner_image_01.jpeg"
 			class="hotItem" name="hot2" /> <img
-			src="/HoProject/ho/img/banner_image_01.jpeg" class="hotItem"
-			name="hot3" /> <img src="/HoProject/ho/img/banner_image_01.jpeg"
+			src="<%=projectName %>/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot3" /> <img src="<%=projectName %>/ho/img/banner_image_01.jpeg"
 			class="hotItem" name="hot4" />
 
 
 	</section>
 	<footer>
 		<div id="footertitle">
-			<a href="#"><img src="/HoProject/ho/img/footerTitle.png" /></a>
+			<a href="#"><img src="<%=projectName %>/ho/img/footerTitle.png" /></a>
 		</div>
 		<div id="topfooter">
 			<table id="footerTable">
