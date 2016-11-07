@@ -24,6 +24,11 @@
 <link rel="stylesheet" type="text/css" href="<%= projectName %>/ho/css/jquery.bxslider.css"
 	media="all" />
 <link rel="stylesheet" type="text/css" href="<%= projectName %>/ho/css/HoMainForm.css" media="all" />
+<style type="text/css">
+	 a:link { color: red; text-decoration: none;}
+	 a:visited { color: black; text-decoration: none;}
+	 a:hover { color: black; text-decoration: underline;}
+</style>
 <script src="<%= projectName %>/ho/js/jquery-3.1.1.min.js"></script>
 <script src="<%= projectName %>/ho/plugin/jquery.bxslider.min.js"></script>
 <script src="<%= projectName %>/ho/plugin/jquery.fitvids.js"></script>
@@ -85,7 +90,7 @@ $(function(){
 		<div id="SideMenu">
 			<ul class="sm1">
 				<li id="news" class="sm">NEWS</li>
-				<li id="store" class="sm">STORE</li>
+				<a href="<%=projectName%>/gostore.ho?cmd=go-store" style="text-decoration:none"><li id="store" class="sm">STORE</li></a>
 				<li id="about" class="sm">ABOUT</li>
 				<li id="product" class="sm">PRODUCT</li>
 			</ul>

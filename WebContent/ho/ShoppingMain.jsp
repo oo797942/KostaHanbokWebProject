@@ -1,6 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<% String projectName = "/HoProject"; %>
+<% String projectName = "/HoProject";
+	String sessionValue = null;
+//# 1."yourid"로 저장된 세션값을 얻어온다.
+	Object sess = session.getAttribute("yourid");
+//# 2. 값이 null이라면 LoginForm.jsp로 페이지 이동
+//# 3. null이 아니라면 String 형변환하여 변수에 지정
+System.out.println("세션값"+sess);
+
+if(sess != null){
+	sessionValue = (String)sess;
+} %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +23,41 @@
 <script src="<%=projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%=projectName %>/ho/js/jquery.bxslider.min.js"></script>
 <script src="<%=projectName %>/ho/js/main.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	if("<%=sessionValue%>"=="null"){
+		alert("여기 1");
+		$("#shoplogin").show();
+		$("#shoplogout").hide();
+	}else{
+		alert("여기 2");
+		$("#shoplogin").hide();
+		$("#shoplogout").show();
+	}
+	
+	$("#shoplogin").click(function(){
+		window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );	
+		
+	}).css('cursor','pointer');
+	
+	
+	$("#shoplogout").click(function() {
+		alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
+		$.get("LogoutService.jsp",param,kkk);
+	
+	}).css('cursor','pointer');
+	
+});
+function kkk(result){
+	$("#shoplogout").hide();
+	$("#shoplogin").show();
+}
+
+
+
+</script>
+
 
 
 </head>
@@ -28,7 +74,8 @@
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-					<td><a href="#">LOGIN </a></td>
+					<td><text id="shoplogin" name="login" >LOGIN</text></td>
+					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
 					<td><a href="#">JOIN</a></td>
 					<td class="gray">l</td>

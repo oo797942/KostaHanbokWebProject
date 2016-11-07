@@ -15,6 +15,7 @@ import ho.command.CommandGoodsView;
 import ho.command.CommandInsert;
 import ho.command.CommandList;
 import ho.command.CommandLogin;
+import ho.command.CommandLoginSess;
 import ho.command.CommandNull;
 
 /**
@@ -42,6 +43,11 @@ public class HoControl extends HttpServlet {
 		commandMap.put("list-page", new CommandList("adminGoodsList.jsp"));
 		commandMap.put("adminGoodsView", new CommandGoodsView("adminGoodsView.jsp"));
 		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
+	  
+		commandMap.put("shoplogin-page", new CommandLoginSess("LoginPopUp.jsp"));
+		commandMap.put("shop-login", new CommandLogin("LoginService.jsp"));
+		commandMap.put("shop-main", new CommandNull("ShoppingMain.jsp"));
+		commandMap.put("go-store", new CommandNull("ShoppingMain.jsp"));
 	
 		// admin 페이지
 		commandMap.put("admin-page", new CommandNull("adminPage.jsp"));
