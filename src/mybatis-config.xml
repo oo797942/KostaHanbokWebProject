@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <!-- VO 클래스들의 별칭 등록  -->
 <typeAliases>
 	<typeAlias type = "ho.model.HoMember" alias="HoMember"/>
+	<typeAlias type = "ho.model.HoGoods" alias="HoGoods"/>
 </typeAliases>
 
 

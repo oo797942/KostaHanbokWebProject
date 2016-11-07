@@ -16,7 +16,7 @@ public class CommandLogin implements Command{
 	}
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
-			HoMember hm = new HoMember();
+			int result=0;
 			HashMap<String, Object> memMap= new HashMap<String,Object>();
 			
 			String user = request.getParameter("adid");
@@ -24,10 +24,18 @@ public class CommandLogin implements Command{
 			
 			memMap.put("id", user);
 			memMap.put("pass", pass);
-			hm=HoMemberService.getInstance().selectHoMemberByPrimaryKey(memMap);
 			
-			request.setAttribute("homem", hm);
-			System.out.println("영재야!!!!"+hm.getMemId());
+			HoMember hm =HoMemberService.getInstance().selectHoMemberByPrimaryKey(memMap);
+		
+			if(hm==null){
+				result=2;
+				//System.out.println("영재야!!!!"+hm.getMemId());
+			}else{
+				result=1;
+				request.setAttribute("homem", hm);
+				
+			}
+			request.setAttribute("result", result);
 			
 		}catch( Exception ex ){
 			throw new CommandException("CommandLogin.java < 입력시 > " + ex.toString() ); 

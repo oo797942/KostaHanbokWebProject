@@ -42,19 +42,6 @@ $(function(){
 	$("#store").mouseover(function(){
 		mySlider.goToSlide(1);
 	});
-	$("#store").click(function(){
-		$("#news").text("NEWS");
-		$("#store").text("STORE");
-		$("#about").text("ABOUT");
-		$("#product").text("PRODUCT");
-		$(this).text("_"+$(this).text());
-		$("#topMenu").hide();
-		$(".Content").hide();
-		$("#footmenu").hide();
-		$('#topimage').find("img").attr("src","");	
-		$("#ContentBackground").css("display","block");
-		$("#storeContent").css("display","block");
-	}).css('cursor','pointer');
 	
 	
 	$("#about").mouseover(function(){

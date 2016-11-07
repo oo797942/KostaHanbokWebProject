@@ -25,7 +25,7 @@
 	media="all" />
 <link rel="stylesheet" type="text/css" href="<%= projectName %>/ho/css/HoMainForm.css" media="all" />
 <style type="text/css">
-	 a:link { color: red; text-decoration: none;}
+	 a:link { color: black; text-decoration: none;}
 	 a:visited { color: black; text-decoration: none;}
 	 a:hover { color: black; text-decoration: underline;}
 </style>
@@ -150,11 +150,7 @@ $(function(){
 			</table>	 
 		
 		</div>
-		<div id=storeContent class="Content">
-			<div class="path">
-			</div>
-			<a class="contentXbutton">X</a> storeContent 내용
-		</div>
+	
 
 		<div id=aboutContent class="Content">
 			<div class="path">

@@ -44,14 +44,17 @@ $(function(){
 	
 	$("#shoplogout").click(function() {
 		alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
-		$.get("LogoutService.jsp",param,kkk);
+		var param = {a:"k", fromWhere:"shop"};
+
+		$.get("<%=projectName%>/logout.ho?cmd=logout-page",param,kkk);
+		$("#shoplogout").hide();
+		$("#shoplogin").show();
 	
 	}).css('cursor','pointer');
 	
 });
 function kkk(result){
-	$("#shoplogout").hide();
-	$("#shoplogin").show();
+	
 }
 
 
