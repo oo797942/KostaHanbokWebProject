@@ -4,7 +4,7 @@
 <%
 	String projectName = "/HoProject"; 
 	String sessionValue = null;
-	String loginCk="LOGIN";
+	String loginCk="LOGIN"; 
 	//# 1."yourid"로 저장된 세션값을 얻어온다.
 	Object sess = session.getAttribute("yourid");
 	//# 2. 값이 null이라면 LoginForm.jsp로 페이지 이동
@@ -13,7 +13,7 @@
 	if(sess != null){
 		sessionValue = (String)sess;
 		loginCk="LOGOUT";
-	}
+	} 
 %>
 <!DOCTYPE html>
 <html>

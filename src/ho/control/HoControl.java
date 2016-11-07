@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import ho.command.Command;
 import ho.command.CommandException;
+import ho.command.CommandGoodsView;
+import ho.command.CommandInsert;
+import ho.command.CommandList;
 import ho.command.CommandLogin;
 import ho.command.CommandNull;
 
@@ -34,8 +37,27 @@ public class HoControl extends HttpServlet {
 		commandMap.put("login-page", new CommandLogin("LoginService.jsp"));
 		commandMap.put("main-page", new CommandNull("HoMainForm.jsp"));
 		commandMap.put("logout-page", new CommandNull("LogoutService.jsp"));
+		commandMap.put("adminGoodsimgInsert", new CommandInsert("adminGoodsimgInsert.jsp"));
+		commandMap.put("adminGoodsList", new CommandInsert("adminInsertSuccess.jsp"));
+		commandMap.put("list-page", new CommandList("adminGoodsList.jsp"));
+		commandMap.put("adminGoodsView", new CommandGoodsView("adminGoodsView.jsp"));
+		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
 	
-		// 나머지도 추가하기		
+		// admin 페이지
+		commandMap.put("admin-page", new CommandNull("adminPage.jsp"));
+		commandMap.put("adminmenu1", new CommandNull("adminPagelist.jsp"));
+		commandMap.put("adminmenu2", new CommandNull("adminGoods.jsp"));
+		commandMap.put("adminmenu3", new CommandNull("adminMemlist.jsp"));
+		commandMap.put("adminmenu4", new CommandNull("adminBoardList.jsp"));
+/*		commandMap.put("adminMemView", new CommandNull("adminMemView.jsp"));
+		commandMap.put("admiMemlist", new CommandNull("admiMemlist.jsp"));
+		commandMap.put("adminGoodsUpdate", new CommandNull("adminGoodsUpdate.jsp"));
+		commandMap.put("adminGoodsimgUpdate", new CommandNull("adminGoodsimgUpdate.jsp"));
+		commandMap.put("adminPageDelete", new CommandNull("adminGoodsDelete.jsp"));
+		commandMap.put("adminBoardView", new CommandNull("adminBoardView.jsp"));
+		commandMap.put("adminBoardList", new CommandNull("adminBoardList.jsp"));
+		commandMap.put("adminPagelist", new CommandNull("adminPagelist.jsp"));
+*/
 		
 	}
 

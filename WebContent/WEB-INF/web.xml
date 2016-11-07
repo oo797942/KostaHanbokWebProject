@@ -12,6 +12,10 @@
   <servlet>
   	<servlet-name>HoControl</servlet-name>
   	<servlet-class>ho.control.HoControl</servlet-class>
+ <multipart-config>
+       <location>C:\JavaClass\workspace\ProjectExam\WebContent\ho\temp</location>
+       <file-size-threshold>1024</file-size-threshold>
+    </multipart-config>
   </servlet>
   <servlet-mapping>
   	<servlet-name>HoControl</servlet-name>
