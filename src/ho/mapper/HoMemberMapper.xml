@@ -19,6 +19,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="m_shoulder" property="memShoulder"/>
 	<result column="m_coin" property="memCoin"/>
 </resultMap>
+
+<resultMap type="HoGoods" id="HoGoodsMap">
+	<id	column="i_no" property="GoodsId"/>
+	<result column="i_name" property="GoodsName"/>
+	<result column="i_category" property="GoodsCate"/>
+	<result column="i_img" property="GoodsImg"/>
+	<result column="i_info" property="GoodsInfo"/>
+	<result column="i_color" property="GoodsColor"/>
+	<result column="i_size" property="GoodsSize"/>
+	<result column="i_soo" property="GoodsSoo"/>
+	<result column="i_price" property="GoodsPrice"/>
+	<result column="i_rent_price" property="GoodsRentPrice"/>
+</resultMap>
+
+
 <select id="selectHoMember" resultMap="homemberMap" parameterType="hashmap">
 	SELECT *
 	FROM member
@@ -29,6 +44,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</where>
 </select>
 
+<insert id="insertGoods" parameterType="hashmap">
+
+INSERT INTO ITEM (I_NO,I_NAME,I_CATEGORY,I_IMG,I_INFO,I_COLOR,I_SOO,I_PRICE,I_RENT_PRICE,I_SIZE) VALUES 
+(seq_item.nextval,#{GoodsName}, #{GoodsCate}, #{GoodsImg}, #{GoodsInfo}, #{GoodsColor}, #{GoodsSoo}, #{GoodsPrice}, #{GoodsRentPrice}, #{GoodsSize})
+
+</insert>
+
+<insert id="insertGoodsimg" parameterType="hashmap">
+INSERT INTO itemimg values(#{GoodsName},#{image1},#{image2},#{image2})
+</insert>
+
+<select id ="Goodlist" resultMap="HoGoodsMap" parameterType="hashmap">
+select * from item
+<where>
+	<if test="id neq null">
+	i_no = #{id}
+	</if>
+</where>
+</select>
 
 
 </mapper>

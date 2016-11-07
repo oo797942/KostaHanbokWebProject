@@ -10,8 +10,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import ho.model.HoMember;
+import ho.model.HoGoods;
+
 public class HoMemberRepository {
 	String namespace="ho.mapper.HoMemberMapper"; //HoMemberMapper의 namespace
+	
 	private SqlSessionFactory getSqlSessionFactory(){
 		String resource = "mybatis-config.xml";//db연결과 관련된 파일
 		InputStream in = null;
@@ -39,5 +42,55 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
+	
+	public void insertgoods(HashMap<String, Object> goods){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("insertgoods에 들어왔음");
+		int result = 	sess.insert(namespace+".insertGoods",goods);
+		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
+				sess.commit();
+		}else{
+				sess.rollback();
+		}
+		}finally{
+			sess.close();
+		}
+	}
 
+	public void insertgoodsimg(HashMap<String, Object> goods){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("insertgoodsimg에 들어왔음");
+		int result = 	sess.insert(namespace+".insertGoodsimg",goods);
+		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
+				sess.commit();
+		}else{
+				sess.rollback();
+		}
+		}finally{
+			sess.close();
+		}
+	}
+	
+	public List<HoGoods> selectGoods(){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("selectGoods에 들어왔음");
+		 
+			return sess.selectList(namespace+".Goodlist");
+		}finally{
+			sess.close();
+		}
+	}
+	public HoGoods selectGoodsView(HashMap id){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("selectGoods에 들어왔음");
+		 
+			return sess.selectOne(namespace+".Goodlist",id);
+		}finally{
+			sess.close();
+		}
+	}
 }
