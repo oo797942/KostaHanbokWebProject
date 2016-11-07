@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ho.mapper.HoMemberMapper">
+<!-- SQL 문장은 여기에 -->
+<resultMap type="HoMember" id="homemberMap">
+	<id	column="m_id" property="memId"/>
+	<result column="m_pass" property="memPass"/>
+	<result column="m_name" property="memName"/>
+	<result column="m_tel" property="memTel"/>
+	<result column="m_email" property="memEmail"/>
+	<result column="m_birth" property="memBirth"/>
+	<result column="m_addr_no" property="memAddr"/>
+	<result column="m_addr" property="memAddrNo"/>
+	<result column="m_cm" property="memHeight"/>
+	<result column="m_bust" property="memBust"/>
+	<result column="m_shoulder" property="memShoulder"/>
+	<result column="m_coin" property="memCoin"/>
+</resultMap>
+<select id="selectHoMember" resultMap="homemberMap" parameterType="hashmap">
+	SELECT *
+	FROM member
+	<where>
+		<if test="id neq null">
+		m_id=#{id} and m_pass=#{pass}
+		</if>
+	</where>
+</select>
+
+
+
+</mapper>
+
+	

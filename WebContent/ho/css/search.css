@@ -1,0 +1,35 @@
+#itemTable {
+	width: 1024px;
+}
+
+.itemTd {
+	width: 256px;
+	height: 266px;
+}
+
+.itemImg {
+	width: 230px;
+	height: 230px;
+}
+
+.itemImg:hover {
+	transition: 0.5s;
+	filter: opacity(70%)
+}
+
+.itemImg:hover label {
+	display: block;
+}
+
+#searchPageTop {
+	width: 100%;
+	height: 40px;
+	background: #4d4d4d;
+}
+
+#searchPageTop p {
+	font-size: 15pt;
+	padding: 5px;
+	text-align: left;
+	color: white;
+}

@@ -1,30 +1,34 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
+<% String projectName = "/HoProject"; %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<link href="./css/jquery.bxslider.css" rel="stylesheet" />
-<link href="./css/main.css" rel="stylesheet" />
-<script src="./js/jquery-1.10.2.min.js"></script>
-<script src="./js/jquery.bxslider.min.js"></script>
-<script src="./js/script.js"></script>
+<link href="<%=projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName %>/ho/css/main.css" rel="stylesheet" />
+<script src="<%=projectName %>/ho/js/jquery-1.10.2.min.js"></script>
+<script src="<%=projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<script src="<%=projectName %>/ho/js/main.js"></script>
 
 
 </head>
 <body>
+
+
 	<header>
 		<div id="menu">
-			<img src="../img/topMenu.png" />
+			<img src="<%=projectName %>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="../img/logo.png" /></a>
+			<a href="#"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-					<td><a href="#">LOGIN</a></td>
+					<td><a href="#">LOGIN </a></td>
 					<td class="gray">l</td>
 					<td><a href="#">JOIN</a></td>
 					<td class="gray">l</td>
@@ -59,19 +63,31 @@
 
 		<div id="topSearch">
 			<input type="text" id="searchInput" autocomplete="off"
-				placeholder="Type Here To Search" />
+				placeholder="Type Here To Search" /> <select id="searchCategory"
+				name="searchCategory">
+				<option value="total">통합검색</option>
+				<option value="ge">개량한복</option>
+				<option value="se">생활한복</option>
+				<option value="fu">퓨전한복</option>
+				<option value="ah">아동한복</option>
+				<option value="ak"">악세서리</option>
+			</select> <input type="radio" id="titleSearch" name="searchRadio" value="제목"
+				class="searchRadio" /> <label class="searchLabel" for="titleSearch">제목</label>
+			<input type="radio" id="contentSearch" name="searchRadio" value="내용"
+				class="searchRadio" /> <label class="searchLabel"
+				for="contentSearch" class="searchRadio">내용</label>
 		</div>
 
 	</header>
 	<section>
 		<div id="banner_wrap">
 			<ul id="slide_banner">
-				<li><img class="slide" src="../img/banner_image_01.jpeg"
-					alt="사진1" /></li>
-				<li><img class="slide" src="../img/banner_image_02.png"
-					alt="사진2" /></li>
-				<li><img class="slide" src="../img/banner_image_03.jpg"
-					alt="사진2" /></li>
+				<li><img class="slide"
+					src="<%=projectName %>/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
+				<li><img class="slide"
+					src="<%=projectName %>/ho/img/banner_image_02.png" alt="사진2" /></li>
+				<li><img class="slide"
+					src="<%=projectName %>/ho/img/banner_image_03.jpg" alt="사진2" /></li>
 			</ul>
 		</div>
 		<table id="slidefocus">
@@ -91,14 +107,20 @@
 				<td id="slide5">아프지말고</td>
 			</tr>
 		</table>
-		<img src="../img/banner_image_01.jpeg" class="hotItem" name="hot1"/>
-		<img src="../img/banner_image_01.jpeg" class="hotItem" name="hot2"/>
-		<img src="../img/banner_image_01.jpeg" class="hotItem" name="hot3"/>
-		<img src="../img/banner_image_01.jpeg" class="hotItem" name="hot4"/>
+
+		<img src="<%=projectName %>/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot1" /> <img src="<%=projectName %>/ho/img/banner_image_01.jpeg"
+			class="hotItem" name="hot2" /> <img
+			src="<%=projectName %>/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot3" /> <img src="<%=projectName %>/ho/img/banner_image_01.jpeg"
+			class="hotItem" name="hot4" />
+
 
 	</section>
 	<footer>
-		<div id="footertitle"><a href="#"><img src="../img/footerTitle.png"/></a></div>
+		<div id="footertitle">
+			<a href="#"><img src="<%=projectName %>/ho/img/footerTitle.png" /></a>
+		</div>
 		<div id="topfooter">
 			<table id="footerTable">
 				<tr>
@@ -113,12 +135,9 @@
 							분쟁처리</strong><br /> <br /> Tel : 1588-0184 Fax : 02-589-8833<br /> Mail
 						: mediation@corp.auction.co.kr<br /> 저작권침해신고<br /> <br /> <br />
 						<br /></td>
-					<td width="256px">
-					<strong>시티은행 채무지급보증 안내</strong><br/><br/>
-					당사는 고객님이 현금 결제한 금액에 대해<br/>
-					시티은행과 채무지급보증 계약을 체결하여<br/>
-					안전거래를 보장하고 있습니다.<br/><br/><br/><br/>
-					</td>
+					<td width="256px"><strong>시티은행 채무지급보증 안내</strong><br /> <br />
+						당사는 고객님이 현금 결제한 금액에 대해<br /> 시티은행과 채무지급보증 계약을 체결하여<br /> 안전거래를
+						보장하고 있습니다.<br /> <br /> <br /> <br /></td>
 				</tr>
 			</table>
 		</div>

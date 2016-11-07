@@ -112,7 +112,7 @@ $(function(){
 	
 	$("#top-CateItem1").mouseover(function(){
 		$('#topimage').find("img").attr("src","");		
-		$('#topimage').find("img").attr("src","./img/CateItem1.jpg");
+		$('#topimage').find("img").attr("src","/HoProject/Mainpage/img/CateItem1.jpg");
 	});
 	
 	
@@ -126,7 +126,7 @@ $(function(){
 	
 	$("#top-CateItem2").mouseover(function(){
 		$('#topimage').find("img").attr("src"," ");
-		$('#topimage').find("img").attr("src","./img/CateItem2.jpg");
+		$('#topimage').find("img").attr("src","/HoProject/Mainpage/img/CateItem2.jpg");
 	});
 	
 	$("#top-CateItem3").click(function(){
@@ -139,7 +139,7 @@ $(function(){
 	
 	$("#top-CateItem3").mouseover(function(){
 		$('#topimage').find("img").attr("src","");		
-		$('#topimage').find("img").attr("src","./img/CateItem3.jpg");
+		$('#topimage').find("img").attr("src","/HoProject/Mainpage/img/CateItem3.jpg");
 	});
 
 	
@@ -153,7 +153,7 @@ $(function(){
 	
 	$("#top-CateItem4").mouseover(function(){
 		$('#topimage').find("img").attr("src","");		
-		$('#topimage').find("img").attr("src","./img/CateItem4.jpg");
+		$('#topimage').find("img").attr("src","/HoProject/Mainpage/img/CateItem4.jpg");
 	});
 	
 	$("#top-CateItem5").click(function(){
@@ -166,7 +166,7 @@ $(function(){
 	
 	$("#top-CateItem5").mouseover(function(){
 		$('#topimage').find("img").attr("src","");		
-		$('#topimage').find("img").attr("src","./img/CateItem5.jpg");
+		$('#topimage').find("img").attr("src","/HoProject/Mainpage/img/CateItem5.jpg");
 	});
 	
 	$(".man").click(function(){

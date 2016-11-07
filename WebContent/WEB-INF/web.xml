@@ -9,4 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+  	<servlet-name>HoControl</servlet-name>
+  	<servlet-class>ho.control.HoControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>HoControl</servlet-name>
+  	<url-pattern>*.ho</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,5 +1,11 @@
 $(function() {
 
+	$(window).scroll(function() {
+		$("nav").animate({
+			top: $(document).scrollTop() + 100
+		},0);
+	});
+
 	$("#topMenu").hide();
 	$("#topCate-Cate1").hide();
 	$("#topCate-Cate2").hide();
@@ -115,8 +121,8 @@ $(function() {
 			$("#searchBtn").text("search");
 		}
 	});
-	
-	$(".hotItem").click(function(){
+
+	$(".hotItem").click(function() {
 		alert($(this).attr('name'));
 	});
 

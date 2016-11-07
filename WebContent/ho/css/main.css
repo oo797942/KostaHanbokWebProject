@@ -3,9 +3,32 @@
 	text-align: center;
 }
 
+nav {
+	position: absolute;
+	top: 100px;
+	right: 50px;
+}
+
+#shoppingBag {
+	width: 100px;
+	background: #f5f5f5;
+}
+
+.shoppingBagItem {
+	height: 90px;
+	background: white;
+	border: 1px solid #c0c0c0;
+}
 
 section {
 	width: 1024px;
+}
+
+.hotItem {
+	margin: 5px;
+	margin-top: 35px;
+	width: 240px;
+	height: 240px;
 }
 
 a {
@@ -20,15 +43,6 @@ a:visited, a:focus, a:active {
 a:hover {
 	text-decoration: underline;
 }
-
-
-.hotItem{
-	margin:5px;
-	margin-top:15px;
-	width: 240px;
-	height: 240px;
-}
-
 
 header {
 	width: 1024px;
@@ -86,9 +100,40 @@ hr {
 	position: absolute;
 	top: 340px;
 	width: 1024px;
-	height: 100px;
+	height: 130px;
 	background: white;
 	z-index: 9999;
+}
+
+#searchCategory {
+	margin-top: 10px;
+	height: 20px;
+	float: left;
+}
+
+.searchRadio {
+	float: left;
+}
+
+.searchLabel {
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+#titleSearch {
+	margin-top: 14px;
+	margin-left: 10px;
+}
+
+#contentSearch {
+	margin-top: 14px;
+	margin-left: 5px;
+}
+
+#contentSearch {
+	margin-top: 14px;
+	margin-left: 10px;
 }
 
 #searchInput {
@@ -104,7 +149,7 @@ hr {
 
 #smallMenu {
 	width: 500px;
-	margin-right: 10px;
+	margin-right: 100px;
 	float: right;
 }
 
@@ -147,9 +192,16 @@ hr {
 
 #xbutton {
 	position: absolute;
-	top: 0px;
-	left: 1000px;
+	top: 2px;
+	left: 950px;
 	font-size: 20px;
+	width: 50px;
+	border-radius: 5px;
+	background: #000;
+	border: none;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
 }
 
 #searchBtn {

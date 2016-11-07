@@ -1,0 +1,58 @@
+#itemView {
+	width: 550px;
+	height: 350px;
+}
+
+.infoImage {
+	width: 300px;
+	height: 200px;
+}
+
+
+#insertReply:hover {
+	text-decoration: none;
+}
+
+#replyInput {
+	width: 900px;
+	height: 20px;
+	font-size: 15pt;
+	text-align: left;
+	float: left;
+}
+
+#viewTableImg, #btnTableTd {
+	vertical-align: top;
+	/* 	vertical-align: text-top; */
+}
+
+#viewTable {
+	width: 1024px;
+}
+
+#viewTable td {
+	text-align: left;
+}
+
+.viewInfo {
+	height: 30px;
+}
+
+#colorSelect {
+	width: 200px;
+	height: 25px;
+}
+
+.tdBtn:hover {
+	transition: 0.5s;
+	background: #dcdcdc;
+}
+
+.tdBtn {
+	height: 40px;
+	border: 1px solid #c0c0c0;
+}
+
+#pinkColor {
+	color: #f5989c;
+}
