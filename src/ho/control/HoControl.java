@@ -52,7 +52,7 @@ public class HoControl extends HttpServlet {
 		
 		// 쇼핑몰 페이지
 		commandMap.put("go-mypage", new CommandLogin("ShoppingMyPage.jsp"));
-		commandMap.put("submit-mypage", new CommandNull("ShoppingMyPageUpdate.jsp"));
+		commandMap.put("submit-mypage", new CommandUpdate("ShoppingMyPageUpdate.jsp"));
 	
 		// admin 페이지
 		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));

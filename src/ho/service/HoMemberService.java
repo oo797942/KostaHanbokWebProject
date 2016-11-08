@@ -63,5 +63,10 @@ public class HoMemberService {
 			System.out.println("GoodsimageUpdate에 들어왔음"+ goods);	
 			repo.updategoodsimg(goods);
 		}
+		
+		public void MypageUpdate(HashMap<String,Object>  member){
+			System.out.println("MypageUpdate에 들어왔음"+ member);	
+			repo.updatemember(member);
+		}
 
 }

@@ -117,7 +117,10 @@
 			</table>
 		</div>
 
-		<form action="<%=projectName %>/mypage.ho?cmd=submit-mypage" method="post">
+		<form action="<%=projectName%>/mypage.ho?cmd=submit-mypage"
+			method="post">
+			
+			<input type="hidden" value="<%=sess %>" name="myId"/>
 
 			<table id="myPageMainBodyTable" cellspacing="15">
 
@@ -141,7 +144,7 @@
 					<td class="BodyTableStyle"><span id="titleSpan">연락처</span> <br />
 						<br /> 이메일: <input type="text" id="myPageemail" name="email"
 						value="<%=ho.getMemEmail()%>" readonly="readonly" /><br /> <br />
-						<br /> 전화번호: <input type="text" id="myPagetel"
+						<br /> 전화번호: <input type="text" id="myPagetel" name="tel"
 						value="<%=ho.getMemTel()%>" readonly="readonly" /><br /> <br />
 						<br /> <br />
 						<button class="changeBtn"
@@ -153,14 +156,13 @@
 				</tr>
 				<tr>
 					<td class="BodyTableStyle"><span id="titleSpan">거주지 및
-							신체정보</span><br /> <br /> 주소:<br />
-							<input type="text" id="myPageaddr" value="<%=ho.getMemAddr()%>"
-						readonly="readonly" /> <br /> <br />
-						키: <input type="text" id="myPageheight" size="12"
+							신체정보</span><br /> <br /> 주소:<br /> <input type="text" id="myPageaddr" name="addr"
+						value="<%=ho.getMemAddr()%>" readonly="readonly" /> <br /> <br />
+						키: <input type="text" id="myPageheight" size="12" name="height"
 						readonly="readonly" value="<%=ho.getMemHeight()%>" /> 가슴: <input
-						type="text" id="myPagebust" size="12" readonly="readonly"
+						type="text" id="myPagebust" name="bust"  size="12" readonly="readonly"
 						value="<%=ho.getMemBust()%>" /> 어깨: <input type="text" size="12"
-						readonly="readonly" id="myPageshoulder"
+						readonly="readonly" id="myPageshoulder" name="shoulder"
 						value="<%=ho.getMemShoulder()%>" /> <br /> <br /> <br />
 						<button id="changeShoulderBtn" class="changeBtn"
 							style="margin-left: 15px; margin-top: 25px; float: right;">어깨
@@ -173,8 +175,9 @@
 							수정</button>
 						<button id="changAddrBtn" class="changeBtn"
 							style="margin-top: 25px; float: right;">주소 수정</button></td>
-					<td class="BodyTableStyle" style="vertical-align: text-bottom;"><input type="submit"
-						class="changeBtn" value="수정 완료" style="float: right;"/></td>
+					<td class="BodyTableStyle" style="vertical-align: text-bottom;"><input
+						type="submit" class="changeBtn" value="수정 완료"
+						style="float: right;" /></td>
 				</tr>
 
 
