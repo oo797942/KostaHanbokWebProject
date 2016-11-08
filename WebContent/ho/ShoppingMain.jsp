@@ -75,7 +75,7 @@ $(function(){
 			<table id="smallMenu">
 				<tr>
 				<% if(sess != null){ %>
-				<td><text id="sessid"><%=sess %>님 로그인 하셨습니다.</text></td>
+				<td><text id="sessid"><%=sess %>님</text></td>
 				<%} %>	
 					<td><text id="shoplogin" name="login" >LOGIN</text></td>
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
@@ -84,7 +84,7 @@ $(function(){
 					<td class="gray">l</td>
 					<td><a href="#">CART</a></td>
 					<td class="gray">l</td>
-					<td><a href="#">MY PAGE</a></td>
+					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
 					<td class="gray">l</td>
 					<td><a href="#">Q&A</a></td>
 				</tr>

@@ -1,17 +1,44 @@
+<%@page import="ho.model.HoMember"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<% String projectName = "/HoProject"; %>
+<%
+	String projectName = "/HoProject";
+%>
+<%
+	HoMember ho = null;
+	long exp = 0;
+	String rank = null;
+	Object sess = session.getAttribute("yourid");
+	Object obj = request.getAttribute("homem");
+	if (obj != null)
+		ho = (HoMember) obj;
+	if (ho.getMemExp() == null) {
+		exp = 0;
+	} else {
+		exp = Long.parseLong(ho.getMemExp());
+	}
+
+	if (exp < 10000000) {
+		rank = "귀족";
+	} else if (exp >= 10000000 && exp < 50000000) {
+		rank = "왕";
+	} else {
+		rank = "경민";
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>마이페이지</title>
-<link href="<%=projectName%>/ho/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css"
+	rel="stylesheet" />
 <link href="<%=projectName%>/ho/css/main.css" rel="stylesheet" />
 <link href="<%=projectName%>/ho/css/mypage.css" rel="stylesheet" />
 <script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
 <script src="<%=projectName%>/ho/js/main.js"></script>
+<script src="<%=projectName%>/ho/js/mypage.js"></script>
 </head>
 <body>
 
@@ -90,60 +117,69 @@
 			</table>
 		</div>
 
-		<table id="myPageMainBodyTable" cellspacing="15" >
+		<form action="<%=projectName %>/mypage.ho?cmd=submit-mypage" method="post">
 
-			<tr>
-				<td class="BodyTableStyle" width="50%">
-				<span id="titleSpan"><strong>회원이름</strong>님의 정보</span> <br />
-				 <br />
-					<table id="VipTable">
-						<tr>
-							<td rowspan="2" width="55px"><img id="vipLogo" src="<%=projectName %>/ho/img/vip_king.png" /></td>
-							<td>VIP등급 : KING</td>
-						</tr>
-						<tr><td>EXP: 18,392,482,034</td></tr>
-					</table>
-					<br/>
-					<span style="font-size: 20pt;">보유 코인:</span>
-					<br/>
-					<span style="font-size:13pt;">12,312,312,123,123</span>
-					<br/><br/>
+			<table id="myPageMainBodyTable" cellspacing="15">
 
-					<button class="changeBtn" style="float:right; margin-top: 16px;">비밀번호 변경</button>
-					</td>
-				<td class="BodyTableStyle">
-				<span id="titleSpan">연락처</span>
-				<br /><br />
-				이메일:
-				<input type="text" id="myPageemail" value="email@email.com" readonly="readonly"/><br/><br/><br/>
-				전화번호:
-				<input type="text" id="myPagetel" value="010-1234-5678" readonly="readonly"/><br/><br/><br/>
-					<br/>
-					<button class="changeBtn" style="margin-left:15px; margin-top: 15px; float:right;">이메일 변경</button>
-					<button class="changeBtn" style="margin-left:15px; margin-top: 15px; float:right;">전화번호 변경</button>
-				</td>
-			</tr>
-			<tr>
-			<td class="BodyTableStyle">
-			<span id="titleSpan">거주지 및 신체정보</span><br/><br/>
-			주소:<br/>
-			<input type="text" id="myPageaddr" value="서울특별시 무슨구 무슨동 123-45 무슨무슨아파트 3층 B01호" readonly="readonly"/>
-			<br/><br/>
-			키: <input type="text" size="12"  readonly="readonly" value="135"/> 
-			가슴: <input type="text" size="12" readonly="readonly" value="55"/> 
-			어깨: <input type="text" size="12" readonly="readonly" value="50"/>
-			
-			<br/><br/><br/>
-			<button class="changeBtn" style="margin-left:15px; margin-top: 25px; float:right;">어깨 변경</button>
-			<button class="changeBtn" style="margin-left:15px; margin-top: 25px; float:right;">가슴 변경</button>
-			<button class="changeBtn" style="margin-left:15px; margin-top:25px; float:right;">키 변경</button>
-			<button class="changeBtn" style="margin-top:25px; float:right;">주소 변경</button>
-			</td>
-			<td class="BodyTableStyle">우</td>
-			</tr>
+				<tr>
+					<td class="BodyTableStyle" width="50%"><span id="titleSpan"><strong><%=ho.getMemName()%></strong>님의
+							정보</span> <br /> <br />
+						<table id="VipTable">
+							<tr>
+								<td rowspan="2" width="55px"><img id="vipLogo"
+									src="<%=projectName%>/ho/img/vip_king.png" /></td>
+								<td>VIP등급 : <%=rank%></td>
+							</tr>
+							<tr>
+								<td>EXP: <%=exp%></td>
+							</tr>
+						</table> <br /> <span style="font-size: 20pt;">보유 코인:</span> <br /> <span
+						style="font-size: 13pt;"><%=ho.getMemCoin()%></span> <br /> <br />
+
+						<button class="changeBtn" style="float: right; margin-top: 16px;">비밀번호
+							변경</button></td>
+					<td class="BodyTableStyle"><span id="titleSpan">연락처</span> <br />
+						<br /> 이메일: <input type="text" id="myPageemail" name="email"
+						value="<%=ho.getMemEmail()%>" readonly="readonly" /><br /> <br />
+						<br /> 전화번호: <input type="text" id="myPagetel"
+						value="<%=ho.getMemTel()%>" readonly="readonly" /><br /> <br />
+						<br /> <br />
+						<button class="changeBtn"
+							style="margin-left: 15px; margin-top: 15px; float: right;">이메일
+							변경</button>
+						<button class="changeBtn"
+							style="margin-left: 15px; margin-top: 15px; float: right;">전화번호
+							변경</button></td>
+				</tr>
+				<tr>
+					<td class="BodyTableStyle"><span id="titleSpan">거주지 및
+							신체정보</span><br /> <br /> 주소:<br />
+							<input type="text" id="myPageaddr" value="<%=ho.getMemAddr()%>"
+						readonly="readonly" /> <br /> <br />
+						키: <input type="text" id="myPageheight" size="12"
+						readonly="readonly" value="<%=ho.getMemHeight()%>" /> 가슴: <input
+						type="text" id="myPagebust" size="12" readonly="readonly"
+						value="<%=ho.getMemBust()%>" /> 어깨: <input type="text" size="12"
+						readonly="readonly" id="myPageshoulder"
+						value="<%=ho.getMemShoulder()%>" /> <br /> <br /> <br />
+						<button id="changeShoulderBtn" class="changeBtn"
+							style="margin-left: 15px; margin-top: 25px; float: right;">어깨
+							수정</button>
+						<button id="changeBustBtn" class="changeBtn"
+							style="margin-left: 15px; margin-top: 25px; float: right;">가슴
+							수정</button>
+						<button id="changeHeightBtn" class="changeBtn"
+							style="margin-left: 15px; margin-top: 25px; float: right;">키
+							수정</button>
+						<button id="changAddrBtn" class="changeBtn"
+							style="margin-top: 25px; float: right;">주소 수정</button></td>
+					<td class="BodyTableStyle" style="vertical-align: text-bottom;"><input type="submit"
+						class="changeBtn" value="수정 완료" style="float: right;"/></td>
+				</tr>
 
 
-		</table>
+			</table>
+		</form>
 	</section>
 	<footer>
 		<div id="footertitle">
