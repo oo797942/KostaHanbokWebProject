@@ -11,6 +11,7 @@ public class HoGoods {
 	private int GoodsSoo;
 	private int GoodsPrice;
 	private int GoodsRentPrice;
+	private int GoodsDc;
 	
 	
 	public HoGoods()
@@ -18,7 +19,7 @@ public class HoGoods {
 		
 	}
 	
-	public HoGoods(String GoodsId,String GoodsName,String GoodsCate,String GoodsImg,String GoodsInfo,String GoodsColor,String GoodsSize,int GoodsSoo,int GoodsPrice,int GoodsRentPrice)
+	public HoGoods(String GoodsId,String GoodsName,String GoodsCate,String GoodsImg,String GoodsInfo,String GoodsColor,String GoodsSize,int GoodsSoo,int GoodsPrice,int GoodsRentPrice,int GoodsDc)
 	{
 	
 		this.GoodsId = GoodsId;
@@ -31,7 +32,7 @@ public class HoGoods {
 		this.GoodsSoo =GoodsSoo;
 		this.GoodsPrice =GoodsPrice;
 		this.GoodsRentPrice =GoodsRentPrice;
-		
+		this.GoodsDc = GoodsDc;
 	}
 	
 	public String getGoodsId() {
@@ -95,5 +96,13 @@ public class HoGoods {
 
 	public void setGoodsSize(String goodsSize) {
 		GoodsSize = goodsSize;
+	}
+
+	public int getGoodsDc() {
+		return GoodsDc;
+	}
+
+	public void setGoodsDc(int goodsDc) {
+		GoodsDc = goodsDc;
 	}
 }

@@ -46,7 +46,7 @@
 			<td><select id="category1" class= "GoodsSelect" name="GoodsCate">
 			<option class="op">선택</option>
 			<option class="op">생활 한복 -남</option>
-			<option class="op">생활 한복 -남</option>
+			<option class="op">생활 한복 -여</option>
 			<option class="op">개량 한복 -남</option>
 			<option class="op">개량 한복 -여</option>
 			<option class="op">퓨전 한복 -남</option>
@@ -107,7 +107,7 @@
 	
 		<tr>
 			<td>할인율</td>
-			<td><input type="text"  class= "Goodsinsert" placeholder="%로 입력해주세요." value="0."></td>
+			<td><input type="text" name="GoodsDc"  class= "Goodsinsert" placeholder="%로 입력해주세요." maxlength="2"></td>
 		</tr>	
 		</table>
 		<input type="submit" id="next" value="다음으로"/>

@@ -39,6 +39,7 @@ public class CommandInsert implements Command{
 			int GoodsSoo = Integer.parseInt(request.getParameter("GoodsSoo"));
 			int GoodsPrice = Integer.parseInt(request.getParameter("GoodsPrice"));
 			int GoodsRentPrice = Integer.parseInt(request.getParameter("GoodsRentPrice"));
+			int GoodsDc = Integer.parseInt(request.getParameter("GoodsDc"));
 		
 			Part filePart = request.getPart("GoodsImg");
 			String realPath = "";
@@ -58,6 +59,7 @@ public class CommandInsert implements Command{
 			memMap.put("GoodsSoo", GoodsSoo);
 			memMap.put("GoodsPrice", GoodsPrice);
 			memMap.put("GoodsRentPrice", GoodsRentPrice);
+			memMap.put("GoodsDc", GoodsDc);
 			
 			HoMemberService.getInstance().GoodsInsert(memMap);
 			System.out.println("insert성공");

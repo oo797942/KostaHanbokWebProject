@@ -115,7 +115,7 @@ System.out.println(goods.getGoodsCate());
 	
 		<tr>
 			<td>할인율</td>
-			<td><input type="text"  class= "Goodsinsert"  placeholder="%로 입력해주세요." value="0."></td>
+			<td><input type="text"  name="GoodsDc" class= "Goodsinsert" maxlength="2" placeholder="%로 입력해주세요." value=<%= goods.getGoodsDc() %>></td>
 		</tr>
 
 		</table>

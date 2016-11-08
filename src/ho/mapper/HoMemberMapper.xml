@@ -32,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result column="i_soo" property="GoodsSoo" />
       <result column="i_price" property="GoodsPrice" />
       <result column="i_rent_price" property="GoodsRentPrice" />
+      <result column="i_dc" property="GoodsDc" />
    </resultMap>
    
    <resultMap type="HoBoard" id="HoBoardMap">
@@ -53,7 +54,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       SELECT *
       FROM member
       <where>
-
          <choose>
             <when test="id neq null and pass neq null">
                m_id=#{id} and m_pass=#{pass}
@@ -98,12 +98,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <insert id="insertGoods" parameterType="hashmap">
 
       INSERT INTO ITEM
-      (I_NO,I_NAME,I_CATEGORY,I_IMG,I_INFO,I_COLOR,I_SOO,I_PRICE,I_RENT_PRICE,I_SIZE)
+      (I_NO,I_NAME,I_CATEGORY,I_IMG,I_INFO,I_COLOR,I_SOO,I_PRICE,I_RENT_PRICE,I_SIZE,I_DC)
       VALUES
       (seq_item.nextval,#{GoodsName}, #{GoodsCate}, #{GoodsImg},
       #{GoodsInfo}, #{GoodsColor}, #{GoodsSoo},
       #{GoodsPrice},
-      #{GoodsRentPrice}, #{GoodsSize})
+      #{GoodsRentPrice}, #{GoodsSize},#{GoodsDc})
 
    </insert>
 
@@ -131,8 +131,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
    <update id="UpdateGoods">
-      UPDATE item SET I_CATEGORY=#{GoodsCate}, I_IMG =
-      #{GoodsImg},I_INFO=#{GoodsInfo},I_COLOR=#{GoodsColor},I_SOO=#{GoodsSoo},I_PRICE=#{GoodsPrice},I_RENT_PRICE=#{GoodsRentPrice},I_SIZE=#{GoodsSize}
+      UPDATE item SET I_CATEGORY=#{GoodsCate}, I_IMG =#{GoodsImg},I_INFO=#{GoodsInfo},I_COLOR=#{GoodsColor},I_SOO=#{GoodsSoo},I_PRICE=#{GoodsPrice},I_RENT_PRICE=#{GoodsRentPrice},I_SIZE=#{GoodsSize} , I_DC=#{GoodsDc}
       WHERE I_NAME=#{GoodsName}
    </update>
 

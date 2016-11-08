@@ -119,10 +119,8 @@
 	
 		<tr>
 			<td>할인율</td>
-			<td><input type="text"  class= "Goodsinsert"  placeholder="%로 입력해주세요." value="0." disabled="disabled"></td>
+			<td><input type="text"  class= "Goodsinsert"  placeholder="%로 입력해주세요."  value=<%= goods.getGoodsDc() %> maxlength="2" disabled="disabled"></td>
 		</tr>
-	
-		
 		</table>
 
 		
