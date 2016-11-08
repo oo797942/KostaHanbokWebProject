@@ -13,138 +13,191 @@ import ho.model.HoMember;
 import ho.model.HoGoods;
 
 public class HoMemberRepository {
-	String namespace="ho.mapper.HoMemberMapper"; //HoMemberMapper의 namespace
-	
-	private SqlSessionFactory getSqlSessionFactory(){
-		String resource = "mybatis-config.xml";//db연결과 관련된 파일
+	String namespace = "ho.mapper.HoMemberMapper"; // HoMemberMapper의 namespace
+
+	private SqlSessionFactory getSqlSessionFactory() {
+		String resource = "mybatis-config.xml";// db연결과 관련된 파일
 		InputStream in = null;
-		try{
+		try {
 			in = Resources.getResourceAsStream(resource);
-		}catch(Exception ex){}
+		} catch (Exception ex) {
+		}
 		SqlSessionFactory sessFac = new SqlSessionFactoryBuilder().build(in);
 		return sessFac;
 	}
-	public List<HoMember> selectAll(){
-		//연결객체 얻어오기 (SqlSession)
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-			return sess.selectList(namespace+".selectHoMember");
-		}finally{
+
+	public List<HoMember> selectAll() {
+		// 연결객체 얻어오기 (SqlSession)
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			return sess.selectList(namespace + ".selectHoMember");
+		} finally {
 			sess.close();
 		}
-		
+
 	}
-	public HoMember selectById(HashMap<String, Object> id){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-			return sess.selectOne(namespace+".selectHoMember",id);
-		}finally{
+
+	public HoMember selectById(HashMap<String, Object> id) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			return sess.selectOne(namespace + ".selectHoMember", id);
+		} finally {
 			sess.close();
 		}
 	}
-	
-	public void insertgoods(HashMap<String, Object> goods){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
+
+	public void insertgoods(HashMap<String, Object> goods) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
 			System.out.println("insertgoods에 들어왔음");
-		int result = 	sess.insert(namespace+".insertGoods",goods);
-		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
+			int result = sess.insert(namespace + ".insertGoods", goods);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+								// 커밋해줘야함 이녀석은
 				sess.commit();
-		}else{
+			} else {
 				sess.rollback();
-		}
-		}finally{
+			}
+		} finally {
 			sess.close();
 		}
 	}
 
-	public void insertgoodsimg(HashMap<String, Object> goods){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
+	public void insertgoodsimg(HashMap<String, Object> goods) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
 			System.out.println("insertgoodsimg에 들어왔음");
-		int result = 	sess.insert(namespace+".insertGoodsimg",goods);
-		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
+			int result = sess.insert(namespace + ".insertGoodsimg", goods);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+								// 커밋해줘야함 이녀석은
 				sess.commit();
-		}else{
+			} else {
 				sess.rollback();
-		}
-		}finally{
-			sess.close();
-		}
-	}
-	
-	public List<HoGoods> selectGoods(){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-			System.out.println("selectGoods에 들어왔음");
-		 
-			return sess.selectList(namespace+".Goodlist");
-		}finally{
-			sess.close();
-		}
-	}
-	public HoGoods selectGoodsView(HashMap id){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-			System.out.println("selectGoods에 들어왔음");
-		 
-			return sess.selectOne(namespace+".Goodlist",id);
-		}finally{
+			}
+		} finally {
 			sess.close();
 		}
 	}
 
-	public void GoodsDelte(HashMap<String,Object> id){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-		int result = sess.delete(namespace+".Goodsdelete",id);
-		System.out.println(result);
-		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
-				sess.commit();
-		}else{
-					sess.rollback();
-			}
-		}finally{
+	public List<HoGoods> selectGoods() {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			System.out.println("selectGoods에 들어왔음");
+
+			return sess.selectList(namespace + ".Goodlist");
+		} finally {
 			sess.close();
 		}
 	}
-	
-	public void GoodsImgDelte(HashMap<String,Object> id){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-		int result = sess.delete(namespace+".GoodsImgdelete",id);
-		System.out.println(result);
-		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
-				sess.commit();
-		}else{
-					sess.rollback();
-			}
-		}finally{
+
+	public HoGoods selectGoodsView(HashMap id) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			System.out.println("selectGoods에 들어왔음");
+
+			return sess.selectOne(namespace + ".Goodlist", id);
+		} finally {
 			sess.close();
 		}
 	}
-	
-	
-	public void updategoods(HashMap<String, Object> goods){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
+
+	public void GoodsDelte(HashMap<String, Object> id) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			int result = sess.delete(namespace + ".Goodsdelete", id);
+			System.out.println(result);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+								// 커밋해줘야함 이녀석은
+				sess.commit();
+			} else {
+				sess.rollback();
+			}
+		} finally {
+			sess.close();
+		}
+	}
+
+	public void GoodsImgDelte(HashMap<String, Object> id) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			int result = sess.delete(namespace + ".GoodsImgdelete", id);
+			System.out.println(result);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+								// 커밋해줘야함 이녀석은
+				sess.commit();
+			} else {
+				sess.rollback();
+			}
+		} finally {
+			sess.close();
+		}
+	}
+
+	public void updategoods(HashMap<String, Object> goods) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
 			System.out.println("updategoods에 들어왔음");
-		int result = 	sess.update(namespace+".UpdateGoods",goods);
-		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
+			int result = sess.update(namespace + ".UpdateGoods", goods);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+								// 커밋해줘야함 이녀석은
 				sess.commit();
-		}else{
+			} else {
 				sess.rollback();
+			}
+		} finally {
+			sess.close();
 		}
-		}finally{
+	}
+
+	public void updategoodsimg(HashMap<String, Object> goods) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			System.out.println("updategoodsimg에 들어왔음");
+			int result = sess.update(namespace + ".UpdateGoodsimg", goods);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+								// 커밋해줘야함 이녀석은
+				sess.commit();
+			} else {
+				sess.rollback();
+			}
+		} finally {
+			sess.close();
+		}
+	}
+
+	public void updatemember(HashMap<String, Object> member) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			System.out.println("updatemember에 들어왔음");
+			int result = sess.update(namespace + ".UpdateMypage", member);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+								// 커밋해줘야함 이녀석은
+				sess.commit();
+			} else {
+				sess.rollback();
+			}
+		} finally {
 			sess.close();
 		}
 	}
 	
-	public void updategoodsimg(HashMap<String, Object> goods){
+	public void deleteMember(HashMap hm) {
 		SqlSession sess=getSqlSessionFactory().openSession();
 		try{
-			System.out.println("updategoodsimg에 들어왔음");
-		int result = 	sess.update(namespace+".UpdateGoodsimg",goods);
+			String stmt = namespace+".deleteMember";
+			int result = sess.delete(stmt, hm);
+			if(result>0){
+				sess.commit();
+			}else{
+				sess.rollback();
+			}
+		}finally{
+			sess.close();
+		}
+	}
+	public void insertMember(HashMap<String, Object> member){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+		int result = 	sess.insert(namespace+".insertMember",member);
 		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
 				sess.commit();
 		}else{
@@ -154,6 +207,20 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
-	
-}
 
+	
+	public void updateMember(HashMap hm) {
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			String stmt = namespace+".updateMember";
+			int result = sess.update(stmt, hm);
+			if(result>0){
+				sess.commit();
+			}else{
+				sess.rollback();
+			}
+		}finally{
+			sess.close();
+		}
+	}
+}

@@ -80,7 +80,7 @@ $(function(){
 					<td><text id="shoplogin" name="login" >LOGIN</text></td>
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
-					<td><a href="#">JOIN</a></td>
+					<td><a href="<%=projectName %>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
 					<td><a href="#">CART</a></td>
 					<td class="gray">l</td>

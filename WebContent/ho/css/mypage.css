@@ -13,11 +13,11 @@
 	border: 1px solid #d3d3d3;
 }
 
-.orderListimg{
+.orderListimg {
 	margin-top: 2px;
 }
 
-.textLeftAlign{
+.textLeftAlign {
 	text-align: left;
 }
 
@@ -83,6 +83,22 @@
 
 #myPageemail {
 	width: 300px;
+	text-align: left;
+	height: 20px;
+}
+
+#myPageName {
+	width: 225px;
+	text-align: left;
+	height: 20px;
+}
+
+#myPagePass {
+	text-align: left;
+	height: 20px;
+}
+
+#myPagePassChange {
 	text-align: left;
 	height: 20px;
 }

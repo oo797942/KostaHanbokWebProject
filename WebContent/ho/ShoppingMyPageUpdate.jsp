@@ -1,4 +1,14 @@
 <%@ page contentType ="text/html; charset=UTF-8"%>
+
+<%
+	String projectName = "/HoProject";
+%>
+
+<%
+Object sess = session.getAttribute("yourid");
+
+response.sendRedirect(projectName+"/mypage.ho?cmd=go-mypage&adid="+sess);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,10 +16,7 @@
 <title></title>
 </head>
 <body>
-<%
-String email = request.getParameter("email");
-%>
 
-<%=email %>
+
 </body>
 </html>
