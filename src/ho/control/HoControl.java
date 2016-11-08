@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ho.command.Command;
+import ho.command.CommandCheckId;
 import ho.command.CommandDelete;
 import ho.command.CommandException;
 import ho.command.CommandGoodsView;
@@ -17,6 +18,10 @@ import ho.command.CommandInsert;
 import ho.command.CommandList;
 import ho.command.CommandLogin;
 import ho.command.CommandLoginSess;
+import ho.command.CommandMemDelete;
+import ho.command.CommandMemInsert;
+import ho.command.CommandMemUpdate;
+import ho.command.CommandMemView;
 import ho.command.CommandModify;
 import ho.command.CommandNull;
 import ho.command.CommandUpdate;
@@ -58,7 +63,7 @@ public class HoControl extends HttpServlet {
 		
 		// 쇼핑몰 페이지
 		commandMap.put("go-mypage", new CommandLogin("ShoppingMyPage.jsp"));
-		commandMap.put("submit-mypage", new CommandNull("ShoppingMyPageUpdate.jsp"));
+		commandMap.put("submit-mypage", new CommandUpdate("ShoppingMyPageUpdate.jsp"));
 	
 		// admin 페이지
 		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
@@ -79,6 +84,15 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminmenu3", new CommandNull("adminMemlist.jsp"));
 		commandMap.put("adminmenu4", new CommandNull("adminBoardList.jsp"));
 		commandMap.put("adminPagelist", new CommandNull("adminPagelist.jsp"));
+
+		
+		commandMap.put("adminMemlist", new CommandNull("adminMemlist.jsp"));
+		commandMap.put("adminMemDelete", new CommandMemDelete("adminMemDelete.jsp"));
+		commandMap.put("adminMemUpdateForm", new CommandMemView("adminMemUpdateForm.jsp"));
+		commandMap.put("adminMemUpdateSave", new CommandMemUpdate("adminMemUpdateSave.jsp"));
+		
+
+
 /*		commandMap.put("adminMemView", new CommandNull("adminMemView.jsp"));
 		commandMap.put("admiMemlist", new CommandNull("admiMemlist.jsp"));
 		commandMap.put("adminGoodsUpdate", new CommandNull("adminGoodsUpdate.jsp"));

@@ -63,10 +63,31 @@ public class HoMemberService {
 			System.out.println("GoodsimageUpdate에 들어왔음"+ goods);	
 			repo.updategoodsimg(goods);
 		}
+
 		public void MemberJoin(HashMap<String,Object> member){
 			System.out.println("MemberJoin에 들어왔음");
 			repo.insertMember(member);
 		}
 		
 
+		
+		public void MypageUpdate(HashMap<String,Object>  member){
+			System.out.println("MypageUpdate에 들어왔음"+ member);	
+			repo.updatemember(member);
+		}
+
+		public HoMember MemberView(HashMap<String,Object> id){
+			System.out.println("MemberView에 들어왔음");
+			return repo.selectById(id);
+		}
+
+		public void MemberDelete(HashMap hm) {
+			System.out.println("MemberDelete에 들어왔음");
+			repo.deleteMember(hm);
+		}
+
+		public void MemUpdate(HashMap hm) {
+			System.out.println("MemUpdate에 들어왔음");
+			repo.updateMember(hm);
+		}
 }

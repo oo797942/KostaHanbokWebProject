@@ -1,16 +1,26 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+ <%@ page import="java.util.*" %>
+ <%@ page import="ho.model.HoMember" %>    
+ <%@ page import="ho.service.HoMemberService" %>  
+
+<% String projectName = "/webUI3"; %>
+
+ <%
+     //Map condition = new HashMap();
+     List<HoMember> mList = HoMemberService.getInstance().selectAll();
+ %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<% String projectName = "/HoProject"; %>
+ 
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
-
 
 </head>
 <body>
@@ -42,25 +52,27 @@
   	   		 <td> 구매금액 </td>
    		     <td> 가입일 </td>
    		     <td> 회원 상태 </td>
+   		     <td> 코인 </td>
+   		     <td> 수정</td>
+   		     <td> 삭제</td>
  	 </tr>
-   
-   <tr>	
-   		<td><a href="<%= projectName %>/1.ho?cmd=adminMemView">실험</a></td>
- 	  	<td><a href="<%= projectName %>/1.ho?cmd=adminMemView">실험</a></td>
-  		<td><a href="<%= projectName %>/1.ho?cmd=adminMemView">실험</a></td>
-   		<td><a href="<%= projectName %>/1.ho?cmd=adminMemView">실험</a></td>
-   		<td><a href="<%= projectName %>/1.ho?cmd=adminMemView">실험</a></td>
-   		<td><a href="<%= projectName %>/1.ho?cmd=adminMemView">실험</a></td>
-   </tr>
+   <% for( HoMember member : mList ) { %>
+		<tr>	
+			<td><a href="<%= projectName %>/xx.ho?cmd=adminMemView&mId=<%=member.getMemId()%>"><%= member.getMemId()%></a></td>
+			<td><a href="<%= projectName %>/xx.ho?cmd=adminMemView&mId=<%=member.getMemId()%>"><%= member.getMemId()%></a></td>
+			<td><a href="<%= projectName %>/xx.ho?cmd=adminMemView&mId=<%=member.getMemId()%>"><%= member.getMemName()%></a></td>
+			<td><a href="<%= projectName %>/xx.ho?cmd=adminMemView&mId=<%=member.getMemId()%>"><%= member.getMemId()%></a></td>
+			<td><a href="<%= projectName %>/xx.ho?cmd=adminMemView&mId=<%=member.getMemId()%>"><%= member.getMemId()%></a></td>
+			<td><a href="<%= projectName %>/xx.ho?cmd=adminMemView&mId=<%=member.getMemId()%>"><%= member.getMemId()%></a></td>
+			<td><a href="<%= projectName %>/xx.ho?cmd=adminMemView&mId=<%=member.getMemId()%>"><%= member.getMemCoin()%></a></td>
+			<td><a href="<%= projectName %>/xx.ho?cmd=adminMemUpdateForm&mId=<%=member.getMemId()%>"><input type="button" class ="admenu" id="su" value="수정"/></a></td>
+   			<td><a href="<%= projectName %>/xx.ho?cmd=adminMemDelete&mId=<%=member.getMemId()%>"><input type="button" class ="admenu" id="sak" value="삭제"/></a></td>
+		</tr>
+	<% } %>
  
    </table>		
-		
-		
-		
-	
 
 	</section>
-	
 	
 <!-- 밑 배 경 -->	
 	<footer>
