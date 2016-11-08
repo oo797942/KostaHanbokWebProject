@@ -53,13 +53,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<update id="UpdateMypage" parameterType="hashmap">
-		UPDATE member
-		SET m_email
-		= #{memEmail} ,m_tel = #{memTel}, m_addr = #{memAddr},
-		m_cm =
-		#{memHeight}, m_bust = #{memBust}, m_shoulder = #{memShoulder}
-		WHERE
-		m_id=#{memId}
+		<choose>
+			<when test="memPass neq null">
+				UPDATE member
+				SET m_email
+				= #{memEmail} ,m_tel = #{memTel}, m_addr =
+				#{memAddr},
+				m_cm =
+				#{memHeight}, m_bust = #{memBust}, m_shoulder =
+				#{memShoulder}, m_pass = #{memPass}
+				WHERE
+				m_id=#{memId}
+			</when>
+			<otherwise>
+				UPDATE member
+				SET m_email
+				= #{memEmail} ,m_tel = #{memTel},
+				m_addr = #{memAddr},
+				m_cm =
+				#{memHeight}, m_bust = #{memBust},
+				m_shoulder = #{memShoulder}
+				WHERE
+				m_id=#{memId}
+			</otherwise>
+		</choose>
+
 	</update>
 
 	<insert id="insertGoods" parameterType="hashmap">

@@ -93,6 +93,7 @@ public class CommandUpdate implements Command {
 				String height = request.getParameter("height");
 				String bust = request.getParameter("bust");
 				String shoulder = request.getParameter("shoulder");
+				String changePass = request.getParameter("changePass");
 
 				memMap.put("memEmail", email);
 				memMap.put("memId", id);
@@ -101,6 +102,9 @@ public class CommandUpdate implements Command {
 				memMap.put("memHeight", height);
 				memMap.put("memBust", bust);
 				memMap.put("memShoulder", shoulder);
+				if(!changePass.equals("") && changePass != null){
+					memMap.put("memPass", changePass);
+				}
 				
 				HoMemberService.getInstance().MypageUpdate(memMap);
 

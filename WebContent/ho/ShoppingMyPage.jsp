@@ -39,6 +39,28 @@
 <script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
 <script src="<%=projectName%>/ho/js/main.js"></script>
 <script src="<%=projectName%>/ho/js/mypage.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var submitBtn = $("#submitBtn");
+
+		submitBtn.click(function() {
+
+			if ($("#myPagePass").val() == null || $("#myPagePass").val() == "") {
+
+				alert("정보수정을 완료하시려면 기존 비밀번호를 입력해주세요.");
+				$("#myPagePass").focus();
+				$("#myPagePass").select();
+				return false;
+
+			} else if ($("#myPagePass").val() != $("#passcheck").val()) {
+				alert("비밀번호를 다시 확인해주세요.");
+				$("#myPagePass").focus();
+				$("#myPagePass").select();
+				return false;
+			}
+		});
+	});
+</script>
 </head>
 <body>
 
@@ -122,6 +144,7 @@
 		<form action="<%=projectName%>/mypage.ho?cmd=submit-mypage"
 			method="post">
 
+			<input type="hidden" value="<%=ho.getMemPass()%>" id="passcheck" />
 			<input type="hidden" value="<%=sess%>" name="myId" />
 
 			<table id="myPageMainBodyTable" cellspacing="15">
@@ -131,8 +154,22 @@
 							정보</span> <br /> <br />
 						<table id="VipTable">
 							<tr>
-								<td rowspan="2" width="55px"><img id="vipLogo"
-									src="<%=projectName%>/ho/img/vip_king.png" /></td>
+								<td rowspan="2" width="55px">
+								
+								<% if(rank.equals("귀족")){ %>
+								
+								<img id="vipLogo" src="<%=projectName%>/ho/img/vip_noble.png" />
+								
+								<%}else if(rank.equals("왕")){ %>
+								
+								<img id="vipLogo" src="<%=projectName%>/ho/img/vip_king.png" />
+								
+								<%}else if(rank.equals("경민")){ %>
+								
+								<img id="vipLogo" src="<%=projectName%>/ho/img/vip_gyong.png" />
+								
+								<%} %>
+								</td>
 								<td>VIP등급 : <%=rank%></td>
 							</tr>
 							<tr>
@@ -182,7 +219,7 @@
 						기존 비밀번호: <input type="password" id="myPagePass" name="pass" /> <br />
 						<br /> 비밀번호 변경: <input type="password" id="myPagePassChange"
 						name="changePass" readonly="readonly" /> <br /> <br /> <input
-						type="submit" class="changeBtn" value="수정 완료"
+						type="submit" class="changeBtn" value="수정 완료" id="submitBtn"
 						style="float: right; margin-top: 18px; margin-left: 15px;" />
 
 						<button class="changeBtn"

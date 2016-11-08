@@ -9,13 +9,16 @@ $(function() {
 	var telBtn = $("#changeTelBtn");
 	var nameBtn = $("#changeNameBtn");
 
+
+
 	passBtn.click(function() {
 		$("#myPagePassChange").removeAttr("readonly");
 		return false;
 	});
 
 	nameBtn.click(function() {
-		$("#myPageName").removerAttr("readonly");
+
+		$("#myPageName").removeAttr("readonly");
 		$("#myPageName").focus();
 		$("#myPageName").select();
 		return false;
