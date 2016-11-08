@@ -1,11 +1,26 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="ho.model.HoBoard" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<% String projectName = "/HoProject"; %>
+<% String projectName = "/ProjectExam"; 
+
+	List<HoBoard> boards=null;
+	Object obj =request.getAttribute("BoardList");
+
+	System.out.println(obj);
+	if(obj !=null) boards = (List<HoBoard>)obj;
+
+
+
+
+%>
+
+
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
@@ -34,22 +49,21 @@
 			<a href="adminMemView.jsp"><input type="button" id="back" value="뒤로가기"/></a>
 			
 	<table border="1" bordercolor="darkblue" width="1000">
-  	 
   	 <tr>
-  	   		 <td> 등급 </td>
-    		 <td> 이름 </td>
-  	   		 <td> 전화번호 </td>
-   		     <td> 이메일 </td>
-   		     <td> 가격 </td>
+  	   		 <td> 등록일 </td>
+    		 <td> 작성자 이름 </td>
+  	   		 <td> 게시글 제목 </td>
+   		     <td> 답변하기 </td>
  	 </tr>
    
+  	 <% for(HoBoard board : boards){ %>
      <tr>	
-   			<td><a href="adminMemView.jsp">실험</a></td>
- 	  		<td><a href="adminMemView.jsp">실험</a></td>
-  			<td><a href="adminMemView.jsp">실험</a></td>
-   			<td><a href="adminMemView.jsp">실험</a></td>
-   			<td><a href="adminMemView.jsp">실험</a></td>
+ 	  		<td><a href="#"><%= board.getBoardDate() %></a></td>
+  			<td><a href="#"><%= board.getBoardWriter() %></a></td>
+   			<td><a href="#"><%= board.getBoardTitle() %></a></td>
+   			<td><a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" name="tdreply" id="tdreply" value="답변하기"/></a></td>
  	  </tr>
+	<% } %>
    </table>		
 		
 	</section>

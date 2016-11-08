@@ -58,7 +58,6 @@ $(function(){
 					$('#productimg').append("<tr>");
 				data12.each(function(){
 					var text = $('name',this).text();
-					alert(text)
 					$('#productimg').append("<td>"+"<img width='180px' height='180px' src=<%=projectName%>/ho/upload/"+text+"></td>");
 				});	
 					$('#productimg').append("</tr>");
