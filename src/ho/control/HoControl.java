@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ho.command.Command;
+import ho.command.CommandBoardList;
 import ho.command.CommandCheckId;
 import ho.command.CommandDelete;
 import ho.command.CommandException;
@@ -81,7 +82,7 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminmenu1", new CommandNull("adminPagelist.jsp"));
 		commandMap.put("adminmenu2", new CommandNull("adminGoods.jsp"));
 		commandMap.put("adminmenu3", new CommandNull("adminMemlist.jsp"));
-		commandMap.put("adminmenu4", new CommandNull("adminBoardList.jsp"));
+		commandMap.put("adminmenu4", new CommandBoardList("adminBoardList.jsp"));
 		commandMap.put("adminPagelist", new CommandNull("adminPagelist.jsp"));
 
 		

@@ -10,13 +10,13 @@
 	if(obj !=null) goods = (List<HoGoods>)obj;
 	
 	
-	rtn_xml += "<totalimg>";
+	rtn_xml += "<custom>";
 	for(HoGoods good : goods){
 		if(!good.getGoodsImg().equals("null"))
-		rtn_xml += "<img>";
+		rtn_xml += "<person>";
 		rtn_xml += "<name>" + good.getGoodsImg() + " </name>";
-		rtn_xml += "</pimg>";
+		rtn_xml += "</person>";
 	}
-	rtn_xml += "</totalimg>";
+	rtn_xml += "</custom>";
 	out.print(rtn_xml);
 %>

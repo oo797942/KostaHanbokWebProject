@@ -27,11 +27,9 @@ if(sess != null){
 $(function(){
 
 	if("<%=sessionValue%>"=="null"){
-		alert("여기 1");
 		$("#shoplogin").show();
 		$("#shoplogout").hide();
 	}else{
-		alert("여기 2");
 		$("#shoplogin").hide();
 		$("#shoplogout").show();
 	}

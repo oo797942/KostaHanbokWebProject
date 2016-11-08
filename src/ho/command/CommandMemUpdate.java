@@ -23,20 +23,14 @@ public class CommandMemUpdate implements Command{
 
 			String mid =request.getParameter("mId");
 			String id = request.getParameter("id");
-			System.out.println(id);
 			String name = request.getParameter("name");
-			System.out.println(name);
 			String email = request.getParameter("email");
-			System.out.println(email);
 			String addr = request.getParameter("addr");
 			String tel = request.getParameter("tel");
-			System.out.println(tel);
 			String coin = request.getParameter("coin");
-			System.out.println(coin);
 			String height = request.getParameter("height");
 			String bust = request.getParameter("chest");
 			String shoulder = request.getParameter("shoulder");
-			System.out.println(shoulder);
 			
 			
 			HoMember Member = null;

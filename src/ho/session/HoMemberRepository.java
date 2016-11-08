@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import ho.model.HoMember;
+import ho.model.HoBoard;
 import ho.model.HoGoods;
 
 public class HoMemberRepository {
@@ -219,6 +220,17 @@ public class HoMemberRepository {
 			}else{
 				sess.rollback();
 			}
+		}finally{
+			sess.close();
+		}
+	}
+	
+	public List<HoBoard> selectBoard(){
+		//연결객체 얻어오기 (SqlSession)
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("selectBoard에 들어왔음");
+			return sess.selectList(namespace+".selectBoard");
 		}finally{
 			sess.close();
 		}

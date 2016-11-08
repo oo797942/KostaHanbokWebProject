@@ -4,7 +4,7 @@
 <%@ page import="ho.model.HoMember" %>   
 
 
-<% String projectName = "/webUI3"; 
+<% String projectName = "/HoProject"; 
 	 
 	HoMember member=null;
 	Object obj =request.getAttribute("MemDelete");

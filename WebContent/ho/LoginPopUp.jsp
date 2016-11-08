@@ -34,9 +34,13 @@
     $(function(){
     	var result = "<%=request.getParameter("result")%>";
     	var loginid = "<%=request.getAttribute("loginid")%>";
-  		alert("팝업시"+loginid);
     	var id = "<%=id%>";
     	if(id!="null"){
+    		if(id=="admin"){
+        		opener.location.href="<%=projectName%>/log.ho?cmd=admin-page";    			
+        		window.close();
+    			return;
+    		}else{
     /* 		alert("랄랄라"+id); */
     		//$(opener.document).find("#shoplogin").text("LOGOUT");
   			
@@ -45,6 +49,7 @@
     		opener.location.href="<%=projectName%>/log.ho?cmd=shop-main";
 
     		window.close();
+    		
     	}else{
     		if(result=="2"){
     			alert("다시로긴해");

@@ -3,7 +3,7 @@
  <%@ page import="ho.model.HoMember" %>    
  <%@ page import="ho.service.HoMemberService" %>  
 
-<% String projectName = "/webUI3"; %>
+<% String projectName = "/HoProject"; %>
 
  <%
      //Map condition = new HashMap();

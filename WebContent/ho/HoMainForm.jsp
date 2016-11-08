@@ -50,8 +50,7 @@ $(function(){
 	}).css('cursor','pointer');
 
 	
-	$('#product').click(function(){
-		$.ajax({			
+	$.ajax({			
 			url : '<%=projectName%>/logout.ho?cmd=product-page',
 			type : 'post',
 			success : function(data){
@@ -59,6 +58,7 @@ $(function(){
 					$('#productimg').append("<tr>");
 				data12.each(function(){
 					var text = $('name',this).text();
+					alert(text)
 					$('#productimg').append("<td>"+"<img width='180px' height='180px' src=<%=projectName%>/ho/upload/"+text+"></td>");
 				});	
 					$('#productimg').append("</tr>");
@@ -66,7 +66,6 @@ $(function(){
 			error : function(){
 				alert('에러 발생');	
 			}
-		});
 	});
 	
 	

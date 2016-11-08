@@ -3,7 +3,7 @@
  <%@ page import="ho.service.HoMemberService" %> 
 <%@ page import="java.util.List" %>
  
-<% String projectName = "/webUI3"; 
+<% String projectName = "/HoProject"; 
 	 
 	HoMember member=null;
 	Object obj =request.getAttribute("MemView");

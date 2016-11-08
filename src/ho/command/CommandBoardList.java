@@ -1,6 +1,7 @@
 package ho.command;
 
 import java.io.IOException;
+
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -14,24 +15,25 @@ import ho.command.CommandException;
 import ho.model.HoException;
 import ho.model.HoGoods;
 import ho.model.HoMember;
+import ho.model.HoBoard;
 import ho.service.HoMemberService;
 
-public class CommandList implements Command{
+public class CommandBoardList implements Command{
 	private String next;
 	
-	public CommandList( String _next ){
+	public CommandBoardList( String _next ){
 		next = _next;
 	}
 	
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
 			request.setCharacterEncoding("utf-8");
-			System.out.println("CommandList에 들어왔음");
-			List<HoGoods> list =  (List<HoGoods>) HoMemberService.getInstance().GoodsList();
+			System.out.println("CommandBoardList에 들어왔음");
+			List<HoBoard> list =  (List<HoBoard>) HoMemberService.getInstance().BoardList();
 			System.out.println(list);
-			request.setAttribute("GoodsList", list);
+			request.setAttribute("BoardList", list);
 		}catch( Exception ex ){
-			throw new CommandException("CommandList.java < 입력시 > " + ex.toString() ); 
+			throw new CommandException("CommandGoodsView.java < 입력시 > " + ex.toString()); 
 		}
 		return next;
 	}

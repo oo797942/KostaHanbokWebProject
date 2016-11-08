@@ -33,6 +33,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result column="i_price" property="GoodsPrice" />
       <result column="i_rent_price" property="GoodsRentPrice" />
    </resultMap>
+   
+   <resultMap type="HoBoard" id="HoBoardMap">
+	<id	column="b_id" property="boardId"/>
+	<result column="b_no" property="boardNo"/>
+	<result column="b_group_no" property="boardGroupNo"/>
+	<result column="b_order_no" property="boardOrderNo"/>
+	<result column="b_date" property="boardDate"/>
+	<result column="b_hits" property="boardHits"/>
+	<result column="b_writer" property="boardWriter"/>
+	<result column="b_pass" property="boardPass"/>
+	<result column="b_title" property="boardTitle"/>
+	<result column="b_content" property="boardContent"/>
+</resultMap>
 
 
    <select id="selectHoMember" resultMap="homemberMap"
@@ -79,6 +92,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </choose>
 
    </update>
+
+
 
    <insert id="insertGoods" parameterType="hashmap">
 
@@ -147,7 +162,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    INSERT 
    INTO member
    VALUES(#{userId},#{userPass},#{userName},#{userTel},#{userEmail},#{userBirth},#{userSex},#{userAddr},#{userHeight},#{userChest},#{userShoulder},#{userCoin},#{userEXP})
-</insert>
+	</insert>
+	
+	<select id="selectBoard" resultMap = "HoBoardMap" parameterType="hashmap">
+	
+	select * from board
+	
+	</select>
 
 </mapper>
 

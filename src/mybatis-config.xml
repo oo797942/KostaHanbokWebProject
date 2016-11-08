@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <typeAliases>
 	<typeAlias type = "ho.model.HoMember" alias="HoMember"/>
 	<typeAlias type = "ho.model.HoGoods" alias="HoGoods"/>
+	<typeAlias type = "ho.model.HoBoard" alias="HoBoard"/>
 </typeAliases>
 
 
