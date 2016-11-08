@@ -108,14 +108,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE Img_NAME = #{id}
 	</delete>
 
-
-
-	<delete id="GoodsImgdelete" parameterType="hashmap">
-		DELETE FROM ITEMIMG
-		WHERE Img_NAME = #{id}
-	</delete>
-
-
 	<update id="UpdateGoodsimg">
 		UPDATE itemimg SET IMG_1=#{image1},
 		IMG_2=#{image2},IMG_3=#{image3} WHERE

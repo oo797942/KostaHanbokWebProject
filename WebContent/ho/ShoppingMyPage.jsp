@@ -110,7 +110,9 @@
 		<div id="myPageTopMenu">
 			<table id="myPageTopTable">
 				<tr>
-					<td class="topTableBtn">회원정보</td>
+
+					<td class="topTableBtn"><a
+						href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">회원정보</a></td>
 					<td class="topTableBtn">쇼핑내역</td>
 					<td width="70%"></td>
 				</tr>
@@ -119,8 +121,8 @@
 
 		<form action="<%=projectName%>/mypage.ho?cmd=submit-mypage"
 			method="post">
-			
-			<input type="hidden" value="<%=sess %>" name="myId"/>
+
+			<input type="hidden" value="<%=sess%>" name="myId" />
 
 			<table id="myPageMainBodyTable" cellspacing="15">
 
@@ -138,9 +140,7 @@
 							</tr>
 						</table> <br /> <span style="font-size: 20pt;">보유 코인:</span> <br /> <span
 						style="font-size: 13pt;"><%=ho.getMemCoin()%></span> <br /> <br />
-
-						<button class="changeBtn" style="float: right; margin-top: 16px;">비밀번호
-							변경</button></td>
+					</td>
 					<td class="BodyTableStyle"><span id="titleSpan">연락처</span> <br />
 						<br /> 이메일: <input type="text" id="myPageemail" name="email"
 						value="<%=ho.getMemEmail()%>" readonly="readonly" /><br /> <br />
@@ -148,22 +148,23 @@
 						value="<%=ho.getMemTel()%>" readonly="readonly" /><br /> <br />
 						<br /> <br />
 						<button class="changeBtn"
-							style="margin-left: 15px; margin-top: 15px; float: right;">이메일
-							변경</button>
+							style="margin-left: 15px; margin-top: 15px; float: right;"
+							id="changeEmailBtn">이메일 변경</button>
 						<button class="changeBtn"
-							style="margin-left: 15px; margin-top: 15px; float: right;">전화번호
-							변경</button></td>
+							style="margin-left: 15px; margin-top: 15px; float: right;"
+							id="changeTelBtn">전화번호 변경</button></td>
 				</tr>
 				<tr>
 					<td class="BodyTableStyle"><span id="titleSpan">거주지 및
-							신체정보</span><br /> <br /> 주소:<br /> <input type="text" id="myPageaddr" name="addr"
-						value="<%=ho.getMemAddr()%>" readonly="readonly" /> <br /> <br />
-						키: <input type="text" id="myPageheight" size="12" name="height"
-						readonly="readonly" value="<%=ho.getMemHeight()%>" /> 가슴: <input
-						type="text" id="myPagebust" name="bust"  size="12" readonly="readonly"
-						value="<%=ho.getMemBust()%>" /> 어깨: <input type="text" size="12"
-						readonly="readonly" id="myPageshoulder" name="shoulder"
-						value="<%=ho.getMemShoulder()%>" /> <br /> <br /> <br />
+							신체정보</span><br /> <br /> 주소:<br /> <input type="text" id="myPageaddr"
+						name="addr" value="<%=ho.getMemAddr()%>" readonly="readonly" /> <br />
+						<br /> 키: <input type="text" id="myPageheight" size="12"
+						name="height" readonly="readonly" value="<%=ho.getMemHeight()%>" />
+						가슴: <input type="text" id="myPagebust" name="bust" size="12"
+						readonly="readonly" value="<%=ho.getMemBust()%>" /> 어깨: <input
+						type="text" size="12" readonly="readonly" id="myPageshoulder"
+						name="shoulder" value="<%=ho.getMemShoulder()%>" /> <br /> <br />
+						<br />
 						<button id="changeShoulderBtn" class="changeBtn"
 							style="margin-left: 15px; margin-top: 25px; float: right;">어깨
 							수정</button>
@@ -175,9 +176,21 @@
 							수정</button>
 						<button id="changAddrBtn" class="changeBtn"
 							style="margin-top: 25px; float: right;">주소 수정</button></td>
-					<td class="BodyTableStyle" style="vertical-align: text-bottom;"><input
+					<td class="BodyTableStyle" style="vertical-align: text-bottom;"><br />
+						<br /> 이름: <input type="text" id="myPageName" name="name"
+						value="<%=ho.getMemName()%>" readonly="readonly" /> <br /> <br />
+						기존 비밀번호: <input type="password" id="myPagePass" name="pass" /> <br />
+						<br /> 비밀번호 변경: <input type="password" id="myPagePassChange"
+						name="changePass" readonly="readonly" /> <br /> <br /> <input
 						type="submit" class="changeBtn" value="수정 완료"
-						style="float: right;" /></td>
+						style="float: right; margin-top: 18px; margin-left: 15px;" />
+
+						<button class="changeBtn"
+							style="float: right; margin-top: 18px; margin-left: 15px;"
+							id="changePassBtn">비밀번호 수정</button>
+
+						<button class="changeBtn" style="float: right; margin-top: 18px;"
+							id="changeNameBtn">이름 수정</button></td>
 				</tr>
 
 
