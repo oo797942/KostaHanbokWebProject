@@ -179,5 +179,33 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
-
+	
+	public void deleteMember(HashMap hm) {
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			String stmt = namespace+".deleteMember";
+			int result = sess.delete(stmt, hm);
+			if(result>0){
+				sess.commit();
+			}else{
+				sess.rollback();
+			}
+		}finally{
+			sess.close();
+		}
+	}
+	public void updateMember(HashMap hm) {
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			String stmt = namespace+".updateMember";
+			int result = sess.update(stmt, hm);
+			if(result>0){
+				sess.commit();
+			}else{
+				sess.rollback();
+			}
+		}finally{
+			sess.close();
+		}
+	}
 }

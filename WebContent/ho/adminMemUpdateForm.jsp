@@ -8,11 +8,9 @@
 	HoMember member=null;
 	Object obj =request.getAttribute("MemView");
 	
-
 	if(obj !=null) member = (HoMember)obj;
 	 
 %>
-  
   
 <!DOCTYPE html>
 <html>
@@ -56,7 +54,12 @@
 			<a href="<%= projectName %>/1.ho?cmd=adminMemlist"><input type="button" id="back" value="뒤로가기"/></a>
 		
 	
-		<table border="2" width="1000" height="630">
+	<form class="form-horizontal" method="post" action="<%=projectName %>/xx.ho?" >
+			<input type="hidden"name="cmd" value="adminMemUpdateSave"/>
+			<input type="hidden" name="mId" value="<%=member.getMemId()%>"/>
+			<input type="submit" id="modify" value="수정하기"/>
+
+			<table border="2" width="1000" height="630">
 		<tr>
 			<td colspan="2">
 				<label class="memberfont">회원관리ㅣ이이ㅣ </label>
@@ -65,12 +68,11 @@
 		
 		<tr>
 			<td>
-			<form class="form-horizontal">
 				<div class="form-group">
 					<label for="id" class="col-md-2 control-label" >
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span> ID </label>
 			 	<div class="col-md-6">
-					<input type="text" name="id" id="id" class="form-control" value="<%= member.getMemId() %>" disabled="disabled"  >
+					<input type="text" name="id" id="id" class="form-control" value="<%= member.getMemId() %>" >
 				</div>
             	</div><br/><br/>
             	
@@ -78,7 +80,7 @@
 					<label for="name" class="col-md-2 control-label">
 					 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 이름  </label>
 				<div class="col-md-6">
-              		<input type="text" name="name" id="name" class="form-control" value="<%=member.getMemName() %>" disabled="disabled" >
+              		<input type="text" name="name" id="name" class="form-control" value="<%=member.getMemName() %>">
             	</div>
             	</div><br/><br/>
 
@@ -86,7 +88,7 @@
 					<label for="eamil" class="col-md-2 control-label">
 					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Email  </label>
 				<div class="col-md-6">
-              		<input type="email" name="eamil" id="eamil" class="form-control" value="<%=member.getMemEmail() %>" disabled="disabled">
+              		<input type="email" name="email" id="eamil" class="form-control" value="<%=member.getMemEmail() %>">
             	</div>
             	</div><br/><br/>
 			
@@ -94,7 +96,7 @@
 					<label for="addr" class="col-md-2 control-label">
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>   주소 : </label>
 				<div class="col-md-6">
-              		<input type="text" name="addr" id="addr" class="form-control" value="<%=member.getMemAddr() %>" disabled="disabled">
+              		<input type="text" name="addr" id="addr" class="form-control" value="<%=member.getMemAddr() %>">
             	</div>
             	</div><br/><br/>
 
@@ -102,21 +104,19 @@
 					<label for="tel" class="col-md-2 control-label">
 					<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>   전화 : </label>
 				<div class="col-md-6">
-              		<input type="text" name="tel" id="tel" class="form-control" value="<%= member.getMemTel()%>" disabled="disabled">
+              		<input type="text" name="tel" id="tel" class="form-control" value="<%= member.getMemTel()%>">
             	</div>
             	</div><br/><br/>
               
-            </form> 
+          
             </td>
             
             <td>
-            <form class="form-horizontal">
-             	
 				<div class="form-group">
 					<label for="coin" class="col-md-2 control-label">
 					<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>   코인 : </label>
 				<div class="col-md-6">
-              		<input type="text" name="coin" id="coin" class="form-control" value="<%=member.getMemCoin()%>" disabled="disabled">
+              		<input type="text" name="coin" id="coin" class="form-control" value="<%=member.getMemCoin()%>">
             	</div>
             	</div><br/><br/>
 
@@ -124,7 +124,7 @@
 					<label for="height" class="col-md-2 control-label">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>     키 : </label>
 				<div class="col-md-6">
-              		<input type="text" name="height" id="height" class="form-control" value="<%=member.getMemHeight()%>" disabled="disabled">
+              		<input type="text" name="height" id="height" class="form-control" value="<%=member.getMemHeight()%>">
             	</div>
             	</div><br/><br/>
 
@@ -132,7 +132,7 @@
 					<label for="chest" class="col-md-2 control-label">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>   가슴 : </label>
 				<div class="col-md-6">
-              		<input type="text" name="chest" id="chest" class="form-control" value="<%=member.getMemBust()%>" disabled="disabled">
+              		<input type="text" name="chest" id="chest" class="form-control" value="<%=member.getMemBust()%>">
             	</div>
             	</div><br/><br/>
 
@@ -140,7 +140,7 @@
 					<label for="shoulder" class="col-md-2 control-label">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>   어깨: </label>
 				<div class="col-md-6">
-              		<input type="text" name="shoulder" id="shoulder" class="form-control" value="<%=member.getMemShoulder()%>" disabled="disabled">
+              		<input type="text" name="shoulder" id="shoulder" class="form-control" value="<%=member.getMemShoulder()%>">
             	</div>
             	</div><br/><br/>
             
@@ -153,21 +153,13 @@
 			  <option>중인</option>
 			  <option>양반</option>
 			  </select>
-            </div><br/><br/>
-            
-            </form>
+            </div><br/><br/>             
             
             </td>
 		</tr>
 		
-				
-		
-		
-		
 		</table>
-
-		
-	
+              </form> 
 
 	</section>
 	

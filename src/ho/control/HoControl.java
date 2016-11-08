@@ -17,6 +17,9 @@ import ho.command.CommandInsert;
 import ho.command.CommandList;
 import ho.command.CommandLogin;
 import ho.command.CommandLoginSess;
+import ho.command.CommandMemDelete;
+import ho.command.CommandMemUpdate;
+import ho.command.CommandMemView;
 import ho.command.CommandModify;
 import ho.command.CommandNull;
 import ho.command.CommandUpdate;
@@ -73,6 +76,15 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminmenu3", new CommandNull("adminMemlist.jsp"));
 		commandMap.put("adminmenu4", new CommandNull("adminBoardList.jsp"));
 		commandMap.put("adminPagelist", new CommandNull("adminPagelist.jsp"));
+
+		
+		commandMap.put("adminMemlist", new CommandNull("adminMemlist.jsp"));
+		commandMap.put("adminMemDelete", new CommandMemDelete("adminMemDelete.jsp"));
+		commandMap.put("adminMemUpdateForm", new CommandMemView("adminMemUpdateForm.jsp"));
+		commandMap.put("adminMemUpdateSave", new CommandMemUpdate("adminMemUpdateSave.jsp"));
+		
+
+
 /*		commandMap.put("adminMemView", new CommandNull("adminMemView.jsp"));
 		commandMap.put("admiMemlist", new CommandNull("admiMemlist.jsp"));
 		commandMap.put("adminGoodsUpdate", new CommandNull("adminGoodsUpdate.jsp"));

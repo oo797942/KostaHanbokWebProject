@@ -132,6 +132,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		IMG_NAME=#{GoodsName}
 	</update>
 
+	<delete id="deleteMember" parameterType="hashmap">
+	DELETE
+	FROM MEMBER
+	WHERE m_id=#{mId}
+	</delete>
+	
+	<update id="updateMember" parameterType="hashmap">
+	UPDATE MEMBER
+	SET m_id=#{memId} , m_name=#{memName}, m_Email=#{memEmail},m_addr=#{memAddrNo}, m_tel=#{memTel}, m_coin=#{memCoin}, m_cm=#{memHeight} , m_bust=#{memBust}, m_shoulder=#{memShoulder}   
+	WHERE m_id=#{mId}</update>
+
 </mapper>
 
 	
