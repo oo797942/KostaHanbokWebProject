@@ -40,11 +40,14 @@ public class CommandInsert implements Command{
 			int GoodsPrice = Integer.parseInt(request.getParameter("GoodsPrice"));
 			int GoodsRentPrice = Integer.parseInt(request.getParameter("GoodsRentPrice"));
 		
-			
 			Part filePart = request.getPart("GoodsImg");
-			String realPath = FileSaveHelper.save("C:\\JavaClass\\workspace\\ProjectExam\\WebContent\\ho\\upload\\",
+			String realPath = "";
+			if(filePart.getSize()>0){
+			realPath = FileSaveHelper.save("C:\\Users\\kosta\\git\\KostaHanbokWebProject\\WebContent\\ho\\upload\\",
 					filePart.getInputStream());
-			
+			}else{
+				realPath ="null";
+			}
 			
 			memMap.put("GoodsName", GoodsName);
 			memMap.put("GoodsCate", GoodsCate);
@@ -60,21 +63,42 @@ public class CommandInsert implements Command{
 			System.out.println("insert성공");
 			}
 			
-			if(cmd.equals("adminGoodsList")){
-				System.out.println("니 여기 왔니?");
-				System.out.println("CommandInsert에서 imgListInsert부분에 들어왔음");
+			if(cmd.equals("adminGoodsInList")){
+				
+
+				System.out.println("CommandInsert에서 imgInsert부분에 들어왔음");
+				
 				String GoodsName = request.getParameter("GoodsName");
-				System.out.println(GoodsName);
+				
 				Part filePart1 = request.getPart("image1");
-				System.out.println(filePart1);
-				String realPath1 =FileSaveHelper.save("C:\\JavaClass\\workspace\\ProjectExam\\WebContent\\ho\\upload\\",
+				String realPath1="";
+		
+				
+				if(filePart1.getSize()>0){
+				realPath1 =FileSaveHelper.save("C:\\Users\\kosta\\git\\KostaHanbokWebProject\\WebContent\\ho\\upload\\",
 						filePart1.getInputStream());
-				Part filePart2 = request.getPart("image1");
-				String realPath2 = FileSaveHelper.save("C:\\JavaClass\\workspace\\ProjectExam\\WebContent\\ho\\upload\\",
+				}else{
+					realPath1 ="null";
+				}
+				
+				Part filePart2 = request.getPart("image2");
+				String realPath2="";
+				
+				if(filePart2.getSize()>0){
+				realPath2 = FileSaveHelper.save("C:\\Users\\kosta\\git\\KostaHanbokWebProject\\WebContent\\ho\\upload\\",
 						filePart2.getInputStream());
-				Part filePart3 = request.getPart("image1");
-				String realPath3 = FileSaveHelper.save("C:\\JavaClass\\workspace\\ProjectExam\\WebContent\\ho\\upload\\",
+				}else{
+					realPath2 ="null";
+				}
+				Part filePart3 = request.getPart("image3");
+				String realPath3="";
+
+				if(filePart3.getSize()>0){
+				realPath3 = FileSaveHelper.save("C:\\Users\\kosta\\git\\KostaHanbokWebProject\\WebContent\\ho\\upload\\",
 						filePart3.getInputStream());
+				}else{
+					realPath3 ="null";
+				}
 				
 				memMap.put("GoodsName", GoodsName);
 				memMap.put("image1", realPath1);

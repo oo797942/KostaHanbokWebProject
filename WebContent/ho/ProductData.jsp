@@ -9,14 +9,14 @@
 	Object obj =request.getAttribute("GoodsList");
 	if(obj !=null) goods = (List<HoGoods>)obj;
 	
-	ArrayList list = new ArrayList();
 	
-	rtn_xml += "<customer>";
+	rtn_xml += "<totalimg>";
 	for(HoGoods good : goods){
-		rtn_xml += "<person>";
+		if(!good.getGoodsImg().equals("null"))
+		rtn_xml += "<img>";
 		rtn_xml += "<name>" + good.getGoodsImg() + " </name>";
-		rtn_xml += "</person>";
+		rtn_xml += "</pimg>";
 	}
-	rtn_xml += "</customer>";
+	rtn_xml += "</totalimg>";
 	out.print(rtn_xml);
 %>

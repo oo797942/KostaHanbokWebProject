@@ -109,11 +109,27 @@ public class HoMemberRepository {
 		}
 	}
 	
+	public void GoodsImgDelte(HashMap<String,Object> id){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+		int result = sess.delete(namespace+".GoodsImgdelete",id);
+		System.out.println(result);
+		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
+				sess.commit();
+		}else{
+					sess.rollback();
+			}
+		}finally{
+			sess.close();
+		}
+	}
+	
+	
 	public void updategoods(HashMap<String, Object> goods){
 		SqlSession sess=getSqlSessionFactory().openSession();
 		try{
 			System.out.println("updategoods에 들어왔음");
-		int result = 	sess.insert(namespace+".UpdateGoods",goods);
+		int result = 	sess.update(namespace+".UpdateGoods",goods);
 		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
 				sess.commit();
 		}else{
@@ -128,7 +144,7 @@ public class HoMemberRepository {
 		SqlSession sess=getSqlSessionFactory().openSession();
 		try{
 			System.out.println("updategoodsimg에 들어왔음");
-		int result = 	sess.insert(namespace+".UpdateGoodsimg",goods);
+		int result = 	sess.update(namespace+".UpdateGoodsimg",goods);
 		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
 				sess.commit();
 		}else{

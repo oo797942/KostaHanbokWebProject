@@ -61,7 +61,7 @@ public class CommandUpdate implements Command{
 			System.out.println("insert성공");
 			}
 			
-			if(cmd.equals("adminGoodsList")){
+			if(cmd.equals("adminGoodsUpList")){
 				System.out.println("CommandUpdate에서 imgListUpdate부분에 들어왔음");
 				String GoodsName = request.getParameter("GoodsName");
 				System.out.println(GoodsName);
