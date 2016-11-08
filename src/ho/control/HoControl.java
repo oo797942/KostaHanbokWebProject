@@ -50,11 +50,11 @@ public class HoControl extends HttpServlet {
 		commandMap.put("go-store", new CommandNull("ShoppingMain.jsp"));
 	
 		// admin 페이지
+		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
 		commandMap.put("adminGoodsimgInsert", new CommandInsert("adminGoodsimgInsert.jsp"));
 		commandMap.put("adminGoodsList", new CommandInsert("adminInsertSuccess.jsp"));
 		commandMap.put("list-page", new CommandList("adminGoodsList.jsp"));
 		commandMap.put("adminGoodsView", new CommandGoodsView("adminGoodsView.jsp"));
-		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
 		commandMap.put("adminPageDelete", new CommandNull("adminGoodsDelete.jsp"));
 		commandMap.put("delete", new CommandDelete("adminDeleteSuccess.jsp"));
 		commandMap.put("modifylist", new CommandModify("adminGoodsList.jsp"));
@@ -67,6 +67,7 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminmenu2", new CommandNull("adminGoods.jsp"));
 		commandMap.put("adminmenu3", new CommandNull("adminMemlist.jsp"));
 		commandMap.put("adminmenu4", new CommandNull("adminBoardList.jsp"));
+		commandMap.put("adminPagelist", new CommandNull("adminPagelist.jsp"));
 /*		commandMap.put("adminMemView", new CommandNull("adminMemView.jsp"));
 		commandMap.put("admiMemlist", new CommandNull("admiMemlist.jsp"));
 		commandMap.put("adminGoodsUpdate", new CommandNull("adminGoodsUpdate.jsp"));
@@ -74,7 +75,6 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminPageDelete", new CommandNull("adminGoodsDelete.jsp"));
 		commandMap.put("adminBoardView", new CommandNull("adminBoardView.jsp"));
 		commandMap.put("adminBoardList", new CommandNull("adminBoardList.jsp"));
-		commandMap.put("adminPagelist", new CommandNull("adminPagelist.jsp"));
 */
 		
 	}
@@ -104,8 +104,8 @@ public class HoControl extends HttpServlet {
 
 		try{
 			
-			if( commandMap.containsKey( cmdKey.toLowerCase() ) ){//소문자로 바꿈
-				cmd = (Command)commandMap.get( cmdKey.toLowerCase());
+			if( commandMap.containsKey( cmdKey ) ){//소문자로 바꿈
+				cmd = (Command)commandMap.get( cmdKey );
 			}else{
 				throw new CommandException("지정할 명령어가 존재하지 않음");
 			}
