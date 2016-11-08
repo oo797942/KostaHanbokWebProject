@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ho.command.Command;
+import ho.command.CommandDelete;
 import ho.command.CommandException;
 import ho.command.CommandGoodsView;
 import ho.command.CommandInsert;
 import ho.command.CommandList;
 import ho.command.CommandLogin;
 import ho.command.CommandLoginSess;
+import ho.command.CommandModify;
 import ho.command.CommandNull;
+import ho.command.CommandUpdate;
 
 /**
  * Servlet implementation class GuestControl
@@ -38,18 +41,27 @@ public class HoControl extends HttpServlet {
 		commandMap.put("login-page", new CommandLogin("LoginService.jsp"));
 		commandMap.put("main-page", new CommandNull("HoMainForm.jsp"));
 		commandMap.put("logout-page", new CommandNull("LogoutService.jsp"));
-		commandMap.put("adminGoodsimgInsert", new CommandInsert("adminGoodsimgInsert.jsp"));
-		commandMap.put("adminGoodsList", new CommandInsert("adminInsertSuccess.jsp"));
-		commandMap.put("list-page", new CommandList("adminGoodsList.jsp"));
-		commandMap.put("adminGoodsView", new CommandGoodsView("adminGoodsView.jsp"));
-		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
-	  
+		
+		
+		
 		commandMap.put("shoplogin-page", new CommandLoginSess("LoginPopUp.jsp"));
 		commandMap.put("shop-login", new CommandLogin("LoginService.jsp"));
 		commandMap.put("shop-main", new CommandNull("ShoppingMain.jsp"));
 		commandMap.put("go-store", new CommandNull("ShoppingMain.jsp"));
 	
 		// admin 페이지
+		commandMap.put("adminGoodsimgInsert", new CommandInsert("adminGoodsimgInsert.jsp"));
+		commandMap.put("adminGoodsList", new CommandInsert("adminInsertSuccess.jsp"));
+		commandMap.put("list-page", new CommandList("adminGoodsList.jsp"));
+		commandMap.put("adminGoodsView", new CommandGoodsView("adminGoodsView.jsp"));
+		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
+		commandMap.put("adminPageDelete", new CommandNull("adminGoodsDelete.jsp"));
+		commandMap.put("delete", new CommandDelete("adminDeleteSuccess.jsp"));
+		commandMap.put("modifylist", new CommandModify("adminGoodsList.jsp"));
+		commandMap.put("adminGoodsUpdate", new CommandGoodsView("adminGoodsUpdate.jsp"));
+		commandMap.put("adminGoodsimgUpdate", new CommandUpdate("adminGoodsimgUpdate.jsp"));
+		commandMap.put("adminGoodsList", new CommandUpdate("adminUpdateSuccess.jsp"));
+		commandMap.put("product-page", new CommandList("ProductData.jsp"));
 		commandMap.put("admin-page", new CommandNull("adminPage.jsp"));
 		commandMap.put("adminmenu1", new CommandNull("adminPagelist.jsp"));
 		commandMap.put("adminmenu2", new CommandNull("adminGoods.jsp"));

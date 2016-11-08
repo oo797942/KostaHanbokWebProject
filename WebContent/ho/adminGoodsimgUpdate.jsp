@@ -31,32 +31,34 @@
 	
 	<section>
 			<a href="<%= projectName %>/1.ho?cmd=adminGoodsUpdate"><input type="button" id="back" value="뒤로가기"/></a>
-			<a href="<%= projectName %>/1.ho?cmd=adminGoodsList"><input type="button" id="next" value="수정하기"/></a>
 		
 		<!-- 등록 -->
-		
+	
+	<form action="<%= projectName %>/xxxxx.ho?" method="post" enctype="multipart/form-data"  >
+	<input type="hidden" name="cmd" id="cmd" value="adminGoodsList"/>
 		<table border="2" width="1000" height="560">
 		<tr>
 			<td>상품명</td>
-			<td><input type="text" class= "Goodsinsert"></td>
+			<td><input type="text" class= "Goodsinsert" name="GoodsName" readonly="readonly" value="<%=request.getParameter("GoodsName")%>"></td>
 		</tr>
 		
 		<tr>
 			<td>이미지1</td>
-			<td><input type="file" class= "Goodsinsert"></td>
+			<td><input type="file" class= "Goodsinsert" name="image1"></td>
 		</tr>		
 		<tr>
 			<td>이미지2</td>
-			<td><input type="file" class= "Goodsinsert"></td>
+			<td><input type="file" class= "Goodsinsert" name="image2"></td>
 		</tr>		
 		<tr>
 			<td>이미지3</td>
-			<td><input type="file" class= "Goodsinsert"></td>
+			<td><input type="file" class= "Goodsinsert" name="image3"></td>
 		</tr>
 		
 		</table>
 
-		
+		<input type="submit" id="next" value="수정하기"/></a>
+			</form>
 
 	</section>
 	

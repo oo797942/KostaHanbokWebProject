@@ -1,11 +1,22 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="ho.model.HoGoods" %>
+<%
+String projectName = "/ProjectExam";
+
+HoGoods goods = null;
+Object obj = request.getAttribute("GoodsView");
+if(obj != null) goods = (HoGoods)obj;
+
+System.out.println(goods.getGoodsCate());
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<% String projectName = "/ProjectExam"; %>
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
@@ -30,87 +41,87 @@
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=adminGoodsList"><input type="button" id="back" value="뒤로가기"/></a>
-			<a href="<%= projectName %>/1.ho?cmd=adminGoodsimgUpdate"><input type="button" id="next" value="수정하기"/></a>
+			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 		
 		<!-- 등록 -->
-		
+		<form action="<%= projectName %>/xxxxx.ho?" method="post"  enctype="multipart/form-data">
+		<input type="hidden" name="cmd" id="cmd" value="adminGoodsimgUpdate"/>
 		<table border="2" width="1000" height="560">
 		<tr>
 			<td>상품명</td>
-			<td><input type="text" class= "Goodsinsert"></td>
+			<td><input type="text" class= "Goodsinsert" id="GoodsName" name="GoodsName" value="<%=goods.getGoodsName() %>" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td>카테고리</td>
-			<td><select id="category1" class= "GoodsSelect">
-			<option class="op">선택</option>
-			<option class="op">생활 한복 -남</option>
-			<option class="op">생활 한복 -남</option>
-			<option class="op">개량 한복 -남</option>
-			<option class="op">개량 한복 -여</option>
-			<option class="op">퓨전 한복 -남</option>
-			<option class="op">퓨전 한복 -여</option>
-			<option class="op">아동 한복 -남</option>
-			<option class="op">아동 한복 -여</option>
-			<option class="op">악세서리</option>
+			<td><select id="category1" class= "GoodsSelect" name="GoodsCate" >
+			<option class="op" selected="selected">선택</option>
+			<option class="op" value="생활 한복 -남">생활 한복 -남</option>
+			<option class="op" value="생활 한복 -여">생활 한복 -여</option>
+			<option class="op" value="개량 한복 -남">개량 한복 -남</option>
+			<option class="op" value="개량 한복 -여">개량 한복 -여</option>
+			<option class="op" value="퓨전 한복 -남">퓨전 한복 -남</option>
+			<option class="op" value="퓨전 한복 -여">퓨전 한복 -여</option>
+			<option class="op" value="아동 한복 -남">아동 한복 -남</option>
+			<option class="op" value="아동 한복 -여">아동 한복 -여</option>
+			<option class="op" value="악세서리">악세서리</option>
 			</select></td>
 			</tr>
 		<tr>
 			<td>디자인 사진</td>
-			<td><input type="file" class= "Goodsinsert"></td>
+			<td><input type="file" class= "Goodsinsert"  name="GoodsImg" value="<%=goods.getGoodsImg()%>"></td>
 			</tr>
 		<tr>
 		
 		<tr>
 			<td>설명</td>
-			<td><textarea  rows="4"  class= "GoodsContent"></textarea> </td>
+			<td><textarea  rows="4"  class= "GoodsContent" name="GoodsInfo"  ><%=goods.getGoodsInfo()%></textarea></td>
 		</tr>
 		
-			<td>원단</td>
-			<td><select id="category2" class= "GoodsSelect">
-					<option class="op">선택</option>
-					<option class="op">양단</option>
-					<option class="op">본견(비단)</option>
-					<option class="op">보화단</option>
-					<option class="op">옥사</option>
-					<option class="op">물실크</option>
+			<td>원단</td> 
+			<td><select id="category2" class= "GoodsSelect" name="GoodsColor" >
+					<option class="op"  selected="selected">선택</option>
+					<option class="op" value="양단">양단</option>
+					<option class="op" value="본견(비단)">본견(비단)</option>
+					<option class="op" value="보화단">보화단</option>
+					<option class="op" value="옥사">옥사</option>
+					<option class="op" value="물실크">물실크</option>
 			</td>
 		</tr>
 		
 		<tr>
 			<td>사이즈</td>
-			<td><select id="category2" class= "GoodsSelect">
-					<option class="op">선택</option>
-					<option class="op">XL</option>
-					<option class="op">L</option>
-					<option class="op">M</option>
-					<option class="op">S</option>
-					<option class="op">XS</option>
+			<td><select id="category3" class= "GoodsSelect"  name="GoodsSize" >
+					<option class="op"  selected="selected">선택</option>
+					<option class="op" value="XL">XL</option>
+					<option class="op" value="L">L</option>
+					<option class="op" value="M">M</option>
+					<option class="op" value="S">S</option>
+					<option class="op" value="XS">XS</option>
 			</td>
 		</tr>
 		
 		<tr>
 			<td>수량</td>
-			<td><input type="text" class= "Goodsinsert"></td>
+			<td><input type="text" class= "Goodsinsert" name="GoodsSoo" value="<%=goods.getGoodsSoo()%>" ></td>
 		</tr>
 		<tr>
 			<td>가격</td>
-			<td><input type="text" class= "Goodsinsert"></td>
+			<td><input type="text" class= "Goodsinsert" name="GoodsPrice" value="<%=goods.getGoodsPrice()%>"></td>
 		</tr>
 		<tr>
 			<td>배송비</td>
-			<td><input type="text" class= "Goodsinsert"></td>
+			<td><input type="text" class= "Goodsinsert" name="GoodsRentPrice" value="<%=goods.getGoodsRentPrice()%>"></td>
 		</tr>
 	
 		<tr>
 			<td>할인율</td>
-			<td><input type="text"  class= "Goodsinsert" placeholder="%로 입력해주세요." value="0."></td>
+			<td><input type="text"  class= "Goodsinsert"  placeholder="%로 입력해주세요." value="0."></td>
 		</tr>
-	
-		
+
 		</table>
 
-		
+			<input type="submit" id="next" value="수정하기"/></a>
+		</form>
 
 	</section>
 	

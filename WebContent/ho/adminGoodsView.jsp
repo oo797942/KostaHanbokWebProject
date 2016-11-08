@@ -7,7 +7,7 @@
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
 <% String projectName = "/ProjectExam";
- 
+
 	HoGoods goods = null;
 	Object obj = request.getAttribute("GoodsView");
 	if(obj != null) goods = (HoGoods)obj;
@@ -17,13 +17,14 @@
 %>
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
-<script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
+<script src="<%= projectName %>/ho/js/jquery-3.1.1.min.js"></script>
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
-
-
-	$("category1").val("<%= goods.getGoodsCate() %>")
-
+	$(function(){		
+	$("#category1 > option[value='<%= goods.getGoodsCate() %>']").attr("selected","selected");
+	$("#category2 > option[value='<%= goods.getGoodsColor() %>']").attr("selected","selected");
+	$("#category3> option[value='<%= goods.getGoodsSize() %>']").attr("selected","selected");
+	});
 </script>
 
 </head>
@@ -45,9 +46,9 @@
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=adminGoodsList"><input type="button" id="back" value="뒤로가기"/></a>
-			<a href="<%= projectName %>/1.ho?cmd=adminGoodsUpdate"><input type="button" id="next" value="수정하기"/></a>
-			<a href="<%= projectName %>/1.ho?cmd=adminPageDelete"><input type="button" id="delete" value="삭제하기"/></a>
+			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
+			<a href="<%= projectName %>/1.ho?cmd=adminGoodsUpdate&id=<%=goods.getGoodsId()%>"><input type="button" id="next" value="수정하기"/></a>
+			<a href="<%= projectName %>/1.ho?cmd=adminPageDelete&id=<%=goods.getGoodsName()%>"><input type="button" id="delete" value="삭제하기"/></a>
 		<!-- 등록 -->
 		<table border="2" width="1000" height="560">
 		<tr>
@@ -57,16 +58,16 @@
 		<tr>
 			<td>카테고리</td>
 			<td><select id="category1" class= "GoodsSelect"  disabled="disabled">
-			<option class="op">선택</option>
-			<option class="op">생활 한복 -남</option>
-			<option class="op">생활 한복 -남</option>
-			<option class="op">개량 한복 -남</option>
-			<option class="op">개량 한복 -여</option>
-			<option class="op">퓨전 한복 -남</option>
-			<option class="op">퓨전 한복 -여</option>
-			<option class="op">아동 한복 -남</option>
-			<option class="op">아동 한복 -여</option>
-			<option class="op">악세서리</option>
+			<option class="op" selected="selected">선택</option>
+			<option class="op" value="생활 한복 -남">생활 한복 -남</option>
+			<option class="op" value="생활 한복 -여">생활 한복 -여</option>
+			<option class="op" value="개량 한복 -남">개량 한복 -남</option>
+			<option class="op" value="개량 한복 -여">개량 한복 -여</option>
+			<option class="op" value="퓨전 한복 -남">퓨전 한복 -남</option>
+			<option class="op" value="퓨전 한복 -여">퓨전 한복 -여</option>
+			<option class="op" value="아동 한복 -남">아동 한복 -남</option>
+			<option class="op" value="아동 한복 -여">아동 한복 -여</option>
+			<option class="op" value="악세서리">악세서리</option>
 			</select></td>
 			</tr>
 		<tr>
@@ -77,29 +78,29 @@
 		
 		<tr>
 			<td>설명</td>
-			<td><textarea  rows="4"  class= "GoodsContent" value="<%=goods.getGoodsInfo()%>" disabled="disabled"></textarea> </td>
+			<td><textarea  rows="4"  class= "GoodsContent"disabled="disabled"><%=goods.getGoodsInfo()%></textarea></td>
 		</tr>
 		
 			<td>원단</td>
 			<td><select id="category2" class= "GoodsSelect"  disabled="disabled">
-					<option class="op">선택</option>
-					<option class="op">양단</option>
-					<option class="op">본견(비단)</option>
-					<option class="op">보화단</option>
-					<option class="op">옥사</option>
-					<option class="op">물실크</option>
+					<option class="op"  selected="selected">선택</option>
+					<option class="op" value="양단">양단</option>
+					<option class="op" value="본견(비단)">본견(비단)</option>
+					<option class="op" value="보화단">보화단</option>
+					<option class="op" value="옥사">옥사</option>
+					<option class="op" value="물실크">물실크</option>
 			</td>
 		</tr>
 		
 		<tr>
 			<td>사이즈</td>
-			<td><select id="category2" class= "GoodsSelect"  disabled="disabled">
-					<option class="op">선택</option>
-					<option class="op">XL</option>
-					<option class="op">L</option>
-					<option class="op">M</option>
-					<option class="op">S</option>
-					<option class="op">XS</option>
+			<td><select id="category3" class= "GoodsSelect"  disabled="disabled">
+					<option class="op"  selected="selected">선택</option>
+					<option class="op" value="XL">XL</option>
+					<option class="op" value="L">L</option>
+					<option class="op" value="M">M</option>
+					<option class="op" value="S">S</option>
+					<option class="op" value="XS">XS</option>
 			</td>
 		</tr>
 		

@@ -49,6 +49,28 @@ $(function(){
 		$("#footmenu").hide();
 	}).css('cursor','pointer');
 
+	
+	$('#product').click(function(){
+		$.ajax({			
+			url : '<%=projectName%>/logout.ho?cmd=product-page',
+			type : 'post',
+			success : function(data){
+				var data12 = $('person', data);
+					$('#productimg').append("<tr>");
+				data12.each(function(){
+					var text = $('name',this).text();
+					$('#productimg').append("<td>"+"<img width='180px' height='180px' src=/ProjectExam/ho/upload/"+text+"></td>");
+				});	
+					$('#productimg').append("</tr>");
+			},
+			error : function(){
+				alert('에러 발생');	
+			}
+		});
+	});
+	
+	
+	
 });
 	function kkk(){
 		
@@ -173,7 +195,12 @@ $(function(){
 			<a class="contentXbutton">X</a>
 				<!-- img 사이즈 180x180 가로 5장 세로 3장 -->
 				<table style="border: 1px solid white-space; width:60%; height: 100px; margin: auto; ">
-				<tr >
+		
+				<tbody id = "productimg">
+				
+				</tbody>
+		
+			<%-- 	<tr >
 					<td><img alt="수지" src="<%= projectName %>/ho/img/suzi.jpg">	</td>	
 					<td><img alt="수지" src="<%= projectName %>/ho/img/suzi.jpg">	</td>	
 					<td><img alt="수지" src="<%= projectName %>/ho/img/suzi.jpg">	</td>	
@@ -193,7 +220,7 @@ $(function(){
 					<td><img alt="수지" src="<%= projectName %>/ho/img/suzi.jpg"></td>			
 					<td><img alt="수지" src="<%= projectName %>/ho/img/suzi.jpg"></td>			
 					<td><img alt="수지" src="<%= projectName %>/ho/img/suzi.jpg">	</td>
-				</tr>
+				</tr> --%>
 				</table>
 		</div>
 

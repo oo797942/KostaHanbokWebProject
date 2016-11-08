@@ -31,18 +31,20 @@
 	</header>
 	
 	<section>
-		<a href="<%= projectName %>/1.ho?cmd=adminGoodsList"><input type="button" id="back" value="뒤로가기"/></a>
+		<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 		
 		<!-- 등록 -->
+		<form action="<%= projectName %>/xxxxx.ho?" method="get">
+		<input type="hidden" name="id" id="id" value="<%= request.getParameter("id")%>" >
+		<input type="hidden" name="cmd" id="cmd" value="delete"/>		
 		<table width="1000" height="560">
-		
 		<tr>
-			<td><input type="text" class= "Goodsinsert"></td>
-			<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsList"><input type="button" id="deletebtn" value="삭제하기"/></a></td>
+			<td><input type="text" class= "Goodsinsert" name="Goodsdelete" id="Goodsdelete"></td>
+			<td><input type="submit" id="deletebtn" value="삭제하기"/></td>
 		</tr>
 		
 		</table>
-
+		</form>
 		
 
 	</section>

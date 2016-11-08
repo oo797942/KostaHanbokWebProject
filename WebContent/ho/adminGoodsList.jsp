@@ -2,12 +2,15 @@
 <%@ page import="ho.model.HoGoods"%>
 <%@ page import="java.util.List" %>
 <% String projectName = "/ProjectExam"; 
-	 
+	
 	List<HoGoods> goods=null;
 	Object obj =request.getAttribute("GoodsList");
 	
 
 	if(obj !=null) goods = (List<HoGoods>)obj;
+
+	
+
 
 	
 %>
@@ -21,7 +24,20 @@
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+	
+	$("select").each(function(){
+	<% for(HoGoods good : goods){ %>
+		$("#<%=good.getGoodsId()%>").find("option[value='<%=good.getGoodsSoo()%>']").attr("selected","selected");
+	<% } %>
+	})
+	
+	
+		
+	});
 
+</script>
 
 </head>
 <body>
@@ -51,16 +67,27 @@
     		 <td> 카테고리 </td>
   	   		 <td> 상품명 </td>
   	   		 <td> 수량 </td>
+ 	   		 <td> 구분 </td>
  	 </tr>
    
    	<% for(HoGoods good : goods){ %>
    <tr>	
    		<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsCate() %></a></td>
  	  	<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsName() %></a></td>
-  		<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsSoo() %></a></td>
+  		<td>
+  		<select name="<%=good.getGoodsId()%>" id ="<%=good.getGoodsId()%>" style="width : 60px" > <% for(int i = 0; i<=100; i++){ %>
+  		 	<option value="<%=i%>"> <%= i %></option>
+  		 <% } %>
+  		 </select></td>
+  	    <td><img width="50px" height="50px" src="<%=projectName%>/ho/upload/<%= good.getGoodsImg() %>"></td>
+  		<td width="100"><a href="<%= projectName %>/1.ho?cmd=adminPageDelete&id=<%= good.getGoodsName() %>">
+  		<input type="button" id="tddel" value="삭제하기"/></a>
+  		<input type="button" id="tdmodify" value="입고"/>
+  		</td>
    </tr>
    <% } %>
 	</table> 
+
 
 	</section>
 	

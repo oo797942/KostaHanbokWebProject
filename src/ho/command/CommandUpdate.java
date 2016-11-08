@@ -13,10 +13,10 @@ import ho.model.HoException;
 import ho.model.HoMember;
 import ho.service.HoMemberService;
 
-public class CommandInsert implements Command{
+public class CommandUpdate implements Command{
 	private String next;
 	
-	public CommandInsert( String _next ){
+	public CommandUpdate( String _next ){
 		next = _next;
 	}
 	
@@ -25,13 +25,14 @@ public class CommandInsert implements Command{
 			request.setCharacterEncoding("utf-8");
 			HashMap<String, Object> memMap= new HashMap<String,Object>();
 
-			System.out.println("CommandInsert에 들어왔음");
+			System.out.println("CommandUpdate에 들어왔음");
 			String cmd = request.getParameter("cmd");
 			
-			if(cmd.equals("adminGoodsimgInsert")){
+			if(cmd.equals("adminGoodsimgUpdate")){
 			
-			System.out.println("CommandInsert에서 imgInsert부분에 들어왔음");
+			System.out.println("CommandUpdate에서 imgUpdate부분에 들어왔음");
 			String GoodsName = request.getParameter("GoodsName");
+			System.out.println(GoodsName);
 			String GoodsCate = request.getParameter("GoodsCate");
 			String GoodsInfo = request.getParameter("GoodsInfo");
 			String GoodsColor = request.getParameter("GoodsColor");
@@ -56,13 +57,12 @@ public class CommandInsert implements Command{
 			memMap.put("GoodsPrice", GoodsPrice);
 			memMap.put("GoodsRentPrice", GoodsRentPrice);
 			
-			HoMemberService.getInstance().GoodsInsert(memMap);
+			HoMemberService.getInstance().GoodsUpdate(memMap);
 			System.out.println("insert성공");
 			}
 			
 			if(cmd.equals("adminGoodsList")){
-				System.out.println("니 여기 왔니?");
-				System.out.println("CommandInsert에서 imgListInsert부분에 들어왔음");
+				System.out.println("CommandUpdate에서 imgListUpdate부분에 들어왔음");
 				String GoodsName = request.getParameter("GoodsName");
 				System.out.println(GoodsName);
 				Part filePart1 = request.getPart("image1");
@@ -81,10 +81,13 @@ public class CommandInsert implements Command{
 				memMap.put("image2", realPath2);
 				memMap.put("image3", realPath3);
 			
-
-				HoMemberService.getInstance().GoodsimageInsert(memMap);
+				HoMemberService.getInstance().GoodsimageUpdate(memMap);
+				
 				System.out.println("imageInsert 성공");
 			}
+
+		
+			
 			
 		}catch( Exception ex ){
 			throw new CommandException("CommandInsert.java < 입력시 > " + ex.toString() ); 
