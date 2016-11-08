@@ -42,13 +42,19 @@ public class HoControl extends HttpServlet {
 		commandMap.put("main-page", new CommandNull("HoMainForm.jsp"));
 		commandMap.put("logout-page", new CommandNull("LogoutService.jsp"));
 		
+		//회원가입 페이지
+		commandMap.put("join-form", new CommandNull("ho_join.jsp"));
+		commandMap.put("check-id", new CommandCheckId("CheckId.jsp"));
+		commandMap.put("input-save", new CommandMemInsert("JoinOk.jsp"));
+		
 		
 		
 		commandMap.put("shoplogin-page", new CommandLoginSess("LoginPopUp.jsp"));
 		commandMap.put("shop-login", new CommandLogin("LoginService.jsp"));
 		commandMap.put("shop-main", new CommandNull("ShoppingMain.jsp"));
 		commandMap.put("go-store", new CommandNull("ShoppingMain.jsp"));
-
+		
+		
 		
 		// 쇼핑몰 페이지
 		commandMap.put("go-mypage", new CommandLogin("ShoppingMyPage.jsp"));

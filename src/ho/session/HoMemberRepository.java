@@ -154,6 +154,20 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
+	public void insertMember(HashMap<String, Object> member){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+		int result = 	sess.insert(namespace+".insertMember",member);
+		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
+				sess.commit();
+		}else{
+				sess.rollback();
+		}
+		}finally{
+			sess.close();
+		}
+	}
+
 	
 }
 
