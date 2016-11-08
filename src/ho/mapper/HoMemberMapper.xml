@@ -80,11 +80,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 
-	<update id="UpdateGoods">
-		UPDATE item SET I_CATEGORY=#{GoodsCate}, I_IMG =
-		#{GoodsImg},I_INFO=#{GoodsInfo},I_COLOR=#{GoodsColor},I_SOO=#{GoodsSoo},I_PRICE=#{GoodsPrice},I_RENT_PRICE=#{GoodsRentPrice},I_SIZE=#{GoodsSize}
-		WHERE I_NAME=#{GoodsName}
-	</update>
 
 <delete id ="GoodsImgdelete" parameterType="hashmap" >
 DELETE FROM ITEMIMG WHERE Img_NAME = #{id}
@@ -95,7 +90,6 @@ DELETE FROM ITEMIMG WHERE Img_NAME = #{id}
 <update id="UpdateGoods">
 UPDATE item SET I_CATEGORY=#{GoodsCate}, I_IMG = #{GoodsImg},I_INFO=#{GoodsInfo},I_COLOR=#{GoodsColor},I_SOO=#{GoodsSoo},I_PRICE=#{GoodsPrice},I_RENT_PRICE=#{GoodsRentPrice},I_SIZE=#{GoodsSize} WHERE I_NAME=#{GoodsName}
 </update>
->>>>>>> branch 'master' of https://github.com/oo797942/KostaHanbokWebProject.git
 
 	<update id="UpdateGoodsimg">
 		UPDATE itemimg SET IMG_1=#{image1}, IMG_2=#{image2},IMG_3=#{image3} WHERE
