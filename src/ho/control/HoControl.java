@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ho.command.Command;
 import ho.command.CommandBoardList;
+import ho.command.CommandBoardView;
 import ho.command.CommandCheckId;
 import ho.command.CommandDelete;
 import ho.command.CommandException;
@@ -82,9 +83,11 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminmenu1", new CommandNull("adminPagelist.jsp"));
 		commandMap.put("adminmenu2", new CommandNull("adminGoods.jsp"));
 		commandMap.put("adminmenu3", new CommandNull("adminMemlist.jsp"));
-		commandMap.put("adminmenu4", new CommandBoardList("adminBoardList.jsp"));
 		commandMap.put("adminPagelist", new CommandNull("adminPagelist.jsp"));
-
+		commandMap.put("adminBoardView", new CommandNull("adminBoardView.jsp"));
+		commandMap.put("adminmenu4", new CommandBoardList("adminBoardList.jsp"));
+		commandMap.put("adminBoardView", new CommandBoardView("adminBoardViewReply.jsp"));
+		
 		
 		commandMap.put("adminMemlist", new CommandNull("adminMemlist.jsp"));
 		commandMap.put("adminMemDelete", new CommandMemDelete("adminMemDelete.jsp"));
@@ -93,13 +96,10 @@ public class HoControl extends HttpServlet {
 		
 
 
-/*		commandMap.put("adminMemView", new CommandNull("adminMemView.jsp"));
-		commandMap.put("admiMemlist", new CommandNull("admiMemlist.jsp"));
+/*		
 		commandMap.put("adminGoodsUpdate", new CommandNull("adminGoodsUpdate.jsp"));
 		commandMap.put("adminGoodsimgUpdate", new CommandNull("adminGoodsimgUpdate.jsp"));
 		commandMap.put("adminPageDelete", new CommandNull("adminGoodsDelete.jsp"));
-		commandMap.put("adminBoardView", new CommandNull("adminBoardView.jsp"));
-		commandMap.put("adminBoardList", new CommandNull("adminBoardList.jsp"));
 */
 		
 	}

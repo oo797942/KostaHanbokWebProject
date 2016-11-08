@@ -54,13 +54,14 @@ $(function(){
 			url : '<%=projectName%>/logout.ho?cmd=product-page',
 			type : 'post',
 			success : function(data){
-				var data12 = $('person', data);
+				alert(data);
+				<%-- var data12 = $('person', data);
 					$('#productimg').append("<tr>");
 				data12.each(function(){
 					var text = $('name',this).text();
 					$('#productimg').append("<td>"+"<img width='180px' height='180px' src=<%=projectName%>/ho/upload/"+text+"></td>");
 				});	
-					$('#productimg').append("</tr>");
+					$('#productimg').append("</tr>"); --%>
 			},
 			error : function(){
 				alert('에러 발생');	

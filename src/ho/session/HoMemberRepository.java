@@ -235,4 +235,15 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
+	
+	public HoBoard BoardView(HashMap board){
+		//연결객체 얻어오기 (SqlSession)
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("BoardView에 들어왔음");
+			return sess.selectOne(namespace+".selectBoard" , board);
+		}finally{
+			sess.close();
+		}
+	}
 }

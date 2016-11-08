@@ -276,7 +276,7 @@ hr {
 	
 }
 
-#tddel,#tdmodify{
+#tddel,#tdmodify,#tdreply{
 	width:70px;
 	font-size : 15px;	
 	border-radius:5px; 

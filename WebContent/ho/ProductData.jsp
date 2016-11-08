@@ -10,7 +10,7 @@
 	if(obj !=null) goods = (List<HoGoods>)obj;
 	
 	
-	rtn_xml += "<custom>";
+	/* rtn_xml += "<custom>";
 	for(HoGoods good : goods){
 		if(!good.getGoodsImg().equals("null"))
 		rtn_xml += "<person>";
@@ -19,4 +19,14 @@
 	}
 	rtn_xml += "</custom>";
 	out.print(rtn_xml);
+	 */
+
+	ArrayList list = new ArrayList();
+	for(HoGoods good : goods){
+		if(!good.getGoodsImg().equals("null"))
+		list.add(good.getGoodsImg());
+	}
+	
+	out.print(list);
+	
 %>

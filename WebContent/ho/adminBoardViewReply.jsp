@@ -1,32 +1,23 @@
+<%@page import="ho.model.HoBoard"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="ho.model.HoBoard" %>
-<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<% String projectName = "/HoProject"; 
+<% String projectName = "/HoProject";
 
-	List<HoBoard> boards=null;
-	Object obj =request.getAttribute("BoardList");
-
-	System.out.println(obj);
-	if(obj !=null) boards = (List<HoBoard>)obj;
-
-
-
+	HoBoard board = null;
+	Object obj = request.getAttribute("BoardView");
+	
+	if(obj !=null) board = (HoBoard)obj;
 
 %>
-
-
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
-
-
 
 </head>
 <body>
@@ -39,33 +30,35 @@
 	<table id= "menutable">
 		<tr>
 			<td><a href="<%= projectName %>/1.ho?cmd=adminmenu1"><input type="button" class ="admenu" id="menu1" value="매출"/></a></td>
-		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" class ="admenu" id="menu2" value="상품"/></a></td>
-		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu3"><input type="button" class ="admenu" id="menu3" value="회원"/></a></td>
-		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu4"><input type="button" class ="admenu" id="menu4" value="게시판"/></a></td>	
+			<td><a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" class ="admenu" id="menu2" value="상품"/></a></td>
+			<td><a href="<%= projectName %>/1.ho?cmd=adminmenu3"><input type="button" class ="admenu" id="menu3" value="회원"/></a></td>
+			<td><a href="<%= projectName %>/1.ho?cmd=adminmenu4"><input type="button" class ="admenu" id="menu4" value="게시판"/></a></td>	
+		</tr>
+		
 		</table>
 	</header>
 	
 	<section>
-			<a href="adminMemView.jsp"><input type="button" id="back" value="뒤로가기"/></a>
-			
-	<table border="1" bordercolor="darkblue" width="1000">
-  	 <tr>
-  	   		 <td> 등록일 </td>
-    		 <td> 작성자 이름 </td>
-  	   		 <td> 게시글 제목 </td>
-   		     <td> 답변하기 </td>
- 	 </tr>
-   
-  	 <% for(HoBoard board : boards){ %>
-     <tr>	
- 	  		<td><%= board.getBoardDate() %></a></td>
-  			<td><%= board.getBoardWriter() %></a></td>
-   			<td><%= board.getBoardTitle() %></a></td>
-   			<td><a href="<%= projectName %>/1.ho?cmd=adminBoardView&id=<%=board.getBoardNo()%>"><input type="button" name="tdreply" id="tdreply" value="답변하기"/></a></td>
- 	  </tr>
-	<% } %>
-   </table>		
+
+	<table>
+		<tr>
+		<td>작성자</td> <td><%= board.getBoardWriter() %></td>
+		</tr>
+		<tr>
+		<td>제목</td> <td><%= board.getBoardTitle() %></td>
+		</tr>
+		<tr>
+		<td>내용</td> <td><%= board.getBoardContent() %></td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>답변하기</tr><td><textarea> 어디 한번 답변을 해 보입시다.</textarea></td>
+	</table>	
 		
+		
+		
+
 	</section>
 	
 	

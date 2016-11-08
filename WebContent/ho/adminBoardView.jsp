@@ -30,7 +30,7 @@
 	</header>
 	
 	<section>
-			<a href="adminBoardList.jsp"><input type="button" id="back" value="뒤로가기"/></a>
+			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 			
 			게시글 
 			

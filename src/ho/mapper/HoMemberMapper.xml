@@ -166,7 +166,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBoard" resultMap = "HoBoardMap" parameterType="hashmap">
 	
 	select * from board
-	
+		<where>
+	       	<choose>
+	            <when test="id neq null">
+	               b_no=#{id}
+	            </when>
+	        </choose>
+	    </where>
 	</select>
 
 </mapper>

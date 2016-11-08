@@ -69,9 +69,7 @@ public class HoMemberService {
 			System.out.println("MemberJoin에 들어왔음");
 			repo.insertMember(member);
 		}
-		
 
-		
 		public void MypageUpdate(HashMap<String,Object>  member){
 			System.out.println("MypageUpdate에 들어왔음"+ member);	
 			repo.updatemember(member);
@@ -91,8 +89,14 @@ public class HoMemberService {
 			System.out.println("MemUpdate에 들어왔음");
 			repo.updateMember(hm);
 		}
+		
 		public List<HoBoard> BoardList(){
 			System.out.println("BoardList에 들어왔음");	
 			return repo.selectBoard();
+		}
+		
+		public HoBoard BoardView(HashMap board){
+			System.out.println("BoardView에 들어왔음");	
+			return repo.BoardView(board);
 		}
 }
