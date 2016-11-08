@@ -25,6 +25,11 @@
 
 	if (session.getAttribute("yourid") == null) {
 	if( result == 1){
+		
+	      if(hm.getMemId().equals("admin")){
+	          response.sendRedirect(projectName+"/main.ho?cmd=admin-page");   
+	          return;
+	       }
 		// #2. 세션에 "id"라는 이름에 변수 user 값을 저장
 		System.out.println("로그인성공");
 		session.setAttribute("yourid",hm.getMemId());

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="ho.model.HoGoods" %>
 <%
-String projectName = "/ProjectExam";
+String projectName = "/HoProject";
 
 HoGoods goods = null;
 Object obj = request.getAttribute("GoodsView");

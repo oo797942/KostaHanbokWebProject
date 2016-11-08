@@ -4,7 +4,7 @@
  %>
  
  <% 
-	String projectName = "/ProjectExam";
+	String projectName = "/HoProject";
   
  	response.sendRedirect(projectName+"/main.ho?cmd=list-page");	
  

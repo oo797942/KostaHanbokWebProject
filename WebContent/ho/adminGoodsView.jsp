@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<% String projectName = "/ProjectExam";
+<% String projectName = "/HoProject";
 
 	HoGoods goods = null;
 	Object obj = request.getAttribute("GoodsView");

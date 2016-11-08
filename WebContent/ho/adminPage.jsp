@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<% String projectName = "/ProjectExam"; %>
+<% String projectName = "/HoProject"; %>
 <!DOCTYPE html>
 <html>
 <head>
