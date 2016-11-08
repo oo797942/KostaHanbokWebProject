@@ -52,7 +52,7 @@ public class HoControl extends HttpServlet {
 		// admin 페이지
 		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
 		commandMap.put("adminGoodsimgInsert", new CommandInsert("adminGoodsimgInsert.jsp"));
-		commandMap.put("adminGoodsList", new CommandInsert("adminInsertSuccess.jsp"));
+		commandMap.put("adminGoodsInList", new CommandInsert("adminInsertSuccess.jsp"));
 		commandMap.put("list-page", new CommandList("adminGoodsList.jsp"));
 		commandMap.put("adminGoodsView", new CommandGoodsView("adminGoodsView.jsp"));
 		commandMap.put("adminPageDelete", new CommandNull("adminGoodsDelete.jsp"));
@@ -60,7 +60,7 @@ public class HoControl extends HttpServlet {
 		commandMap.put("modifylist", new CommandModify("adminGoodsList.jsp"));
 		commandMap.put("adminGoodsUpdate", new CommandGoodsView("adminGoodsUpdate.jsp"));
 		commandMap.put("adminGoodsimgUpdate", new CommandUpdate("adminGoodsimgUpdate.jsp"));
-		commandMap.put("adminGoodsList", new CommandUpdate("adminUpdateSuccess.jsp"));
+		commandMap.put("adminGoodsUpList", new CommandUpdate("adminUpdateSuccess.jsp"));
 		commandMap.put("product-page", new CommandList("ProductData.jsp"));
 		commandMap.put("admin-page", new CommandNull("adminPage.jsp"));
 		commandMap.put("adminmenu1", new CommandNull("adminPagelist.jsp"));

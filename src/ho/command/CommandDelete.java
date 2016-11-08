@@ -32,6 +32,7 @@ public class CommandDelete implements Command{
 				HashMap<String,Object> map = new HashMap();
 				map.put("id", id);
 				HoMemberService.getInstance().GoodsDelete(map);
+				HoMemberService.getInstance().GoodsImgDelete(map);
 			}			
 			
 			

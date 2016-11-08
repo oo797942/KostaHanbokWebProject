@@ -71,6 +71,12 @@ select * from item
 DELETE FROM ITEM WHERE I_NAME = #{id}
 </delete>
 
+<delete id ="GoodsImgdelete" parameterType="hashmap" >
+DELETE FROM ITEMIMG WHERE Img_NAME = #{id}
+</delete>
+
+
+
 <update id="UpdateGoods">
 UPDATE item SET I_CATEGORY=#{GoodsCate}, I_IMG = #{GoodsImg},I_INFO=#{GoodsInfo},I_COLOR=#{GoodsColor},I_SOO=#{GoodsSoo},I_PRICE=#{GoodsPrice},I_RENT_PRICE=#{GoodsRentPrice},I_SIZE=#{GoodsSize} WHERE I_NAME=#{GoodsName}
 </update>

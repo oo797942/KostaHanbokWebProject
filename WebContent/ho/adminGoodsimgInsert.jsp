@@ -35,7 +35,7 @@
 		
 		<!-- 등록 -->
 	<form action="<%= projectName %>/xxxxx.ho?" method="post" enctype="multipart/form-data"  >
-	<input type="hidden" name="cmd" id="cmd" value="adminGoodsList"/>
+	<input type="hidden" name="cmd" id="cmd" value="adminGoodsInList"/>
 		<table border="2" width="1000" height="560">
 		<tr>
 			<td>상품명</td>

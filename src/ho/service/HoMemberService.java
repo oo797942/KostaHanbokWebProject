@@ -49,6 +49,11 @@ public class HoMemberService {
 			System.out.println("GoodsDelete에 들어왔음"+admin);	
 			repo.GoodsDelte(admin);
 		}
+		public void GoodsImgDelete(HashMap<String,Object>  admin){
+			System.out.println("GoodsDelete에 들어왔음"+admin);	
+			repo.GoodsImgDelte(admin);
+		}
+
 		public void GoodsUpdate(HashMap<String,Object>  goods){
 			System.out.println("GoodsUpdate에 들어왔음"+goods);	
 			repo.updategoods(goods);
@@ -58,6 +63,5 @@ public class HoMemberService {
 			System.out.println("GoodsimageUpdate에 들어왔음"+ goods);	
 			repo.updategoodsimg(goods);
 		}
-		
 
 }
