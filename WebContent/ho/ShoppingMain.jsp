@@ -44,18 +44,15 @@ $(function(){
 	
 	$("#shoplogout").click(function() {
 		alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
-		var param = {a:"k", fromWhere:"shop"};
 
-		$.get("<%=projectName%>/logout.ho?cmd=logout-page",param,kkk);
+		window.location = "<%=projectName%>/logout.ho?cmd=logout-page";
+
 		$("#shoplogout").hide();
 		$("#shoplogin").show();
 	
 	}).css('cursor','pointer');
 	
 });
-function kkk(result){
-	
-}
 
 
 
@@ -77,6 +74,9 @@ function kkk(result){
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
+				<% if(sess != null){ %>
+				<td><text id="sessid"><%=sess %>님 로그인 하셨습니다.</text></td>
+				<%} %>	
 					<td><text id="shoplogin" name="login" >LOGIN</text></td>
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>

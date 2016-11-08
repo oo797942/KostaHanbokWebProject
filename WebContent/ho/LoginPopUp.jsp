@@ -42,6 +42,7 @@
   			
     		$(opener.document).find("#shoplogin").hide();
     		$(opener.document).find("#shoplogout").show();
+    		opener.location.href="<%=projectName%>/log.ho?cmd=shop-main";
 
     		window.close();
     	}else{
