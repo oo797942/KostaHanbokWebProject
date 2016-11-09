@@ -70,7 +70,7 @@
 
 				</tr>
 			</table>
-
+ 
 			<div id="topCate">
 				<a class=topCateMenu id="top-CateItem1">개량한복</a><br /> <br /> 
 				<a class=topCateMenu id="top-CateItem2">생활한복</a><br /><br /> 
