@@ -19,7 +19,7 @@ public class CommandUpdate implements Command {
 	public CommandUpdate(String _next) {
 		next = _next;
 	}
-
+ 
 	public String execute(HttpServletRequest request) throws CommandException {
 		try {
 			request.setCharacterEncoding("utf-8");
