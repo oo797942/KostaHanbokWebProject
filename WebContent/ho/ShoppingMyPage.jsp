@@ -131,7 +131,7 @@ if(sess != null){
 						<%}else{ %>
 						<td><a id="NoLoginMyPage">MY PAGE</a></td>
 						<%} %>
-						<td class="gray">l</td>
+						<td class="gray">l</td> 
 						<td><a href="#">Q&A</a></td>
 					</tr>
 				</table>

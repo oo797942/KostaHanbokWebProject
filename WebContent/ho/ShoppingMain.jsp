@@ -77,7 +77,7 @@ $(function(){
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-				<% if(sess != null){ %>
+				<% if(sess != null){ %> 
 				<td><text id="sessid"><%=sess %>님</text></td>
 				<%} %>	
 					<td><text id="shoplogin" name="login" >LOGIN</text></td>
