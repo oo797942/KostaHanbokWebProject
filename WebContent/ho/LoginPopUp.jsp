@@ -49,7 +49,7 @@
     		opener.location.href="<%=projectName%>/log.ho?cmd=shop-main";
 
     		window.close();
-    		
+    		}
     	}else{
     		if(result=="2"){
     			alert("다시로긴해");
