@@ -50,6 +50,11 @@ $(function(){
 	
 	}).css('cursor','pointer');
 	
+	$("#NoLoginMyPage").click(function(){
+		window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );			
+	});
+	
+	
 });
 
 
@@ -61,13 +66,13 @@ $(function(){
 </head>
 <body>
 
-
+ 
 	<header>
 		<div id="menu">
 			<img src="<%=projectName %>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
@@ -82,7 +87,11 @@ $(function(){
 					<td class="gray">l</td>
 					<td><a href="#">CART</a></td>
 					<td class="gray">l</td>
+					<%if(sess!=null){ %>
 					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
+					<%}else{ %>
+					<td><a id="NoLoginMyPage">MY PAGE</a></td>
+					<%} %>
 					<td class="gray">l</td>
 					<td><a href="#">Q&A</a></td>
 				</tr>
@@ -118,7 +127,7 @@ $(function(){
 				<option value="se">생활한복</option>
 				<option value="fu">퓨전한복</option>
 				<option value="ah">아동한복</option>
-				<option value="ak"">악세서리</option>
+				<option value="ak">악세서리</option>
 			</select> <input type="radio" id="titleSearch" name="searchRadio" value="제목"
 				class="searchRadio" /> <label class="searchLabel" for="titleSearch">제목</label>
 			<input type="radio" id="contentSearch" name="searchRadio" value="내용"

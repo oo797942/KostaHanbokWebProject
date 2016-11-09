@@ -113,6 +113,7 @@ public class CommandUpdate implements Command {
 			if (cmd.equals("submit-mypage")) {
 				System.out.println("CommandUpdate에서 mypage수정");
 				String id = request.getParameter("myId");
+				String name = request.getParameter("name");
 				String email = request.getParameter("email");
 				String tel = request.getParameter("tel");
 				String addr = request.getParameter("addr");
@@ -128,6 +129,7 @@ public class CommandUpdate implements Command {
 				memMap.put("memHeight", height);
 				memMap.put("memBust", bust);
 				memMap.put("memShoulder", shoulder);
+				memMap.put("memName", name);
 				if(!changePass.equals("") && changePass != null){
 					memMap.put("memPass", changePass);
 				}

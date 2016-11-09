@@ -88,7 +88,7 @@ public class HoMemberService {
 		public void MemUpdate(HashMap hm) {
 			System.out.println("MemUpdate에 들어왔음");
 			repo.updateMember(hm);
-		}
+		} 
 		
 		public List<HoBoard> BoardList(){
 			System.out.println("BoardList에 들어왔음");	

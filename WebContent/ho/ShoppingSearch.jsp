@@ -98,7 +98,7 @@
 				<option value="se">생활한복</option>
 				<option value="fu">퓨전한복</option>
 				<option value="ah">아동한복</option>
-				<option value="ak"">악세서리</option>
+				<option value="ak">악세서리</option>
 			</select> <input type="radio" id="titleSearch" name="searchRadio" value="제목"
 				class="searchRadio" /> <label class="searchLabel" for="titleSearch">제목</label>
 			<input type="radio" id="contentSearch" name="searchRadio" value="내용"

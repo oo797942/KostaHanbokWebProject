@@ -164,7 +164,7 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
-
+ 
 	public void updatemember(HashMap<String, Object> member) {
 		SqlSession sess = getSqlSessionFactory().openSession();
 		try {

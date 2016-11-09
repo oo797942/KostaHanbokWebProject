@@ -43,12 +43,13 @@
     		}else{
     /* 		alert("랄랄라"+id); */
     		//$(opener.document).find("#shoplogin").text("LOGOUT");
-  			
+  		 	
     		$(opener.document).find("#shoplogin").hide();
     		$(opener.document).find("#shoplogout").show();
     		opener.location.href="<%=projectName%>/log.ho?cmd=shop-main";
 
     		window.close();
+
     		}
     	}else{
     		if(result=="2"){
