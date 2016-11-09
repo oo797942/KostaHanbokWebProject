@@ -41,6 +41,11 @@ public class HoMemberService {
 			return repo.selectGoods();
 		}
 		
+		public List<HoGoods> GoodsCategory(HashMap category){
+			System.out.println("GoodsCategory에 들어왔음");
+			return repo.selectGoodsByCategory(category);
+		}
+		
 		public HoGoods GoodsView(HashMap id){
 			System.out.println("GoodsView에 들어왔음");
 			return repo.selectGoodsView(id);

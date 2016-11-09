@@ -29,7 +29,6 @@ public class CommandInsert implements Command{
 			String cmd = request.getParameter("cmd");
 			
 			if(cmd.equals("adminGoodsimgInsert")){
-			
 			System.out.println("CommandInsert에서 imgInsert부분에 들어왔음");
 			String GoodsName = request.getParameter("GoodsName");
 			String GoodsCate = request.getParameter("GoodsCate");

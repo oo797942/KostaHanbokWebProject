@@ -1,6 +1,25 @@
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	String projectName = "/HoProject";
+	String sessionValue = null;
+
+	Object sess = session.getAttribute("yourid");
+	System.out.println("세션값" + sess);
+
+	if (sess != null) {
+		sessionValue = (String) sess;
+	}
+	String category =  (String)request.getParameter("category");
+	List categoryList = (List)request.getAttribute("GoodsCategory");
+	System.out.println("리스트 크기: " + categoryList.size());
+	
+	int categorySize = 0;
+	int count = 0;
+	
+	if(categoryList.size() > 0){
+		categorySize = categoryList.size();
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -15,75 +34,101 @@
 <script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
 <script src="<%=projectName%>/ho/js/main.js"></script>
-<script src="<%=projectName%>/ho/js/search.js"></script>
+<script src="<%=projectName%>/ho/js/search.js"></script><script type="text/javascript">
+$(function(){
+
+	if("<%=sessionValue%>"=="null"){
+		$("#shoplogin").show();
+		$("#shoplogout").hide();
+	}else{
+		$("#shoplogin").hide();
+		$("#shoplogout").show();
+	}
+	
+	$("#shoplogin").click(function(){
+		window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );	
+		
+	}).css('cursor','pointer');
+	
+	
+	$("#shoplogout").click(function() {
+		alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
+
+		window.location = "<%=projectName%>/logout.ho?cmd=logout-page";
+
+		$("#shoplogout").hide();
+		$("#shoplogin").show();
+	
+	}).css('cursor','pointer');
+	
+	$("#NoLoginMyPage").click(function(){
+		window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );			
+	});
+	
+	
+});
+
+
+
+</script>
+
+
+
 </head>
 <body>
 
-	<nav>
-		<table id="shoppingBag" cellspacing="0">
-			<tr>
-				<td height="10px"></td>
-			</tr>
-			<tr>
-				<td style="background: #696969;"><a href="#" style ="color: white;">장바구니</a></td>
-			</tr>
-			<tr>
-				<td>
-					<table cellspacing="15" width="125px">
-						<tr>
-							<td class="shoppingBagItem">
-							<img src="<%=projectName %>/ho/img/banner_image_01.jpeg" width="90px" height="90px"/>
-							</td>
-						</tr>
-						<tr>
-							<td class="shoppingBagItem"></td>
-						</tr>
-						<tr>
-							<td class="shoppingBagItem"></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-	</nav>
-
+ 
 	<header>
 		<div id="menu">
-			<img src="<%=projectName%>/ho/img/topMenu.png" />
+			<img src="<%=projectName %>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="<%=projectName%>/ho/img/logo.png" /></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-					<td><a href="#">LOGIN </a></td>
+				<% if(sess != null){ %>
+				<td><text id="sessid"><%=sess %>님</text></td>
+				<%} %>	
+					<td><text id="shoplogin" name="login" >LOGIN</text></td>
+					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
-					<td><a href="#">JOIN</a></td>
+					<td><a href="<%=projectName %>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
 					<td><a href="#">CART</a></td>
 					<td class="gray">l</td>
-					<td><a href="#">MY PAGE</a></td>
+					<%if(sess!=null){ %>
+					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
+					<%}else{ %>
+					<td><a id="NoLoginMyPage">MY PAGE</a></td>
+					<%} %>
 					<td class="gray">l</td>
 					<td><a href="#">Q&A</a></td>
 				</tr>
 			</table>
+
 			<div id="topCate">
 				<a id="top-CateItem1">개량한복</a><br /> <br /> <a id="top-CateItem2">생활한복</a><br />
 				<br /> <a id="top-CateItem3">퓨전한복</a><br /> <br /> <a
-					id="top-CateItem4">아동한복</a><br /> <br /> <a id="top-CateItem5">악세서리</a>
+					id="top-CateItem4">아동한복</a><br /> <br />
+					<a id="top-CateItem5"  href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
 			</div>
 			<div id="topCate-Cate1">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남 자</a><br />
+				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여 자</a>
 			</div>
 			<div id="topCate-Cate2">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남 자</a><br />
+				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여 자</a>
 			</div>
 			<div id="topCate-Cate3">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남 자</a><br />
+				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여 자</a>
 			</div>
 			<div id="topCate-Cate4">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남 자</a><br />
+				<a class="woman" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여 자</a>
 			</div>
 			<a id="searchBtn">search</a> <a id="xbutton">X</a>
 			<hr color="#f5f5f5" size="1" noshade="noshade" />
@@ -110,66 +155,26 @@
 	<section>
 
 		<div id="searchPageTop">
-			<p>통합검색 > 무슨한복 > 여자</p>
+			<p>한복검색 > <%=category %></p>
 		</div>
 		<br />
 		<table id="itemTable" cellspacing="0">
+		<% for(int i=0; i<categorySize;i++){ %>
+		<% if(count == 0){ %>
 			<tr>
+			<%} %>
+
 				<td class="itemTd"><img id="itemtImg1" class="itemImg"
 					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
 					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
+				<%count ++; %>
+			<%if(count==0){ %>
 			</tr>
-			<tr>
-				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
+			<%} %>
+			<%if(i==categorySize){ %>
 			</tr>
-			<tr>
-				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-			</tr>
-			<tr>
-				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg2" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg3" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-				<td class="itemTd"><img id="itemtImg4" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
-			</tr>
+			<%} %>
+			<%} %>
 		</table>
 	</section>
 	<footer>

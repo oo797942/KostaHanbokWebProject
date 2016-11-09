@@ -73,11 +73,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<when test="memPass neq null">
 				UPDATE member
 				SET m_email
-				= #{memEmail} ,m_tel = #{memTel}, m_addr =
+				= #{memEmail} ,m_tel =
+				#{memTel}, m_addr =
 				#{memAddr},
 				m_cm =
-				#{memHeight}, m_bust = #{memBust}, m_shoulder =
-				#{memShoulder}, m_pass = #{memPass}, m_name = #{memName}
+				#{memHeight}, m_bust =
+				#{memBust}, m_shoulder =
+				#{memShoulder}, m_pass = #{memPass}, m_name
+				= #{memName}
 				WHERE
 				m_id=#{memId}
 			</when>
@@ -93,7 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				m_id=#{memId}
 			</otherwise>
 		</choose>
- 
+
 	</update>
 
 
@@ -118,12 +121,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="Goodlist" resultMap="HoGoodsMap" parameterType="hashmap">
 		select * from item
 		<where>
-			<if test="id neq null">
-				i_no = #{id}
-			</if>
-			<if test="countid neq null">
-				i_name = #{countid}
-			</if>
+			<choose>
+				<when test="id neq null">
+					i_no = #{id}
+				</when>
+				<when test="countid neq null">
+					i_name = #{countid}
+				</when>
+				<when test="category neq null">
+					i_category = #{category}
+				</when>
+			</choose>
 		</where>
 	</select>
 
@@ -154,12 +162,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteMember" parameterType="hashmap">
 		DELETE
 		FROM MEMBER
-		WHERE m_id=#{mId}
+		WHERE
+		m_id=#{mId}
 	</delete>
 
 	<update id="updateMember" parameterType="hashmap">
 		UPDATE MEMBER
-		SET m_id=#{memId} , m_name=#{memName},
+		SET
+		m_id=#{memId} , m_name=#{memName},
 		m_Email=#{memEmail},m_addr=#{memAddrNo}, m_tel=#{memTel},
 		m_coin=#{memCoin}, m_cm=#{memHeight} , m_bust=#{memBust},
 		m_shoulder=#{memShoulder}

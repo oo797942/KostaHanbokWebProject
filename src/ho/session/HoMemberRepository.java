@@ -89,6 +89,17 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
+	
+	public List<HoGoods> selectGoodsByCategory(HashMap category) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			System.out.println("selectGoods에 들어왔음");
+
+			return sess.selectList(namespace + ".Goodlist", category);
+		} finally {
+			sess.close();
+		}
+	}
 
 	public HoGoods selectGoodsView(HashMap id) {
 		SqlSession sess = getSqlSessionFactory().openSession();
