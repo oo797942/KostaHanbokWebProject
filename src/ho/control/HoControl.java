@@ -20,6 +20,7 @@ import ho.command.CommandGoodsInputSearch;
 import ho.command.CommandGoodsView;
 import ho.command.CommandInputQna;
 import ho.command.CommandInsert;
+import ho.command.CommandInventoryUpdate;
 import ho.command.CommandList;
 import ho.command.CommandLogin;
 import ho.command.CommandLoginSess;
@@ -94,6 +95,10 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminBoardView", new CommandNull("adminBoardView.jsp"));
 		commandMap.put("adminmenu4", new CommandBoardList("adminBoardList.jsp"));
 		commandMap.put("adminBoardView", new CommandBoardView("adminBoardViewReply.jsp"));
+		commandMap.put("adminGoodsInventory", new CommandNull("adminGoodsInventory.jsp"));
+		commandMap.put("inventoryUpdate", new CommandInventoryUpdate("adminUpdateSuccess.jsp"));
+		
+		
 		
 		commandMap.put("write-form", new CommandNull("HoWriteForm.jsp"));
 		commandMap.put("login-check", new CommandNull("HoLoginCheck.jsp"));

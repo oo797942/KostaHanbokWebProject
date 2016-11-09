@@ -45,8 +45,9 @@
 		<div id="Menuimg">
 			<a href="#"><img id="logo" src="<%= projectName %>/ho/img/logo.png" /></a>
 		</div>
-	<div id="admin"> admin 님이 접속하셨습니다. </div> <br/>
-	
+	<div id="admin"> admin 님이 접속하셨습니다.
+		<a href="<%=projectName%>/1.ho?cmd=main-page"><input type="button" value="Logout" id="logoutbtn" name="logoutbtn"></a>
+	 </div> <br/>
 	<table id= "menutable">
 		<tr>
 		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu1"><input type="button" class ="admenu" id="menu1" value="매출"/></a></td>
@@ -74,15 +75,12 @@
    <tr>	
    		<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsCate() %></a></td>
  	  	<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsName() %></a></td>
-  		<td>
-  		<select name="<%=good.getGoodsId()%>" id ="<%=good.getGoodsId()%>" style="width : 60px" > <% for(int i = 0; i<=100; i++){ %>
-  		 	<option value="<%=i%>"> <%= i %></option>
-  		 <% } %>
-  		 </select></td>
+  		<td><%=good.getGoodsSoo()%></td>
   	    <td><img width="50px" height="50px" src="<%=projectName%>/ho/upload/<%= good.getGoodsImg() %>"></td>
-  		<td width="100"><a href="<%= projectName %>/1.ho?cmd=adminPageDelete&id=<%= good.getGoodsName() %>">
+  		<td width="100"><a href="<%= projectName %>/1.ho?cmd=adminPageDelete&count=<%=good.getGoodsSoo()%>id=<%= good.getGoodsName()%>">
   		<input type="button" id="tddel" value="삭제하기"/></a>
-  		<input type="button" id="tdmodify" value="입고"/>
+  		<a href="<%= projectName %>/1.ho?cmd=adminGoodsInventory&id=<%= good.getGoodsName()%>&count=<%=good.getGoodsSoo()%>">
+  		<input type="button" id="tdmodify" value="입고"/></a>
   		</td>
    </tr>
    <% } %>

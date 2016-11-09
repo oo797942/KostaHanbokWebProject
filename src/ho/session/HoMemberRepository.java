@@ -283,6 +283,21 @@ public class HoMemberRepository {
 		} finally {
 			sess.close();
 		}
-
+	}
+	
+	public void GoodsInventory(HashMap board){
+		//연결객체 얻어오기 (SqlSession)
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("GoodsInventory에 들어왔음" + board);
+			int result = sess.update(namespace+".GoodsInventory" , board);
+			if(result>0){
+				sess.commit();
+			}else{
+				sess.rollback();
+			}
+		}finally{
+			sess.close();
+		}
 	}
 }
