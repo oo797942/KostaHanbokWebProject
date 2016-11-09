@@ -13,7 +13,7 @@
 	String category =  (String)request.getParameter("category");
 	List categoryList = (List)request.getAttribute("GoodsCategory");
 	System.out.println("리스트 크기: " + categoryList.size());
-	
+	 
 	int categorySize = 0;
 	int count = 0;
 	
