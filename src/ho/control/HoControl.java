@@ -110,7 +110,7 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminMemUpdateForm", new CommandMemView("adminMemUpdateForm.jsp"));
 		commandMap.put("adminMemUpdateSave", new CommandMemUpdate("adminMemUpdateSave.jsp"));
 		
-
+ 
 
 /*		
 		commandMap.put("adminGoodsUpdate", new CommandNull("adminGoodsUpdate.jsp"));
