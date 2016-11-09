@@ -27,7 +27,7 @@
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
 
 
-
+ 
 </head>
 <body>
 	<header>
