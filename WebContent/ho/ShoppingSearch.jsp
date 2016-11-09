@@ -4,15 +4,34 @@
 <%
 	String projectName = "/HoProject";
 	String sessionValue = null;
+	String vals = null;
+	String inputSearch_category = null;
 
 	Object sess = session.getAttribute("yourid");
 	System.out.println("세션값" + sess);
+	List categoryList =  null;
 
 	if (sess != null) {
 		sessionValue = (String) sess;
 	}
 	String category =  (String)request.getParameter("category");
-	List categoryList = (List)request.getAttribute("GoodsCategory");
+	
+	if(request.getAttribute("GoodsCategory") !=null){
+		categoryList = (List)request.getAttribute("GoodsCategory");
+	}else{
+		categoryList = (List)request.getAttribute("GoodsSearchFin");
+		vals = request.getParameter("val");
+		
+		if(request.getAttribute("categoryTemp")!=null){
+			inputSearch_category = (String)request.getAttribute("categoryTemp");
+		}else{
+			inputSearch_category = "통합검색";
+		}
+		
+		
+	}
+	
+	
 	System.out.println("리스트 크기: " + categoryList.size());
 	 
 	int categorySize = 0;
@@ -67,6 +86,17 @@ $(function(){
 	});
 	
 	
+	
+	$("#searchInput").keypress(function(event){
+		if(event.which == 13){
+			var option = $("#searchCategory").val();
+			var radio = $("input:radio[name=searchRadio]:checked").val();
+			var inputvalue = $("#searchInput").val();
+			window.location.href="<%=projectName%>/list.ho?cmd=search-input&option="+option+"&check="+radio+"&val="+inputvalue;			
+		}
+	});
+	
+	
 });
 
 
@@ -77,6 +107,34 @@ $(function(){
 
 </head>
 <body>
+	<nav>
+		<table id="shoppingBag" cellspacing="0">
+			<tr>
+				<td height="10px"></td>
+			</tr>
+			<tr>
+				<td style="background: #696969;"><a href="#"
+					style="color: white;">장바구니</a></td>
+			</tr>
+			<tr>
+				<td>
+					<table cellspacing="15" width="125px">
+						<tr>
+							<td class="shoppingBagItem"><img
+								src="<%=projectName%>/ho/img/banner_image_01.jpeg" width="90px"
+								height="90px" /></td>
+						</tr>
+						<tr>
+							<td class="shoppingBagItem"></td>
+						</tr>
+						<tr>
+							<td class="shoppingBagItem"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</nav>
 
  
 	<header>
@@ -89,7 +147,7 @@ $(function(){
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-				<% if(sess != null){ %>
+				<% if(sess != null){ %> 
 				<td><text id="sessid"><%=sess %>님</text></td>
 				<%} %>	
 					<td><text id="shoplogin" name="login" >LOGIN</text></td>
@@ -105,7 +163,7 @@ $(function(){
 					<td><a id="NoLoginMyPage">MY PAGE</a></td>
 					<%} %>
 					<td class="gray">l</td>
-					<td><a href="#">Q&A</a></td>
+					<td><a href="<%=projectName%>/logout.ho?cmd=write-form">Q&A</a></td>
 				</tr>
 			</table>
 
@@ -140,14 +198,14 @@ $(function(){
 				placeholder="Type Here To Search" /> <select id="searchCategory"
 				name="searchCategory">
 				<option value="total">통합검색</option>
-				<option value="ge">개량한복</option>
-				<option value="se">생활한복</option>
-				<option value="fu">퓨전한복</option>
-				<option value="ah">아동한복</option>
+				<option value="ge">개량 한복</option>
+				<option value="se">생활 한복</option>
+				<option value="fu">퓨전 한복</option>
+				<option value="ah">아동 한복</option>
 				<option value="ak">악세서리</option>
-			</select> <input type="radio" id="titleSearch" name="searchRadio" value="제목"
-				class="searchRadio" /> <label class="searchLabel" for="titleSearch">제목</label>
-			<input type="radio" id="contentSearch" name="searchRadio" value="내용"
+			</select> <input type="radio" id="titleSearch" name="searchRadio" value="title"
+				class="searchRadio" checked="checked"/> <label class="searchLabel" for="titleSearch">상품 이름</label>
+			<input type="radio" id="contentSearch" name="searchRadio" value="content"
 				class="searchRadio" /> <label class="searchLabel"
 				for="contentSearch" class="searchRadio">내용</label>
 		</div>
@@ -156,7 +214,11 @@ $(function(){
 	<section>
 
 		<div id="searchPageTop">
+		<%if (category!=null){ %>
 			<p>한복검색 > <%=category %></p>
+			<%}else{ %>
+			<p>한복검색 > <%=inputSearch_category %> > <%= vals %> </p>
+			<%} %>
 		</div>
 		<br />
 		<table id="itemTable" cellspacing="0">

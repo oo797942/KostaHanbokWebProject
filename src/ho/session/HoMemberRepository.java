@@ -89,13 +89,24 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
-	
+
 	public List<HoGoods> selectGoodsByCategory(HashMap category) {
 		SqlSession sess = getSqlSessionFactory().openSession();
 		try {
 			System.out.println("selectGoods에 들어왔음");
 
 			return sess.selectList(namespace + ".Goodlist", category);
+		} finally {
+			sess.close();
+		}
+	}
+
+	public List<HoGoods> selectGoodsByInput(HashMap option) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			System.out.println("selectGoodsByInput에 들어왔음");
+
+			return sess.selectList(namespace + ".Goodlist", option);
 		} finally {
 			sess.close();
 		}
@@ -175,7 +186,7 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
- 
+
 	public void updatemember(HashMap<String, Object> member) {
 		SqlSession sess = getSqlSessionFactory().openSession();
 		try {
@@ -191,84 +202,87 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
-	
+
 	public void deleteMember(HashMap hm) {
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-			String stmt = namespace+".deleteMember";
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			String stmt = namespace + ".deleteMember";
 			int result = sess.delete(stmt, hm);
-			if(result>0){
+			if (result > 0) {
 				sess.commit();
-			}else{
+			} else {
 				sess.rollback();
 			}
-		}finally{
-			sess.close();
-		}
-	}
-	public void insertMember(HashMap<String, Object> member){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-		int result = 	sess.insert(namespace+".insertMember",member);
-		if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
-				sess.commit();
-		}else{
-				sess.rollback();
-		}
-		}finally{
+		} finally {
 			sess.close();
 		}
 	}
 
-	
-	public void updateMember(HashMap hm) {
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-			String stmt = namespace+".updateMember";
-			int result = sess.update(stmt, hm);
-			if(result>0){
+	public void insertMember(HashMap<String, Object> member) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			int result = sess.insert(namespace + ".insertMember", member);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+								// 커밋해줘야함 이녀석은
 				sess.commit();
-			}else{
+			} else {
 				sess.rollback();
 			}
-		}finally{
+		} finally {
 			sess.close();
 		}
 	}
-	
-	public List<HoBoard> selectBoard(){
-		//연결객체 얻어오기 (SqlSession)
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
+
+	public void updateMember(HashMap hm) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			String stmt = namespace + ".updateMember";
+			int result = sess.update(stmt, hm);
+			if (result > 0) {
+				sess.commit();
+			} else {
+				sess.rollback();
+			}
+		} finally {
+			sess.close();
+		}
+	}
+
+	public List<HoBoard> selectBoard() {
+		// 연결객체 얻어오기 (SqlSession)
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
 			System.out.println("selectBoard에 들어왔음");
-			return sess.selectList(namespace+".selectBoard");
-		}finally{
+			return sess.selectList(namespace + ".selectBoard");
+		} finally {
 			sess.close();
 		}
 	}
-	
-	public HoBoard BoardView(HashMap board){
-		//연결객체 얻어오기 (SqlSession)
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
+
+	public HoBoard BoardView(HashMap board) {
+		// 연결객체 얻어오기 (SqlSession)
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
 			System.out.println("BoardView에 들어왔음");
-			return sess.selectOne(namespace+".selectBoard" , board);
-		}finally{
+			return sess.selectOne(namespace + ".selectBoard", board);
+		} finally {
 			sess.close();
 		}
 	}
-	public void insertQna(HashMap<String, Object> qnaMap){
-		SqlSession sess=getSqlSessionFactory().openSession();
-		try{
-			int result = 	sess.insert(namespace+".inputQna",qnaMap);
-			if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
-					sess.commit();
-			}else{
-					sess.rollback();
+
+	public void insertQna(HashMap<String, Object> qnaMap) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			int result = sess.insert(namespace + ".inputQna", qnaMap);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+								// 커밋해줘야함 이녀석은
+				sess.commit();
+			} else {
+				sess.rollback();
 			}
-			}finally{
-				sess.close();
-			}
+		} finally {
+			sess.close();
+		}
 
 	}
 }

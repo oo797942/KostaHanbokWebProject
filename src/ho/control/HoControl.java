@@ -16,6 +16,7 @@ import ho.command.CommandCheckId;
 import ho.command.CommandDelete;
 import ho.command.CommandException;
 import ho.command.CommandGoodsCategory;
+import ho.command.CommandGoodsInputSearch;
 import ho.command.CommandGoodsView;
 import ho.command.CommandInputQna;
 import ho.command.CommandInsert;
@@ -68,6 +69,8 @@ public class HoControl extends HttpServlet {
 		commandMap.put("go-mypage", new CommandLogin("ShoppingMyPage.jsp"));
 		commandMap.put("submit-mypage", new CommandUpdate("ShoppingMyPageUpdate.jsp"));
 		commandMap.put("search-category", new CommandGoodsCategory("ShoppingSearch.jsp"));
+		commandMap.put("search-input", new CommandGoodsInputSearch("ShoppingSearch.jsp"));
+		
 		
 	
 		// admin 페이지

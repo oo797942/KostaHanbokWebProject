@@ -131,6 +131,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="category neq null">
 					i_category = #{category}
 				</when>
+				<when test="name neq null and cate neq null">
+					i_name like '%'||#{name}||'%' AND i_category LIKE '%'||#{cate}||'%'
+				</when>
+				<when test="info neq null and cate neq null">
+					i_info like '%'||#{info}||'%' AND i_category LIKE '%'||#{cate}||'%'
+				</when>
+				<when test="name neq null">
+					i_name like '%'||#{name}||'%'
+				</when>
+				<when test="info neq null">
+					i_info like '%'||#{info}||'%'
+				</when>
 			</choose>
 		</where>
 	</select>

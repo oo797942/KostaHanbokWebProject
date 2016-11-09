@@ -55,6 +55,16 @@ $(function(){
 	});
 	
 	
+	$("#searchInput").keypress(function(event){
+		if(event.which == 13){
+			var option = $("#searchCategory").val();
+			var radio = $("input:radio[name=searchRadio]:checked").val();
+			var inputvalue = $("#searchInput").val();
+			window.location.href="<%=projectName%>/list.ho?cmd=search-input&option="+option+"&check="+radio+"&val="+inputvalue;			
+		}
+	});
+	
+	
 });
 
 
@@ -66,6 +76,34 @@ $(function(){
 </head>
 <body>
 
+ 	<nav>
+		<table id="shoppingBag" cellspacing="0">
+			<tr>
+				<td height="10px"></td>
+			</tr>
+			<tr>
+				<td style="background: #696969;"><a href="#"
+					style="color: white;">장바구니</a></td>
+			</tr>
+			<tr>
+				<td>
+					<table cellspacing="15" width="125px">
+						<tr>
+							<td class="shoppingBagItem"><img
+								src="<%=projectName%>/ho/img/banner_image_01.jpeg" width="90px"
+								height="90px" /></td>
+						</tr>
+						<tr>
+							<td class="shoppingBagItem"></td>
+						</tr>
+						<tr>
+							<td class="shoppingBagItem"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</nav>
  
 	<header>
 		<div id="menu">
@@ -128,14 +166,14 @@ $(function(){
 				placeholder="Type Here To Search" /> <select id="searchCategory"
 				name="searchCategory">
 				<option value="total">통합검색</option>
-				<option value="ge">개량한복</option>
-				<option value="se">생활한복</option>
-				<option value="fu">퓨전한복</option>
-				<option value="ah">아동한복</option>
+				<option value="ge">개량 한복</option>
+				<option value="se">생활 한복</option>
+				<option value="fu">퓨전 한복</option>
+				<option value="ah">아동 한복</option>
 				<option value="ak">악세서리</option>
-			</select> <input type="radio" id="titleSearch" name="searchRadio" value="제목"
-				class="searchRadio" /> <label class="searchLabel" for="titleSearch">제목</label>
-			<input type="radio" id="contentSearch" name="searchRadio" value="내용"
+			</select> <input type="radio" id="titleSearch" name="searchRadio" value="title"
+				class="searchRadio" checked="checked"/> <label class="searchLabel" for="titleSearch">상품 이름</label>
+			<input type="radio" id="contentSearch" name="searchRadio" value="content"
 				class="searchRadio" /> <label class="searchLabel"
 				for="contentSearch" class="searchRadio">내용</label>
 		</div>

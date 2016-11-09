@@ -30,10 +30,6 @@
 <script src="<%=projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%=projectName %>/ho/js/jquery.bxslider.min.js"></script>
 <script src="<%=projectName %>/ho/js/main.js"></script>
-
-<script type="text/javascript">
-
-</script>
 <style type="text/css">
 #id,#name,#title,#content{
 	float:right;
@@ -42,53 +38,114 @@
 	height:50px;
 }
 </style>
+	
+<script type="text/javascript">
+
+$(function(){
+
+	if("<%=sessionValue%>"=="null"){
+		$("#shoplogin").show();
+		$("#shoplogout").hide();
+	}else{
+		$("#shoplogin").hide();
+		$("#shoplogout").show();
+	}
+	
+	$("#shoplogin").click(function(){
+		window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );	
+		
+	}).css('cursor','pointer');
+	
+	
+	$("#shoplogout").click(function() {
+		alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
+
+		window.location = "<%=projectName%>/logout.ho?cmd=logout-page";
+
+		$("#shoplogout").hide();
+		$("#shoplogin").show();
+	
+	}).css('cursor','pointer');
+	
+	$("#NoLoginMyPage").click(function(){
+		window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );			
+	});
+	
+
+	
+	$("#searchInput").keypress(function(event){
+		if(event.which == 13){
+			var option = $("#searchCategory").val();
+			var radio = $("input:radio[name=searchRadio]:checked").val();
+			var inputvalue = $("#searchInput").val();
+			window.location.href="<%=projectName%>/list.ho?cmd=search-input&option="+option+"&check="+radio+"&val="+inputvalue;			
+		}
+	});
+	
+	
+});
+
+
+
+</script>
+
+
+
 </head>
 <body>
-<header>
+
+ 
+	<header>
 		<div id="menu">
 			<img src="<%=projectName %>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="<%=projectName%>/ho/img/logo.png" /></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-				<% if(sess != null){ %>
+				<% if(sess != null){ %> 
 				<td><text id="sessid"><%=sess %>님</text></td>
 				<%} %>	
 					<td><text id="shoplogin" name="login" >LOGIN</text></td>
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
-					<td><a href="<%=projectName %>/join.ho?cmd=join-form" style="color:black">JOIN</a></td>
-					<td class="gray">l</td>  
-					<td><a href="#" style="color:black">CART</a></td>
+					<td><a href="<%=projectName %>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
-					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>" style="color:black">MY PAGE</a></td>
+					<td><a href="#">CART</a></td>
 					<td class="gray">l</td>
-					<td><a href="<%=projectName%>/board.ho?cmd=board-list" style="color:black">Q&A</a></td>
- 
+					<%if(sess!=null){ %>
+					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
+					<%}else{ %>
+					<td><a id="NoLoginMyPage">MY PAGE</a></td>
+					<%} %>
+					<td class="gray">l</td>
+					<td><a href="<%=projectName%>/logout.ho?cmd=write-form">Q&A</a></td>
 				</tr>
 			</table>
- 
+
 			<div id="topCate">
-				<a class=topCateMenu id="top-CateItem1">개량한복</a><br /> <br /> 
-				<a class=topCateMenu id="top-CateItem2">생활한복</a><br /><br /> 
-				<a class=topCateMenu id="top-CateItem3">퓨전한복</a><br /> <br /> 
-				<a class=topCateMenu id="top-CateItem4">아동한복</a><br /> <br /> 
-				<a class=topCateMenu id="top-CateItem5">악세서리</a>
+				<a id="top-CateItem1">개량한복</a><br /> <br /> <a id="top-CateItem2">생활한복</a><br />
+				<br /> <a id="top-CateItem3">퓨전한복</a><br /> <br /> <a
+					id="top-CateItem4">아동한복</a><br /> <br />
+					<a id="top-CateItem5"  href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
 			</div>
 			<div id="topCate-Cate1">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남 자</a><br />
+				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여 자</a>
 			</div>
 			<div id="topCate-Cate2">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남 자</a><br />
+				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여 자</a>
 			</div>
 			<div id="topCate-Cate3">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남 자</a><br />
+				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여 자</a>
 			</div>
 			<div id="topCate-Cate4">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남 자</a><br />
+				<a class="woman" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여 자</a>
 			</div>
 			<a id="searchBtn">search</a> <a id="xbutton">X</a>
 			<hr color="#f5f5f5" size="1" noshade="noshade" />
@@ -98,19 +155,20 @@
 			<input type="text" id="searchInput" autocomplete="off"
 				placeholder="Type Here To Search" /> <select id="searchCategory"
 				name="searchCategory">
-				<option  value="total">통합검색</option>
-				<option  value="ge">개량한복</option>
-				<option  value="se">생활한복</option>
-				<option  value="fu">퓨전한복</option>
-				<option  value="ah">아동한복</option>
-				<option  value="ak"">악세서리</option>
-			</select> <input type="radio" id="titleSearch" name="searchRadio" value="제목"
-				class="searchRadio" /> <label class="searchLabel" for="titleSearch">제목</label>
-			<input type="radio" id="contentSearch" name="searchRadio" value="내용"
+				<option value="total">통합검색</option>
+				<option value="ge">개량 한복</option>
+				<option value="se">생활 한복</option>
+				<option value="fu">퓨전 한복</option>
+				<option value="ah">아동 한복</option>
+				<option value="ak">악세서리</option>
+			</select> <input type="radio" id="titleSearch" name="searchRadio" value="title"
+				class="searchRadio" checked="checked"/> <label class="searchLabel" for="titleSearch">상품 이름</label>
+			<input type="radio" id="contentSearch" name="searchRadio" value="content"
 				class="searchRadio" /> <label class="searchLabel"
 				for="contentSearch" class="searchRadio">내용</label>
 		</div>
-</header>
+
+	</header>
 <section>
 
 	<h2>Contact Form</h2>
