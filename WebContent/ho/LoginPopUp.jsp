@@ -50,6 +50,7 @@
 
     		window.close();
     		
+    		}
     	}else{
     		if(result=="2"){
     			alert("다시로긴해");
