@@ -67,7 +67,7 @@
 					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>" style="color:black">MY PAGE</a></td>
 					<td class="gray">l</td>
 					<td><a href="<%=projectName%>/board.ho?cmd=board-list" style="color:black">Q&A</a></td>
-
+ 
 				</tr>
 			</table>
  
