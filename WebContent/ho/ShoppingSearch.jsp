@@ -1,3 +1,4 @@
+<%@page import="ho.model.HoGoods"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
@@ -163,14 +164,14 @@ $(function(){
 		<% if(count == 0){ %>
 			<tr>
 			<%} %>
-
-				<td class="itemTd"><img id="itemtImg1" class="itemImg"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /><br /> <label
-					class="123"><strong>AK-123</strong><br />12,300</label></td>
+				<%HoGoods hg = (HoGoods)categoryList.get(i); %>
+				<td class="itemTd"><img id="itemtImg<%=i %>" class="itemImg"
+					src="<%=projectName%>/ho/upload/<%=hg.getGoodsImg() %>" /><br /> <label
+					class="123"><strong><%=hg.getGoodsName() %></strong><br /><%=hg.getGoodsPrice() %>원</label></td>
 				<%count ++; %>
-			<%if(count==0){ %>
+			<%if(count==4){ %>
 			</tr>
-			<%} %>
+			<%count = 0;} %>
 			<%if(i==categorySize){ %>
 			</tr>
 			<%} %>
