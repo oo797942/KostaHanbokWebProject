@@ -34,8 +34,10 @@
 			<a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" id="back" value="뒤로가기"/></a>
 		
 		<!-- 등록 -->
-	<form action="<%= projectName %>/xxxxx.ho?" method="post" enctype="multipart/form-data"  >
-		<input type="hidden" name="cmd" id="cmd" value="adminGoodsimgInsert"/>
+	<form action="<%=projectName%>/xxxxx.ho" method="post" enctype="multipart/form-data"  >
+		
+		<input type="hidden"  name="cmd"  value="adminGoodsimgInsert" />
+		
 		<table border="2" width="1000" height="560">
 		<tr>
 			<td>상품명</td>
@@ -55,7 +57,7 @@
 			<option class="op">아동 한복 -여</option>
 			<option class="op">악세서리</option>
 			</select></td>
-			</tr>
+			
 		<tr>
 			<td>디자인 사진</td>
 			<td><input type="file" class= "Goodsinsert" name="GoodsImg"></td>

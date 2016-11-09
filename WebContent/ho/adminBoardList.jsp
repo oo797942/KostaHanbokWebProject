@@ -17,9 +17,9 @@
 
 
 
-
+ 
 %>
-
+ 
 
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
@@ -27,7 +27,7 @@
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
 
 
-
+ 
 </head>
 <body>
 	<header>
@@ -44,7 +44,7 @@
 		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu4"><input type="button" class ="admenu" id="menu4" value="게시판"/></a></td>	
 		</table>
 	</header>
-	
+	 
 	<section>
 			<a href="adminMemView.jsp"><input type="button" id="back" value="뒤로가기"/></a>
 			

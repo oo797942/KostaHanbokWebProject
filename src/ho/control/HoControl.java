@@ -15,6 +15,7 @@ import ho.command.CommandBoardView;
 import ho.command.CommandCheckId;
 import ho.command.CommandDelete;
 import ho.command.CommandException;
+import ho.command.CommandGoodsCategory;
 import ho.command.CommandGoodsView;
 import ho.command.CommandInsert;
 import ho.command.CommandList;
@@ -65,6 +66,8 @@ public class HoControl extends HttpServlet {
 		// 쇼핑몰 페이지
 		commandMap.put("go-mypage", new CommandLogin("ShoppingMyPage.jsp"));
 		commandMap.put("submit-mypage", new CommandUpdate("ShoppingMyPageUpdate.jsp"));
+		commandMap.put("search-category", new CommandGoodsCategory("ShoppingSearch.jsp"));
+		
 	
 		// admin 페이지
 		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
@@ -118,7 +121,7 @@ public class HoControl extends HttpServlet {
 
 		String nextPage = "";
 		String cmdKey	= request.getParameter("cmd");
-		System.out.println(cmdKey);
+		System.out.println("cmd="+cmdKey+">");
 		if( cmdKey == null ){
 			System.out.println("cmdNull이니?");
 			cmdKey = "main-page";
