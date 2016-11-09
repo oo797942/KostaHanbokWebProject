@@ -132,7 +132,7 @@ if(sess != null){
 						<td><a id="NoLoginMyPage">MY PAGE</a></td>
 						<%} %>
 						<td class="gray">l</td> 
-						<td><a href="#">Q&A</a></td>
+						<td><a href="a href="<%=projectName%>/logout.ho?cmd=write-form"">Q&A</a></td>
 					</tr>
 				</table>
 
