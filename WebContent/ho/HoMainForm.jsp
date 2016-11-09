@@ -115,7 +115,7 @@ $(function(){
 				<li id="about" class="sm">ABOUT</li>
 				<li id="product" class="sm">PRODUCT</li>
 			</ul>
-		</div>
+		</div> 
 
 		<div id="menu">
 			<img src="<%= projectName %>/ho/img/menu.png">

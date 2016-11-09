@@ -105,7 +105,7 @@ if(sess != null){
 	</head>
 	<body>
 
-
+ 
 		<header>
 			<div id="menu">
 				<img src="<%=projectName %>/ho/img/topMenu.png" />
