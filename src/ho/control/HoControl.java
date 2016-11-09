@@ -17,6 +17,7 @@ import ho.command.CommandDelete;
 import ho.command.CommandException;
 import ho.command.CommandGoodsCategory;
 import ho.command.CommandGoodsView;
+import ho.command.CommandInputQna;
 import ho.command.CommandInsert;
 import ho.command.CommandList;
 import ho.command.CommandLogin;
@@ -91,6 +92,10 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminmenu4", new CommandBoardList("adminBoardList.jsp"));
 		commandMap.put("adminBoardView", new CommandBoardView("adminBoardViewReply.jsp"));
 		
+		commandMap.put("write-form", new CommandNull("HoWriteForm.jsp"));
+		commandMap.put("login-check", new CommandNull("HoLoginCheck.jsp"));
+		commandMap.put("qna-input", new CommandInputQna("ShoppingMyPage.jsp"));
+
 		
 		commandMap.put("adminMemlist", new CommandNull("adminMemlist.jsp"));
 		commandMap.put("adminMemDelete", new CommandMemDelete("adminMemDelete.jsp"));

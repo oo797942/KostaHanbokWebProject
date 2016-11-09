@@ -193,7 +193,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		</where>
 	</select>
-
+	<insert id="inputQna" parameterType="hashmap">
+		INSERT
+		INTO board(b_id,b_no,b_date,b_writer,b_title,b_content)
+		VALUES(#{id},seq_board_no.nextval,sysdate,#{name},#{title},#{content})
+		
+	</insert>
 </mapper>
 
    

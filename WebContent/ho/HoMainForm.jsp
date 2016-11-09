@@ -54,7 +54,7 @@ $(function(){
 			url : '<%=projectName%>/logout.ho?cmd=product-page',
 			type : 'post',
 			success : function(data){
-				alert(data);
+// 				alert(data);
 				<%-- var data12 = $('person', data);
 					$('#productimg').append("<tr>");
 				data12.each(function(){

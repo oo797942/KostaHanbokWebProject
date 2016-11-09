@@ -257,4 +257,18 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
+	public void insertQna(HashMap<String, Object> qnaMap){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			int result = 	sess.insert(namespace+".inputQna",qnaMap);
+			if ( result > 0 ){	 //JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT 커밋해줘야함 이녀석은
+					sess.commit();
+			}else{
+					sess.rollback();
+			}
+			}finally{
+				sess.close();
+			}
+
+	}
 }
