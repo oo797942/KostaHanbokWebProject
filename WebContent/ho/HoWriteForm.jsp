@@ -61,7 +61,7 @@
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
 					<td><a href="<%=projectName %>/join.ho?cmd=join-form" style="color:black">JOIN</a></td>
-					<td class="gray">l</td>
+					<td class="gray">l</td>  
 					<td><a href="#" style="color:black">CART</a></td>
 					<td class="gray">l</td>
 					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>" style="color:black">MY PAGE</a></td>
