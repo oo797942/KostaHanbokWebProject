@@ -44,9 +44,9 @@ public class CommandBag implements Command{
 			}
 			request.setAttribute("result", result);
 			
-			memMap.put("123","123");
-			
 			List BagList = HoBagService.getInstance().selectShoppingBag(memMap);
+			
+			//System.out.println("BagListSIze >> " + BagList.size());
 
 			
 		}catch( Exception ex ){

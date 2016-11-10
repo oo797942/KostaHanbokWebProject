@@ -18,8 +18,13 @@
 	if (sess != null) {
 		sessionValue = (String) sess;
 	}
-	
+
 	int totalPrice = hg.getGoodsPrice() + hg.getGoodsRentPrice();
+
+	String Lsize = hg.getGoodsLsize();
+	String Msize = hg.getGoodsMsize();
+	String Ssize = hg.getGoodsSsize();
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -71,24 +76,52 @@ $(function(){
 			var option = $("#searchCategory").val();
 			var radio = $("input:radio[name=searchRadio]:checked").val();
 			var inputvalue = $("#searchInput").val();
-			window.location.href="<%=projectName%>/list.ho?cmd=search-input&option="+option+"&check="+radio+"&val="+inputvalue;	
+			window.location.href="<%=projectName%>/list.ho?cmd=search-input&option="
+										+ option
+										+ "&check="
+										+ radio
+										+ "&val="
+										+ inputvalue;
+							}
+						});
+
+		var totalPriceTemp =<%=hg.getGoodsPrice()%>+<%=hg.getGoodsRentPrice()%>;
+
+		$("#totalPrice").text(totalPriceTemp);
+		
+		for(var i=1; i<=$("#LSize").val();i++){
+			$("#countSelect").append("<option value="+i+">"+i+"벌</option>");
 		}
+		
+		$("#sizeSelect").change(function(){
+			if($("#sizeSelect").val()=="L"){
+				$('#countSelect').children().remove();
+				for(var i=1; i<=$("#LSize").val();i++){
+					$("#countSelect").append("<option value="+i+">"+i+"벌</option>");
+				}
+
+			}else if($("#sizeSelect").val()=="M"){
+				$('#countSelect').children().remove();
+				for(var i=1; i<=$("#MSize").val();i++){
+					$("#countSelect").append("<option value="+i+">"+i+"벌</option>");
+				}
+
+				
+			}else if($("#sizeSelect").val()=="S"){
+				$('#countSelect').children().remove();
+				for(var i=1; i<=$("#SSize").val();i++){
+					$("#countSelect").append("<option value="+i+">"+i+"벌</option>");
+				}
+
+			}
+		});
+
+		$("#countSelect").change(function() {
+					var totalPriceReal = (<%=hg.getGoodsPrice()%>* $("#countSelect").val())+<%=hg.getGoodsRentPrice()%>;
+					$("#totalPrice").text(totalPriceReal);
+				});
+
 	});
-	
-	var totalPriceTemp = <%=hg.getGoodsPrice()%> + <%=hg.getGoodsRentPrice()%>;
-	
-	$("#totalPrice").text(totalPriceTemp);
-	
-	$("#countSelect").change(function(){
-		var totalPriceReal =  (<%=hg.getGoodsPrice()%>*$("#countSelect").val()) + <%=hg.getGoodsRentPrice()%>;
-		$("#totalPrice").text(totalPriceReal);
-	});
-	
-	
-});
-
-
-
 </script>
 
 
@@ -96,7 +129,7 @@ $(function(){
 </head>
 <body>
 
- 	<nav>
+	<nav>
 		<table id="shoppingBag" cellspacing="0">
 			<tr>
 				<td height="10px"></td>
@@ -124,32 +157,45 @@ $(function(){
 			</tr>
 		</table>
 	</nav>
- 
+
 	<header>
 		<div id="menu">
-			<img src="<%=projectName %>/ho/img/topMenu.png" />
+			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo"
+				src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-				<% if(sess != null){ %> 
-				<td><text id="sessid"><%=sess %>님</text></td>
-				<%} %>	
-					<td><text id="shoplogin" name="login" >LOGIN</text></td>
+					<%
+						if (sess != null) {
+					%>
+					<td><text id="sessid"><%=sess%>님</text></td>
+					<%
+						}
+					%>
+					<td><text id="shoplogin" name="login">LOGIN</text></td>
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
-					<td><a href="<%=projectName %>/join.ho?cmd=join-form">JOIN</a></td>
+					<td><a href="<%=projectName%>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
 					<td><a href="#">CART</a></td>
 					<td class="gray">l</td>
-					<%if(sess!=null){ %>
-					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
-					<%}else{ %>
+					<%
+						if (sess != null) {
+					%>
+					<td><a
+						href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY
+							PAGE</a></td>
+					<%
+						} else {
+					%>
 					<td><a id="NoLoginMyPage">MY PAGE</a></td>
-					<%} %>
+					<%
+						}
+					%>
 					<td class="gray">l</td>
 					<td><a href="<%=projectName%>/logout.ho?cmd=write-form">Q&A</a></td>
 				</tr>
@@ -158,24 +204,36 @@ $(function(){
 			<div id="topCate">
 				<a id="top-CateItem1">개량한복</a><br /> <br /> <a id="top-CateItem2">생활한복</a><br />
 				<br /> <a id="top-CateItem3">퓨전한복</a><br /> <br /> <a
-					id="top-CateItem4">아동한복</a><br /> <br />
-					<a id="top-CateItem5"  href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
+					id="top-CateItem4">아동한복</a><br /> <br /> <a id="top-CateItem5"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
 			</div>
 			<div id="topCate-Cate1">
-				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남 자</a><br />
-				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate2">
-				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남 자</a><br />
-				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate3">
-				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남 자</a><br />
-				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate4">
-				<a class="man" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남 자</a><br />
-				<a class="woman" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여
+					자</a>
 			</div>
 			<a id="searchBtn">search</a> <a id="xbutton">X</a>
 			<hr color="#f5f5f5" size="1" noshade="noshade" />
@@ -191,18 +249,24 @@ $(function(){
 				<option value="fu">퓨전 한복</option>
 				<option value="ah">아동 한복</option>
 				<option value="ak">악세서리</option>
-			</select> <input type="radio" id="titleSearch" name="searchRadio" value="title"
-				class="searchRadio" checked="checked"/> <label class="searchLabel" for="titleSearch">상품 이름</label>
-			<input type="radio" id="contentSearch" name="searchRadio" value="content"
+			</select> <input type="radio" id="titleSearch" name="searchRadio"
+				value="title" class="searchRadio" checked="checked" /> <label
+				class="searchLabel" for="titleSearch">상품 이름</label> <input
+				type="radio" id="contentSearch" name="searchRadio" value="content"
 				class="searchRadio" /> <label class="searchLabel"
 				for="contentSearch" class="searchRadio">내용</label>
 		</div>
 
 	</header>
 	<section>
+	<input id="LSize" type="hidden" value="<%=Lsize%>"/>
+	<input id="MSize" type="hidden" value="<%=Msize%>"/>
+	<input id="SSize" type="hidden" value="<%=Ssize%>"/>
+	
 		<table id="viewTable" cellspacing="0">
 			<tr>
-				<td id="viewTableImg" rowspan="9" width="600px"><img id="itemView"
+				<td id="viewTableImg" rowspan="9" width="600px"><img
+					id="itemView"
 					src="<%=projectName%>/ho/upload/<%=hg.getGoodsImg()%>" /></td>
 				<td class="viewInfo" colspan="2"><%=hg.getGoodsName()%></td>
 			</tr>
@@ -219,21 +283,20 @@ $(function(){
 			</tr>
 			<tr>
 				<td class="viewInfo">원단</td>
-				<td class="viewInfo"><%=hg.getGoodsColor() %></td>
+				<td class="viewInfo"><%=hg.getGoodsColor()%></td>
 			</tr>
 			<tr>
 				<td class="viewInfo">사이즈</td>
-				<td class="viewInfo"><%=hg.getGoodsSize() %></td>
+				<td class="viewInfo"><select id="sizeSelect">
+						<option value="L">L</option>
+						<option value="M">M</option>
+						<option value="S">S</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td class="viewInfo">구매 벌수</td>
 				<td class="viewInfo">
-					<select id="countSelect">
-					<%for(int i=1; i<=9; i++){ %>
-						<option value="<%=i%>"><%=i %>벌</option>
-					<%} %>
-					</select>
-				</td>
+				<select id="countSelect"></select></td>
 			</tr>
 			<tr>
 				<td class="viewInfo">총액</td>
