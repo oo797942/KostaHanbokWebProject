@@ -20,9 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="m_coin" property="memCoin" />
 		<result column="m_exp" property="memExp" />
 	</resultMap>
-	
+
 	<resultMap type="HoGoodsImg" id="HoGoodsImgMap">
-		<id column="img_name" property="imgName"/>
+		<id column="img_name" property="imgName" />
 		<result column="img_1" property="imgOne" />
 		<result column="img_2" property="imgTwo" />
 		<result column="img_3" property="imgThree" />
@@ -57,17 +57,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="b_title" property="boardTitle" />
 		<result column="b_content" property="boardContent" />
 	</resultMap>
-	
-	<select id="GoodsImgView" resultMap="HoGoodsImgMap" parameterType="hashmap">
-	SELECT *
-	FROM itemimg
-	<where>
-		<choose>
-			<when test="name neq null">
-				img_name = #{name}
-			</when>
-		</choose>
-	</where>
+
+	<resultMap type="HoBag" id="HoShoppingBag">
+		<id column="shop_seq_no" property="shopSeqNo" />
+		<result column="shop_id" property="shopId" />
+		<result column="shop_no" property="shopNo" />
+		<result column="shop_size" property="shopSize" />
+		<result column="shop_img" property="shopImg" />
+		<result column="shop_soo" property="shopSoo" />
+		<result column="shop_price" property="shopPrice" />
+	</resultMap>
+
+	<select id="shoppingBag" resultMap="HoShoppingBag"
+		parameterType="hashmap">
+		SELECT *
+		FROM shopping_bag
+	</select>
+
+	<select id="GoodsImgView" resultMap="HoGoodsImgMap"
+		parameterType="hashmap">
+		SELECT *
+		FROM itemimg
+		<where>
+			<choose>
+				<when test="name neq null">
+					img_name = #{name}
+				</when>
+			</choose>
+		</where>
 	</select>
 
 
@@ -133,7 +150,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES
 		(seq_item.nextval,#{GoodsName}, #{GoodsCate}, #{GoodsImg},
 		#{GoodsInfo}, #{GoodsColor}, #{GoodsSoo},
-		#{GoodsPrice},#{GoodsRentPrice}, #{GoodsSize},#{GoodsDc},#{GoodsLsize},#{GoodsMsize},#{GoodsSsize})
+		#{GoodsPrice},#{GoodsRentPrice},
+		#{GoodsSize},#{GoodsDc},#{GoodsLsize},#{GoodsMsize},#{GoodsSsize})
 
 	</insert>
 
@@ -156,10 +174,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					i_category = #{category}
 				</when>
 				<when test="name neq null and cate neq null">
-					i_name like '%'||#{name}||'%' AND i_category LIKE '%'||#{cate}||'%'
+					i_name like '%'||#{name}||'%' AND i_category LIKE
+					'%'||#{cate}||'%'
 				</when>
 				<when test="info neq null and cate neq null">
-					i_info like '%'||#{info}||'%' AND i_category LIKE '%'||#{cate}||'%'
+					i_info like '%'||#{info}||'%' AND i_category LIKE
+					'%'||#{cate}||'%'
 				</when>
 				<when test="name neq null">
 					i_name like '%'||#{name}||'%'
@@ -183,7 +203,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="UpdateGoods">
 		UPDATE item SET I_CATEGORY=#{GoodsCate}, I_IMG
 		=#{GoodsImg},I_INFO=#{GoodsInfo},I_COLOR=#{GoodsColor},I_SOO=#{GoodsSoo},I_PRICE=#{GoodsPrice},I_RENT_PRICE=#{GoodsRentPrice},I_SIZE=#{GoodsSize}
-		, I_DC=#{GoodsDc},I_L=#{GoodsLsize},I_M=#{GoodsMsize},I_S=#{GoodsSsize}
+		,
+		I_DC=#{GoodsDc},I_L=#{GoodsLsize},I_M=#{GoodsMsize},I_S=#{GoodsSsize}
 		WHERE I_NAME=#{GoodsName}
 	</update>
 
@@ -234,40 +255,54 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<insert id="inputQna" parameterType="hashmap">
 		INSERT
-		INTO board(b_id,b_no,b_date,b_writer,b_title,b_content)
+		INTO
+		board(b_id,b_no,b_date,b_writer,b_title,b_content)
 		VALUES(#{id},seq_board_no.nextval,sysdate,#{name},#{title},#{content})
 	</insert>
-	
+
 	<update id="GoodsInventory" parameterType="hashmap">
-	UPDATE item SET I_SOO=#{GoodsSoo} WHERE I_NAME=#{GoodsName}
+		UPDATE item SET I_SOO=#{GoodsSoo} WHERE I_NAME=#{GoodsName}
 	</update>
-	
+
 	<select id="selectCount" resultType="int" parameterType="hashmap">
-		Select count(*) as cnt from ${tableName}
-		</select>
-	
-	<select id="selectAllGoods" resultMap="HoGoodsMap" parameterType="hashmap">
-		select * from item where i_no in (select i_no from (select rownum as rnum, i_no from (select i_no from item order by i_no desc))
-		where rnum between #{startrecord} and #{endrecord})
-		order by  i_no desc	
+		Select
+		count(*) as cnt from ${tableName}
 	</select>
-	
+
+	<select id="selectAllGoods" resultMap="HoGoodsMap"
+		parameterType="hashmap">
+		select * from item where i_no in (select i_no from
+		(select rownum as rnum, i_no from (select i_no from item order by i_no
+		desc))
+		where rnum between #{startrecord} and #{endrecord})
+		order by i_no
+		desc
+	</select>
+
 	<update id="updateBoard" parameterType="hashmap">
-	update board set b_content = #{content} where b_writer = #{writer}
+		update board set b_content = #{content} where b_writer = #{writer}
 	</update>
-	
-	<select id="selectAllBoard" resultMap="HoBoardMap" parameterType="hashmap">
-		select * from board where b_no in (select b_no from (select rownum as rnum, b_no from (select b_no from board order by b_no desc))
+
+	<select id="selectAllBoard" resultMap="HoBoardMap"
+		parameterType="hashmap">
+		select * from board where b_no in (select b_no from
+		(select rownum as rnum, b_no from (select b_no from board order by
+		b_no desc))
 		where rnum between #{startrecord} and #{endrecord})
-		order by  b_no desc	
+		order by
+		b_no desc
 	</select>
-	
-		<select id="selectAllMember" resultMap="homemberMap" parameterType="hashmap">
-		select * from member where m_name in (select m_name from (select rownum as rnum, m_name from (select m_name from member order by m_name))
+
+	<select id="selectAllMember" resultMap="homemberMap"
+		parameterType="hashmap">
+		select * from member where m_name in (select m_name from
+		(select rownum as rnum, m_name from (select m_name from member order
+		by m_name))
 		where rnum between #{startrecord} and #{endrecord})
-		order by m_name	
+		order by
+		m_name
 	</select>
-	
+
 </mapper>
 
    
