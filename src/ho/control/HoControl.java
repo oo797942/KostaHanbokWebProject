@@ -48,7 +48,7 @@ public class HoControl extends HttpServlet {
     public HoControl() {
         super();       
 		initCommand();
-	}
+	} 
 
 	private void initCommand(){
 		commandMap = new HashMap();
