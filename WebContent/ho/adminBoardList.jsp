@@ -100,7 +100,7 @@
   	   		 <td> 등록일 </td>
     		 <td> 작성자 이름 </td>
   	   		 <td> 게시글 제목 </td>
-   		     <td> 답변하기 </td>
+   		     <td colspan="2"> 답변하기 </td>
  	 </tr>
    
   	 <% for(HoBoard board : boards){ %>
@@ -109,13 +109,11 @@
   			<td><%= board.getBoardWriter() %></a></td>
    			<td><%= board.getBoardTitle() %></a></td>
    			<td><a href="<%= projectName %>/1.ho?cmd=adminBoardView&id=<%=board.getBoardNo()%>"><input type="button" name="tdreply" id="tdreply" value="답변하기"/></a></td>
- 	  		<td> <%if(board.getBoardAnswerStatus()!=null){
- 	  				if(board.getBoardAnswerStatus().equals("1")){%>
+ 	  		<td><%if(board.getBoardAnswerStatus().equals("1")){%>
  	  				답변완료  
  	  			<%}else {%>
  	  				미답변
- 	  			<% } 
- 	  		}%></td>
+ 	  			<% } %></td>
  	  </tr>
 	<% } %>
    </table>		

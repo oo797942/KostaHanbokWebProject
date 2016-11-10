@@ -152,4 +152,11 @@ public class HoMemberService {
 		System.out.println("AllMemberList");
 		return repo.selectAllMember(mm);
 	}
+	
+	public List<HoBoard> MyBoardList(HashMap bm){
+		System.out.println("MyBoardList");
+		return repo.selectMyBoard(bm);
+	}
+	
+	
 }

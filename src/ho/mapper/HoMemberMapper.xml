@@ -56,8 +56,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result column="b_pass" property="boardPass" />
       <result column="b_title" property="boardTitle" />
       <result column="b_content" property="boardContent" />
-      <result column="b_title" property="boardTitle" />
-	  <result column="b_content" property="boardContent" />
+      <result column="b_answer" property="boardAnswer" />
+	  <result column="b_answerstatus" property="boardAnswerStatus" />
    </resultMap>
 
    <resultMap type="HoBag" id="HoShoppingBag">
@@ -251,6 +251,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          <choose>
             <when test="id neq null">
                b_no=#{id}
+            </when>
+            <when test="adid neq null">
+            	b_id=#{adid}
             </when>
          </choose>
       </where>

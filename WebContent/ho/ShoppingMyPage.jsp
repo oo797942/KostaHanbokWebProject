@@ -104,9 +104,6 @@ if(sess != null){
 			}
 		});
 		
-		$("#answer").click(function(){
-			$("#myPageMainBodyTable").hide();
-		});
 		
 	});
 
@@ -231,10 +228,11 @@ if(sess != null){
 			<table id="myPageTopTable">
 				<tr>
 
-					<td class="topTableBtn"><a
-						href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">회원정보</a></td>
+					<td class="topTableBtn">
+					<a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">회원정보</a></td>
 					<td class="topTableBtn">쇼핑내역</td>
-					<td id = "answer" class="topTableBtn">1:1문의내역</td> <!--  내가 한거 -->
+					<td id = "answer" class="topTableBtn">
+					<a href="<%=projectName%>/list.ho?cmd=mypage-list&adid=<%=sess%>">1:1문의내역</a></td> <!--  내가 한거 -->
 					<td width="70%"></td>
 				</tr>
 			</table>
