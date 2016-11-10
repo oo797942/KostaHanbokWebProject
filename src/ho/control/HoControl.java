@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ho.command.Command;
 import ho.command.CommandBoardList;
+import ho.command.CommandBoardReply;
 import ho.command.CommandBoardView;
 import ho.command.CommandCheckId;
 import ho.command.CommandDelete;
@@ -106,17 +107,15 @@ public class HoControl extends HttpServlet {
 
 		
 		commandMap.put("adminMemlist", new CommandNull("adminMemlist.jsp"));
+		commandMap.put("adminMemView", new CommandMemView("adminMemView.jsp"));
 		commandMap.put("adminMemDelete", new CommandMemDelete("adminMemDelete.jsp"));
 		commandMap.put("adminMemUpdateForm", new CommandMemView("adminMemUpdateForm.jsp"));
 		commandMap.put("adminMemUpdateSave", new CommandMemUpdate("adminMemUpdateSave.jsp"));
 		
  
 
-/*		
-		commandMap.put("adminGoodsUpdate", new CommandNull("adminGoodsUpdate.jsp"));
-		commandMap.put("adminGoodsimgUpdate", new CommandNull("adminGoodsimgUpdate.jsp"));
-		commandMap.put("adminPageDelete", new CommandNull("adminGoodsDelete.jsp"));
-*/
+		commandMap.put("boardlist", new CommandBoardReply("adminBoardSuccess.jsp"));
+
 		
 	}
 

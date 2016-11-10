@@ -340,4 +340,20 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
+	
+	public void BoardReply(HashMap board){
+		//연결객체 얻어오기 (SqlSession)
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("BoardReply에 들어왔음");
+			int result = sess.update(namespace+".updateBoard" , board);			
+			if(result>0){
+				sess.commit();
+			}else{
+				sess.rollback();
+			}
+		}finally{
+			sess.close();
+		}
+	}	
 }

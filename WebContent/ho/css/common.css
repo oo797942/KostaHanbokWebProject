@@ -304,3 +304,43 @@ hr {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+
+.memberfont{
+	font-size :5px;
+}
+
+tablefont {
+
+font-size: 20px;
+
+
+font-family: ‘Nanum Brush Script’, Helvetica, Arial, sans-serif;
+
+color: #444;
+
+}
+
+#modify{
+	position: absolute;
+	left: 1025px;
+	top : 710px;
+	width:100px;
+	font-size : 20px;	
+	border-radius:5px; 
+    background:#000; 
+    border:none; 
+    color:#fff; 
+    font-weight:bold; 
+	text-align: center;
+	cursor: pointer;	
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.td1 {
+    width: 90px;
+    min-height: 30px;
+    font-weight: bold;
+    color: #666;
+    vertical-align: middle;
+}

@@ -2,7 +2,7 @@
 <%@ page import="ho.model.HoBoard" %>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
@@ -17,9 +17,9 @@
 
 
 
- 
+
 %>
- 
+
 
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
@@ -27,17 +27,15 @@
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
 
 
- 
+
 </head>
 <body>
 	<header>
 		<div id="Menuimg">
 			<a href="#"><img id="logo" src="<%= projectName %>/ho/img/logo.png" /></a>
 		</div>
-	<div id="admin"> admin 님이 접속하셨습니다.
-		<a href="<%=projectName%>/1.ho?cmd=main-page"><input type="button" value="Logout" id="logoutbtn" name="logoutbtn"></a>
-	 </div> <br/>
-	 
+	<div id="admin"> admin 님이 접속하셨습니다. </div> <br/>
+	
 	<table id= "menutable">
 		<tr>
 			<td><a href="<%= projectName %>/1.ho?cmd=adminmenu1"><input type="button" class ="admenu" id="menu1" value="매출"/></a></td>
@@ -46,7 +44,7 @@
 		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu4"><input type="button" class ="admenu" id="menu4" value="게시판"/></a></td>	
 		</table>
 	</header>
-	 
+	
 	<section>
 			<a href="adminMemView.jsp"><input type="button" id="back" value="뒤로가기"/></a>
 			

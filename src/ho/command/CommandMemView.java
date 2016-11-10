@@ -28,11 +28,10 @@ public class CommandMemView implements Command{
 			Member = HoMemberService.getInstance().MemberView(hm);
 			request.setAttribute("MemView", Member);
 		}catch( Exception ex ){
-			throw new CommandException("CommandGoodsView.java < 입력시 > " + ex.toString()); 
+			throw new CommandException("CommandMemberView.java < 입력시 > " + ex.toString()); 
 		}
 		return next;
 	}
-
 	
 	private String getFileName(Part part) throws UnsupportedEncodingException {
 		System.out.println("getFileName");

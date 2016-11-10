@@ -83,6 +83,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="id neq null">
 					m_id=#{id}
 				</when>
+				<when test="mId neq null">
+					m_id=#{mId}
+				</when>
 			</choose>
 		</where>
 	</select>
@@ -243,6 +246,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rnum between #{startrecord} and #{endrecord})
 		order by  i_no desc	
 	</select>
+	
+	<update id="updateBoard" parameterType="hashmap">
+	update board set b_content = #{content} where b_writer = #{writer}
+	</update>
 	
 </mapper>
 

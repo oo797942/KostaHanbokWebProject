@@ -121,6 +121,11 @@ public class HoMemberService {
 		System.out.println("BoardView에 들어왔음");
 		return repo.BoardView(board);
 	}
+	
+	public void BoardReply(HashMap board){
+		System.out.println("BoardReply에 들어왔음");	
+		repo.BoardReply(board);
+	}
 
 	public void InsertQna(HashMap<String, Object> qnaMap) {
 		System.out.println("InsertQna");
