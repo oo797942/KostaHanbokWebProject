@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ho.command.Command;
+import ho.command.CommandBag;
 import ho.command.CommandBoardList;
 import ho.command.CommandBoardReply;
 import ho.command.CommandBoardView;
@@ -63,8 +64,8 @@ public class HoControl extends HttpServlet {
 		
 		commandMap.put("shoplogin-page", new CommandLoginSess("LoginPopUp.jsp"));
 		commandMap.put("shop-login", new CommandLogin("LoginService.jsp"));
-		commandMap.put("shop-main", new CommandNull("ShoppingMain.jsp"));
-		commandMap.put("go-store", new CommandNull("ShoppingMain.jsp"));
+		commandMap.put("shop-main", new CommandBag("ShoppingMain.jsp"));
+		commandMap.put("go-store", new CommandBag("ShoppingMain.jsp"));
 //		commandMap.put(key, value);		
 		
 		// 쇼핑몰 페이지

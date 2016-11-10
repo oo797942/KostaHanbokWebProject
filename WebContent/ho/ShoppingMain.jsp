@@ -1,3 +1,4 @@
+<%@page import="ho.model.HoMember"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <% String projectName = "/HoProject";
@@ -10,7 +11,11 @@ System.out.println("세션값"+sess);
 
 if(sess != null){
 	sessionValue = (String)sess;
-} %>
+}
+
+HoMember hm = (HoMember)request.getAttribute("homem");
+
+%>
 	 
 <!DOCTYPE html>
 <html>
@@ -116,7 +121,7 @@ $(function(){
 			<table id="smallMenu">
 				<tr>
 				<% if(sess != null){ %> 
-				<td><text id="sessid"><%=sess %>님</text></td>
+				<td><text id="sessid"><%=hm.getMemName() %>님</text></td>
 				<%} %>	
 					<td><text id="shoplogin" name="login" >LOGIN</text></td>
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
