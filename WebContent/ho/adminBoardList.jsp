@@ -111,7 +111,7 @@
    			<td><a href="<%= projectName %>/1.ho?cmd=adminBoardView&id=<%=board.getBoardNo()%>"><input type="button" name="tdreply" id="tdreply" value="답변하기"/></a></td>
  	  		<td> <%if(board.getBoardAnswerStatus()!=null){
  	  				if(board.getBoardAnswerStatus().equals("1")){%>
- 	  				답변완료
+ 	  				답변완료  
  	  			<%}else {%>
  	  				미답변
  	  			<% } 
