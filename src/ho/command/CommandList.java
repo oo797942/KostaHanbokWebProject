@@ -42,10 +42,12 @@ public class CommandList implements Command{
 
 			System.out.println("CommandList에 들어왔음");
 			List<HoGoods> list =  (List<HoGoods>) HoMemberService.getInstance().AllGoodsList(gm);
+			List<HoGoods> list2 =  (List<HoGoods>) HoMemberService.getInstance().GoodsList();
 			int totalRecord = HoMemberService.getInstance().getTotalCount(tm);
 			System.out.println(list);
 			System.out.println("총페이지개수는 몇이되야될까: "+ totalRecord);
 			request.setAttribute("GoodsList", list);
+			request.setAttribute("OriginalGoodsList", list2);
 			request.setAttribute("totalRecord", totalRecord);
 		}catch( Exception ex ){
 			throw new CommandException("CommandList.java < 입력시 > " + ex.toString() ); 
