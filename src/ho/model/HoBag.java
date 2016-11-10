@@ -7,6 +7,15 @@ public class HoBag {
 	private String shopImg;
 	private int shopSoo;
 	private int shopPrice;
+	private int shopSeqNo;
+	
+	public int getShopSeqNo() {
+		return shopSeqNo;
+	}
+
+	public void setShopSeqNo(int shopSeqNo) {
+		this.shopSeqNo = shopSeqNo;
+	}
 
 	public String getShopId() {
 		return shopId;

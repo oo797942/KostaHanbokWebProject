@@ -34,6 +34,7 @@ public class CommandBoardReply implements Command{
 			String content = request.getParameter("content");
 			System.out.println(content);
 			String answer = request.getParameter("answer");
+			System.out.println(answer);
 			
 			HashMap boardmap = new HashMap();
 			boardmap.put("writer", writer);
