@@ -13,7 +13,7 @@
 	if(sess != null){
 		sessionValue = (String)sess;
 		loginCk="LOGOUT";
-	} 
+	}   
 %>
 <!DOCTYPE html>
 <html>
