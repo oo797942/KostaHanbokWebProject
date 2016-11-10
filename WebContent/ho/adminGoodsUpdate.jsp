@@ -21,6 +21,37 @@ System.out.println(goods.getGoodsCate());
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#Lsize").blur(function(){
+		alert("흠 --");
+		var LSize = $("#Lsize").val()*1;
+		var MSize = $("#Msize").val()*1;
+		var SSize = $("#Ssize").val()*1;
+
+		$("#GoodsSoo").val(LSize+MSize+SSize);
+	});
+	
+	$("#Msize").blur(function(){
+		var LSize = $("#Lsize").val()*1;
+		var MSize = $("#Msize").val()*1;
+		var SSize = $("#Ssize").val()*1;
+
+		$("#GoodsSoo").val(LSize+MSize+SSize);		
+	});
+	
+	
+	$("#Ssize").blur(function(){
+		var LSize = $("#Lsize").val()*1;
+		var MSize = $("#Msize").val()*1;
+		var SSize = $("#Ssize").val()*1;
+
+		$("#GoodsSoo").val(LSize+MSize+SSize);
+	});
+	
+	
+});
+</script>
 
 </head>
 <body>
@@ -70,7 +101,7 @@ System.out.println(goods.getGoodsCate());
 			</tr>
 		<tr>
 			<td>디자인 사진</td>
-			<td><input type="file" class= "Goodsinsert"  name="GoodsImg" value="<%=goods.getGoodsImg()%>"></td>
+			<td><input type="file" class= "Goodsinsert"  name="GoodsImg" ></td>
 			</tr>
 		<tr>
 		
@@ -92,19 +123,15 @@ System.out.println(goods.getGoodsCate());
 		
 		<tr>
 			<td>사이즈</td>
-			<td><select id="category3" class= "GoodsSelect"  name="GoodsSize" >
-					<option class="op"  selected="selected">선택</option>
-					<option class="op" value="XL">XL</option>
-					<option class="op" value="L">L</option>
-					<option class="op" value="M">M</option>
-					<option class="op" value="S">S</option>
-					<option class="op" value="XS">XS</option>
+			<td>
+			L<input type="text"  id="Lsize" name="Lsize" value="<%= goods.getGoodsLsize()%>"> 
+			M<input type="text"  id="Msize"  name="Msize" value="<%= goods.getGoodsMsize()%>" > 
+			S<input type="text"  id="Ssize" name="Ssize" value="<%= goods.getGoodsSsize()%>"> 	
 			</td>
 		</tr>
-		
 		<tr>
 			<td>수량</td>
-			<td><input type="text" class= "Goodsinsert" name="GoodsSoo" value="<%=goods.getGoodsSoo()%>" ></td>
+			<td><input type="text" class= "Goodsinsert" id="GoodsSoo" readonly="readonly" name="GoodsSoo" value="<%=goods.getGoodsSoo()%>" ></td>
 		</tr>
 		<tr>
 			<td>가격</td>
@@ -117,7 +144,7 @@ System.out.println(goods.getGoodsCate());
 	
 		<tr>
 			<td>할인율</td>
-			<td><input type="text"  name="GoodsDc" class= "Goodsinsert" maxlength="2" placeholder="%로 입력해주세요." value=<%= goods.getGoodsDc() %>></td>
+			<td><input type="text"  name="GoodsDc" class= "Goodsinsert" maxlength="2" value=<%= goods.getGoodsDc() %>></td>
 		</tr>
 
 		</table>

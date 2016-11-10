@@ -36,11 +36,14 @@ public class CommandUpdate implements Command {
 				String GoodsCate = request.getParameter("GoodsCate");
 				String GoodsInfo = request.getParameter("GoodsInfo");
 				String GoodsColor = request.getParameter("GoodsColor");
-				String GoodsSize = request.getParameter("GoodsSize");
+				String GoodsSize = "null";
 				int GoodsSoo = Integer.parseInt(request.getParameter("GoodsSoo"));
 				int GoodsPrice = Integer.parseInt(request.getParameter("GoodsPrice"));
 				int GoodsRentPrice = Integer.parseInt(request.getParameter("GoodsRentPrice"));
 				int GoodsDc = Integer.parseInt(request.getParameter("GoodsDc"));
+				String GoodsLsize = request.getParameter("Lsize");
+				String GoodsMsize = request.getParameter("Msize");
+				String GoodsSsize = request.getParameter("Ssize");
 				
 				Part filePart = request.getPart("GoodsImg");
 				String realPath="";
@@ -62,6 +65,9 @@ public class CommandUpdate implements Command {
 				memMap.put("GoodsPrice", GoodsPrice);
 				memMap.put("GoodsRentPrice", GoodsRentPrice);
 				memMap.put("GoodsDc", GoodsDc);
+				memMap.put("GoodsLsize", GoodsLsize);
+				memMap.put("GoodsMsize", GoodsMsize);
+				memMap.put("GoodsSsize", GoodsSsize);
 
 				HoMemberService.getInstance().GoodsUpdate(memMap);
 				System.out.println("insert성공");

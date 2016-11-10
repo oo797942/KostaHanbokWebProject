@@ -95,13 +95,10 @@
 		
 		<tr>
 			<td>사이즈</td>
-			<td><select id="category3" class= "GoodsSelect"  disabled="disabled">
-					<option class="op"  selected="selected">선택</option>
-					<option class="op" value="XL">XL</option>
-					<option class="op" value="L">L</option>
-					<option class="op" value="M">M</option>
-					<option class="op" value="S">S</option>
-					<option class="op" value="XS">XS</option>
+			<td>
+			L<input type="text"  id="Lsize" name="Lsize" value="<%= goods.getGoodsLsize()%>" disabled="disabled"> 
+			M<input type="text"  id="Msize"  name="Msize" value="<%= goods.getGoodsMsize()%>" disabled="disabled"> 
+			S<input type="text"  id="Ssize" name="Ssize" value="<%= goods.getGoodsSsize()%>" disabled="disabled"> 	
 			</td>
 		</tr>
 		

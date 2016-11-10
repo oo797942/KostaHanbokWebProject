@@ -11,7 +11,36 @@
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#Lsize").blur(function(){
+			var LSize = $("#Lsize").val()*1;
+			var MSize = $("#Msize").val()*1;
+			var SSize = $("#Ssize").val()*1;
 
+			$("#GoodsSoo").val(LSize+MSize+SSize);
+		});
+		
+		$("#Msize").blur(function(){
+			var LSize = $("#Lsize").val()*1;
+			var MSize = $("#Msize").val()*1;
+			var SSize = $("#Ssize").val()*1;
+
+			$("#GoodsSoo").val(LSize+MSize+SSize);		
+		});
+		
+		
+		$("#Ssize").blur(function(){
+			var LSize = $("#Lsize").val()*1;
+			var MSize = $("#Msize").val()*1;
+			var SSize = $("#Ssize").val()*1;
+
+			$("#GoodsSoo").val(LSize+MSize+SSize);
+		});
+		
+		
+	});
+</script>
 
 </head>
 <body>
@@ -86,20 +115,16 @@
 		
 		<tr>
 			<td>사이즈</td>
-			<td><select id="category2" class= "GoodsSelect" name="GoodsSize">
-					<option class="op">선택</option>
-					<option class="op">XL</option>
-					<option class="op">L</option>
-					<option class="op">M</option>
-					<option class="op">S</option>
-					<option class="op">XS</option>
-					</select>
+			<td>
+			L<input type="text"  id="Lsize" name="Lsize"> 
+			M<input type="text"  id="Msize"  name="Msize" > 
+			S<input type="text"  id="Ssize" name="Ssize"> 	
 			</td>
 		</tr>
 		
 		<tr>
-			<td>수량</td>
-			<td><input type="text" class= "Goodsinsert" name="GoodsSoo"></td>
+			<td>총수량</td>
+			<td><input type="text" class= "Goodsinsert" id="GoodsSoo" name="GoodsSoo" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td>가격</td>
@@ -107,12 +132,12 @@
 		</tr>
 		<tr>
 			<td>배송비</td>
-			<td><input type="text" class= "Goodsinsert" name="GoodsRentPrice"></td>
+			<td><input type="text" class= "Goodsinsert" value="3000" name="GoodsRentPrice"></td>
 		</tr>
 	
 		<tr>
 			<td>할인율</td>
-			<td><input type="text" name="GoodsDc"  class= "Goodsinsert" placeholder="%로 입력해주세요." maxlength="2"></td>
+			<td><input type="text" name="GoodsDc"  class= "Goodsinsert" maxlength="2"></td>
 		</tr>	
 		</table>
 		<input type="submit" id="next" value="다음으로"/>

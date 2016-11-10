@@ -12,6 +12,9 @@ public class HoGoods {
 	private int GoodsPrice;
 	private int GoodsRentPrice;
 	private int GoodsDc;
+	private String GoodsLsize;
+	private String GoodsMsize;
+	private String GoodsSsize;
 	
 	
 	public HoGoods()
@@ -19,7 +22,7 @@ public class HoGoods {
 		
 	}
 	
-	public HoGoods(String GoodsId,String GoodsName,String GoodsCate,String GoodsImg,String GoodsInfo,String GoodsColor,String GoodsSize,int GoodsSoo,int GoodsPrice,int GoodsRentPrice,int GoodsDc)
+	public HoGoods(String GoodsId,String GoodsName,String GoodsCate,String GoodsImg,String GoodsInfo,String GoodsColor,String GoodsSize,int GoodsSoo,int GoodsPrice,int GoodsRentPrice,int GoodsDc,String GoodsLsize,String GoodsMsize,String GoodsSsize)
 	{
 	
 		this.GoodsId = GoodsId;
@@ -33,6 +36,9 @@ public class HoGoods {
 		this.GoodsPrice =GoodsPrice;
 		this.GoodsRentPrice =GoodsRentPrice;
 		this.GoodsDc = GoodsDc;
+		this.GoodsLsize = GoodsLsize;
+		this.GoodsMsize = GoodsMsize;
+		this.GoodsSsize = GoodsSsize;
 	}
 	
 	public String getGoodsId() {
@@ -104,5 +110,29 @@ public class HoGoods {
 
 	public void setGoodsDc(int goodsDc) {
 		GoodsDc = goodsDc;
+	}
+
+	public String getGoodsLsize() {
+		return GoodsLsize;
+	}
+
+	public void setGoodsLsize(String goodsLsize) {
+		GoodsLsize = goodsLsize;
+	}
+
+	public String getGoodsMsize() {
+		return GoodsMsize;
+	}
+
+	public void setGoodsMsize(String goodsMsize) {
+		GoodsMsize = goodsMsize;
+	}
+
+	public String getGoodsSsize() {
+		return GoodsSsize;
+	}
+
+	public void setGoodsSsize(String goodsSsize) {
+		GoodsSsize = goodsSsize;
 	}
 }

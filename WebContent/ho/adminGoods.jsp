@@ -44,6 +44,7 @@
 	
 	
 <!-- 밑 배 경 -->	
+
 	<footer>
 		<div id="footertitle"><a href="#"><img src="<%= projectName %>/ho/img/footerTitle.png"/></a></div>
 		<div id="topfooter">
