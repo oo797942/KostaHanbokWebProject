@@ -132,7 +132,7 @@
   		</td>
   	</tr>
    <% } %>
-   
+  </table>  
       
       <a href="<%=projectName%>/xxx.ho?cmd=list-page&pagenum=1">[맨앞으로]</a>
 	
@@ -145,14 +145,11 @@
 			<%=i %>
 		<%} %>
 	</a> 
-<%--	콤마	 --%>	
-	<%if(i<page_eno){ %>
-		,
-	<%} %>
+
 <%} %>
 <a href="<%=projectName%>/xxx.ho?cmd=list-page&pagenum=<%=next_pageno%>" >[다음]</a>
 <a href="<%=projectName%>/xxx.ho?cmd=list-page&pagenum=<%=total_page %>">[맨뒤로]</a>
-</table> 
+
 </section>
 	
 	
