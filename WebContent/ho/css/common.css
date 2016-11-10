@@ -344,3 +344,202 @@ color: #444;
     color: #666;
     vertical-align: middle;
 }
+
+.panel {
+    display: block;
+    border-radius: 0;
+}
+
+.header {
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    background: #fff;
+}
+
+.panel .header .num {
+    float: left;
+    background-color: #e3e3e3;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    width: 56px;
+    padding: 4px 0 6px;
+    text-align: center;
+    margin: 0 1px 0 0;
+    font-family: 'DINPro-Medium';
+}
+
+.panel .header .title {
+    background-color: #e3e3e3;
+    font-weight: bold;
+    color: #565656;
+    padding: 12px 16px 13px;
+    overflow: hidden;
+    max-width: 1200px;
+}
+.img {
+    width: 50px;
+    padding-top: 15px;
+}
+
+.nme {
+    font-weight: bold;
+    color: #404040;
+    line-height: 23px;
+    font-size: 13px;
+    padding-bottom: 8px;
+    padding-top: 20px;
+}
+
+.qty {
+    font-weight: bold;
+    width: 200px;
+    text-align: right;
+    vertical-align: top;
+    line-height: 23px;
+    padding: 20px 20px 0 0;
+    font-family: 'FFGoodWebPro';
+}
+
+.price {
+    font-weight: bold;
+    width: 200px;
+    text-align: right;
+    line-height: 23px;
+    padding: 12px 20px 0 0;
+}
+
+.amt {
+    width: 200px;
+    text-align: right;
+    line-height: 23px;
+    font-weight: bold;
+    color: #cc383c;
+    font-size: 14px;
+    vertical-align: top;
+    padding: 20px 20px 0 0;
+}
+
+.td_numbig {
+    width: 200px;
+    text-align: center;
+    padding: 12px 20px 0 0;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.tabl {
+    display: table;
+    padding: 11px 0 10px 0;
+}
+ .panel .body .labe {
+    color: #a0a0a0;
+    float: left;
+    font-size: 12px;
+    width: 120px;
+    line-height: 27px;
+}
+
+label {
+    margin-bottom: 0px;
+    margin-top: 2px;
+    margin-right: 10px;
+}
+.cont {
+    float: left;
+}
+
+.pr {
+    float: right;
+    padding-right: 7px;
+}
+
+ul#pay-list {
+    padding: 10px 30px 0 28px;
+}
+
+#pay-info {
+    padding: 0;
+}
+
+.panel .body {
+    padding: 14px 28px;
+    border: 1px solid #e3e3e3;
+    display: block;
+    margin-right: 1px;
+}
+
+ul#pay-list li {
+    padding: 19px 0 19px 0;
+    border-bottom: 1px solid #e3e3e3;
+    font-size: 12px;
+}
+
+.alignleft{
+	float: left;
+}
+
+.alignright{
+	float: right;
+	width: 77%;
+}
+
+#total2 {
+    border-top: 1px solid #e3e3e3;
+    color: #cc383c;
+    font-weight: bold;
+    padding: 20px 29px 22px;
+}
+
+.tabl input[type="radio"] {
+    margin-left: 5px;
+    margin-right: 3px;
+}
+
+.panel .body .tabl .radio {
+    float: left;
+    margin: 0;
+    padding: 0 33px 0 0;
+}
+
+.panel .body.bottom {
+    border-top: 0;
+    
+}
+
+.panel .body .desc.gray {
+    color: #767676;
+    font-size: 12px;
+}
+
+.panel .body .desc.gray p {
+    background: url(../images/dot6.png) no-repeat 0 6px;
+        font-family: 'DINPro-Medium';
+}
+
+.btn-group {
+    display: block;
+    text-align: center;
+    margin: 74px 0;
+}
+
+input.btn_submit {
+    height: 54px;
+    border: 0;
+    background-color: #cc383c;
+    color: #fff;
+    width: 251px;
+    font-size: 21px;
+}
+
+input[type="button"],input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.btn_confirm {
+    text-align: center;
+}
