@@ -6,6 +6,19 @@
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
 <% String projectName = "/HoProject"; %>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- 나눔고딕 -->
+<link href='http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css' rel='stylesheet' type='text/css' />
+
+ 
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
@@ -62,9 +75,9 @@
 		</select>
 		<a href="<%= projectName %>/1.ho?cmd=adminPagelist"><input type="button" id="check" value="검색"/></a>
 		<br/>	<br/>
-		<table border="1"  width="1000">
+		<table border="1"  width="1000" class="table table-hover table-striped">
   	 
-  		 <tr>
+  		 <tr class="info"   id="tablefont">
   	   		 <td> 등급 </td>
     		 <td> 이름 </td>
   	   		 <td> 전화번호 </td>

@@ -40,8 +40,9 @@ $("#joinButton").click(function(){
 		<div id="Menuimg">
 			<a href="#"><img id="logo" src="<%= projectName %>/ho/img/logo.png" /></a>
 		</div>
-	<div id="admin"> admin 님이 접속하셨습니다. </div> <br/>
-	
+	<div id="admin"> admin 님이 접속하셨습니다.
+		<a href="<%=projectName%>/1.ho?cmd=main-page"><input type="button" value="Logout" id="logoutbtn" name="logoutbtn"></a>
+	 </div> <br/>	
 	<table id= "menutable">
 		<tr>
 			<td><a href="<%= projectName %>/1.ho?cmd=adminmenu1"><input type="button" class ="admenu" id="menu1" value="매출"/></a></td>
@@ -84,7 +85,7 @@ re.
 
 		<div class="form-group text-center">
               <button type="submit" class="btn btn-info" id="joinButton">답변하기<i class="fa fa-check spaceLeft"></i></button>
-              <button type="submit" class="btn btn-warning">답변 취소<i class="fa fa-times spaceLeft"></i></button>
+              <a href="<%= projectName %>/xxx.ho?cmd=adminmenu4"><button type="button" class="btn btn-warning">답변 취소<i class="fa fa-times spaceLeft"></i></a></button>
             </div>
 		
 	</section>

@@ -19,6 +19,17 @@
 
 
 %>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- 나눔고딕 -->
+<link href='http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css' rel='stylesheet' type='text/css' />
 
 
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
@@ -34,8 +45,9 @@
 		<div id="Menuimg">
 			<a href="#"><img id="logo" src="<%= projectName %>/ho/img/logo.png" /></a>
 		</div>
-	<div id="admin"> admin 님이 접속하셨습니다. </div> <br/>
-	
+	<div id="admin"> admin 님이 접속하셨습니다.
+		<a href="<%=projectName%>/1.ho?cmd=main-page"><input type="button" value="Logout" id="logoutbtn" name="logoutbtn"></a>
+	 </div> <br/>
 	<table id= "menutable">
 		<tr>
 			<td><a href="<%= projectName %>/1.ho?cmd=adminmenu1"><input type="button" class ="admenu" id="menu1" value="매출"/></a></td>
@@ -48,8 +60,8 @@
 	<section>
 			<a href="adminMemView.jsp"><input type="button" id="back" value="뒤로가기"/></a>
 			
-	<table border="1" bordercolor="darkblue" width="1000">
-  	 <tr>
+	<table border="1" bordercolor="darkblue" width="1000" class="table table-hover table-striped">
+  	 <tr class="info"   id="tablefont">
   	   		 <td> 등록일 </td>
     		 <td> 작성자 이름 </td>
   	   		 <td> 게시글 제목 </td>

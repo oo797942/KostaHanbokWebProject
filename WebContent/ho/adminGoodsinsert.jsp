@@ -6,6 +6,7 @@
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
 <% String projectName = "/HoProject"; %>
+
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
@@ -40,7 +41,7 @@
 		
 		<input type="hidden"  name="cmd"  value="adminGoodsimgInsert" />
 		
-		<table border="2" width="1000" height="560">
+		<table border="2" width="1000" height="560" >
 		<tr>
 			<td>상품명</td>
 			<td><input type="text" class= "Goodsinsert" id="GoodsName" name="GoodsName"></td>

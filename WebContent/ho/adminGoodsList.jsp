@@ -61,6 +61,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- 나눔고딕 -->
+<link href='http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css' rel='stylesheet' type='text/css' />
 
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
@@ -94,30 +105,32 @@
 			<a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" id="back" value="뒤로가기"/></a>
 		
 
-		<table border="1" bordercolor="darkblue" width="1000">
+		<table border="1" bordercolor="darkblue" width="1000"  class="table table-hover table-striped">
   	 
-  	 <tr>
+  	 <tr class="info"   id="tablefont">
     		 <td> 카테고리 </td>
   	   		 <td> 상품명 </td>
   	   		 <td> 수량 </td>
+  	   		 <td> 사진 </td>
  	   		 <td> 구분 </td>
  	 </tr>
    
    	<% for(HoGoods good : goods){ %>
-   <tr>	
+   	<tr>
    		<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsCate() %></a></td>
+ 	
  	  	<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsName() %></a></td>
-  		<td>
-  		<select name="<%=good.getGoodsId()%>" id ="<%=good.getGoodsId()%>" style="width : 60px" > <% for(int i = 0; i<=100; i++){ %>
-  		 	<option value="<%=i%>"> <%= i %></option>
-  		 <% } %>
-  		 </select></td>
+  	
+  		<td><%=good.getGoodsSoo()%></td>
+  	
   	    <td><img width="50px" height="50px" src="<%=projectName%>/ho/upload/<%= good.getGoodsImg() %>"></td>
-  		<td width="100"><a href="<%= projectName %>/1.ho?cmd=adminPageDelete&id=<%= good.getGoodsName() %>">
+  	
+  		<td width="100"><a href="<%= projectName %>/1.ho?cmd=adminPageDelete&count=<%=good.getGoodsSoo()%>id=<%= good.getGoodsName()%>">
   		<input type="button" id="tddel" value="삭제하기"/></a>
-  		<input type="button" id="tdmodify" value="입고"/>
+  		<a href="<%= projectName %>/1.ho?cmd=adminGoodsInventory&id=<%= good.getGoodsName()%>&count=<%=good.getGoodsSoo()%>">
+  		<input type="button" id="tdmodify" value="입고"/></a>
   		</td>
-   </tr>
+  	</tr>
    <% } %>
    
       
