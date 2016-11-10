@@ -31,8 +31,6 @@
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=adminGoodsUpdate"><input type="button" id="back" value="뒤로가기"/></a>
-		
 		<!-- 등록 -->
 	
 	<form action="<%= projectName %>/xxxxx.ho?" method="post" enctype="multipart/form-data"  >
@@ -58,7 +56,8 @@
 		
 		</table>
 
-		<input type="submit" id="next" value="수정하기"/></a>
+		<input type="submit" id="next" value="수정하기"/>
+			<a href="<%= projectName %>/1.ho?cmd=adminGoodsUpdate"><input type="button" id="back" value="뒤로가기"/></a>
 			</form>
 
 	</section>

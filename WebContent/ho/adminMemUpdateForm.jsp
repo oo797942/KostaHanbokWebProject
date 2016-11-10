@@ -64,8 +64,6 @@
 	</header>
 
 	<section>
-		<a href="<%=projectName%>/1.ho?cmd=adminMemlist"><input type="button" id="back" value="뒤로가기" /></a>
-
 
 		<form class="form-horizontal" method="post"
 			action="<%=projectName%>/xx.ho?">
@@ -214,6 +212,7 @@
 
 			</table>
 		</form>
+		<a href="<%=projectName%>/1.ho?cmd=adminMemlist"><input type="button" id="back" value="뒤로가기" /></a>
 
 	</section>
 

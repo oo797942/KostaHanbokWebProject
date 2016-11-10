@@ -102,7 +102,6 @@
 	</header>
 	
 	<section>
-			<a href="adminPage.jsp"><input type="button" id="back" value="뒤로가기"/></a>
 		
 
 	<table border="1" bordercolor="darkblue" width="1000" class="table table-striped">
@@ -148,7 +147,9 @@
 	
 <%} %>
 <a href="<%=projectName%>/xxx.ho?cmd=adminmenu3&pagenum=<%=next_pageno%>" >[다음]</a>
-<a href="<%=projectName%>/xxx.ho?cmd=adminmenu3&pagenum=<%=total_page %>">[맨뒤로]</a>
+<a href="<%=projectName%>/xxx.ho?cmd=adminmenu3&pagenum=<%=total_page %>">[맨뒤로]</a><br/>
+			<a href="adminPage.jsp"><input type="button" id="back" value="뒤로가기"/></a>
+
 	</section>
 	
 <!-- 밑 배 경 -->	

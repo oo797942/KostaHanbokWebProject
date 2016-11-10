@@ -32,7 +32,6 @@
 	</header>
 	
 	<section>
-		<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 		
 		<!-- 등록 -->
 		<form action="<%= projectName %>/xxxxx.ho?" method="get">
@@ -46,6 +45,7 @@
 		
 		</table>
 		</form>
+				<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 		
 
 	</section>

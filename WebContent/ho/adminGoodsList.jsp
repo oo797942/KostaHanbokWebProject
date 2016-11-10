@@ -102,7 +102,6 @@
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" id="back" value="뒤로가기"/></a>
 		
 
 		<table  id="insertTable" border="1" bordercolor="darkblue" width="1000"  class="table table-hover table-striped" >
@@ -148,7 +147,8 @@
 
 <%} %>
 <a href="<%=projectName%>/xxx.ho?cmd=list-page&pagenum=<%=next_pageno%>" >[다음]</a>
-<a href="<%=projectName%>/xxx.ho?cmd=list-page&pagenum=<%=total_page %>">[맨뒤로]</a>
+<a href="<%=projectName%>/xxx.ho?cmd=list-page&pagenum=<%=total_page %>">[맨뒤로]</a><br/>
+			<a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" id="back" value="뒤로가기"/></a>
 
 </section>
 	
