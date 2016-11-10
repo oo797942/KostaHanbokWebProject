@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<% String projectName = "/webUI3";
+<% String projectName = "/HoProject";
 	String sessionValue = null;
 //# 1."yourid"로 저장된 세션값을 얻어온다.
 	Object sess = session.getAttribute("yourid");
