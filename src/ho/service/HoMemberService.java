@@ -135,12 +135,16 @@ public class HoMemberService {
 		System.out.println("GoodsInventory에 들어왔음" + board);	
 		repo.GoodsInventory(board);
 	}
-	public int getTotalCount(){
+	public int getTotalCount(HashMap tm){
 		System.out.println("getTotalCount");
-		return repo.getTotalCount();
+		return repo.getTotalCount(tm);
 	}
 	public List<HoGoods> AllGoodsList(HashMap gm){
 		System.out.println("AllGoodsList");
 		return repo.selectAllGoods(gm);
+	}
+	public List<HoBoard> AllBoardList(HashMap bm){
+		System.out.println("AllGoodsList");
+		return repo.selectAllBoard(bm);
 	}
 }

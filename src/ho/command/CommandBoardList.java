@@ -27,11 +27,26 @@ public class CommandBoardList implements Command{
 	
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
+			int nowpagenum=1;
+			 int countPerPage = 7;
+			 String page = request.getParameter("pagenum");
+			 if(page!=null) nowpagenum = Integer.parseInt(page);
+			 int startRecord = nowpagenum*countPerPage-(countPerPage-1);
+	         int endRecord = nowpagenum*countPerPage;
+	         
+	         HashMap<String,Integer> bm = new HashMap<String,Integer>();
+	            bm.put("startrecord", startRecord);
+	            bm.put("endrecord", endRecord);
+	         HashMap<String,String> tm = new HashMap<String,String>();
+	         tm.put("tableName", "board");
+			
 			request.setCharacterEncoding("utf-8");
 			System.out.println("CommandBoardList에 들어왔음");
-			List<HoBoard> list =  (List<HoBoard>) HoMemberService.getInstance().BoardList();
+			List<HoBoard> list =  (List<HoBoard>) HoMemberService.getInstance().AllBoardList(bm);
+			int totalRecord = HoMemberService.getInstance().getTotalCount(tm);
 			System.out.println(list);
 			request.setAttribute("BoardList", list);
+			request.setAttribute("totalRecord", totalRecord);
 		}catch( Exception ex ){
 			throw new CommandException("CommandGoodsView.java < 입력시 > " + ex.toString()); 
 		}

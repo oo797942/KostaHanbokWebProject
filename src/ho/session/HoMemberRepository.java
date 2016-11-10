@@ -312,13 +312,13 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
-	public int getTotalCount(){
+	public int getTotalCount(HashMap tm){
 		SqlSession sess=getSqlSessionFactory().openSession();
 		int pageTotalCount;	
 		int totalRecCount;
 		int countPerPage = 3;
 		try{
-			totalRecCount=sess.selectOne(namespace+".selectCount");
+			totalRecCount=sess.selectOne(namespace+".selectCount",tm);
 			
 			pageTotalCount = totalRecCount/countPerPage;
 			if(totalRecCount%countPerPage > 0 ){
@@ -356,4 +356,13 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}	
+	public List<HoBoard> selectAllBoard(HashMap<String, Object> bMap){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("selectBoard에 들어왔음");
+			return sess.selectList(namespace+".selectAllBoard",bMap);
+		}finally{
+			sess.close();
+		}
+	}
 }

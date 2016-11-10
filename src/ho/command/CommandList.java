@@ -36,12 +36,13 @@ public class CommandList implements Command{
 	         HashMap<String,Integer> gm = new HashMap<String,Integer>();
 	            gm.put("startrecord", startRecord);
 	            gm.put("endrecord", endRecord);
-
+	            HashMap<String,String> tm = new HashMap<String,String>();
+		         tm.put("tableName", "item");
 
 
 			System.out.println("CommandList에 들어왔음");
 			List<HoGoods> list =  (List<HoGoods>) HoMemberService.getInstance().AllGoodsList(gm);
-			int totalRecord = HoMemberService.getInstance().getTotalCount();
+			int totalRecord = HoMemberService.getInstance().getTotalCount(tm);
 			System.out.println(list);
 			System.out.println("총페이지개수는 몇이되야될까: "+ totalRecord);
 			request.setAttribute("GoodsList", list);

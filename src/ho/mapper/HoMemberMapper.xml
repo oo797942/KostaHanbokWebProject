@@ -242,9 +242,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	UPDATE item SET I_SOO=#{GoodsSoo} WHERE I_NAME=#{GoodsName}
 	</update>
 	
-	<select id="selectCount" resultType="int">
-		Select count(*) as cnt from item
-	</select>
+	<select id="selectCount" resultType="int" parameterType="hashmap">
+		Select count(*) as cnt from ${tableName}
+		</select>
 	
 	<select id="selectAllGoods" resultMap="HoGoodsMap" parameterType="hashmap">
 		select * from item where i_no in (select i_no from (select rownum as rnum, i_no from (select i_no from item order by i_no desc))
@@ -255,6 +255,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateBoard" parameterType="hashmap">
 	update board set b_content = #{content} where b_writer = #{writer}
 	</update>
+	
+	<select id="selectAllBoard" resultMap="HoBoardMap" parameterType="hashmap">
+		select * from board where b_no in (select b_no from (select rownum as rnum, b_no from (select b_no from board order by b_no desc))
+		where rnum between #{startrecord} and #{endrecord})
+		order by  b_no desc	
+	</select>
 	
 </mapper>
 
