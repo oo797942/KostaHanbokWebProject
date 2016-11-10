@@ -15,6 +15,14 @@
 	System.out.println(goods.getGoodsCate());
 
 %>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-3.1.1.min.js"></script>
@@ -46,19 +54,19 @@
 		</table>
 	</header>
 	
-	<section>
+	<section class="secView">
 			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 			<a href="<%= projectName %>/1.ho?cmd=adminGoodsUpdate&id=<%=goods.getGoodsId()%>"><input type="button" id="next" value="수정하기"/></a>
 			<a href="<%= projectName %>/1.ho?cmd=adminPageDelete&id=<%=goods.getGoodsName()%>"><input type="button" id="delete" value="삭제하기"/></a>
 		<!-- 등록 -->
-		<table border="2" width="1000" height="560">
+			<table border="2" id="insertTable" class="table table-striped" width="1000" height="560"  >
 		<tr>
-			<td>상품명</td>
-			<td><input type="text" class= "Goodsinsert" value="<%=goods.getGoodsName() %>" disabled="disabled"></td>
+			<td class="itemtable">상품명</td>
+			<td colspan="3"><input type="text" class= "Goodsinsert" value="<%=goods.getGoodsName() %>" disabled="disabled" style="width: 100%"></td>
 		</tr>
 		<tr>
-			<td>카테고리</td>
-			<td><select id="category1" class= "GoodsSelect"  disabled="disabled">
+			<td class="itemtable">카테고리</td>
+			<td><select id="category1" class= "GoodsSelect"  disabled="disabled" style="width: 100%">
 			<option class="op" selected="selected">선택</option>
 			<option class="op" value="생활 한복 -남">생활 한복 -남</option>
 			<option class="op" value="생활 한복 -여">생활 한복 -여</option>
@@ -70,54 +78,55 @@
 			<option class="op" value="아동 한복 -여">아동 한복 -여</option>
 			<option class="op" value="악세서리">악세서리</option>
 			</select></td>
-			</tr>
-		<tr>
-			<td>디자인 사진</td>
-			<td><input type="file" class= "Goodsinsert" value="<%=goods.getGoodsImg()%>" disabled="disabled"></td>
-			</tr>
-		<tr>
-		
-		<tr>
-			<td>설명</td>
-			<td><textarea  rows="4"  class= "GoodsContent"disabled="disabled"><%=goods.getGoodsInfo()%></textarea></td>
-		</tr>
-		
-			<td>원단</td>
-			<td><select id="category2" class= "GoodsSelect"  disabled="disabled">
+			
+		<td class="itemtable">원단</td>
+			<td colspan="3"><select id="category2" class= "GoodsSelect"  disabled="disabled" style="width: 100%">
 					<option class="op"  selected="selected">선택</option>
 					<option class="op" value="양단">양단</option>
 					<option class="op" value="본견(비단)">본견(비단)</option>
 					<option class="op" value="보화단">보화단</option>
 					<option class="op" value="옥사">옥사</option>
 					<option class="op" value="물실크">물실크</option>
+			</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="itemtable">디자인 사진</td>
+			<td colspan="3"><input type="file" class= "Goodsinsert" value="<%=goods.getGoodsImg()%>" disabled="disabled" style="width: 100%"></td>
+			</tr>
+		<tr>
+		
+		<tr>
+			<td class="itemtable">설명</td>
+			<td colspan="3"><textarea  rows="4"  class= "GoodsContent"disabled="disabled"><%=goods.getGoodsInfo()%></textarea style="width: 100%"></td>
+		</tr>
+		
+		<tr>
+			<td class="itemtable">사이즈</td>
+			<td colspan="3">
+			L<input type="text"  id="Lsize" name="Lsize" value="<%= goods.getGoodsLsize()%>" disabled="disabled" style="width: 25%"> 
+			M<input type="text"  id="Msize"  name="Msize" value="<%= goods.getGoodsMsize()%>" disabled="disabled" style="width: 25%"> 
+			S<input type="text"  id="Ssize" name="Ssize" value="<%= goods.getGoodsSsize()%>" disabled="disabled" style="width: 25%"> 	
 			</td>
 		</tr>
 		
 		<tr>
-			<td>사이즈</td>
-			<td>
-			L<input type="text"  id="Lsize" name="Lsize" value="<%= goods.getGoodsLsize()%>" disabled="disabled"> 
-			M<input type="text"  id="Msize"  name="Msize" value="<%= goods.getGoodsMsize()%>" disabled="disabled"> 
-			S<input type="text"  id="Ssize" name="Ssize" value="<%= goods.getGoodsSsize()%>" disabled="disabled"> 	
-			</td>
-		</tr>
-		
-		<tr>
-			<td>수량</td>
-			<td><input type="text" class= "Goodsinsert" value="<%=goods.getGoodsSoo()%>"  disabled="disabled"></td>
+			<td class="itemtable">수량</td>
+			<td colspan="3"><input type="text" class= "Goodsinsert" value="<%=goods.getGoodsSoo()%>"  disabled="disabled" style="width: 100%"></td>
 		</tr>
 		<tr>
-			<td>가격</td>
-			<td><input type="text" class= "Goodsinsert" value="<%=goods.getGoodsPrice()%>" disabled="disabled"></td>
+			<td class="itemtable">가격</td>
+			<td colspan="3"><input type="text" class= "Goodsinsert" value="<%=goods.getGoodsPrice()%>" disabled="disabled" style="width: 100%"></td>
 		</tr>
 		<tr>
-			<td>배송비</td>
-			<td><input type="text" class= "Goodsinsert" value="<%=goods.getGoodsRentPrice()%>" disabled="disabled"></td>
+			<td class="itemtable">배송비</td>
+			<td colspan="3"><input type="text" class= "Goodsinsert" value="<%=goods.getGoodsRentPrice()%>" disabled="disabled" style="width: 100%"></td>
 		</tr>
 	
 		<tr>
-			<td>할인율</td>
-			<td><input type="text"  class= "Goodsinsert"  placeholder="%로 입력해주세요."  value=<%= goods.getGoodsDc() %> maxlength="2" disabled="disabled"></td>
+			<td class="itemtable">할인율</td>
+			<td colspan="3"><input type="text"  class= "Goodsinsert"  placeholder="%로 입력해주세요."  value=<%= goods.getGoodsDc() %> maxlength="2" disabled="disabled" style="width: 100%"></td>
 		</tr>
 		</table>
 

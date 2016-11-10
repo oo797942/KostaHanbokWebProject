@@ -6,7 +6,7 @@
 
 section {
 	width: 1024px;
-	height :1650px;
+	height :640px;
 }
 a {
 	text-decoration: none;
@@ -551,4 +551,29 @@ input[type="button"],input[type="submit"] {
 
 .btn_confirm {
     text-align: center;
+}
+
+.sec{
+	width: 1024px;
+	height :1650px;
+}
+
+.secView{
+		height :760px;
+}
+.itemtable{
+	text-align : center;
+	font-size : 13pt; 
+	color : blue;
+	font-weight : bolder;
+	background: #e2e2e2;
+}
+
+#insertTable .itemtable{
+ padding-top: 20px
+}	
+
+#listTable{
+	font-size: 18px;
+	font-weight: bold;
 }

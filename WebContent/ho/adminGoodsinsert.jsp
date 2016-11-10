@@ -5,40 +5,49 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<% String projectName = "/HoProject"; %>
+<%
+	String projectName = "/HoProject";
+%>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-<link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
-<link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
-<script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
-<script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css"
+	rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/common.css" rel="stylesheet" />
+<script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
+<script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$("#Lsize").blur(function(){
-			var LSize = $("#Lsize").val()*1;
-			var MSize = $("#Msize").val()*1;
-			var SSize = $("#Ssize").val()*1;
+	$(function() {
+		$("#Lsize").blur(function() {
+			var LSize = $("#Lsize").val() * 1;
+			var MSize = $("#Msize").val() * 1;
+			var SSize = $("#Ssize").val() * 1;
 
-			$("#GoodsSoo").val(LSize+MSize+SSize);
+			$("#GoodsSoo").val(LSize + MSize + SSize);
 		});
-		
-		$("#Msize").blur(function(){
-			var LSize = $("#Lsize").val()*1;
-			var MSize = $("#Msize").val()*1;
-			var SSize = $("#Ssize").val()*1;
 
-			$("#GoodsSoo").val(LSize+MSize+SSize);		
-		});
-		
-		
-		$("#Ssize").blur(function(){
-			var LSize = $("#Lsize").val()*1;
-			var MSize = $("#Msize").val()*1;
-			var SSize = $("#Ssize").val()*1;
+		$("#Msize").blur(function() {
+			var LSize = $("#Lsize").val() * 1;
+			var MSize = $("#Msize").val() * 1;
+			var SSize = $("#Ssize").val() * 1;
 
-			$("#GoodsSoo").val(LSize+MSize+SSize);
+			$("#GoodsSoo").val(LSize + MSize + SSize);
 		});
-		
-		
+
+		$("#Ssize").blur(function() {
+			var LSize = $("#Lsize").val() * 1;
+			var MSize = $("#Msize").val() * 1;
+			var SSize = $("#Ssize").val() * 1;
+
+			$("#GoodsSoo").val(LSize + MSize + SSize);
+		});
+
 	});
 </script>
 
@@ -46,110 +55,129 @@
 <body>
 	<header>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="<%= projectName %>/ho/img/logo.png" /></a>
+			<a href="#"><img id="logo"
+				src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
-	<div id="admin"> admin 님이 접속하셨습니다.
-		<a href="<%=projectName%>/1.ho?cmd=main-page"><input type="button" value="Logout" id="logoutbtn" name="logoutbtn"></a>
-	 </div> <br/>
-	
-	<table id= "menutable">
-		<tr>
-		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu1"><input type="button" class ="admenu" id="menu1" value="매출"/></a></td>
-		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" class ="admenu" id="menu2" value="상품"/></a></td>
-		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu3"><input type="button" class ="admenu" id="menu3" value="회원"/></a></td>
-		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu4"><input type="button" class ="admenu" id="menu4" value="게시판"/></a></td>	
+		<div id="admin">
+			admin 님이 접속하셨습니다. <a href="<%=projectName%>/1.ho?cmd=main-page"><input
+				type="button" value="Logout" id="logoutbtn" name="logoutbtn"></a>
+		</div>
+		<br />
+
+		<table id="menutable">
+			<tr>
+				<td><a href="<%=projectName%>/1.ho?cmd=adminmenu1"><input
+						type="button" class="admenu" id="menu1" value="매출" /></a></td>
+				<td><a href="<%=projectName%>/1.ho?cmd=adminmenu2"><input
+						type="button" class="admenu" id="menu2" value="상품" /></a></td>
+				<td><a href="<%=projectName%>/1.ho?cmd=adminmenu3"><input
+						type="button" class="admenu" id="menu3" value="회원" /></a></td>
+				<td><a href="<%=projectName%>/1.ho?cmd=adminmenu4"><input
+						type="button" class="admenu" id="menu4" value="게시판" /></a></td>
 			</tr>
 		</table>
 	</header>
-	
+
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" id="back" value="뒤로가기"/></a>
-		
+		<a href="<%=projectName%>/1.ho?cmd=adminmenu2"><input
+			type="button" id="back" value="뒤로가기" /></a>
+
 		<!-- 등록 -->
-	<form action="<%=projectName%>/xxxxx.ho" method="post" enctype="multipart/form-data"  >
-		
-		<input type="hidden"  name="cmd"  value="adminGoodsimgInsert" />
-		
-		<table border="2" width="1000" height="560" >
-		<tr>
-			<td>상품명</td>
-			<td><input type="text" class= "Goodsinsert" id="GoodsName" name="GoodsName"></td>
-		</tr>
-		<tr>
-			<td>카테고리</td>
-			<td><select id="category1" class= "GoodsSelect" name="GoodsCate">
-			<option class="op">선택</option>
-			<option class="op">생활 한복 -남</option>
-			<option class="op">생활 한복 -여</option>
-			<option class="op">개량 한복 -남</option>
-			<option class="op">개량 한복 -여</option>
-			<option class="op">퓨전 한복 -남</option>
-			<option class="op">퓨전 한복 -여</option>
-			<option class="op">아동 한복 -남</option>
-			<option class="op">아동 한복 -여</option>
-			<option class="op">악세서리</option>
-			</select></td>
-			
-		<tr>
-			<td>디자인 사진</td>
-			<td><input type="file" class= "Goodsinsert" name="GoodsImg"></td>
-			</tr>
-		<tr>
-		
-		<tr>
-			<td>설명</td>
-			<td><textarea  rows="4"  class= "GoodsContent" name="GoodsInfo"></textarea> </td>
-		</tr>
-		<tr>
-			<td>원단</td>
-			<td><select id="category2" class= "GoodsSelect" name="GoodsColor">
-					<option class="op">선택</option>
-					<option class="op">양단</option>
-					<option class="op">본견(비단)</option>
-					<option class="op">보화단</option>
-					<option class="op">옥사</option>
-					<option class="op">물실크</option>
-				</select>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>사이즈</td>
-			<td>
-			L<input type="text"  id="Lsize" name="Lsize"> 
-			M<input type="text"  id="Msize"  name="Msize" > 
-			S<input type="text"  id="Ssize" name="Ssize"> 	
-			</td>
-		</tr>
-		
-		<tr>
-			<td>총수량</td>
-			<td><input type="text" class= "Goodsinsert" id="GoodsSoo" name="GoodsSoo" readonly="readonly"></td>
-		</tr>
-		<tr>
-			<td>가격</td>
-			<td><input type="text" class= "Goodsinsert" name="GoodsPrice"></td>
-		</tr>
-		<tr>
-			<td>배송비</td>
-			<td><input type="text" class= "Goodsinsert" value="3000" name="GoodsRentPrice"></td>
-		</tr>
-	
-		<tr>
-			<td>할인율</td>
-			<td><input type="text" name="GoodsDc"  class= "Goodsinsert" maxlength="2"></td>
-		</tr>	
-		</table>
-		<input type="submit" id="next" value="다음으로"/>
-	</form>
-		
+		<form action="<%=projectName%>/xxxxx.ho" method="post"
+			enctype="multipart/form-data">
+
+			<input type="hidden" name="cmd" value="adminGoodsimgInsert" />
+
+			<table border="2" id="insertTable" class="table table-striped" width="1000" height="560"  >
+				<tr>
+					<td  class="itemtable">상품명</td>
+					<td colspan="3"><input type="text" class="Goodsinsert" id="GoodsName"
+						name="GoodsName" style="width: 100%"></td>
+				</tr>
+				<tr>
+					<td class="itemtable">카테고리</td>
+					<td width="300px"><select id="category1" class="GoodsSelect"
+						name="GoodsCate" style="width: 100%;">
+							<option class="op">선택</option>
+							<option class="op">생활 한복 -남</option>
+							<option class="op">생활 한복 -여</option>
+							<option class="op">개량 한복 -남</option>
+							<option class="op">개량 한복 -여</option>
+							<option class="op">퓨전 한복 -남</option>
+							<option class="op">퓨전 한복 -여</option>
+							<option class="op">아동 한복 -남</option>
+							<option class="op">아동 한복 -여</option>
+							<option class="op">악세서리</option>
+					</select></td>
+					<td class="itemtable">원단</td>
+					<td width="300px"><select id="category2" class="GoodsSelect"
+						name="GoodsColor" style="width: 100%;">
+							<option class="op">선택</option>
+							<option class="op">양단</option>
+							<option class="op">본견(비단)</option>
+							<option class="op">보화단</option>
+							<option class="op">옥사</option>
+							<option class="op">물실크</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td class="itemtable">디자인 사진</td>
+					<td colspan="3"><input type="file" class="Goodsinsert" name="GoodsImg"
+						style="width: 100%;"></td>
+				</tr>
+				<tr>
+				
+				<tr>
+					<td class="itemtable">설명</td>
+					<td colspan="3"><textarea rows="4" class="GoodsContent" name="GoodsInfo"
+							style="width: 100%;"></textarea></td>
+				</tr>
+				
+
+				<tr>
+					<td class="itemtable">사이즈</td>
+						<td style="font-size: 20pt" colspan="3">   L<input type="text" id="Lsize" name="Lsize" style="width: 25%">
+							M<input type="text" id="Msize" name="Msize" style="width: 25%" > 
+							S<input type="text" id="Ssize" name="Ssize" style="width: 25%">
+						</td>
+				</tr>
+
+				<tr>
+					<td class="itemtable">총수량</td>
+					<td colspan="3"><input type="text" class="Goodsinsert" id="GoodsSoo"
+						name="GoodsSoo" readonly="readonly" style="width: 100%;"></td>
+				</tr>
+				
+				<tr>
+					<td class="itemtable">가격</td>
+					<td colspan="3"><input type="text" class="Goodsinsert" name="GoodsPrice"
+						style="width: 100%;"></td>
+				</tr>
+				
+				<tr>
+					<td class="itemtable">배송비</td>
+					<td colspan="3"><input type="text" class="Goodsinsert" value="3000"
+						name="GoodsRentPrice" style="width: 100%;"></td>
+				</tr>
+
+				<tr>
+					<td class="itemtable">할인율</td>
+					<td colspan="3"> <input type="text" name="GoodsDc" class="Goodsinsert"
+						maxlength="2" style="width: 100%;"></td>
+				</tr>
+			</table>
+			<input type="submit" id="next" value="다음으로" />
+		</form>
+
 
 	</section>
-	
-	
-<!-- 밑 배 경 -->	
+
+
+	<!-- 밑 배 경 -->
 	<footer>
-		<div id="footertitle"><a href="#"><img src="<%= projectName %>/ho/img/footerTitle.png"/></a></div>
+		<div id="footertitle">
+			<a href="#"><img src="<%=projectName%>/ho/img/footerTitle.png" /></a>
+		</div>
 		<div id="topfooter">
 			<table id="footerTable">
 				<tr>
@@ -164,12 +192,12 @@
 							분쟁처리</strong><br /> <br /> Tel : 1588-0184 Fax : 02-589-8833<br /> Mail
 						: mediation@corp.auction.co.kr<br /> 저작권침해신고<br /> <br /> <br />
 						<br /></td>
-					<td width="256px">
-					<strong>시티은행 채무지급보증 안내</strong><br/><br/>
-					당사는 고객님이 현금 결제한 금액에 대해<br/>
-					시티은행과 채무지급보증 계약을 체결하여<br/>
-					안전거래를 보장하고 있습니다.<br/><br/><br/><br/>
-					</td>
+					<td width="256px"><strong>시티은행 채무지급보증 안내</strong><br />
+					<br /> 당사는 고객님이 현금 결제한 금액에 대해<br /> 시티은행과 채무지급보증 계약을 체결하여<br />
+						안전거래를 보장하고 있습니다.<br />
+					<br />
+					<br />
+					<br /></td>
 				</tr>
 			</table>
 		</div>
