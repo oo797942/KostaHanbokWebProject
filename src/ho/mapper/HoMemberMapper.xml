@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ho.mapper.HoMemberMapper">
+   <!-- SQL 문장은 여기에 -->
+   <resultMap type="HoMember" id="homemberMap">
+      <id column="m_id" property="memId" />
+      <result column="m_pass" property="memPass" />
+      <result column="m_name" property="memName" />
+      <result column="m_tel" property="memTel" />
+      <result column="m_email" property="memEmail" />
+      <result column="m_birth" property="memBirth" />
+      <result column="m_addr_no" property="memAddrNo" />
+      <result column="m_addr" property="memAddr" />
+      <result column="m_cm" property="memHeight" />
+      <result column="m_bust" property="memBust" />
+      <result column="m_shoulder" property="memShoulder" />
+      <result column="m_coin" property="memCoin" />
+      <result column="m_exp" property="memExp" />
+   </resultMap>
+
+   <resultMap type="HoGoodsImg" id="HoGoodsImgMap">
+      <id column="img_name" property="imgName" />
+      <result column="img_1" property="imgOne" />
+      <result column="img_2" property="imgTwo" />
+      <result column="img_3" property="imgThree" />
+   </resultMap>
+
+   <resultMap type="HoGoods" id="HoGoodsMap">
+      <id column="i_no" property="GoodsId" />
+      <result column="i_name" property="GoodsName" />
+      <result column="i_category" property="GoodsCate" />
+      <result column="i_img" property="GoodsImg" />
+      <result column="i_info" property="GoodsInfo" />
+      <result column="i_color" property="GoodsColor" />
+      <result column="i_size" property="GoodsSize" />
+      <result column="i_soo" property="GoodsSoo" />
+      <result column="i_price" property="GoodsPrice" />
+      <result column="i_rent_price" property="GoodsRentPrice" />
+      <result column="i_dc" property="GoodsDc" />
+      <result column="i_l" property="GoodsLsize" />
+      <result column="i_m" property="GoodsMsize" />
+      <result column="i_s" property="GoodsSsize" />
+   </resultMap>
+
+   <resultMap type="HoBoard" id="HoBoardMap">
+      <id column="b_id" property="boardId" />
+      <result column="b_no" property="boardNo" />
+      <result column="b_group_no" property="boardGroupNo" />
+      <result column="b_order_no" property="boardOrderNo" />
+      <result column="b_date" property="boardDate" />
+      <result column="b_hits" property="boardHits" />
+      <result column="b_writer" property="boardWriter" />
+      <result column="b_pass" property="boardPass" />
+      <result column="b_title" property="boardTitle" />
+      <result column="b_content" property="boardContent" />
+      <result column="b_answer" property="boardAnswer" />
+	  <result column="b_answerstatus" property="boardAnswerStatus" />
+   </resultMap>
+
+   	<resultMap type="HoBag" id="HoShoppingBag">
+		<id column="shop_seq_no" property="shopSeqNo" />
+		<result column="shop_id" property="shopId" />
+		<result column="shop_no" property="shopNo" />
+		<result column="shop_size" property="shopSize" />
+		<result column="shop_img" property="shopImg" />
+		<result column="shop_soo" property="shopSoo" />
+		<result column="shop_price" property="shopPrice" />
+		<result column="shop_name" property="shopName" />
+	</resultMap>
+
+	<select id="shoppingBag" resultMap="HoShoppingBag" parameterType="hashmap">
+<![CDATA[
+select shop_id, shop_name, shop_no, shop_size, shop_img, shop_soo, shop_price from (
+select rownum, shop_name, shop_id, shop_no, shop_size, shop_img, shop_soo, shop_price from (
+select * from shopping_bag WHERE shop_id like #{id} ORDER BY shop_seq_no DESC) where rownum<4)
+]]>
+	</select>
+
+
+   <select id="GoodsImgView" resultMap="HoGoodsImgMap"
+      parameterType="hashmap">
+      SELECT *
+      FROM itemimg
+      <where>
+         <choose>
+            <when test="name neq null">
+               img_name = #{name}
+            </when>
+         </choose>
+      </where>
+   </select>
+
+
+   <select id="selectHoMember" resultMap="homemberMap"
+      parameterType="hashmap">
+      SELECT *
+      FROM member
+      <where>
+         <choose>
+            <when test="id neq null and pass neq null">
+               m_id=#{id} and m_pass=#{pass}
+            </when>
+            <when test="checkid neq null">
+               m_id=#{checkid}
+            </when>
+            <when test="id neq null">
+               m_id=#{id}
+            </when>
+            <when test="mId neq null">
+               m_id=#{mId}
+            </when>
+         </choose>
+      </where>
+   </select>
+
+   <update id="UpdateMypage" parameterType="hashmap">
+      <choose>
+         <when test="memPass neq null">
+            UPDATE member
+            SET m_email
+            = #{memEmail} ,m_tel =
+            #{memTel}, m_addr =
+            #{memAddr},
+            m_cm =
+            #{memHeight}, m_bust =
+            #{memBust}, m_shoulder =
+            #{memShoulder}, m_pass = #{memPass}, m_name
+            = #{memName}
+            WHERE
+            m_id=#{memId}
+         </when>
+         <otherwise>
+            UPDATE member
+            SET m_email
+            = #{memEmail} ,m_tel = #{memTel},
+            m_addr = #{memAddr},
+            m_cm =
+            #{memHeight}, m_bust = #{memBust},
+            m_shoulder = #{memShoulder}, m_name = #{memName}
+            WHERE
+            m_id=#{memId}
+         </otherwise>
+      </choose>
+
+   </update>
+
+
+
+   <insert id="insertGoods" parameterType="hashmap">
+
+      INSERT INTO ITEM
+      (I_NO,I_NAME,I_CATEGORY,I_IMG,I_INFO,I_COLOR,I_SOO,I_PRICE,I_RENT_PRICE,I_SIZE,I_DC,I_L,I_M,I_S)
+      VALUES
+      (seq_item.nextval,#{GoodsName}, #{GoodsCate}, #{GoodsImg},
+      #{GoodsInfo}, #{GoodsColor}, #{GoodsSoo},
+      #{GoodsPrice},#{GoodsRentPrice},
+      #{GoodsSize},#{GoodsDc},#{GoodsLsize},#{GoodsMsize},#{GoodsSsize})
+
+   </insert>
+
+   <insert id="insertGoodsimg" parameterType="hashmap">
+      INSERT INTO itemimg
+      values(#{GoodsName},#{image1},#{image2},#{image2})
+   </insert>
+
+   <select id="Goodlist" resultMap="HoGoodsMap" parameterType="hashmap">
+      select * from item
+      <where>
+         <choose>
+            <when test="id neq null">
+               i_no = #{id}
+            </when>
+            <when test="countid neq null">
+               i_name = #{countid}
+            </when>
+            <when test="category neq null">
+               i_category = #{category}
+            </when>
+            <when test="name neq null and cate neq null">
+               i_name like '%'||#{name}||'%' AND i_category LIKE
+               '%'||#{cate}||'%'
+            </when>
+            <when test="info neq null and cate neq null">
+               i_info like '%'||#{info}||'%' AND i_category LIKE
+               '%'||#{cate}||'%'
+            </when>
+            <when test="name neq null">
+               i_name like '%'||#{name}||'%'
+            </when>
+            <when test="info neq null">
+               i_info like '%'||#{info}||'%'
+            </when>
+            <when test="id neq null and name eq null">
+               i_no = #{id}
+            </when>
+         </choose>
+      </where>
+   </select>
+
+   <delete id="Goodsdelete" parameterType="hashmap">
+      DELETE FROM ITEM WHERE
+      I_NAME = #{id}
+   </delete>
+
+
+   <update id="UpdateGoods">
+      UPDATE item SET I_CATEGORY=#{GoodsCate}, I_IMG
+      =#{GoodsImg},I_INFO=#{GoodsInfo},I_COLOR=#{GoodsColor},I_SOO=#{GoodsSoo},I_PRICE=#{GoodsPrice},I_RENT_PRICE=#{GoodsRentPrice},I_SIZE=#{GoodsSize}
+      ,
+      I_DC=#{GoodsDc},I_L=#{GoodsLsize},I_M=#{GoodsMsize},I_S=#{GoodsSsize}
+      WHERE I_NAME=#{GoodsName}
+   </update>
+
+   <delete id="GoodsImgdelete" parameterType="hashmap">
+      DELETE FROM ITEMIMG
+      WHERE Img_NAME = #{id}
+   </delete>
+
+   <update id="UpdateGoodsimg">
+      UPDATE itemimg SET IMG_1=#{image1},
+      IMG_2=#{image2},IMG_3=#{image3} WHERE
+      IMG_NAME=#{GoodsName}
+   </update>
+
+   <delete id="deleteMember" parameterType="hashmap">
+      DELETE
+      FROM MEMBER
+      WHERE
+      m_id=#{mId}
+   </delete>
+
+   <update id="updateMember" parameterType="hashmap">
+      UPDATE MEMBER
+      SET
+      m_id=#{memId} , m_name=#{memName},
+      m_Email=#{memEmail},m_addr=#{memAddrNo}, m_tel=#{memTel},
+      m_coin=#{memCoin}, m_cm=#{memHeight} , m_bust=#{memBust},
+      m_shoulder=#{memShoulder}
+      WHERE m_id=#{mId}
+   </update>
+
+   <insert id="insertMember" parameterType="hashmap">
+      INSERT
+      INTO member
+      VALUES(#{userId},#{userPass},#{userName},#{userTel},#{userEmail},#{userBirth},#{userSex},#{userAddr},#{userHeight},#{userChest},#{userShoulder},#{userCoin},#{userEXP})
+   </insert>
+
+   <select id="selectBoard" resultMap="HoBoardMap" parameterType="hashmap">
+
+      select * from board
+      <where>
+         <choose>
+            <when test="id neq null">
+               b_no=#{id}
+            </when>
+            <when test="adid neq null">
+            	b_id=#{adid}
+            </when>
+         </choose>
+      </where>
+   </select>
+   
+   <insert id="inputQna" parameterType="hashmap">
+      INSERT
+      INTO
+      board(b_id,b_no,b_date,b_writer,b_title,b_content,b_answerstatus)
+      VALUES(#{id},seq_board_no.nextval,sysdate,#{name},#{title},#{content},0)
+   </insert>
+
+   <update id="GoodsInventory" parameterType="hashmap">
+      UPDATE item SET I_SOO=#{GoodsSoo} WHERE I_NAME=#{GoodsName}
+   </update>
+
+   <select id="selectCount" resultType="int" parameterType="hashmap">
+      Select
+      count(*) as cnt from ${tableName}
+   </select>
+
+   <select id="selectAllGoods" resultMap="HoGoodsMap"
+      parameterType="hashmap">
+      select * from item where i_no in (select i_no from
+      (select rownum as rnum, i_no from (select i_no from item order by i_no
+      desc))
+      where rnum between #{startrecord} and #{endrecord})
+      order by i_no
+      desc
+   </select>
+
+   <update id="updateBoard" parameterType="hashmap">
+      update board set b_content = #{content} , b_answer=#{answer}, b_answerstatus=1  where b_writer = #{writer}
+   </update>
+
+   <select id="selectAllBoard" resultMap="HoBoardMap"
+      parameterType="hashmap">
+      select * from board where b_no in (select b_no from
+      (select rownum as rnum, b_no from (select b_no from board order by
+      b_no desc))
+      where rnum between #{startrecord} and #{endrecord})
+      order by
+      b_no desc
+   </select>
+
+   <select id="selectAllMember" resultMap="homemberMap"
+      parameterType="hashmap">
+      select * from member where m_name in (select m_name from
+      (select rownum as rnum, m_name from (select m_name from member order
+      by m_name))
+      where rnum between #{startrecord} and #{endrecord})
+      order by
+      m_name
+   </select>
+
+</mapper>
+
+   

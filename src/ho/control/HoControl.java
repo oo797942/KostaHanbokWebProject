@@ -32,6 +32,7 @@ import ho.command.CommandMemList;
 import ho.command.CommandMemUpdate;
 import ho.command.CommandMemView;
 import ho.command.CommandModify;
+import ho.command.CommandMyList;
 import ho.command.CommandNull;
 import ho.command.CommandUpdate;
 
@@ -75,8 +76,9 @@ public class HoControl extends HttpServlet {
 		commandMap.put("search-category", new CommandGoodsCategory("ShoppingSearch.jsp"));
 		commandMap.put("search-input", new CommandGoodsInputSearch("ShoppingSearch.jsp"));
 		commandMap.put("goods-view", new CommandGoodsView("ShoppingView.jsp"));
-		
 	
+		commandMap.put("mypage-list", new CommandMyList("ShoppingMyPageQnaList.jsp"));
+		commandMap.put("Mylist-view", new CommandBoardView("ShoppingMyPageQnaView.jsp"));
 		// admin 페이지
 		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
 		commandMap.put("adminGoodsimgInsert", new CommandInsert("adminGoodsimgInsert.jsp"));

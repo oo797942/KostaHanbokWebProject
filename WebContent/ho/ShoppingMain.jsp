@@ -98,7 +98,7 @@ $(function(){
 			</tr>
 			<tr>
 				<td style="background: #696969;"><a href="#"
-					style="color: white;">장바구니</a></td>
+					style="color: white;">찜목록</a></td>
 			</tr>
 			<tr>
 				<td>
@@ -107,9 +107,11 @@ $(function(){
 					<%HoBag hbag = (HoBag)bagList.get(i); %>
 						<tr>
 							<td class="shoppingBagItem">
-							<img src="<%=projectName%>/ho/upload/<%=hbag.getShopId() %>" width="90px" height="90px" /><br/>
-							<p style="font-size: 8pt"><%=hbag.getShopSize() %> <%=hbag.getShopSoo() %> 개<br/></p>
-							<p style="font-size: 10pt"><%=hbag.getShopPrice() %>원</p>
+							<a href="<%=projectName %>/view.ho?cmd=goods-view&id=<%=hbag.getShopNo() %>&name=<%=hbag.getShopName() %>">
+							<img src="<%=projectName%>/ho/upload/<%=hbag.getShopImg() %>" width="90px" height="90px" />
+							</a>
+							<br/>
+							<p style="font-size: 10pt"><%=hbag.getShopName() %></p>
 							</td>
 						</tr>
 					<%} %>
