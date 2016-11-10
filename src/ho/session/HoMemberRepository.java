@@ -312,4 +312,32 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
+	public int getTotalCount(){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		int pageTotalCount;	
+		int totalRecCount;
+		int countPerPage = 3;
+		try{
+			totalRecCount=sess.selectOne(namespace+".selectCount");
+			
+			pageTotalCount = totalRecCount/countPerPage;
+			if(totalRecCount%countPerPage > 0 ){
+				pageTotalCount++;
+			}
+			//페이지의 총 개수를 정해서 넘겨준다. 
+			return pageTotalCount;
+		}finally{
+			sess.close();
+		}
+	}
+	
+	public List<HoGoods> selectAllGoods(HashMap<String, Object> gMap){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("selectBoard에 들어왔음");
+			return sess.selectList(namespace+".selectAllGoods",gMap);
+		}finally{
+			sess.close();
+		}
+	}
 }

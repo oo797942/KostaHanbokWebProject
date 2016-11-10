@@ -130,4 +130,12 @@ public class HoMemberService {
 		System.out.println("GoodsInventory에 들어왔음" + board);	
 		repo.GoodsInventory(board);
 	}
+	public int getTotalCount(){
+		System.out.println("getTotalCount");
+		return repo.getTotalCount();
+	}
+	public List<HoGoods> AllGoodsList(HashMap gm){
+		System.out.println("AllGoodsList");
+		return repo.selectAllGoods(gm);
+	}
 }
