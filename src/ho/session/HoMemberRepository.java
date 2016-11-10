@@ -365,4 +365,14 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
+	
+	public List<HoMember> selectAllMember(HashMap<String, Object> bMap){
+		SqlSession sess=getSqlSessionFactory().openSession();
+		try{
+			System.out.println("selectBoard에 들어왔음");
+			return sess.selectList(namespace+".selectAllMember",bMap);
+		}finally{
+			sess.close();
+		}
+	}
 }

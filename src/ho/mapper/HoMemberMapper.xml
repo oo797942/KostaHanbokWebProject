@@ -262,6 +262,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by  b_no desc	
 	</select>
 	
+		<select id="selectAllMember" resultMap="homemberMap" parameterType="hashmap">
+		select * from member where m_name in (select m_name from (select rownum as rnum, m_name from (select m_name from member order by m_name))
+		where rnum between #{startrecord} and #{endrecord})
+		order by m_name	
+	</select>
+	
 </mapper>
 
    

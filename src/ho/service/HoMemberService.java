@@ -147,4 +147,9 @@ public class HoMemberService {
 		System.out.println("AllGoodsList");
 		return repo.selectAllBoard(bm);
 	}
+	
+	public List<HoMember> AllMemberList(HashMap mm){
+		System.out.println("AllMemberList");
+		return repo.selectAllMember(mm);
+	}
 }
