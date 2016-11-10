@@ -11,7 +11,7 @@ System.out.println("세션값"+sess);
 if(sess != null){
 	sessionValue = (String)sess;
 } %>
-	
+	 
 <!DOCTYPE html>
 <html>
 <head>
