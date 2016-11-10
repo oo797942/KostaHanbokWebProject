@@ -19,7 +19,7 @@ public class CommandMemView implements Command{
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
 			request.setCharacterEncoding("utf-8");
-
+          
 			String id =request.getParameter("mId");
 			HoMember Member = null;
 			HashMap hm = new HashMap();
