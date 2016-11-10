@@ -25,28 +25,30 @@ public class CommandBag implements Command{
 			
 			
 			HoMember hm = null;
+			List BagList = null;
 			HttpSession sess = request.getSession();
 			String id = (String)sess.getAttribute("yourid");
-			
-			memMap.put("id", id);		
 			System.out.println("아이디:" + id);
 
 			if(id!=null){
+				memMap.put("id", id);
 				hm =HoMemberService.getInstance().selectHoMemberByPrimaryKey(memMap);
+				BagList = HoBagService.getInstance().selectShoppingBag(memMap);
+				System.out.println("아이디는 제대로 넘겼지?? >> " + id);
+				System.out.println("몇 개 넘어갔어?? >> " + BagList.size());
 			}
 			
-			
+
+
 			if(hm==null){
 				result=2;
 			}else{
 				result=1;
-				request.setAttribute("homem", hm);	
+				request.setAttribute("homem", hm);
+				request.setAttribute("baglist", BagList);
 			}
 			request.setAttribute("result", result);
 			
-			List BagList = HoBagService.getInstance().selectShoppingBag(memMap);
-			
-			//System.out.println("BagListSIze >> " + BagList.size());
 
 			
 		}catch( Exception ex ){

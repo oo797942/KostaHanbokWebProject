@@ -5,10 +5,19 @@ public class HoBag {
 	private String shopNo;
 	private String shopSize;
 	private String shopImg;
+	private String shopName;
 	private int shopSoo;
 	private int shopPrice;
 	private int shopSeqNo;
-	
+
+	public String getShopName() {
+		return shopName;
+	}
+
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
+
 	public int getShopSeqNo() {
 		return shopSeqNo;
 	}

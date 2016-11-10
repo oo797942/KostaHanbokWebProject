@@ -1,9 +1,13 @@
+<%@page import="ho.model.HoBag"%>
+<%@page import="java.util.List"%>
 <%@page import="ho.model.HoMember"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%
 	String projectName = "/HoProject";
 	String sessionValue = null;
+	HoMember hm = null;
+	List bagList = null;
 	//# 1."yourid"로 저장된 세션값을 얻어온다.
 	Object sess = session.getAttribute("yourid");
 	//# 2. 값이 null이라면 LoginForm.jsp로 페이지 이동
@@ -12,9 +16,14 @@
 
 	if (sess != null) {
 		sessionValue = (String) sess;
+		hm = (HoMember) request.getAttribute("homem");
+		bagList = (List)request.getAttribute("baglist");
 	}
-	HoMember hm = (HoMember) request.getAttribute("homem");
+
+	 
 %>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -81,7 +90,7 @@ $(function(){
 
 </head>
 <body>
-
+<%if(sess!=null){ %>
 	<nav>
 		<table id="shoppingBag" cellspacing="0">
 			<tr>
@@ -89,28 +98,34 @@ $(function(){
 			</tr>
 			<tr>
 				<td style="background: #696969;"><a href="#"
-					style="color: white;">장바구니</a></td>
+					style="color: white;">찜목록</a></td>
 			</tr>
 			<tr>
 				<td>
 					<table cellspacing="15" width="125px">
+					<%for(int i=0; i<bagList.size(); i++){ %>
+					<%HoBag hbag = (HoBag)bagList.get(i); %>
 						<tr>
-							<td class="shoppingBagItem"><img
-								src="<%=projectName%>/ho/img/banner_image_01.jpeg" width="90px"
-								height="90px" /></td>
+							<td class="shoppingBagItem">
+							<a href="<%=projectName %>/view.ho?cmd=goods-view&id=<%=hbag.getShopNo() %>&name=<%=hbag.getShopName() %>">
+							<img src="<%=projectName%>/ho/upload/<%=hbag.getShopImg() %>" width="90px" height="90px" />
+							</a>
+							<br/>
+							<p style="font-size: 10pt"><%=hbag.getShopName() %></p>
+							</td>
 						</tr>
-						<tr>
-							<td class="shoppingBagItem"></td>
-						</tr>
-						<tr>
-							<td class="shoppingBagItem"></td>
-						</tr>
+					<%} %>
+					<%for(int i=0; i<3-bagList.size();i++){ %>
+					<tr>
+					<td class="shoppingBagItem"></td>
+					</tr>
+					<%} %>
 					</table>
 				</td>
 			</tr>
 		</table>
 	</nav>
-
+<%} %>
 	<header>
 		<div id="menu">
 			<img src="<%=projectName%>/ho/img/topMenu.png" />
