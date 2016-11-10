@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import ho.model.HoMember;
 import ho.model.HoBoard;
 import ho.model.HoGoods;
+import ho.model.HoGoodsImg;
 
 public class HoMemberRepository {
 	String namespace = "ho.mapper.HoMemberMapper"; // HoMemberMapper의 namespace
@@ -111,13 +112,24 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
-
+	
 	public HoGoods selectGoodsView(HashMap id) {
 		SqlSession sess = getSqlSessionFactory().openSession();
 		try {
 			System.out.println("selectGoods에 들어왔음");
 
 			return sess.selectOne(namespace + ".Goodlist", id);
+		} finally {
+			sess.close();
+		}
+	}
+	
+	public HoGoodsImg selectGoodsItemImgView(HashMap name) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			System.out.println("selectGoodsItemImgView에 들어왔음");
+
+			return sess.selectOne(namespace + ".GoodsImgView", name);
 		} finally {
 			sess.close();
 		}

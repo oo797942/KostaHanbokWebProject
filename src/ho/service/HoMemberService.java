@@ -5,6 +5,7 @@ import java.util.List;
 import ho.model.HoMember;
 import ho.model.HoBoard;
 import ho.model.HoGoods;
+import ho.model.HoGoodsImg;
 import ho.session.HoMemberRepository;
 
 public class HoMemberService {
@@ -59,6 +60,12 @@ public class HoMemberService {
 		System.out.println("GoodsView에 들어왔음");
 		return repo.selectGoodsView(id);
 	}
+	
+	public HoGoodsImg GoodsItemImgView(HashMap name) {
+		System.out.println("GoodsItemImgView에 들어왔음");
+		return repo.selectGoodsItemImgView(name);
+	}
+
 
 	public void GoodsDelete(HashMap<String, Object> admin) {
 		System.out.println("GoodsDelete에 들어왔음" + admin);

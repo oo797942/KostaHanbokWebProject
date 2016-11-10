@@ -13,6 +13,7 @@ import javax.servlet.http.Part;
 import ho.command.CommandException;
 import ho.model.HoException;
 import ho.model.HoGoods;
+import ho.model.HoGoodsImg;
 import ho.model.HoMember;
 import ho.service.HoMemberService;
 
@@ -28,12 +29,18 @@ public class CommandGoodsView implements Command{
 			request.setCharacterEncoding("utf-8");
 
 			String id =request.getParameter("id");
+			String name = request.getParameter("name");
 			HoGoods Goods = null;
+			HoGoodsImg GoodsImg = null;
 			HashMap hm = new HashMap();
 			System.out.println("View로 가는 id : " + id);
 			hm.put("id", id);
+			hm.put("name", name);
 			Goods = HoMemberService.getInstance().GoodsView(hm);
+			GoodsImg = HoMemberService.getInstance().GoodsItemImgView(hm);
+			
 			request.setAttribute("GoodsView", Goods);
+			request.setAttribute("GoodsImgView", GoodsImg);
 		}catch( Exception ex ){
 			throw new CommandException("CommandGoodsView.java < 입력시 > " + ex.toString()); 
 		}

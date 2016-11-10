@@ -1,6 +1,25 @@
+<%@page import="ho.model.HoGoodsImg"%>
+<%@page import="ho.model.HoGoods"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	String projectName = "/HoProject";
+	HoGoodsImg himg = null;
+	HoGoods hg = (HoGoods) request.getAttribute("GoodsView");
+	if (request.getAttribute("GoodsImgView") != null) {
+		himg = (HoGoodsImg) request.getAttribute("GoodsImgView");
+	}
+
+	String sessionValue = null;
+
+	Object sess = session.getAttribute("yourid");
+
+	System.out.println("세션값" + sess);
+
+	if (sess != null) {
+		sessionValue = (String) sess;
+	}
+	
+	int totalPrice = hg.getGoodsPrice() + hg.getGoodsRentPrice();
 %>
 <!DOCTYPE html>
 <html>
@@ -14,10 +33,70 @@
 <script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
 <script src="<%=projectName%>/ho/js/main.js"></script>
+
+<script type="text/javascript">
+$(function(){
+
+	if("<%=sessionValue%>"=="null"){
+		$("#shoplogin").show();
+		$("#shoplogout").hide();
+	}else{
+		$("#shoplogin").hide();
+		$("#shoplogout").show();
+	}
+	
+	$("#shoplogin").click(function(){
+		window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );	
+		
+	}).css('cursor','pointer');
+	
+	
+	$("#shoplogout").click(function() {
+		alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
+
+		window.location = "<%=projectName%>/logout.ho?cmd=logout-page";
+
+		$("#shoplogout").hide();
+		$("#shoplogin").show();
+	
+	}).css('cursor','pointer');
+	
+	$("#NoLoginMyPage").click(function(){
+		window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );			
+	});
+	
+	
+	$("#searchInput").keypress(function(event){
+		if(event.which == 13){
+			var option = $("#searchCategory").val();
+			var radio = $("input:radio[name=searchRadio]:checked").val();
+			var inputvalue = $("#searchInput").val();
+			window.location.href="<%=projectName%>/list.ho?cmd=search-input&option="+option+"&check="+radio+"&val="+inputvalue;	
+		}
+	});
+	
+	var totalPriceTemp = <%=hg.getGoodsPrice()%> + <%=hg.getGoodsRentPrice()%>;
+	
+	$("#totalPrice").text(totalPriceTemp);
+	
+	$("#countSelect").change(function(){
+		var totalPriceReal =  (<%=hg.getGoodsPrice()%>*$("#countSelect").val()) + <%=hg.getGoodsRentPrice()%>;
+		$("#totalPrice").text(totalPriceReal);
+	});
+	
+	
+});
+
+
+
+</script>
+
+
+
 </head>
 <body>
 
-	<nav>
+ 	<nav>
 		<table id="shoppingBag" cellspacing="0">
 			<tr>
 				<td height="10px"></td>
@@ -45,45 +124,58 @@
 			</tr>
 		</table>
 	</nav>
-
+ 
 	<header>
 		<div id="menu">
-			<img src="<%=projectName%>/ho/img/topMenu.png" />
+			<img src="<%=projectName %>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="<%=projectName%>/ho/img/logo.png" /></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-					<td><a href="#">LOGIN </a></td>
+				<% if(sess != null){ %> 
+				<td><text id="sessid"><%=sess %>님</text></td>
+				<%} %>	
+					<td><text id="shoplogin" name="login" >LOGIN</text></td>
+					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
-					<td><a href="#">JOIN</a></td>
+					<td><a href="<%=projectName %>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
 					<td><a href="#">CART</a></td>
 					<td class="gray">l</td>
-					<td><a href="#">MY PAGE</a></td>
+					<%if(sess!=null){ %>
+					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
+					<%}else{ %>
+					<td><a id="NoLoginMyPage">MY PAGE</a></td>
+					<%} %>
 					<td class="gray">l</td>
-					<td><a href="#">Q&A</a></td>
+					<td><a href="<%=projectName%>/logout.ho?cmd=write-form">Q&A</a></td>
 				</tr>
 			</table>
 
 			<div id="topCate">
 				<a id="top-CateItem1">개량한복</a><br /> <br /> <a id="top-CateItem2">생활한복</a><br />
 				<br /> <a id="top-CateItem3">퓨전한복</a><br /> <br /> <a
-					id="top-CateItem4">아동한복</a><br /> <br /> <a id="top-CateItem5">악세서리</a>
+					id="top-CateItem4">아동한복</a><br /> <br />
+					<a id="top-CateItem5"  href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
 			</div>
 			<div id="topCate-Cate1">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남 자</a><br />
+				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여 자</a>
 			</div>
 			<div id="topCate-Cate2">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남 자</a><br />
+				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여 자</a>
 			</div>
 			<div id="topCate-Cate3">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남 자</a><br />
+				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여 자</a>
 			</div>
 			<div id="topCate-Cate4">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남 자</a><br />
+				<a class="woman" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여 자</a>
 			</div>
 			<a id="searchBtn">search</a> <a id="xbutton">X</a>
 			<hr color="#f5f5f5" size="1" noshade="noshade" />
@@ -94,48 +186,54 @@
 				placeholder="Type Here To Search" /> <select id="searchCategory"
 				name="searchCategory">
 				<option value="total">통합검색</option>
-				<option value="ge">개량한복</option>
-				<option value="se">생활한복</option>
-				<option value="fu">퓨전한복</option>
-				<option value="ah">아동한복</option>
+				<option value="ge">개량 한복</option>
+				<option value="se">생활 한복</option>
+				<option value="fu">퓨전 한복</option>
+				<option value="ah">아동 한복</option>
 				<option value="ak">악세서리</option>
-			</select> <input type="radio" id="titleSearch" name="searchRadio" value="제목"
-				class="searchRadio" /> <label class="searchLabel" for="titleSearch">제목</label>
-			<input type="radio" id="contentSearch" name="searchRadio" value="내용"
+			</select> <input type="radio" id="titleSearch" name="searchRadio" value="title"
+				class="searchRadio" checked="checked"/> <label class="searchLabel" for="titleSearch">상품 이름</label>
+			<input type="radio" id="contentSearch" name="searchRadio" value="content"
 				class="searchRadio" /> <label class="searchLabel"
 				for="contentSearch" class="searchRadio">내용</label>
 		</div>
+
 	</header>
 	<section>
 		<table id="viewTable" cellspacing="0">
 			<tr>
-				<td id="viewTableImg" rowspan="8"><img id="itemView"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" /></td>
-				<td class="viewInfo" colspan="2">한복이름-123</td>
+				<td id="viewTableImg" rowspan="8" width="600px"><img id="itemView"
+					src="<%=projectName%>/ho/upload/<%=hg.getGoodsImg()%>" /></td>
+				<td class="viewInfo" colspan="2"><%=hg.getGoodsName()%></td>
 			</tr>
 			<tr>
-				<td class="viewInfo" colspan="2">카테고리</td>
+				<td class="viewInfo" colspan="2"><%=hg.getGoodsCate()%></td>
 			</tr>
 			<tr id="pinkColor">
-				<td class="viewInfo">판매가</td>
-				<td class="viewInfo">123원</td>
+				<td class="viewInfo" width="100px">판매가</td>
+				<td class="viewInfo"><%=String.format("%,d", hg.getGoodsPrice())%>원</td>
 			</tr>
 			<tr>
 				<td class="viewInfo">택배비</td>
-				<td class="viewInfo">123원</td>
+				<td class="viewInfo"><%=String.format("%,d", hg.getGoodsRentPrice())%>원</td>
 			</tr>
 			<tr>
 				<td class="viewInfo">원단</td>
-				<td class="viewInfo"><select id="colorSelect">
-						<option>- [필수] 원단 선택 -</option>
-				</select></td>
+				<td class="viewInfo"><%=hg.getGoodsColor() %></td>
 			</tr>
 			<tr>
-				<td colspan="2">여기도 결국 표가 들어올 예정입니다. 헬이다 헬</td>
+				<td class="viewInfo">구매 벌수</td>
+				<td class="viewInfo">
+					<select id="countSelect">
+					<%for(int i=1; i<=9; i++){ %>
+						<option value="<%=i%>"><%=i %>벌</option>
+					<%} %>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td class="viewInfo">총액</td>
-				<td class="viewInfo">123원</td>
+				<td class="viewInfo"><label id="totalPrice"></label>원</td>
 			</tr>
 			<tr>
 				<td id="btnTableTd" colspan="2">
@@ -151,12 +249,27 @@
 		<br />
 		<table width="1024px" cellspacing="0">
 			<tr>
+				<%
+					if (himg != null) {
+				%>
 				<td width="33%"><img class="infoImage"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
+					src="<%=projectName%>/ho/upload/<%=himg.getImgOne()%>"></td>
 				<td width="33%"><img class="infoImage"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
+					src="<%=projectName%>/ho/upload/<%=himg.getImgTwo()%>"></td>
 				<td><img class="infoImage"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg"></td>
+					src="<%=projectName%>/ho/upload/<%=himg.getImgThree()%>"></td>
+				<%
+					} else {
+				%>
+				<td width="33%"><img class="infoImage"
+					src="<%=projectName%>/ho/img/noGoodsImg.png"></td>
+				<td width="33%"><img class="infoImage"
+					src="<%=projectName%>/ho/img/noGoodsImg.png"></td>
+				<td><img class="infoImage"
+					src="<%=projectName%>/ho/img/noGoodsImg.png""></td>
+				<%
+					}
+				%>
 			</tr>
 		</table>
 		<img width="1024px" src="<%=projectName%>/ho/img/refund_info.png" />

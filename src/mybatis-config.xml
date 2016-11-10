@@ -4,35 +4,36 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-<properties resource = "db.properties">
-</properties>
-<!-- 디비 연결 정보(프라러티) 파일 연결  -->
+	<properties resource="db.properties">
+	</properties>
+	<!-- 디비 연결 정보(프라러티) 파일 연결 -->
 
 
-<!-- VO 클래스들의 별칭 등록  -->
-<typeAliases>
-	<typeAlias type = "ho.model.HoMember" alias="HoMember"/>
-	<typeAlias type = "ho.model.HoGoods" alias="HoGoods"/>
-	<typeAlias type = "ho.model.HoBoard" alias="HoBoard"/>
-</typeAliases>
+	<!-- VO 클래스들의 별칭 등록 -->
+	<typeAliases>
+		<typeAlias type="ho.model.HoMember" alias="HoMember" />
+		<typeAlias type="ho.model.HoGoods" alias="HoGoods" />
+		<typeAlias type="ho.model.HoBoard" alias="HoBoard" />
+		<typeAlias type="ho.model.HoGoodsImg" alias="HoGoodsImg" />
+	</typeAliases>
 
 
-<environments default="development">
-<environment id="development">
-<transactionManager type="JDBC"/>
-<dataSource type="POOLED">
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
 
-<property name="driver" value="${jdbc.driver}"/>
-<property name="url" value="${jdbc.url}"/>
-<property name="username" value="${jdbc.username}"/>
-<property name="password" value="${jdbc.password}"/>
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
 
-</dataSource>
-</environment>
-</environments>
+			</dataSource>
+		</environment>
+	</environments>
 
-<!-- 해당매퍼들을 여기에 등록  -->
-<mappers>
-<mapper resource="ho/mapper/HoMemberMapper.xml"/>
-</mappers>
+	<!-- 해당매퍼들을 여기에 등록 -->
+	<mappers>
+		<mapper resource="ho/mapper/HoMemberMapper.xml" />
+	</mappers>
 </configuration>

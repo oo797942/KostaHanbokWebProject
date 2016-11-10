@@ -20,6 +20,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="m_coin" property="memCoin" />
 		<result column="m_exp" property="memExp" />
 	</resultMap>
+	
+	<resultMap type="HoGoodsImg" id="HoGoodsImgMap">
+		<id column="img_name" property="imgName"/>
+		<result column="img_1" property="imgOne" />
+		<result column="img_2" property="imgTwo" />
+		<result column="img_3" property="imgThree" />
+	</resultMap>
 
 	<resultMap type="HoGoods" id="HoGoodsMap">
 		<id column="i_no" property="GoodsId" />
@@ -47,6 +54,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="b_title" property="boardTitle" />
 		<result column="b_content" property="boardContent" />
 	</resultMap>
+	
+	<select id="GoodsImgView" resultMap="HoGoodsImgMap" parameterType="hashmap">
+	SELECT *
+	FROM itemimg
+	<where>
+		<choose>
+			<when test="name neq null">
+				img_name = #{name}
+			</when>
+		</choose>
+	</where>
+	</select>
 
 
 	<select id="selectHoMember" resultMap="homemberMap"

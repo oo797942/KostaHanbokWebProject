@@ -227,9 +227,9 @@ $(function(){
 			<tr>
 			<%} %>
 				<%HoGoods hg = (HoGoods)categoryList.get(i); %>
-				<td class="itemTd"><img id="itemtImg<%=i %>" class="itemImg"
-					src="<%=projectName%>/ho/upload/<%=hg.getGoodsImg() %>" /><br /> <label
-					class="123"><strong><%=hg.getGoodsName() %></strong><br /><%=hg.getGoodsPrice() %>원</label></td>
+				<td class="itemTd"><a href="<%=projectName%>/view.ho?cmd=goods-view&id=<%=hg.getGoodsId()%>&name=<%= hg.getGoodsName()%>"><img id="itemtImg<%=i %>" class="itemImg"
+					src="<%=projectName%>/ho/upload/<%=hg.getGoodsImg() %>" /></a><br /> <label
+					class="123"><strong><%=hg.getGoodsName() %></strong><br /><%=String.format("%,d",hg.getGoodsPrice()) %>원</label></td>
 				<%count ++; %>
 			<%if(count==4){ %>
 			</tr>
