@@ -12,11 +12,13 @@ public class HoBoard {
 	private String boardPass;
 	private String boardTitle;
 	private String boardContent;
+	private String boardAnswer;
+	private String boardAnswerStatus;
 	
 	public HoBoard(){
 		
 	}
-	public HoBoard(String boardId,int boardNo,int boardGroupNo,int boardOrderNo,String boardDate,int boardHits,String boardWriter,String boardPass,String boardTitle,String boardContent)
+	public HoBoard(String boardId,int boardNo,int boardGroupNo,int boardOrderNo,String boardDate,int boardHits,String boardWriter,String boardPass,String boardTitle,String boardContent,String boardAnswer,String boardAnswerStatus)
 	{
 		this.boardId = boardId;
 		this.boardNo = boardNo;
@@ -28,8 +30,9 @@ public class HoBoard {
 		this.boardPass = boardPass;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
+		this.boardAnswer = boardAnswer;
+		this.boardAnswerStatus = boardAnswerStatus;
 	}
-	
 	public String getBaordId() {
 		return boardId;
 	}
@@ -89,6 +92,19 @@ public class HoBoard {
 	}
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
+	}
+	
+	public String getBoardAnswer() {
+		return boardAnswer;
+	}
+	public void setBoardAnswer(String boardAnswer) {
+		this.boardAnswer = boardAnswer;
+	}
+	public String getBoardAnswerStatus() {
+		return boardAnswerStatus;
+	}
+	public void setBoardAnswerStatus(String boardAnswerStatus) {
+		this.boardAnswerStatus = boardAnswerStatus;
 	}
 	
 	

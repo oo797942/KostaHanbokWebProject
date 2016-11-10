@@ -33,11 +33,12 @@ public class CommandBoardReply implements Command{
 			System.out.println(writer);
 			String content = request.getParameter("content");
 			System.out.println(content);
+			String answer = request.getParameter("answer");
 			
 			HashMap boardmap = new HashMap();
 			boardmap.put("writer", writer);
 			boardmap.put("content", content);
-			
+			boardmap.put("answer", answer);
 			HoMemberService.getInstance().BoardReply(boardmap);
 
 		}catch( Exception ex ){

@@ -71,12 +71,12 @@ $("#joinButton").click(function(){
 		</tr>
 		<tr>
 			<td class="td1" valign="middle" height="200">내용</td>
-<td><textarea rows="10" style="width:100%; border: 0;" name="content" wrap="hard">
-Comment.	
-<%= board.getBoardContent() %>
-re.
-			  	</textarea>
-			  	</td>
+			<td><textarea rows="10" style="width:100%; border: 0;" name="content" wrap="hard" readonly="readonly" ><%= board.getBoardContent() %></textarea></td>
+		</tr>
+		
+		<tr>
+			<td class="td1" valign="middle" height="200">답변하기</td>
+			<td><textarea rows="10" style="width:100%; border: 0;" name="answer" wrap="hard"></textarea></td>
 		</tr>
 
 	</tbody>
