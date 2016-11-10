@@ -51,4 +51,16 @@ public class CommandGoodsView implements Command{
 		}
 		return next;
 	}
+
+	
+	private String getFileName(Part part) throws UnsupportedEncodingException {
+		System.out.println("getFileName");
+		for (String cd : part.getHeader("Content-Disposition").split(";")) {
+			if (cd.trim().startsWith("filename")) {
+				return cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
+			}
+		}
+		return null;
+	}
+
 }
