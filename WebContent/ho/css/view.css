@@ -43,6 +43,11 @@
 	height: 25px;
 }
 
+#sizeSelect {
+	width: 200px;
+	height: 25px;
+}
+
 .tdBtn:hover {
 	transition: 0.5s;
 	background: #dcdcdc;

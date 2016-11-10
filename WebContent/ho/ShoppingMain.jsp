@@ -1,33 +1,33 @@
 <%@page import="ho.model.HoMember"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<% String projectName = "/HoProject";
+<%
+	String projectName = "/HoProject";
 	String sessionValue = null;
-//# 1."yourid"로 저장된 세션값을 얻어온다.
+	//# 1."yourid"로 저장된 세션값을 얻어온다.
 	Object sess = session.getAttribute("yourid");
-//# 2. 값이 null이라면 LoginForm.jsp로 페이지 이동
-//# 3. null이 아니라면 String 형변환하여 변수에 지정
-System.out.println("세션값"+sess);
+	//# 2. 값이 null이라면 LoginForm.jsp로 페이지 이동
+	//# 3. null이 아니라면 String 형변환하여 변수에 지정
+	System.out.println("세션값" + sess);
 
-if(sess != null){
-	sessionValue = (String)sess;
-}
-
-HoMember hm = (HoMember)request.getAttribute("homem");
-
+	if (sess != null) {
+		sessionValue = (String) sess;
+	}
+	HoMember hm = (HoMember) request.getAttribute("homem");
 %>
-	 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<link href="<%=projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
-<link href="<%=projectName %>/ho/css/main.css" rel="stylesheet" />
-<script src="<%=projectName %>/ho/js/jquery-1.10.2.min.js"></script>
-<script src="<%=projectName %>/ho/js/jquery.bxslider.min.js"></script>
-<script src="<%=projectName %>/ho/js/main.js"></script>
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css"
+	rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/main.css" rel="stylesheet" />
+<script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
+<script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
+<script src="<%=projectName%>/ho/js/main.js"></script>
 <script type="text/javascript">
 $(function(){
 
@@ -65,15 +65,16 @@ $(function(){
 			var option = $("#searchCategory").val();
 			var radio = $("input:radio[name=searchRadio]:checked").val();
 			var inputvalue = $("#searchInput").val();
-			window.location.href="<%=projectName%>/list.ho?cmd=search-input&option="+option+"&check="+radio+"&val="+inputvalue;			
-		}
+			window.location.href="<%=projectName%>/list.ho?cmd=search-input&option="
+										+ option
+										+ "&check="
+										+ radio
+										+ "&val="
+										+ inputvalue;
+							}
+						});
+
 	});
-	
-	
-});
-
-
-
 </script>
 
 
@@ -81,7 +82,7 @@ $(function(){
 </head>
 <body>
 
- 	<nav>
+	<nav>
 		<table id="shoppingBag" cellspacing="0">
 			<tr>
 				<td height="10px"></td>
@@ -109,32 +110,45 @@ $(function(){
 			</tr>
 		</table>
 	</nav>
- 
+
 	<header>
 		<div id="menu">
-			<img src="<%=projectName %>/ho/img/topMenu.png" />
+			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo"
+				src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-				<% if(sess != null){ %> 
-				<td><text id="sessid"><%=hm.getMemName() %>님</text></td>
-				<%} %>	
-					<td><text id="shoplogin" name="login" >LOGIN</text></td>
+					<%
+						if (sess != null) {
+					%>
+					<td><text id="sessid"><%=hm.getMemName()%>님</text></td>
+					<%
+						}
+					%>
+					<td><text id="shoplogin" name="login">LOGIN</text></td>
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
-					<td><a href="<%=projectName %>/join.ho?cmd=join-form">JOIN</a></td>
+					<td><a href="<%=projectName%>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
 					<td><a href="#">CART</a></td>
 					<td class="gray">l</td>
-					<%if(sess!=null){ %>
-					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
-					<%}else{ %>
+					<%
+						if (sess != null) {
+					%>
+					<td><a
+						href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY
+							PAGE</a></td>
+					<%
+						} else {
+					%>
 					<td><a id="NoLoginMyPage">MY PAGE</a></td>
-					<%} %>
+					<%
+						}
+					%>
 					<td class="gray">l</td>
 					<td><a href="<%=projectName%>/logout.ho?cmd=write-form">Q&A</a></td>
 				</tr>
@@ -143,24 +157,36 @@ $(function(){
 			<div id="topCate">
 				<a id="top-CateItem1">개량한복</a><br /> <br /> <a id="top-CateItem2">생활한복</a><br />
 				<br /> <a id="top-CateItem3">퓨전한복</a><br /> <br /> <a
-					id="top-CateItem4">아동한복</a><br /> <br />
-					<a id="top-CateItem5"  href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
+					id="top-CateItem4">아동한복</a><br /> <br /> <a id="top-CateItem5"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
 			</div>
 			<div id="topCate-Cate1">
-				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남 자</a><br />
-				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate2">
-				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남 자</a><br />
-				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate3">
-				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남 자</a><br />
-				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate4">
-				<a class="man" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남 자</a><br />
-				<a class="woman" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여
+					자</a>
 			</div>
 			<a id="searchBtn">search</a> <a id="xbutton">X</a>
 			<hr color="#f5f5f5" size="1" noshade="noshade" />
@@ -176,9 +202,10 @@ $(function(){
 				<option value="fu">퓨전 한복</option>
 				<option value="ah">아동 한복</option>
 				<option value="ak">악세서리</option>
-			</select> <input type="radio" id="titleSearch" name="searchRadio" value="title"
-				class="searchRadio" checked="checked"/> <label class="searchLabel" for="titleSearch">상품 이름</label>
-			<input type="radio" id="contentSearch" name="searchRadio" value="content"
+			</select> <input type="radio" id="titleSearch" name="searchRadio"
+				value="title" class="searchRadio" checked="checked" /> <label
+				class="searchLabel" for="titleSearch">상품 이름</label> <input
+				type="radio" id="contentSearch" name="searchRadio" value="content"
 				class="searchRadio" /> <label class="searchLabel"
 				for="contentSearch" class="searchRadio">내용</label>
 		</div>
@@ -188,11 +215,11 @@ $(function(){
 		<div id="banner_wrap">
 			<ul id="slide_banner">
 				<li><img class="slide"
-					src="<%=projectName %>/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
+					src="<%=projectName%>/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
 				<li><img class="slide"
-					src="<%=projectName %>/ho/img/banner_image_02.png" alt="사진2" /></li>
+					src="<%=projectName%>/ho/img/banner_image_02.png" alt="사진2" /></li>
 				<li><img class="slide"
-					src="<%=projectName %>/ho/img/banner_image_03.jpg" alt="사진2" /></li>
+					src="<%=projectName%>/ho/img/banner_image_03.jpg" alt="사진2" /></li>
 			</ul>
 		</div>
 		<table id="slidefocus">
@@ -213,18 +240,20 @@ $(function(){
 			</tr>
 		</table>
 
-		<img src="<%=projectName %>/ho/img/banner_image_01.jpeg" class="hotItem"
-			name="hot1" /> <img src="<%=projectName %>/ho/img/banner_image_01.jpeg"
-			class="hotItem" name="hot2" /> <img
-			src="<%=projectName %>/ho/img/banner_image_01.jpeg" class="hotItem"
-			name="hot3" /> <img src="<%=projectName %>/ho/img/banner_image_01.jpeg"
-			class="hotItem" name="hot4" />
+		<img src="<%=projectName%>/ho/img/banner_image_01.jpeg"
+			class="hotItem" name="hot1" /> <img
+			src="<%=projectName%>/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot2" /> <img
+			src="<%=projectName%>/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot3" /> <img
+			src="<%=projectName%>/ho/img/banner_image_01.jpeg" class="hotItem"
+			name="hot4" />
 
 
 	</section>
 	<footer>
 		<div id="footertitle">
-			<a href="#"><img src="<%=projectName %>/ho/img/footerTitle.png" /></a>
+			<a href="#"><img src="<%=projectName%>/ho/img/footerTitle.png" /></a>
 		</div>
 		<div id="topfooter">
 			<table id="footerTable">

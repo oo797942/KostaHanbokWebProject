@@ -13,7 +13,7 @@
 	if(sess != null){
 		sessionValue = (String)sess;
 		loginCk="LOGOUT";
-	}   
+	} 
 %>
 <!DOCTYPE html>
 <html>
@@ -50,23 +50,31 @@ $(function(){
 	}).css('cursor','pointer');
 
 	
-	$.ajax({			
-			url : '<%=projectName%>/logout.ho?cmd=product-page',
-			type : 'post',
-			success : function(data){
-// 				alert(data);
-				<%-- var data12 = $('person', data);
-					$('#productimg').append("<tr>");
-				data12.each(function(){
-					var text = $('name',this).text();
-					$('#productimg').append("<td>"+"<img width='180px' height='180px' src=<%=projectName%>/ho/upload/"+text+"></td>");
-				});	
-					$('#productimg').append("</tr>"); --%>
-			},
-			error : function(){
-				alert('에러 발생');	
-			}
-	});
+	$.ajax({         
+        url : '<%=projectName%>/logout.ho?cmd=product-page',
+        type : 'post',
+        success : function(data){            
+            var obj = {};
+            obj = eval("("+ data +")");
+            var objlist = obj.list;
+            var objlistlength = objlist.length;
+            alert(objlistlength);
+            var count = objlistlength/4;
+            if(objlistlength % 4 != 0){
+               count++;
+            }                                            
+            for(var i =0 ; i<objlistlength; i++){   // list 길이만큼 8  0 1 2 3 4 5 6 7  4 / 4
+               if(i==0)  $('#productimg').append("<tr>");         
+               if(i%4 == 0 & i !=0) $('#productimg').append("<tr>");                                    
+                  $('#productimg').append("<td>"+"<img width='180px' height='180px' src=<%=projectName%>/ho/upload/"+ objlist[i]+"></td>");
+            
+               if(i%4 == 3)    $('#productimg').append("</tr>");    
+            }             
+        },
+        error : function(){
+           alert('에러 발생');   
+        }
+     });
 	
 	
 	
