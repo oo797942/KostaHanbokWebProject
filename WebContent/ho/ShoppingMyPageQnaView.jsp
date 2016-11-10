@@ -131,8 +131,12 @@
 			<% }else{ %><%= board.getBoardAnswer() %><% } %>
 			</textarea></td>
 		</tr>
+		
+		<tr>
+			<td colspan="2" align="right">뒤로가기 </td>
+		</tr>
 
-	</tbody>
+	</tbody>	
 	</table>
 		</div>
 

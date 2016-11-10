@@ -110,7 +110,7 @@ public class HoControl extends HttpServlet {
 		commandMap.put("qna-input", new CommandInputQna("ShoppingMyPage.jsp"));
 
 		
-		commandMap.put("adminMemlist", new CommandNull("adminMemlist.jsp"));
+		commandMap.put("adminMemlist", new CommandMemList("adminMemlist.jsp"));
 		commandMap.put("adminMemView", new CommandMemView("adminMemView.jsp"));
 		commandMap.put("adminMemDelete", new CommandMemDelete("adminMemDelete.jsp"));
 		commandMap.put("adminMemUpdateForm", new CommandMemView("adminMemUpdateForm.jsp"));

@@ -60,25 +60,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  <result column="b_answerstatus" property="boardAnswerStatus" />
    </resultMap>
 
-   	<resultMap type="HoBag" id="HoShoppingBag">
-		<id column="shop_seq_no" property="shopSeqNo" />
-		<result column="shop_id" property="shopId" />
-		<result column="shop_no" property="shopNo" />
-		<result column="shop_size" property="shopSize" />
-		<result column="shop_img" property="shopImg" />
-		<result column="shop_soo" property="shopSoo" />
-		<result column="shop_price" property="shopPrice" />
-		<result column="shop_name" property="shopName" />
-	</resultMap>
+   <resultMap type="HoBag" id="HoShoppingBag">
+      <id column="shop_seq_no" property="shopSeqNo" />
+      <result column="shop_id" property="shopId" />
+      <result column="shop_no" property="shopNo" />
+      <result column="shop_size" property="shopSize" />
+      <result column="shop_img" property="shopImg" />
+      <result column="shop_soo" property="shopSoo" />
+      <result column="shop_price" property="shopPrice" />
+   </resultMap>
 
-	<select id="shoppingBag" resultMap="HoShoppingBag" parameterType="hashmap">
-<![CDATA[
-select shop_id, shop_name, shop_no, shop_size, shop_img, shop_soo, shop_price from (
-select rownum, shop_name, shop_id, shop_no, shop_size, shop_img, shop_soo, shop_price from (
-select * from shopping_bag WHERE shop_id like #{id} ORDER BY shop_seq_no DESC) where rownum<4)
-]]>
-	</select>
-
+   <select id="shoppingBag" resultMap="HoShoppingBag"
+      parameterType="hashmap">
+      SELECT *
+      FROM shopping_bag
+   </select>
 
    <select id="GoodsImgView" resultMap="HoGoodsImgMap"
       parameterType="hashmap">
