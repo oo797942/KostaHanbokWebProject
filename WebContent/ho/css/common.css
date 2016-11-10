@@ -6,7 +6,7 @@
 
 section {
 	width: 1024px;
-	height :650px;
+	height :1650px;
 }
 a {
 	text-decoration: none;
@@ -492,6 +492,7 @@ ul#pay-list li {
     color: #cc383c;
     font-weight: bold;
     padding: 20px 29px 22px;
+    height: 82px;
 }
 
 .tabl input[type="radio"] {
@@ -521,7 +522,6 @@ ul#pay-list li {
 }
 
 .btn-group {
-    display: block;
     text-align: center;
     margin: 74px 0;
 }
@@ -530,6 +530,15 @@ input.btn_submit {
     height: 54px;
     border: 0;
     background-color: #cc383c;
+    color: #fff;
+    width: 251px;
+    font-size: 21px;
+}
+
+input.btn_cancle {
+    height: 54px;
+    border: 0;
+    background-color: #c0c0c0;
     color: #fff;
     width: 251px;
     font-size: 21px;
