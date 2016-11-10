@@ -35,14 +35,15 @@
     	var result = "<%=request.getParameter("result")%>";
     	var loginid = "<%=request.getAttribute("loginid")%>";
     	var id = "<%=id%>";
+    	
+
+
     	if(id!="null"){
     		if(id=="admin"){
         		opener.location.href="<%=projectName%>/log.ho?cmd=admin-page";    			
         		window.close();
     			return;
     		}else{
-    /* 		alert("랄랄라"+id); */
-    		//$(opener.document).find("#shoplogin").text("LOGOUT");
   		 	
     		$(opener.document).find("#shoplogin").hide();
     		$(opener.document).find("#shoplogout").show();

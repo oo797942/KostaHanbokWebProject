@@ -25,15 +25,14 @@ public class CommandLogin implements Command{
 			memMap.put("id", user);
 			memMap.put("pass", pass);
 			
+
 			HoMember hm =HoMemberService.getInstance().selectHoMemberByPrimaryKey(memMap);
-		
+				
 			if(hm==null){
 				result=2;
-				//System.out.println("영재야!!!!"+hm.getMemId());
 			}else{
 				result=1;
-				request.setAttribute("homem", hm);
-				
+				request.setAttribute("homem", hm);	
 			}
 			request.setAttribute("result", result);
 			

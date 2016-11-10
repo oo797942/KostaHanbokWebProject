@@ -10,7 +10,7 @@ public class CommandLoginSess implements Command{
 
 	public String execute( HttpServletRequest request ) throws CommandException{
 	
-		System.out.println("commanesess내의: "+request.getParameter("loginid"));
+		System.out.println("commandesess내의: "+request.getParameter("loginid"));
 		request.setAttribute("loginid", request.getParameter("loginid"));
 		return next;
 	}

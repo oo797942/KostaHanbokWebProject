@@ -22,14 +22,13 @@
 	
 	hm = (HoMember)request.getAttribute("homem");
 	Integer result = (Integer)request.getAttribute("result");
-
 	if (session.getAttribute("yourid") == null) {
 	if( result == 1){
 		
-	      if(hm.getMemId().equals("admin")){
-	          response.sendRedirect(projectName+"/main.ho?cmd=admin-page");   
-	          return;
-	       }
+      if(hm.getMemId().equals("admin")){
+          response.sendRedirect(projectName+"/main.ho?cmd=admin-page");   
+          return;
+       }
 		// #2. 세션에 "id"라는 이름에 변수 user 값을 저장
 		System.out.println("로그인성공");
 		session.setAttribute("yourid",hm.getMemId());
@@ -51,6 +50,7 @@
 		}else if(request.getParameter("cmd").equals("shop-login")){
 			//(projectName + "/log.ho?cmd=shoplogin-page")
 			System.out.println(request.getParameter("cmd")+":들어왔어?");
+
 			response.sendRedirect(projectName + "/log.ho?cmd=shoplogin-page&result="+result);
 			return;
 		}
