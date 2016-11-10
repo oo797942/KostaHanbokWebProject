@@ -228,8 +228,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT
 		INTO board(b_id,b_no,b_date,b_writer,b_title,b_content)
 		VALUES(#{id},seq_board_no.nextval,sysdate,#{name},#{title},#{content})
-		
 	</insert>
+	
+	<update id="GoodsInventory" parameterType="hashmap">
+	UPDATE item SET I_SOO=#{GoodsSoo} WHERE I_NAME=#{GoodsName}
+	</update>
+	
 </mapper>
 
    

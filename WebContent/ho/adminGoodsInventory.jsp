@@ -18,48 +18,35 @@
 		<div id="Menuimg">
 			<a href="#"><img id="logo" src="<%= projectName %>/ho/img/logo.png" /></a>
 		</div>
-	<div id="admin"> admin 님이 접속하셨습니다.
-		<a href="<%=projectName%>/1.ho?cmd=main-page"><input type="button" value="Logout" id="logoutbtn" name="logoutbtn"></a>
-	 </div> <br/>	
+	<div id="admin"> admin 님이 접속하셨습니다. </div> <br/>
+	
 	<table id= "menutable">
 		<tr>
-		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu1"><input type="button" class ="admenu" id="menu1" value="매출"/></a></td>
+			<td><a href="<%= projectName %>/1.ho?cmd=adminmenu1"><input type="button" class ="admenu" id="menu1" value="매출"/></a></td>
 		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" class ="admenu" id="menu2" value="상품"/></a></td>
 		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu3"><input type="button" class ="admenu" id="menu3" value="회원"/></a></td>
 		<td><a href="<%= projectName %>/1.ho?cmd=adminmenu4"><input type="button" class ="admenu" id="menu4" value="게시판"/></a></td>	
-		</tr>
+	</tr>
 		</table>
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=adminGoodsInsert"><input type="button" id="back" value="뒤로가기"/></a>
+		<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 		
 		<!-- 등록 -->
-	<form action="<%= projectName %>/xxxxx.ho?" method="post" enctype="multipart/form-data"  >
-	<input type="hidden" name="cmd" id="cmd" value="adminGoodsInList"/>
-		<table border="2" width="1000" height="560">
+		<form action="<%= projectName %>/xxxxx.ho?" method="post">
+		<input type="hidden" name="cmd" id="cmd" value="inventoryUpdate"/>		
+		<input type="hidden" name="id" id="id" value="<%= request.getParameter("id")%>" >
+		<table width="1000" height="560">
 		<tr>
-			<td>상품명</td>
-			<td><input type="text" class= "Goodsinsert" name="GoodsName" readonly="readonly" value="<%=request.getParameter("GoodsName")%>"></td>
-		</tr>
-		
-		<tr>
-			<td>이미지1</td>
-			<td><input type="file" class= "Goodsinsert" name="image1"></td>
-		</tr>		
-		<tr>
-			<td>이미지2</td>
-			<td><input type="file" class= "Goodsinsert" name="image2"></td>
-		</tr>		
-		<tr>
-			<td>이미지3</td>
-			<td><input type="file" class= "Goodsinsert" name="image3"></td>
+			<td><input type="text" value="<%=request.getParameter("count") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsInventory"></td>
+			<td><input type="submit" id="inventorybtn" value="입  고"/></td>
 		</tr>
 		
 		</table>
-
-		<input type="submit" id="next" value="다음으로1"/>
 		</form>
+		
+
 	</section>
 	
 	

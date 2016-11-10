@@ -126,4 +126,8 @@ public class HoMemberService {
 		System.out.println("InsertQna");
 		repo.insertQna(qnaMap);
 	}
+	public void GoodsInventory(HashMap board){
+		System.out.println("GoodsInventory에 들어왔음" + board);	
+		repo.GoodsInventory(board);
+	}
 }

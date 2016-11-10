@@ -30,7 +30,7 @@ a:hover {
 }
 
 #menutable {
-	width : 100%	
+	width : 100%;
 }
 
 
@@ -276,7 +276,7 @@ hr {
 	
 }
 
-#tddel,#tdmodify,#tdreply{
+#tddel,#tdmodify,#tdreply,#logoutbtn{
 	width:70px;
 	font-size : 15px;	
 	border-radius:5px; 
@@ -290,4 +290,17 @@ hr {
 	
 }
 
-
+#inventorybtn{
+	width:200px;
+	height : 50px;
+	font-size : 20px;	
+	border-radius:10px; 
+    background:#000; 
+    border:none; 
+    color:#fff; 
+    font-weight:bold; 
+	text-align: center;
+	cursor: pointer;	
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
