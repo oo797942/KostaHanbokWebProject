@@ -40,6 +40,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="i_price" property="GoodsPrice" />
 		<result column="i_rent_price" property="GoodsRentPrice" />
 		<result column="i_dc" property="GoodsDc" />
+		<result column="i_l" property="GoodsLsize" />
+		<result column="i_m" property="GoodsMsize" />
+		<result column="i_s" property="GoodsSsize" />
 	</resultMap>
 
 	<resultMap type="HoBoard" id="HoBoardMap">
@@ -126,12 +129,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertGoods" parameterType="hashmap">
 
 		INSERT INTO ITEM
-		(I_NO,I_NAME,I_CATEGORY,I_IMG,I_INFO,I_COLOR,I_SOO,I_PRICE,I_RENT_PRICE,I_SIZE,I_DC)
+		(I_NO,I_NAME,I_CATEGORY,I_IMG,I_INFO,I_COLOR,I_SOO,I_PRICE,I_RENT_PRICE,I_SIZE,I_DC,I_L,I_M,I_S)
 		VALUES
 		(seq_item.nextval,#{GoodsName}, #{GoodsCate}, #{GoodsImg},
 		#{GoodsInfo}, #{GoodsColor}, #{GoodsSoo},
-		#{GoodsPrice},
-		#{GoodsRentPrice}, #{GoodsSize},#{GoodsDc})
+		#{GoodsPrice},#{GoodsRentPrice}, #{GoodsSize},#{GoodsDc},#{GoodsLsize},#{GoodsMsize},#{GoodsSsize})
 
 	</insert>
 
@@ -165,6 +167,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="info neq null">
 					i_info like '%'||#{info}||'%'
 				</when>
+				<when test="id neq null and name eq null">
+					i_no = #{id}
+				</when>
 			</choose>
 		</where>
 	</select>
@@ -178,7 +183,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="UpdateGoods">
 		UPDATE item SET I_CATEGORY=#{GoodsCate}, I_IMG
 		=#{GoodsImg},I_INFO=#{GoodsInfo},I_COLOR=#{GoodsColor},I_SOO=#{GoodsSoo},I_PRICE=#{GoodsPrice},I_RENT_PRICE=#{GoodsRentPrice},I_SIZE=#{GoodsSize}
-		, I_DC=#{GoodsDc}
+		, I_DC=#{GoodsDc},I_L=#{GoodsLsize},I_M=#{GoodsMsize},I_S=#{GoodsSsize}
 		WHERE I_NAME=#{GoodsName}
 	</update>
 

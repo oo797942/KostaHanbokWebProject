@@ -15,6 +15,13 @@
 <script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
 <script src="<%=projectName%>/ho/js/main.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#answer").click(function(){
+			$("#myPageMainBodyTable").hide();
+		});
+	});
+</script>
 </head>
 <body>
 
