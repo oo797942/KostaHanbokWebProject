@@ -202,7 +202,7 @@ $(function(){
 	<section>
 		<table id="viewTable" cellspacing="0">
 			<tr>
-				<td id="viewTableImg" rowspan="8" width="600px"><img id="itemView"
+				<td id="viewTableImg" rowspan="9" width="600px"><img id="itemView"
 					src="<%=projectName%>/ho/upload/<%=hg.getGoodsImg()%>" /></td>
 				<td class="viewInfo" colspan="2"><%=hg.getGoodsName()%></td>
 			</tr>
@@ -220,6 +220,10 @@ $(function(){
 			<tr>
 				<td class="viewInfo">원단</td>
 				<td class="viewInfo"><%=hg.getGoodsColor() %></td>
+			</tr>
+			<tr>
+				<td class="viewInfo">사이즈</td>
+				<td class="viewInfo"><%=hg.getGoodsSize() %></td>
 			</tr>
 			<tr>
 				<td class="viewInfo">구매 벌수</td>
