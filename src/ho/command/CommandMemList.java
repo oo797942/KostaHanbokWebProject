@@ -41,7 +41,7 @@ public class CommandMemList implements Command{
 	         HashMap<String,String> tm = new HashMap<String,String>();
 	         	tm.put("tableName", "member");
 			request.setCharacterEncoding("utf-8");
-			System.out.println("CommandBoardList에 들어왔음");
+			System.out.println("CommandBoardList에 들어왔음");       
 			List<HoMember> list =  (List<HoMember>) HoMemberService.getInstance().AllMemberList(mm);
 			int totalRecord = HoMemberService.getInstance().getTotalCount(tm);
 			System.out.println(list);
