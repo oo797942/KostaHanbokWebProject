@@ -58,7 +58,6 @@ $(function(){
             obj = eval("("+ data +")");
             var objlist = obj.list;
             var objlistlength = objlist.length;
-            alert(objlistlength);
             var count = objlistlength/4;
             if(objlistlength % 4 != 0){
                count++;

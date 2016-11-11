@@ -17,6 +17,7 @@ import ho.command.CommandBoardView;
 import ho.command.CommandCheckId;
 import ho.command.CommandDelete;
 import ho.command.CommandException;
+import ho.command.CommandGetInfoById;
 import ho.command.CommandGoodsCategory;
 import ho.command.CommandGoodsInputSearch;
 import ho.command.CommandGoodsView;
@@ -34,6 +35,7 @@ import ho.command.CommandMemView;
 import ho.command.CommandModify;
 import ho.command.CommandMyList;
 import ho.command.CommandNull;
+import ho.command.CommandPay;
 import ho.command.CommandUpdate;
 
 /**
@@ -71,6 +73,8 @@ public class HoControl extends HttpServlet {
 //		commandMap.put(key, value);		
 		
 		// 쇼핑몰 페이지
+		commandMap.put("page-view", new CommandGetInfoById("purchaseView.jsp"));
+		commandMap.put("pay-view", new CommandPay("ShoppingPay.jsp"));
 		
 		
 		commandMap.put("go-mypage", new CommandLogin("ShoppingMyPage.jsp"));

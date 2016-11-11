@@ -309,6 +309,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       order by
       m_name
    </select>
+   
+   	<insert id="insertOrder" parameterType="hashmap">
+	INSERT INTO ORDER_T(o_no,o_id,o_sangpumno,o_sangpumname,o_soo,o_rent_state,o_rent_date,
+o_price,o_state,o_size,o_rent_price,o_img,o_totalprice,o_rname,o_rtel,o_raddr,o_rdemand,
+o_settle_case,o_semail,o_stel,o_saddr,o_sname)
+VALUES(SEQ_ORDER.NEXTVAL,#{OrderId},#{OrderSangpumNo},#{OrderSangpumName},#{OrderSoo},0,sysdate,
+#{OrderPrice},0,#{OrderSize},#{OrderRentPrice},#{OrderImg},#{OrderTotalPrice},#{OrderRName},#{OrderRTel},#{OrderRAddr},#{OrderRDemand},
+#{OrderSettleCase},#{OrderSEmail},#{OrderSTel},#{OrderSAddr},#{OrderSName})
+	
+	</insert>
+   
 
 </mapper>
 
