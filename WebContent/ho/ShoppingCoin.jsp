@@ -31,9 +31,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
-<link href="<%=projectName%>/ho/css/jquery.bxslider.css"
-	rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%=projectName%>/ho/css/main.css" rel="stylesheet" />
+<link href="<%=projectName%>/ho/css/coin.css" rel="stylesheet" />
 <script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
 <script src="<%=projectName%>/ho/js/main.js"></script>
@@ -149,17 +149,7 @@ $(function(){
 					<td class="gray">l</td>
 					<td><a href="<%=projectName%>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
-					<%
-						if (sess != null) {
-					%>
-					<td><a href="<%=projectName%>/coin.ho?cmd=coin-charge">COIN</a></td>
-					<%
-						} else {
-					%>
-					<td><a id="NoLoginMyPage">COIN</a></td>
-					<%
-						}
-					%>
+					<td><a href="#">COIN</a></td>
 					<td class="gray">l</td>
 					<%
 						if (sess != null) {
@@ -237,43 +227,13 @@ $(function(){
 
 	</header>
 	<section>
-		<div id="banner_wrap">
-			<ul id="slide_banner">
-				<li><img class="slide"
-					src="<%=projectName%>/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
-				<li><img class="slide"
-					src="<%=projectName%>/ho/img/banner_image_02.png" alt="사진2" /></li>
-				<li><img class="slide"
-					src="<%=projectName%>/ho/img/banner_image_03.jpg" alt="사진2" /></li>
-			</ul>
+
+
+		<div id="CoinTop">
+			<p>코인 충전</p>
 		</div>
-		<table id="slidefocus">
-			<tr>
-				<td id="slide1">오늘의 상품</td>
-			</tr>
-			<tr>
-				<td id="slide2">계절 맞춤</td>
-			</tr>
-			<tr>
-				<td id="slide3">어쩌구 저쩌구</td>
-			</tr>
-			<tr>
-				<td id="slide4">행복하자 우리</td>
-			</tr>
-			<tr>
-				<td id="slide5">아프지말고</td>
-			</tr>
-		</table>
 
-		<img src="<%=projectName%>/ho/img/banner_image_01.jpeg"
-			class="hotItem" name="hot1" /> <img
-			src="<%=projectName%>/ho/img/banner_image_01.jpeg" class="hotItem"
-			name="hot2" /> <img
-			src="<%=projectName%>/ho/img/banner_image_01.jpeg" class="hotItem"
-			name="hot3" /> <img
-			src="<%=projectName%>/ho/img/banner_image_01.jpeg" class="hotItem"
-			name="hot4" />
-
+		<p class="TopP"><strong><%=hm.getMemName() %>님</strong>의 코인 <span style="text-align:right;"><%=String.format("%,d", Integer.parseInt(hm.getMemCoin())) %>개</span></p>
 
 	</section>
 	<footer>
