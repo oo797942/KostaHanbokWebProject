@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ho.command.Command;
 import ho.command.CommandBag;
+import ho.command.CommandBagInsert;
 import ho.command.CommandBoardList;
 import ho.command.CommandBoardReply;
 import ho.command.CommandBoardView;
@@ -91,6 +92,7 @@ public class HoControl extends HttpServlet {
 		commandMap.put("goods-view", new CommandGoodsView("ShoppingView.jsp"));
 		commandMap.put("goodsview", new CommandGoodsView("ShoppingView.jsp"));
 		commandMap.put("GoodsReply", new CommandInsertGoodsReply("ShoppingReplySuccess.jsp"));
+		commandMap.put("bag-insert", new CommandBagInsert("ShoppingBagInsertFin.jsp"));
 		
 		
 		commandMap.put("mypage-list", new CommandMyList("ShoppingMyPageQnaList.jsp"));

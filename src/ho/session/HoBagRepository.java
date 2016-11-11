@@ -36,4 +36,21 @@ public class HoBagRepository {
 		}
 	}
 
+	public void insertShoppingBagByMap(HashMap map) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			System.out.println("insertShoppingBagByMap에 들어왔음");
+
+			int result = sess.insert(namespace + ".shoppingBagInsert", map);
+			System.out.println(result+"<<<result");
+			if(result>0){
+				sess.commit();
+			}else{
+				sess.rollback();
+			}
+		} finally {
+			sess.close();
+		}
+	}
+
 }
