@@ -69,6 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result column="shop_soo" property="shopSoo" />
       <result column="shop_price" property="shopPrice" />
    </resultMap>
+   
 
    <select id="shoppingBag" resultMap="HoShoppingBag"
       parameterType="hashmap">

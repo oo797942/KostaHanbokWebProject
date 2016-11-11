@@ -104,13 +104,15 @@
 				<tr>
 					<td class="topTableBtn">
 					<a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">회원정보</a></td>
-					<td class="topTableBtn">쇼핑내역</td>
+					<td class="topTableBtn">
+					<a href="<%=projectName %>/myOrderList.ho?cmd=mypage-orderlist">쇼핑내역</a></td>
 					<td id = "answer" class="topTableBtn">
 					<a href="<%=projectName%>/list.ho?cmd=mypage-list&adid=<%=sess%>">1:1문의내역</a></td> <!--  내가 한거 -->
 					<td width="70%"></td>
 				</tr>
 			</table>
-			
+	</div>
+
 	<table class="table table-bordered"  border="2" width="500" height="105">
 		<tbody>
 	
@@ -137,7 +139,7 @@
 
 	</tbody>
 	</table>
-		</div>
+		
 
 		</section>
 	<footer>

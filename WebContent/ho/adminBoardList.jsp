@@ -108,6 +108,7 @@
 	<table border="1" bordercolor="darkblue" width="1000"  class="table table-striped" >
   	 <tr class="info" id="listTable">
   	   		 <td> 등록일 </td>
+  	   		 <td> 아이디 </td>
     		 <td> 작성자 이름 </td>
   	   		 <td> 게시글 제목 </td>
    		     <td colspan="2"> 답변하기 </td>
@@ -116,6 +117,7 @@
   	 <% for(HoBoard board : boards){ %>
      <tr>	
  	  		<td><%= board.getBoardDate() %></a></td>
+  			<td><%= board.getBaordId() %></a></td>
   			<td><%= board.getBoardWriter() %></a></td>
    			<td><%= board.getBoardTitle() %></a></td>
    			<td><a href="<%= projectName %>/1.ho?cmd=adminBoardView&id=<%=board.getBoardNo()%>"><input type="button" name="tdreply" id="tdreply" value="답변하기"/></a></td>

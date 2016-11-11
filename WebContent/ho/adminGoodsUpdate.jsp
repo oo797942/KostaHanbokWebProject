@@ -54,7 +54,12 @@ $(function(){
 
 		$("#GoodsSoo").val(LSize+MSize+SSize);
 	});
-	
+
+	var LSize = $("#Lsize").val()*1;
+	var MSize = $("#Msize").val()*1;
+	var SSize = $("#Ssize").val()*1;
+
+	$("GoodsSoo.val").val(LSize+MSize+SSize);
 	
 });
 </script>
