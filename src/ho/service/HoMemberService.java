@@ -30,6 +30,10 @@ public class HoMemberService {
 	public HoMember selectHoMemberByPrimaryKey(HashMap<String, Object> id) {
 		return repo.selectById(id);
 	}
+	
+	public void updateHoMemeberCoin(HashMap<String, Object> coin) {
+		repo.coinupdate(coin);
+	}
 
 	public void GoodsInsert(HashMap<String, Object> goods) {
 		System.out.println("GoodsInsert에 들어왔음");
