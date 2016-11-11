@@ -396,10 +396,10 @@ $(function(){
 			</tr>
 		</table>
 		<form method="post" action="<%=projectName%>/xx.ho">
-		<input type="text" name="cmd" value="GoodsReply">
-		<input type="text" name="name" value="<%=hg.getGoodsId()%>">
-		<input type="text" name="id" value="<%=sess%>">
-		<input type="text" name="name1" value="<%=hg.getGoodsName() %>">
+		<input type="hidden" name="cmd" value="GoodsReply">
+		<input type="hidden" name="name" value="<%=hg.getGoodsId()%>">
+		<input type="hidden" name="id" value="<%=sess%>">
+		<input type="hidden" name="name1" value="<%=hg.getGoodsName() %>">
 		<br /> <input type="text" autocomplete="off"
 		
 			placeholder="후기를 입력해 주세요." id="replyInput" name="replyInput" />
