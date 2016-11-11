@@ -373,7 +373,8 @@ $(function(){
 				<td width="50%">내용</td>
 			</tr>
 		</table>
-		<form method="get" action="">
+		<form method="post" action="<%=projectName%>/xx.ho">
+		<input type="hidden" name="cmd" value="GoodsReply">
 		<input type="hidden" name="GoodsName" value="<%=hg.getGoodsId()%>">
 		<input type="hidden" name="id" value="<%=sess%>">
 		<br /> <input type="text" autocomplete="off"

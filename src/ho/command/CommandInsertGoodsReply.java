@@ -22,16 +22,22 @@ public class CommandInsertGoodsReply implements Command{
 	
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
+			
 			String id = request.getParameter("id");
-			String GoodsName = request.getParameter("GoodsName");
+			System.out.println("reply 안의 sess값  " +id);
+			String su = request.getParameter("GoodsName");
+			int GoodsName = Integer.parseInt(su);
+			System.out.println("reply 안의 상품번호 " +GoodsName);
 			String replyInput = request.getParameter("replyInput");
-
+			System.out.println("reply 안의 후기  " +replyInput);
 			HashMap<String,Object> rm = new HashMap();
 			rm.put("id", id);
 			rm.put("GoodsName", GoodsName);
 			rm.put("ReplyInput", replyInput);
 			
 			HoReplyService.getInstance().insertReply(rm);
+	
+			
 		}catch( Exception ex ){
 			throw new CommandException("CommandInsertGoodsReply.java < 입력시 > " + ex.toString() ); 
 		}

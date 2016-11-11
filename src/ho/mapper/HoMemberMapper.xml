@@ -95,6 +95,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result column="o_sname" property="OrderSName" />
    </resultMap>
    
+   <resultMap type="HoReply" id="HoReplyMap">
+   	<id column="r_no" property="ReplyNo"></id>
+   <result column="r_sangpum" property="ReplySangpum"/>
+   <result column="r_id" property="ReplyId"/>
+   <result column="r_date" property="ReplyDate"/>
+   <result column="r_content" property="ReplyContent"/>
+   </resultMap>
 
    <select id="shoppingBag" resultMap="HoShoppingBag"
       parameterType="hashmap">
@@ -355,7 +362,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </choose>
       </where>
    </select>
+   
+   <select id="selectOrder" resultMap="HoOrderMap" parameterType="hashmap">
+	select * from order_t where o_no in (select o_no from
+		(select rownum as rnum, o_no from (select o_no from order_t order by
+		o_no desc))
+		where rnum between #{startrecord} and #{endrecord}) and o_state=0
+		order by o_no desc
+	</select>
+	
+	<insert id="insertReply" parameterType="hashmap">
+  		 INSERT INTO REPLY  VALUES(seq_reply.nextval,#{GoodsName},#{id},sysdate,#{ReplyInput})
+   	</insert>
 
+	
 </mapper>
 
    

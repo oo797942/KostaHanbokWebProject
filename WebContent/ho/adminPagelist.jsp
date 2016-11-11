@@ -1,3 +1,5 @@
+<%@page import="ho.model.HoOrder"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,6 +8,65 @@
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
 <% String projectName = "/HoProject"; %>
+<%	
+	List<HoOrder> orders=null;
+Object obj =request.getAttribute("OrderList");
+
+System.out.println(obj);
+if(obj !=null) orders = (List<HoOrder>)obj;
+
+String pagenum = request.getParameter("pagenum");
+int pageno = 0;
+int totalRecord =0;
+if(pagenum!=null) pageno=Integer.parseInt(pagenum);//현재 눌린번호
+int sum=0;
+if(pageno<1){//현재 페이지
+		pageno = 1;
+}
+//------------------------------------------------------------------//
+  totalRecord=(Integer)request.getAttribute("totalRecord"); //총 레코드 수
+  //System.out.println("totalRecord는:!!!!"+request.getAttribute("totalRecord"));
+   System.out.println(totalRecord);
+   int page_per_record_cnt =3;	//페이지 당 레코드 수
+   int group_per_page_cnt =4;	//페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
+
+   int record_end = pageno*page_per_record_cnt;//끝페이지
+   int record_start= record_end-(page_per_record_cnt-1);//시작페이지
+   if(record_end>totalRecord){
+      record_end = totalRecord;
+   }
+   System.out.println(record_end);//10
+   int total_page = totalRecord;
+   
+   System.out.println(total_page);//2
+   if(pageno>total_page){//누른 페이지 번호>10;
+      pageno = total_page; //누른 페이지 번호 = 10
+   }
+   int group_no = pageno/group_per_page_cnt+( pageno%group_per_page_cnt>0 ? 1:0);
+   //현재 그룹번호 = 현재페이지/페이지당 보여줄 페이지 번호수+(햔재페이지%페이지당 보여줄 번호수>0?1:0)
+   int page_eno = group_no*group_per_page_cnt;   //현재 그룹 끝번호   
+   int page_sno = page_eno-(group_per_page_cnt-1);   //현재 그룹 시작번호=현재 그룹 끝번호-(페이지당 보여줄 번호수-1)
+
+   if(page_eno>total_page){
+      page_eno=total_page;
+   }
+   int prev_pageno = page_sno-group_per_page_cnt;
+   int next_pageno = page_sno+group_per_page_cnt;
+   if(prev_pageno<1){
+//      이전 페이지 번호가 1보다 작을 경우      
+      prev_pageno=1;
+//      이전 페이지를 1로
+   }
+   if(next_pageno>total_page){
+//      다음 페이지보다 전체페이지 수보가 클경우      
+      next_pageno=total_page/group_per_page_cnt*group_per_page_cnt+1;
+   }	
+
+
+
+
+
+%>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -77,24 +138,47 @@
 		<br/>	<br/>
 		<table border="1"  width="1000" class="table table-hover table-striped">
   	 
-  		 <tr class="info"   id="listTable">
-  	   		 <td> 등급 </td>
-    		 <td> 이름 </td>
-  	   		 <td> 전화번호 </td>
-   		     <td> 이메일 </td>
-   		     <td> 가격 </td>
+  		 <tr class="info"   id="tablefont">
+  	   		 <td> 상품명 </td>
+    		 <td> 구매자 </td>
+  	   		 <td> 총개수 </td>
+   		     <td> 총가격 </td>
  		 </tr>
    	
-  		 <tr>	
-   			<td><a href="adminMemView.jsp">실험</a></td>
- 		  	<td><a href="adminMemView.jsp">실험</a></td>
-  			<td><a href="adminMemView.jsp">실험</a></td>
-   			<td><a href="adminMemView.jsp">실험</a></td>
-   			<td><a href="adminMemView.jsp">실험</a></td>
-   		</tr>
-		</table>
-		<a href="<%= projectName %>/1.ho?cmd=admin-page"><input type="button" id="back" value="뒤로가기"/></a>
+<% for(HoOrder order : orders){ %>
+     <tr>	
+ 	  		<td><%= order.getOrderSangpumName() %></a></td>
+  			<td><%= order.getOrderSName() %></a></td>
+   			<td><%= order.getOrderSoo() %></a></td>
+   			<td><%= order.getOrderTotalPrice() %></a></td>
+   			<% sum=Integer.parseInt(order.getOrderTotalPrice())+sum; %>
+ 	  </tr>
+	<% } %>
 	
+		</table>
+		
+		  <a href="<%=projectName%>/xxx.ho?cmd=adminmenu1&pagenum=1">[맨앞으로]</a>
+	
+	<a href="<%=projectName%>/xxx.ho?cmd=adminmenu1&pagenum=<%=prev_pageno%>">[이전]</a> 
+	<%for(int i =page_sno;i<=page_eno;i++){%>
+	<a href="<%=projectName%>/xxx.ho?cmd=adminmenu1&pagenum=<%=i %>">
+	<%if(pageno == i){ %>
+			[<%=i %>]
+		<%}else{ %>
+			<%=i %>
+		<%} %>
+	</a> 
+<%--	콤마	 --%>	
+	
+<%} %>
+<a href="<%=projectName%>/xxx.ho?cmd=adminmenu1&pagenum=<%=next_pageno%>" >[다음]</a>
+<a href="<%=projectName%>/xxx.ho?cmd=adminmenu1&pagenum=<%=total_page %>">[맨뒤로]</a>
+		<br/>
+		<br/>
+		<legend>총합</legend>	
+		<p style="font-size:40px; font-weight:bold"><%=sum %></p>
+		<a href="<%= projectName %>/1.ho?cmd=admin-page"><input type="button" id="back" value="뒤로가기"/></a>
+		
 	</section>
 	
 	

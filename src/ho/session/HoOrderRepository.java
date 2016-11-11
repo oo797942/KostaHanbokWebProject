@@ -54,5 +54,17 @@ public class HoOrderRepository {
 			sess.close();
 			}
 	}
+	
+	public List<HoOrder> selectOrder(HashMap<String, Object> om){
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try{
+			System.out.println("selectOrder에 들어옴");
+
+			return sess.selectList(namespace+".selectOrder",om);
+			
+		}finally{
+			sess.close();
+		}
+	}
 
 }

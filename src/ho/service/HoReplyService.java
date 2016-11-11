@@ -29,9 +29,5 @@ public class HoReplyService {
 		repo.insertReply(map);
 	}
 
-	public List<HoOrder> selectOrderList(HashMap<String,Object> id) {
-		System.out.println("selectOrderList에 들어왔음");
-		return repo.selectOrderList(id);
-	}
 
 }
