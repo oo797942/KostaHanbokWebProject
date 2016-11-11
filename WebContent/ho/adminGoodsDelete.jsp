@@ -34,9 +34,9 @@
 	<section>
 		
 		<!-- 등록 -->
-		<form action="<%= projectName %>/xxxxx.ho?" method="get">
+		<form action="<%= projectName %>/xxxxx.ho" method="post">
+		<input type="hidden" name="cmd" id="cmd" value="delete"/>
 		<input type="hidden" name="id" id="id" value="<%= request.getParameter("id")%>" >
-		<input type="hidden" name="cmd" id="cmd" value="delete"/>		
 		<table width="1000" height="560">
 		<tr>
 			<td><input type="text" class= "Goodsinsert" name="Goodsdelete" id="Goodsdelete"></td>

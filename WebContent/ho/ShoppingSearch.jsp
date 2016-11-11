@@ -9,7 +9,7 @@
 
 	Object sess = session.getAttribute("yourid");
 	System.out.println("세션값" + sess);
-	List categoryList =  null;
+	List categoryList = null;
 
 	if (sess != null) {
 		sessionValue = (String) sess;
@@ -227,7 +227,7 @@ $(function(){
 			<tr>
 			<%} %>
 				<%HoGoods hg = (HoGoods)categoryList.get(i); %>
-				<td class="itemTd"><a href="<%=projectName%>/view.ho?cmd=goods-view&id=<%=hg.getGoodsId()%>&name=<%= hg.getGoodsName()%>"><img id="itemtImg<%=i %>" class="itemImg"
+				<td class="itemTd"><a href="<%=projectName%>/view.ho?cmd=goods-view&id=<%=hg.getGoodsId()%>&name=<%= hg.getGoodsName()%>&name1=<%=hg.getGoodsId()%>"><img id="itemtImg<%=i %>" class="itemImg"
 					src="<%=projectName%>/ho/upload/<%=hg.getGoodsImg() %>" /></a><br /> <label
 					class="123"><strong><%=hg.getGoodsName() %></strong><br /><%=String.format("%,d",hg.getGoodsPrice()) %>원</label></td>
 				<%count ++; %>

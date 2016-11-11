@@ -132,7 +132,7 @@ public class HoMemberRepository {
 	public HoGoods selectGoodsView(HashMap id) {
 		SqlSession sess = getSqlSessionFactory().openSession();
 		try {
-			System.out.println("selectGoods에 들어왔음");
+			System.out.println("selectGoods에 들어왔음 여기 여기" + id );
 
 			return sess.selectOne(namespace + ".Goodlist", id);
 		} finally {

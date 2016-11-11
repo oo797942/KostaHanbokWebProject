@@ -1,13 +1,23 @@
+<%@page import="java.util.List"%>
+<%@page import="ho.model.HoReply"%>
 <%@page import="ho.model.HoGoodsImg"%>
 <%@page import="ho.model.HoGoods"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	String projectName = "/HoProject";
 	HoGoodsImg himg = null;
-	HoGoods hg = (HoGoods) request.getAttribute("GoodsView");
+	HoGoods hg = null;
+	Object obj1=request.getAttribute("GoodsView");
+	if(obj1!=null) hg = (HoGoods)obj1; System.out.println("11번쨰");
+	
+	System.out.println("12번쨰줄 " +hg.getGoodsId());
 	if (request.getAttribute("GoodsImgView") != null) {
 		himg = (HoGoodsImg) request.getAttribute("GoodsImgView");
 	}
+	
+	List<HoReply> reply = null;
+	Object obj = request.getAttribute("replyList");
+	if(obj!=null) reply = (List<HoReply>) obj;
 
 	String sessionValue = null;
 
@@ -18,13 +28,14 @@
 	if (sess != null) {
 		sessionValue = (String) sess;
 	}
-
+	System.out.println("30번쨰 줄");
 	int totalPrice = hg.getGoodsPrice() + hg.getGoodsRentPrice();
 
 	String Lsize = hg.getGoodsLsize();
 	String Msize = hg.getGoodsMsize();
 	String Ssize = hg.getGoodsSsize();
-	
+
+	System.out.println("37번쨰 줄");
 %>
 <!DOCTYPE html>
 <html>
@@ -369,15 +380,28 @@ $(function(){
 			<tr>
 				<td width="20%">등록일</td>
 				<td width="20%">아이디</td>
-				<td>평점</td>
 				<td width="50%">내용</td>
+				<%if(reply.isEmpty()){ %>
+			      <tr><td colspan="3"> 등록된 게시물이 없습니다. </td></tr>
+				<%}else{
+					for(HoReply replylist : reply){
+					%>
+					<tr>
+					<td><%=replylist.getReplyDate() %></td>
+					<td><%=replylist.getReplyId() %></td>
+					<td><%=replylist.getReplyContent() %></td>
+					</tr>
+				<%		}
+					} %>
 			</tr>
 		</table>
 		<form method="post" action="<%=projectName%>/xx.ho">
-		<input type="hidden" name="cmd" value="GoodsReply">
-		<input type="hidden" name="GoodsName" value="<%=hg.getGoodsId()%>">
-		<input type="hidden" name="id" value="<%=sess%>">
+		<input type="text" name="cmd" value="GoodsReply">
+		<input type="text" name="name" value="<%=hg.getGoodsId()%>">
+		<input type="text" name="id" value="<%=sess%>">
+		<input type="text" name="name1" value="<%=hg.getGoodsName() %>">
 		<br /> <input type="text" autocomplete="off"
+		
 			placeholder="후기를 입력해 주세요." id="replyInput" name="replyInput" />
 			<input type="submit" value="입력" id="insertReply"><br /> <br />
 		</form>

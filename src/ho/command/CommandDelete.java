@@ -19,7 +19,6 @@ public class CommandDelete implements Command{
 	public CommandDelete( String _next ){
 		next = _next;
 	}
-	   
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
 			System.out.println("CommandDelete들어옴");
@@ -29,7 +28,9 @@ public class CommandDelete implements Command{
 			System.out.println("id 값  : "+id);
 			String admin = request.getParameter("Goodsdelete");
 			System.out.println("admin 값 : " + admin);
+
 			if(admin.equals("admin")){
+				System.out.println("들어옴?");
 				HashMap<String,Object> map = new HashMap();
 				map.put("id", id);
 				HoMemberService.getInstance().GoodsDelete(map);

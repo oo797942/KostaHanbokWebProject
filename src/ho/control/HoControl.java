@@ -89,7 +89,8 @@ public class HoControl extends HttpServlet {
 		commandMap.put("search-category", new CommandGoodsCategory("ShoppingSearch.jsp"));
 		commandMap.put("search-input", new CommandGoodsInputSearch("ShoppingSearch.jsp"));
 		commandMap.put("goods-view", new CommandGoodsView("ShoppingView.jsp"));
-		commandMap.put("GoodsReply", new CommandInsertGoodsReply("ShoppingView.jsp"));
+		commandMap.put("goodsview", new CommandGoodsView("ShoppingView.jsp"));
+		commandMap.put("GoodsReply", new CommandInsertGoodsReply("ShoppingReplySuccess.jsp"));
 		
 		
 		commandMap.put("mypage-list", new CommandMyList("ShoppingMyPageQnaList.jsp"));

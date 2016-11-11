@@ -15,7 +15,9 @@ import ho.model.HoException;
 import ho.model.HoGoods;
 import ho.model.HoGoodsImg;
 import ho.model.HoMember;
+import ho.model.HoReply;
 import ho.service.HoMemberService;
+import ho.service.HoReplyService;
 
 public class CommandGoodsView implements Command{
 	private String next;
@@ -27,23 +29,36 @@ public class CommandGoodsView implements Command{
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
 			request.setCharacterEncoding("utf-8");
-
+			String name="";
 			String id =request.getParameter("id");
 			String cmd = request.getParameter("cmd");
-			System.out.println("id 값 : "+ cmd);
-			System.out.println("cmd 값 : "+ cmd);
+			System.out.println("id 값 : "+ id);	//GoodsId
 			HoGoods Goods = null;
 			HoGoodsImg GoodsImg = null;
 			HashMap hm = new HashMap();
 			System.out.println("View로 가는 id : " + id);
-			hm.put("id", id);
-			if(cmd.equals("goods-view")){
-				String name = request.getParameter("name");
-				System.out.println("name값  : " +name);
+			if(cmd.equals("goods-view")||cmd.equals("goodsview")){
+				name = request.getParameter("name");	//GoodsName
+				System.out.println("name값  : " +name);	
 				hm.put("name", name);
 				GoodsImg = HoMemberService.getInstance().GoodsItemImgView(hm);
+				HashMap<String,Object> rl = new HashMap();
+				rl.put("id", request.getParameter("name1"));	//GoodsId
+				List<HoReply> replylist = HoReplyService.getInstance().ReplyList(rl);
+				if(replylist!=null) {
+					request.setAttribute("replyList", replylist);
+				}
+				if(cmd.equals("goodsview")){
+					//name=SE_F007, id=67
+					name=request.getParameter("id");
+					id=request.getParameter("name1");
+				}
 			}
+	
+			hm.put("id", id);
+			hm.put("name", name);
 			Goods = HoMemberService.getInstance().GoodsView(hm);
+			
 			request.setAttribute("GoodsView", Goods);
 			request.setAttribute("GoodsImgView", GoodsImg);
 		}catch( Exception ex ){
@@ -52,15 +67,6 @@ public class CommandGoodsView implements Command{
 		return next;
 	}
 
-	
-	private String getFileName(Part part) throws UnsupportedEncodingException {
-		System.out.println("getFileName");
-		for (String cd : part.getHeader("Content-Disposition").split(";")) {
-			if (cd.trim().startsWith("filename")) {
-				return cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-			}
-		}
-		return null;
-	}
+
 
 }

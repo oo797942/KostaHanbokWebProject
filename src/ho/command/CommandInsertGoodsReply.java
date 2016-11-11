@@ -23,9 +23,10 @@ public class CommandInsertGoodsReply implements Command{
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
 			
+
 			String id = request.getParameter("id");
 			System.out.println("reply 안의 sess값  " +id);
-			String su = request.getParameter("GoodsName");
+			String su = request.getParameter("name");
 			int GoodsName = Integer.parseInt(su);
 			System.out.println("reply 안의 상품번호 " +GoodsName);
 			String replyInput = request.getParameter("replyInput");

@@ -379,6 +379,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		 INSERT INTO REPLY  VALUES(seq_reply.nextval,#{GoodsName},#{id},sysdate,#{ReplyInput})
    	</insert>
 
+	<select id="ReplyList" parameterType="hashmap" resultMap="HoReplyMap">
+		select * from reply 
+		 <where>
+         <choose>
+            <when test="id neq null">
+              r_sangpum=#{id}
+            </when>
+         </choose>
+      </where>
+	</select>
 	
 </mapper>
 

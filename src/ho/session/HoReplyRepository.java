@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import ho.model.HoGoods;
 import ho.model.HoOrder;
+import ho.model.HoReply;
 
 public class HoReplyRepository {
 
@@ -45,6 +46,14 @@ public class HoReplyRepository {
 		}
 	}
 
-	
+	public List<HoReply> ReplyList(HashMap map){
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try{
+			System.out.println("ReplyList에 들어옴" + map);
 
+			return sess.selectList(namespace+".ReplyList",map);
+		}finally{
+			sess.close();
+		}
+	}
 }
