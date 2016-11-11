@@ -71,6 +71,8 @@ public class HoControl extends HttpServlet {
 //		commandMap.put(key, value);		
 		
 		// 쇼핑몰 페이지
+		
+		
 		commandMap.put("go-mypage", new CommandLogin("ShoppingMyPage.jsp"));
 		commandMap.put("submit-mypage", new CommandUpdate("ShoppingMyPageUpdate.jsp"));
 		commandMap.put("search-category", new CommandGoodsCategory("ShoppingSearch.jsp"));
@@ -79,6 +81,8 @@ public class HoControl extends HttpServlet {
 	
 		commandMap.put("mypage-list", new CommandMyList("ShoppingMyPageQnaList.jsp"));
 		commandMap.put("Mylist-view", new CommandBoardView("ShoppingMyPageQnaView.jsp"));
+		commandMap.put("mypage-orderlist", new CommandNull("ShoppingOrderList.jsp"));
+		
 		// admin 페이지
 		commandMap.put("adminGoodsInsert", new CommandNull("adminGoodsinsert.jsp"));
 		commandMap.put("adminGoodsimgInsert", new CommandInsert("adminGoodsimgInsert.jsp"));
