@@ -6,7 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입 완료 페이지</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%= projectName %>/ho/css/jquery.bxslider.css"
 	media="all" />
 <link rel="stylesheet" type="text/css" href="<%= projectName %>/ho/css/HoMainForm.css" media="all" />
@@ -27,14 +37,18 @@
 			<a href="<%=projectName%>/kk.ho?cmd=main-page"><img id="logo" src="<%=projectName%>/ho/img/logo.png" /></a>
 	
 		</div>
-		
 
 	</header>
 	
-	<h1 id="mar"> 회원가입이 완료되었습니다 </h1>
-	<h1> Ho[好] 회원이 되신것을 축하드립니다</h1>
-	<a href="<%=projectName%>/kk.ho?cmd=shop-main"><input type="button" value="쇼핑 하러가기" id="log_btn"></a>
-	
+	<section>
+		<div><br/><br/>
+			<img alt="설현" src="<%=projectName %>/ho/img/joinOK.jpg">
+		</div><br/><br/>
+		<div>
+			<a href="<%=projectName%>/kk.ho?cmd=shop-main"><input type="button" value="쇼핑 하러가기" class="btn btn-large btn-block  btn-info" style="font-size: 16pt;"></a>		
+		</div>
+	</section>
+
 	<footer>
    <div id="footertitle">
 			<a href="#"><img src="/HoProject/ho/img/footerTitle.png" /></a>

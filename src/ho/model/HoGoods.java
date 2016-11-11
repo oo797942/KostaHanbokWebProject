@@ -16,7 +16,7 @@ public class HoGoods {
 	private String GoodsMsize;
 	private String GoodsSsize;
 	
-	
+	 
 	public HoGoods()
 	{
 		

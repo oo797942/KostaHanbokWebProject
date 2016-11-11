@@ -58,7 +58,6 @@ $(function(){
             obj = eval("("+ data +")");
             var objlist = obj.list;
             var objlistlength = objlist.length;
-            alert(objlistlength);
             var count = objlistlength/4;
             if(objlistlength % 4 != 0){
                count++;
@@ -251,7 +250,7 @@ $(function(){
 					</tr>
 					<tr>
 						<td>pw &nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td><input type="text" id="adpw" name="adpw" /></td>
+						<td><input type="password" id="adpw" name="adpw" /></td>
 					</tr>
 					<tr>
 						<td></td>

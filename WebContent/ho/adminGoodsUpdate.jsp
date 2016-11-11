@@ -16,7 +16,14 @@ System.out.println(goods.getGoodsCate());
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
@@ -24,7 +31,6 @@ System.out.println(goods.getGoodsCate());
 <script type="text/javascript">
 $(function(){
 	$("#Lsize").blur(function(){
-		alert("흠 --");
 		var LSize = $("#Lsize").val()*1;
 		var MSize = $("#Msize").val()*1;
 		var SSize = $("#Ssize").val()*1;
@@ -48,7 +54,12 @@ $(function(){
 
 		$("#GoodsSoo").val(LSize+MSize+SSize);
 	});
-	
+
+	var LSize = $("#Lsize").val()*1;
+	var MSize = $("#Msize").val()*1;
+	var SSize = $("#Ssize").val()*1;
+
+	$("GoodsSoo.val").val(LSize+MSize+SSize);
 	
 });
 </script>
@@ -74,19 +85,18 @@ $(function(){
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 		
 		<!-- 등록 -->
 		<form action="<%= projectName %>/xxxxx.ho?" method="post"  enctype="multipart/form-data">
 		<input type="hidden" name="cmd" id="cmd" value="adminGoodsimgUpdate"/>
-		<table border="2" width="1000" height="560">
+					<table border="2" id="insertTable" class="table table-striped" width="1000" height="560"  >
 		<tr>
-			<td>상품명</td>
-			<td><input type="text" class= "Goodsinsert" id="GoodsName" name="GoodsName" value="<%=goods.getGoodsName() %>" readonly="readonly"></td>
+			<td class="itemtable">상품명</td>
+			<td colspan="3"><input type="text" name="GoodsName" class= "Goodsinsert" value="<%=goods.getGoodsName() %>"  style="width: 100%"></td>
 		</tr>
 		<tr>
-			<td>카테고리</td>
-			<td><select id="category1" class= "GoodsSelect" name="GoodsCate" >
+			<td class="itemtable">카테고리</td>
+			<td><select id="category1"  name="GoodsCate" class= "GoodsSelect"  style="width: 100%">
 			<option class="op" selected="selected">선택</option>
 			<option class="op" value="생활 한복 -남">생활 한복 -남</option>
 			<option class="op" value="생활 한복 -여">생활 한복 -여</option>
@@ -98,58 +108,60 @@ $(function(){
 			<option class="op" value="아동 한복 -여">아동 한복 -여</option>
 			<option class="op" value="악세서리">악세서리</option>
 			</select></td>
-			</tr>
-		<tr>
-			<td>디자인 사진</td>
-			<td><input type="file" class= "Goodsinsert"  name="GoodsImg" ></td>
-			</tr>
-		<tr>
-		
-		<tr>
-			<td>설명</td>
-			<td><textarea  rows="4"  class= "GoodsContent" name="GoodsInfo"  ><%=goods.getGoodsInfo()%></textarea></td>
-		</tr>
-		
-			<td>원단</td> 
-			<td><select id="category2" class= "GoodsSelect" name="GoodsColor" >
+			
+		<td class="itemtable">원단</td>
+			<td colspan="3"><select id="category2" name="GoodsColor" class= "GoodsSelect"   style="width: 100%">
 					<option class="op"  selected="selected">선택</option>
 					<option class="op" value="양단">양단</option>
 					<option class="op" value="본견(비단)">본견(비단)</option>
 					<option class="op" value="보화단">보화단</option>
 					<option class="op" value="옥사">옥사</option>
 					<option class="op" value="물실크">물실크</option>
+			</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="itemtable">디자인 사진</td>
+			<td colspan="3"><input type="file" name="GoodsImg" class= "Goodsinsert" value="<%=goods.getGoodsImg()%>" style="width: 100%"></td>
+			</tr>
+		<tr>
+		
+		<tr>
+			<td class="itemtable">설명</td>
+			<td colspan="3"><textarea  rows="4"  name="GoodsInfo"  class= "GoodsContent"><%=goods.getGoodsInfo()%></textarea style="width: 100%"></td>
+		</tr>
+		
+		<tr>
+			<td class="itemtable">사이즈</td>
+			<td colspan="3">
+			L<input type="text"  id="Lsize" name="Lsize" value="<%= goods.getGoodsLsize()%>" style="width: 25%"> 
+			M<input type="text"  id="Msize"  name="Msize" value="<%= goods.getGoodsMsize()%>"  style="width: 25%"> 
+			S<input type="text"  id="Ssize" name="Ssize" value="<%= goods.getGoodsSsize()%>" style="width: 25%"> 	
 			</td>
 		</tr>
 		
 		<tr>
-			<td>사이즈</td>
-			<td>
-			L<input type="text"  id="Lsize" name="Lsize" value="<%= goods.getGoodsLsize()%>"> 
-			M<input type="text"  id="Msize"  name="Msize" value="<%= goods.getGoodsMsize()%>" > 
-			S<input type="text"  id="Ssize" name="Ssize" value="<%= goods.getGoodsSsize()%>"> 	
-			</td>
+			<td class="itemtable">수량</td>
+			<td colspan="3"><input type="text" name="GoodsSoo" id="GoodsSoo" class= "Goodsinsert" value="<%=goods.getGoodsSoo()%>"   style="width: 100%"></td>
 		</tr>
 		<tr>
-			<td>수량</td>
-			<td><input type="text" class= "Goodsinsert" id="GoodsSoo" readonly="readonly" name="GoodsSoo" value="<%=goods.getGoodsSoo()%>" ></td>
+			<td class="itemtable">가격</td>
+			<td colspan="3"><input type="text" name="GoodsPrice"  class= "Goodsinsert" value="<%=goods.getGoodsPrice()%>"  style="width: 100%"></td>
 		</tr>
 		<tr>
-			<td>가격</td>
-			<td><input type="text" class= "Goodsinsert" name="GoodsPrice" value="<%=goods.getGoodsPrice()%>"></td>
-		</tr>
-		<tr>
-			<td>배송비</td>
-			<td><input type="text" class= "Goodsinsert" name="GoodsRentPrice" value="<%=goods.getGoodsRentPrice()%>"></td>
+			<td class="itemtable">배송비</td>
+			<td colspan="3"><input type="text" name="GoodsRentPrice" class= "Goodsinsert" value="<%=goods.getGoodsRentPrice()%>"  style="width: 100%"></td>
 		</tr>
 	
 		<tr>
-			<td>할인율</td>
-			<td><input type="text"  name="GoodsDc" class= "Goodsinsert" maxlength="2" value=<%= goods.getGoodsDc() %>></td>
+			<td class="itemtable">할인율</td>
+			<td colspan="3"><input type="text" name="GoodsDc"  class= "Goodsinsert"  placeholder="%로 입력해주세요."  value=<%= goods.getGoodsDc() %> maxlength="2"  style="width: 100%"></td>
 		</tr>
-
 		</table>
 
 			<input type="submit" id="next" value="수정하기"/></a>
+			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 		</form>
 
 	</section>

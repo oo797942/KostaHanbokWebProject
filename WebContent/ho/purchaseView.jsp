@@ -1,3 +1,5 @@
+<%@page import="ho.model.HoGoods"%>
+<%@page import="ho.model.HoMember"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <% String projectName = "/HoProject";
 	String sessionValue = null;
@@ -6,10 +8,26 @@
 //# 2. 값이 null이라면 LoginForm.jsp로 페이지 이동
 //# 3. null이 아니라면 String 형변환하여 변수에 지정
 System.out.println("세션값"+sess);
-
+HoMember hm = null;
+HoGoods hg = null;
 if(sess != null){
 	sessionValue = (String)sess;
-} %>
+ 
+	
+	Object obj = request.getAttribute("homem");
+	Object obj2 = request.getAttribute("Goods");
+	if(obj!=null){
+		hm=(HoMember)obj;
+		System.out.println("purchaseView if문 안에 hm값인 : " +hm.getMemId());
+		hg=(HoGoods)obj2;
+		System.out.println("purchaseView if문 안에 hg값인 : " +hg.getGoodsName());
+	}
+// System.out.println(hm.getMemName());
+// System.out.println(hg.getGoodsName());
+
+System.out.println("goodsNo"+hg.getGoodsId());
+}
+%>
 
 <!DOCTYPE html>
 <html>
@@ -65,6 +83,13 @@ $(function(){
 	
 	$("#NoLoginMyPage").click(function(){
 		window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );			
+	});
+	
+	$("#same").click(function(){
+		$("#OrderRName").val("<%=hm.getMemName()%>");
+		$("#OrderRTel").val("<%=hm.getMemTel()%>");
+		$("#OrderRAddr").val("<%=hm.getMemAddr()%>");
+		
 	});
 	
 	
@@ -150,28 +175,40 @@ $(function(){
 	</header>
 
 	<section>
+	<form action="<%=projectName%>/final.ho" method="get">
+	<input type="hidden" name="cmd" value="pay-view">
+	<input type="hidden" name="OrderId" value="<%=sess %>">
+	<input type="hidden" name="OrderSangpumNo" value="<%=hg.getGoodsId() %>">
+	<input type="hidden" name="OrderSangpumName" value="<%=hg.getGoodsName() %>">
+	<input type="hidden" name="OrderSize" value="<%=request.getParameter("size") %>">
+	<input type="hidden" name="OrderSoo" value="<%=request.getParameter("cnt") %>">
+	<input type="hidden" name="OrderPrice" value="<%=hg.getGoodsPrice() %>">
+	<input type="hidden" name="OrderRentPrice" value=" <%= hg.getGoodsRentPrice() %>">
+	<input type="hidden" name="OrderImg" value="<%=hg.getGoodsImg() %>">
+	<input type="hidden" name="OrderTotalPrice" value="<%=request.getParameter("totalPrice") %>">
 	<div class="alignleft">
 		<div class="panel">
 			<div>
 				<div class="header">
-					<h2 class="num">01</h2>
+					<h2 class="num">01</h2>	
 					<div class="title" style="text-align: left;">
 						주문리스트 확인 <span id="confirmProdStr"></span>
 					</div>
 				</div>
 			</div>
 			<div>
+			
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<td class="img" rowspan="2"><img src="img/suzi.jpg" width="58"
+							<td class="img" rowspan="2"><img src="/HoProject/ho/upload/<%=hg.getGoodsImg() %>" width="58"
 								height="58" alt=""></td>
-							<td class="nme" rowspan="2">dsadsadsaad</td>
-							<td class="qty" rowspan="2">1 개</td>
-							<td class="price" rowspan="2">**가격**</td>
+							<td class="nme" rowspan="2"><%=hg.getGoodsName() %></td>
+							<td class="qty" rowspan="2"><%=request.getParameter("size") %> - <%=request.getParameter("cnt") %>개</td>
+							<td class="price" rowspan="2"><%=hg.getGoodsPrice() %>원</td>
+							<td class="td_numbig" rowspan="2">배송비 <%= hg.getGoodsRentPrice() %>원</td>
 							<td class="amt" rowspan="2"><span class="total_price">
-									**총가격**</span></td>
-							<td class="td_numbig" rowspan="2">배송비 10,000원</td>
+									총 가격:<%=request.getParameter("totalPrice") %>원</span></td>
 						</tr>
 					</tbody>
 				</table>
@@ -197,8 +234,8 @@ $(function(){
 								class="glyphicon glyphicon-user" aria-hidden="true"></span> 주문자명
 							</label>
 							<div class="col-md-3">
-								<input type="text" name="name" id="name" class="form-control"
-									value="" readonly="readonly" required>
+								<input type="text" name="OrderSName" id="OrderSName" class="form-control"
+									value="<%=hm.getMemName() %>" readonly="readonly" required>
 							</div>
 						</div><br /><br />
 
@@ -209,8 +246,8 @@ $(function(){
 								Email
 							</label>
 							<div class="col-md-3">
-								<input type="email" name="email" id="eamil" class="form-control"
-									value="" required="required">
+								<input type="email" name="OrderSEmail" id="eamil" class="form-control"
+									value="<%=hm.getMemEmail() %>" required="required">
 							</div>
 						</div><br/><br/> 
 
@@ -220,8 +257,8 @@ $(function(){
 								class="glyphicon glyphicon-phone" aria-hidden="true"></span> 전화
 							</label>
 							<div class="col-md-3">
-								<input type="text" name="tel" id="tel" class="form-control"
-									value="" required="required">
+								<input type="text" name="OrderSTel" id="tel" class="form-control"
+									value="<%=hm.getMemTel() %>" required="required">
 							</div>
 						</div><br /><br />
 
@@ -231,10 +268,10 @@ $(function(){
 								class="glyphicon glyphicon-home" aria-hidden="true"></span> 주소
 							</label>
 							<div class="col-md-5">
-								<input type="text" name="addr" id="addr" class="form-control" placeholder="주소를 입력하세요"
-									value="" required="required"><br/>
-								<input type="text" name="addr" id="addr" class="form-control" placeholder="상세주소를 입력하세요"
-									value="" >
+								<input type="text" name="OrderSAddr" id="addr" class="form-control" placeholder="주소를 입력하세요"
+									value="<%=hm.getMemAddr() %>" required="required"><br/>
+<!-- 								<input type="text" name="addrdetail" id="addr" class="form-control" placeholder="상세주소를 입력하세요" -->
+<!-- 									value="" >  -->
 							</div>
 						</div>
 					</td>
@@ -248,6 +285,7 @@ $(function(){
 				<div class="header">
 					<h2 class="num">03</h2>
 					<div class="title" style="text-align: left;">배송지정보</div>
+					<input type="button" value="위와 동일" id="same"/>
 				</div>
 			</div>
 
@@ -255,24 +293,13 @@ $(function(){
 				<tr>
 					<td>
 					<br/><br/>
-						<!-- 배송지명 -->
-						<div class="form-group">
-							<label for="delivery" class="col-md-2 control-label"> <span
-								class="glyphicon glyphicon-user" aria-hidden="true"></span> 배송지명
-							</label>
-							<div class="col-md-5">
-								<input type="text" name="delivery" id="delivery" class="form-control"
-									value="" placeholder="배송지명을 입력하세요" required="required">
-							</div>
-						</div><br /><br />
-
 						<!-- 수령자명 -->
 						<div class="form-group">
 							<label for="receiver" class="col-md-2 control-label"> <span
 								class="glyphicon glyphicon-envelope" aria-hidden="true"></span>수령자명
 							</label>
 							<div class="col-md-3">
-								<input type="email" name="receiver" id="receiver" class="form-control"
+								<input type="text" name="OrderRName" id="OrderRName" class="form-control"
 									value="" required="required">
 							</div>
 						</div><br/><br/> 
@@ -283,7 +310,7 @@ $(function(){
 								class="glyphicon glyphicon-phone" aria-hidden="true"></span> 전화
 							</label>
 							<div class="col-md-3">
-								<input type="text" name="tel" id="tel" class="form-control"
+								<input type="text" name="OrderRTel" id="OrderRTel" class="form-control"
 									value="">
 							</div>
 						</div><br /><br />
@@ -294,7 +321,7 @@ $(function(){
 								class="glyphicon glyphicon-home" aria-hidden="true"></span> 주소
 							</label>
 							<div class="col-md-5">
-								<input type="text" name="detail" id="detail" class="form-control" placeholder="주소를 입력하세요"
+								<input type="text" name="OrderRAddr" id="OrderRAddr" class="form-control" placeholder="주소를 입력하세요"
 									value=""><br/>
 							</div>
 						</div><br /><br />
@@ -305,7 +332,7 @@ $(function(){
 								class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>  배달시 요구사항
 							</label>
 							<div class="col-md-5">
-								<input type="text" name="demand" id="demand" class="form-control" placeholder="입력하지마 ㅆ.."
+								<input type="text" name="OrderRDemand" id="OrderRDemand" class="form-control" placeholder="입력하지마 ㅆ.."
 									value="">
 							</div>
 						</div><br/><br/>
@@ -345,9 +372,9 @@ $(function(){
 					</div>
 				<div class="body">
 					<div class="tabl minimal single-row" >
-						<div class="radio"><input type="radio" id="od_settle_card" name="od_settle_case" value="신용카드"> <label for="od_settle_card">신용카드</label></div>
-						<div class="radio"><input type="radio" id="od_settle_bank" name="od_settle_case" value="무통장"> <label for="od_settle_bank">무통장입금</label></div>
-						<div class="radio"><input type="radio" id="od_settle_iche" name="od_settle_case" value="계좌이체"> <label for="od_settle_iche">에스크로 실시간 계좌이체</label></div>
+						<div class="radio"><input type="radio" id="OrderSettleCase" name="OrderSettleCase" value="신용카드"> <label for="od_settle_card">신용카드</label></div>
+						<div class="radio"><input type="radio" id="OrderSettleCase" name="OrderSettleCase" value="무통장"> <label for="od_settle_bank">무통장입금</label></div>
+						<div class="radio"><input type="radio" id="OrderSettleCase" name="OrderSettleCase" value="계좌이체"> <label for="od_settle_iche">에스크로 실시간 계좌이체</label></div>
 					</div>		
          	   	</div>
          	 <div class="body bottom">
@@ -368,7 +395,7 @@ $(function(){
 	<div>	
 		<div>
 			<div id="display_pay_button" class="btn-group">
-		   		<input type="button" value="결제하기" class="btn_submit" onclick="">
+		   		<input type="submit" value="결제하기" class="btn_submit" onclick="">
 			</div>
 			
 			<div id="display_cancle_button" class="btn-group">
@@ -376,6 +403,7 @@ $(function(){
 			</div>
 		</div>
 	</div>	
+	</form>
 	</section>
 
 		<footer>

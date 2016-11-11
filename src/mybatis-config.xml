@@ -15,7 +15,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="ho.model.HoGoods" alias="HoGoods" />
 		<typeAlias type="ho.model.HoBoard" alias="HoBoard" />
 		<typeAlias type="ho.model.HoGoodsImg" alias="HoGoodsImg" />
-			<typeAlias type="ho.model.HoBag" alias="HoBag" />
+		<typeAlias type="ho.model.HoBag" alias="HoBag" />
+		<typeAlias type="ho.model.HoOrder" alias ="HoOrder"/>
 	</typeAliases>
 
 

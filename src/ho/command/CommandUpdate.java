@@ -32,15 +32,19 @@ public class CommandUpdate implements Command {
 
 				System.out.println("CommandUpdate에서 imgUpdate부분에 들어왔음");
 				String GoodsName = request.getParameter("GoodsName");
-				System.out.println(GoodsName);
 				String GoodsCate = request.getParameter("GoodsCate");
 				String GoodsInfo = request.getParameter("GoodsInfo");
 				String GoodsColor = request.getParameter("GoodsColor");
 				String GoodsSize = "null";
+				System.out.println(GoodsSize);
 				int GoodsSoo = Integer.parseInt(request.getParameter("GoodsSoo"));
+				System.out.println(GoodsSoo);
 				int GoodsPrice = Integer.parseInt(request.getParameter("GoodsPrice"));
+				System.out.println(GoodsPrice);
 				int GoodsRentPrice = Integer.parseInt(request.getParameter("GoodsRentPrice"));
+				System.out.println(GoodsRentPrice);
 				int GoodsDc = Integer.parseInt(request.getParameter("GoodsDc"));
+				System.out.println(GoodsDc);
 				String GoodsLsize = request.getParameter("Lsize");
 				String GoodsMsize = request.getParameter("Msize");
 				String GoodsSsize = request.getParameter("Ssize");
@@ -70,7 +74,7 @@ public class CommandUpdate implements Command {
 				memMap.put("GoodsSsize", GoodsSsize);
 
 				HoMemberService.getInstance().GoodsUpdate(memMap);
-				System.out.println("insert성공");
+				System.out.println("Update성공");
 			}
 
 			if (cmd.equals("adminGoodsUpList")) {

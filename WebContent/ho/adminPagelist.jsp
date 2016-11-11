@@ -77,7 +77,7 @@
 		<br/>	<br/>
 		<table border="1"  width="1000" class="table table-hover table-striped">
   	 
-  		 <tr class="info"   id="tablefont">
+  		 <tr class="info"   id="listTable">
   	   		 <td> 등급 </td>
     		 <td> 이름 </td>
   	   		 <td> 전화번호 </td>

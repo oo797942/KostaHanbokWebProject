@@ -60,25 +60,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  <result column="b_answerstatus" property="boardAnswerStatus" />
    </resultMap>
 
-   	<resultMap type="HoBag" id="HoShoppingBag">
-		<id column="shop_seq_no" property="shopSeqNo" />
-		<result column="shop_id" property="shopId" />
-		<result column="shop_no" property="shopNo" />
-		<result column="shop_size" property="shopSize" />
-		<result column="shop_img" property="shopImg" />
-		<result column="shop_soo" property="shopSoo" />
-		<result column="shop_price" property="shopPrice" />
-		<result column="shop_name" property="shopName" />
-	</resultMap>
+   <resultMap type="HoBag" id="HoShoppingBag">
+      <id column="shop_seq_no" property="shopSeqNo" />
+      <result column="shop_id" property="shopId" />
+      <result column="shop_no" property="shopNo" />
+      <result column="shop_size" property="shopSize" />
+      <result column="shop_img" property="shopImg" />
+      <result column="shop_soo" property="shopSoo" />
+      <result column="shop_price" property="shopPrice" />
+   </resultMap>
+   
 
-	<select id="shoppingBag" resultMap="HoShoppingBag" parameterType="hashmap">
-<![CDATA[
-select shop_id, shop_name, shop_no, shop_size, shop_img, shop_soo, shop_price from (
-select rownum, shop_name, shop_id, shop_no, shop_size, shop_img, shop_soo, shop_price from (
-select * from shopping_bag WHERE shop_id like #{id} ORDER BY shop_seq_no DESC) where rownum<4)
-]]>
-	</select>
-
+   <select id="shoppingBag" resultMap="HoShoppingBag"
+      parameterType="hashmap">
+      SELECT *
+      FROM shopping_bag
+   </select>
 
    <select id="GoodsImgView" resultMap="HoGoodsImgMap"
       parameterType="hashmap">
@@ -312,6 +309,17 @@ select * from shopping_bag WHERE shop_id like #{id} ORDER BY shop_seq_no DESC) w
       order by
       m_name
    </select>
+   
+   	<insert id="insertOrder" parameterType="hashmap">
+	INSERT INTO ORDER_T(o_no,o_id,o_sangpumno,o_sangpumname,o_soo,o_rent_state,o_rent_date,
+o_price,o_state,o_size,o_rent_price,o_img,o_totalprice,o_rname,o_rtel,o_raddr,o_rdemand,
+o_settle_case,o_semail,o_stel,o_saddr,o_sname)
+VALUES(SEQ_ORDER.NEXTVAL,#{OrderId},#{OrderSangpumNo},#{OrderSangpumName},#{OrderSoo},0,sysdate,
+#{OrderPrice},0,#{OrderSize},#{OrderRentPrice},#{OrderImg},#{OrderTotalPrice},#{OrderRName},#{OrderRTel},#{OrderRAddr},#{OrderRDemand},
+#{OrderSettleCase},#{OrderSEmail},#{OrderSTel},#{OrderSAddr},#{OrderSName})
+	
+	</insert>
+   
 
 </mapper>
 

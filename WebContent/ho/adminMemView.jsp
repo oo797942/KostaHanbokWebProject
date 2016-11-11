@@ -54,8 +54,6 @@
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=adminMemlist"><input type="button" id="back" value="뒤로가기"/></a>
-		
 	
 		<table border="2" width="1000" height="630">
 		<tr>
@@ -161,14 +159,8 @@
             </td>
 		</tr>
 		
-				
-		
-		
-		
 		</table>
-
-		
-	
+			<a href="<%= projectName %>/1.ho?cmd=adminMemlist"><input type="button" id="back" value="뒤로가기"/></a>
 
 	</section>
 	

@@ -102,12 +102,11 @@
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" id="back" value="뒤로가기"/></a>
 		
 
-		<table border="1" bordercolor="darkblue" width="1000"  class="table table-hover table-striped">
+		<table  id="insertTable" border="1" bordercolor="darkblue" width="1000"  class="table table-hover table-striped" >
   	 
-  	 <tr class="info"   id="tablefont">
+  	 <tr class="info"   id="listTable">
     		 <td> 카테고리 </td>
   	   		 <td> 상품명 </td>
   	   		 <td> 수량 </td>
@@ -116,8 +115,8 @@
  	 </tr>
    
    	<% for(HoGoods good : goods){ %>
-   	<tr>
-   		<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsCate() %></a></td>
+   	<tr >
+   		<td id="itemtable"><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsCate() %></a></td>
  	
  	  	<td><a href="<%= projectName %>/1.ho?cmd=adminGoodsView&id=<%=good.getGoodsId()%>"><%=good.getGoodsName() %></a></td>
   	
@@ -148,7 +147,8 @@
 
 <%} %>
 <a href="<%=projectName%>/xxx.ho?cmd=list-page&pagenum=<%=next_pageno%>" >[다음]</a>
-<a href="<%=projectName%>/xxx.ho?cmd=list-page&pagenum=<%=total_page %>">[맨뒤로]</a>
+<a href="<%=projectName%>/xxx.ho?cmd=list-page&pagenum=<%=total_page %>">[맨뒤로]</a><br/>
+			<a href="<%= projectName %>/1.ho?cmd=adminmenu2"><input type="button" id="back" value="뒤로가기"/></a>
 
 </section>
 	

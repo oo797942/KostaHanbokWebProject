@@ -68,6 +68,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
  
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
@@ -81,8 +89,9 @@
 		<div id="Menuimg">
 			<a href="#"><img id="logo" src="<%= projectName %>/ho/img/logo.png" /></a>
 		</div>
-	<div id="admin"> admin 님이 접속하셨습니다. </div> <br/>
-	
+	<div id="admin"> admin 님이 접속하셨습니다.
+		<a href="<%=projectName%>/1.ho?cmd=main-page"><input type="button" value="Logout" id="logoutbtn" name="logoutbtn"></a>
+	 </div> <br/>
 	<table id= "menutable">
 		<tr>
 	<td><a href="<%= projectName %>/1.ho?cmd=adminmenu1"><input type="button" class ="admenu" id="menu1" value="매출"/></a></td>
@@ -93,12 +102,11 @@
 	</header>
 	
 	<section>
-			<a href="adminPage.jsp"><input type="button" id="back" value="뒤로가기"/></a>
 		
 
-	<table border="1" bordercolor="darkblue" width="1000">
+	<table border="1" bordercolor="darkblue" width="1000" class="table table-striped">
   	 
-  	 <tr>
+  	 <tr class="info" id="listTable">
   	   		 <td> 등급 </td>
     		 <td> 아이디 </td>
     		 <td> 이름 </td>
@@ -139,7 +147,9 @@
 	
 <%} %>
 <a href="<%=projectName%>/xxx.ho?cmd=adminmenu3&pagenum=<%=next_pageno%>" >[다음]</a>
-<a href="<%=projectName%>/xxx.ho?cmd=adminmenu3&pagenum=<%=total_page %>">[맨뒤로]</a>
+<a href="<%=projectName%>/xxx.ho?cmd=adminmenu3&pagenum=<%=total_page %>">[맨뒤로]</a><br/>
+			<a href="adminPage.jsp"><input type="button" id="back" value="뒤로가기"/></a>
+
 	</section>
 	
 <!-- 밑 배 경 -->	

@@ -70,6 +70,7 @@ public class HoControl extends HttpServlet {
       commandMap.put("shop-login", new CommandLogin("LoginService.jsp"));
       commandMap.put("shop-main", new CommandBag("ShoppingMain.jsp"));
       commandMap.put("go-store", new CommandBag("ShoppingMain.jsp"));
+      commandMap.put("coin-charge", new CommandBag("ShoppingCoin.jsp"));
 //      commandMap.put(key, value);      
       
       // 쇼핑몰 페이지
