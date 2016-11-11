@@ -37,6 +37,7 @@ import ho.command.CommandMyList;
 import ho.command.CommandMyOrderList;
 import ho.command.CommandNull;
 import ho.command.CommandPay;
+import ho.command.CommandSaleList;
 import ho.command.CommandUpdate;
 
 /**
@@ -102,8 +103,8 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminGoodsUpList", new CommandUpdate("adminUpdateSuccess.jsp"));
 		commandMap.put("product-page", new CommandList("ProductData.jsp"));
 		commandMap.put("admin-page", new CommandNull("adminPage.jsp"));
-		commandMap.put("adminmenu1", new CommandNull("adminPagelist.jsp"));
-		commandMap.put("adminmenu2", new CommandNull("adminGoods.jsp"));
+		commandMap.put("adminmenu1", new CommandSaleList("adminPagelist.jsp"));
+		commandMap.put("adminmenu2", new CommandNull("adminGoods.jsp")); 
 		commandMap.put("adminmenu3", new CommandMemList("adminMemlist.jsp"));
 		commandMap.put("adminPagelist", new CommandNull("adminPagelist.jsp"));
 		commandMap.put("adminBoardView", new CommandNull("adminBoardView.jsp"));

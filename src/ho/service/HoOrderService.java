@@ -31,5 +31,13 @@ public class HoOrderService {
 		System.out.println("selectOrderList에 들어왔음");
 		return repo.selectOrderList(id);
 	}
+	
+	public List<HoOrder> AllOrderList(HashMap om){
+		System.out.println("HoOrderService내 AllOrderList의 selectGoods 실행");
+		return repo.selectOrder(om);
+		
+		
+	}
+
 
 }
