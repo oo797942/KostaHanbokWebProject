@@ -31,10 +31,10 @@
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 			
 			게시글 asdasd
 			
+			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 	</section>			
 	
 <!-- 밑 배 경 -->	

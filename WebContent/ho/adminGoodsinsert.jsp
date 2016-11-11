@@ -79,9 +79,7 @@
 	</header>
 
 	<section>
-		<a href="<%=projectName%>/1.ho?cmd=adminmenu2"><input
-			type="button" id="back" value="뒤로가기" /></a>
-
+	
 		<!-- 등록 -->
 		<form action="<%=projectName%>/xxxxx.ho" method="post"
 			enctype="multipart/form-data">
@@ -167,6 +165,8 @@
 				</tr>
 			</table>
 			<input type="submit" id="next" value="다음으로" />
+			<a href="<%=projectName%>/1.ho?cmd=adminmenu2"><input type="button" id="back" value="뒤로가기" /></a>
+			
 		</form>
 
 

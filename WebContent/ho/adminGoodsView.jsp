@@ -55,9 +55,7 @@
 	</header>
 	
 	<section class="secView">
-			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
-			<a href="<%= projectName %>/1.ho?cmd=adminGoodsUpdate&id=<%=goods.getGoodsId()%>"><input type="button" id="next" value="수정하기"/></a>
-			<a href="<%= projectName %>/1.ho?cmd=adminPageDelete&id=<%=goods.getGoodsName()%>"><input type="button" id="delete" value="삭제하기"/></a>
+			
 		<!-- 등록 -->
 			<table border="2" id="insertTable" class="table table-striped" width="1000" height="560"  >
 		<tr>
@@ -129,7 +127,10 @@
 			<td colspan="3"><input type="text"  class= "Goodsinsert"  placeholder="%로 입력해주세요."  value=<%= goods.getGoodsDc() %> maxlength="2" disabled="disabled" style="width: 100%"></td>
 		</tr>
 		</table>
-
+			
+			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
+			<a href="<%= projectName %>/1.ho?cmd=adminGoodsUpdate&id=<%=goods.getGoodsId()%>"><input type="button" id="next" value="수정하기"/></a>
+			<a href="<%= projectName %>/1.ho?cmd=adminPageDelete&id=<%=goods.getGoodsName()%>"><input type="button" id="delete" value="삭제하기"/></a>
 		
 
 	</section>

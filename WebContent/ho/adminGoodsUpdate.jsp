@@ -80,7 +80,6 @@ $(function(){
 	</header>
 	
 	<section>
-			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 		
 		<!-- 등록 -->
 		<form action="<%= projectName %>/xxxxx.ho?" method="post"  enctype="multipart/form-data">
@@ -157,6 +156,7 @@ $(function(){
 		</table>
 
 			<input type="submit" id="next" value="수정하기"/></a>
+			<a href="<%= projectName %>/1.ho?cmd=list-page"><input type="button" id="back" value="뒤로가기"/></a>
 		</form>
 
 	</section>

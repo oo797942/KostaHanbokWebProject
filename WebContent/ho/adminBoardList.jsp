@@ -104,7 +104,6 @@
 	</header>
 	 
 	<section>
-			<a href="adminMemView.jsp"><input type="button" id="back" value="뒤로가기"/></a>
 			
 	<table border="1" bordercolor="darkblue" width="1000"  class="table table-striped" >
   	 <tr class="info" id="listTable">
@@ -145,8 +144,8 @@
 	
 <%} %>
 <a href="<%=projectName%>/xxx.ho?cmd=adminmenu4&pagenum=<%=next_pageno%>" >[다음]</a>
-<a href="<%=projectName%>/xxx.ho?cmd=adminmenu4&pagenum=<%=total_page %>">[맨뒤로]</a>
-		
+<a href="<%=projectName%>/xxx.ho?cmd=adminmenu4&pagenum=<%=total_page %>">[맨뒤로]</a><br/>
+			<a href="adminMemView.jsp"><input type="button" id="back" value="뒤로가기"/></a>		
 	</section>
 	
 	
