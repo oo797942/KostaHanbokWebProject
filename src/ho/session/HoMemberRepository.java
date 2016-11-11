@@ -47,6 +47,22 @@ public class HoMemberRepository {
 			sess.close();
 		}
 	}
+	
+	public void coinupdate(HashMap<String, Object> coin) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			int result = sess.update(namespace + ".updateCoin", coin);
+			System.out.println("코인 충전 되었냐?? " + result);
+			if(result>0){
+				sess.commit();
+			}else{
+				sess.rollback();
+			}
+			
+		} finally {
+			sess.close();
+		}
+	}
 
 	public void insertgoods(HashMap<String, Object> goods) {
 		SqlSession sess = getSqlSessionFactory().openSession();

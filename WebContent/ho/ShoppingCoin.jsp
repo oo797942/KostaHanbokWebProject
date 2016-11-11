@@ -82,50 +82,59 @@ $(function(){
 										+ inputvalue;
 							}
 						});
+	
+		$(".coinRadio").change(function(){
+			if($("#1m").is(":checked")){
+				$("#CoinInput").val("10000");
+				$("#CoinInput").attr("readonly","readonly");
+			}
+			if($("#5m").is(":checked")){
+				$("#CoinInput").val("50000");
+				$("#CoinInput").attr("readonly","readonly");
+			}
+			if($("#10m").is(":checked")){
+				$("#CoinInput").val("100000");
+				$("#CoinInput").attr("readonly","readonly");
+			}
+			if($("#50m").is(":checked")){
+				$("#CoinInput").val("500000");
+				$("#CoinInput").attr("readonly","readonly");
+			}
+			if($("#100m").is(":checked")){
+				$("#CoinInput").val("1000000");
+				$("#CoinInput").attr("readonly","readonly");
+			}
+			if($("#selfM").is(":checked")){
+				$("#CoinInput").removeAttr("readonly");
+				$("#CoinInput").focus();
+				$("#CoinInput").select();
+			}
+	
+		});
+		
+		$("#payFinBtn").click(function(){
+			
+			if($("#CoinInput").val()<=0){
+				alert("결제 금액을 입력해주세요.");
+			}else if(!$(".PaySelect").is(":checked")){
+				alert("결제 수단을 골라주세요.");
+			}else{
+				alert("결제가 완료되었습니다.");
+				window.location.href="<%=projectName%>/coin.ho?cmd=coin-pay&coin="+$('#CoinInput').val()+"&id=<%=sessionValue%>";
+			}
+			
+		});
 
 	});
+	
+
 </script>
 
 
 
 </head>
 <body>
-<%if(sess!=null){ %>
-	<nav>
-		<table id="shoppingBag" cellspacing="0">
-			<tr>
-				<td height="10px"></td>
-			</tr>
-			<tr>
-				<td style="background: #696969;"><a href="#"
-					style="color: white;">찜목록</a></td>
-			</tr>
-			<tr>
-				<td>
-					<table cellspacing="15" width="125px">
-					<%for(int i=0; i<bagList.size(); i++){ %>
-					<%HoBag hbag = (HoBag)bagList.get(i); %>
-						<tr>
-							<td class="shoppingBagItem">
-							<a href="<%=projectName %>/view.ho?cmd=goods-view&id=<%=hbag.getShopNo() %>&name=<%=hbag.getShopName() %>">
-							<img src="<%=projectName%>/ho/upload/<%=hbag.getShopImg() %>" width="90px" height="90px" />
-							</a>
-							<br/>
-							<p style="font-size: 10pt"><%=hbag.getShopName() %></p>
-							</td>
-						</tr>
-					<%} %>
-					<%for(int i=0; i<3-bagList.size();i++){ %>
-					<tr>
-					<td class="shoppingBagItem"></td>
-					</tr>
-					<%} %>
-					</table> 
-				</td>
-			</tr>
-		</table>
-	</nav>
-<%} %>
+
 	<header>
 		<div id="menu">
 			<img src="<%=projectName%>/ho/img/topMenu.png" />
@@ -148,8 +157,18 @@ $(function(){
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
 					<td><a href="<%=projectName%>/join.ho?cmd=join-form">JOIN</a></td>
-					<td class="gray">l</td>
-					<td><a href="#">COIN</a></td>
+					<td class="gray">l</td>	
+					<%
+						if (sess != null) {
+					%>
+					<td><a href="<%=projectName%>/coin.ho?cmd=coin-charge">COIN</a></td>
+					<%
+						} else {
+					%>
+					<td><a id="NoLoginMyPage">COIN</a></td>
+					<%
+						}
+					%>
 					<td class="gray">l</td>
 					<%
 						if (sess != null) {
@@ -227,14 +246,47 @@ $(function(){
 
 	</header>
 	<section>
-
-
 		<div id="CoinTop">
 			<p>코인 충전</p>
 		</div>
-
-		<p class="TopP"><strong><%=hm.getMemName() %>님</strong>의 코인 <span style="text-align:right;"><%=String.format("%,d", Integer.parseInt(hm.getMemCoin())) %>개</span></p>
-
+		<p style="text-align: left;"  class="TopP"><strong><%=hm.getMemName() %>님</strong>의 보유 코인: 
+		<%=String.format("%,d", Integer.parseInt(hm.getMemCoin())) %>개</p>
+		
+		<br/>
+		<input type="text" id="CoinInput" name="CoinInput" value="0" readonly="readonly"/>
+		<br/><br/>
+		
+		<input class="coinRadio" type="radio" name="CoinMoney" value="10000" id="1m"/>
+		<label for="1m">10000원</label>
+		<input class="coinRadio" type="radio" name="CoinMoney" value="10000" id="5m"/>
+		<label for="5m">50000원</label>
+		 <input class="coinRadio" type="radio" name="CoinMoney" value="10000" id="10m"/>
+		 <label for="10m">100000원</label>
+		 <input class="coinRadio" type="radio" name="CoinMoney" value="10000" id="50m"/>
+		<label for="50m"> 500000원</label>
+		<input class="coinRadio"  type="radio" name="CoinMoney" value="10000" id="100m"/>
+		<label for="100m">1000000원</label>
+		<input class="coinRadio" type="radio" name="CoinMoney" value="10000" id="selfM"/>
+		<label for="selfM">직접입력</label>
+		
+		<br/><br/>
+		<div id="CoinTop">
+			<p>결제 수단</p>
+		</div>
+		<br/>
+		<input class="PaySelect" type="radio" name="PaySelect"  id="phone"/>
+		<label for="phone">핸드폰 결제</label>
+		<input class="PaySelect" type="radio" name="PaySelect"  id="card"/>
+		<label for="card">카드 결제</label>
+		<input class="PaySelect" type="radio" name="PaySelect"  id="bankbook"/>
+		<label for="bankbook">무통장 입금</label>
+	
+		<br/><br/>
+		
+		<button id="payFinBtn" style="font-size:20pt;">결제 진행</button>
+	
+		<br/><br/>
+	
 	</section>
 	<footer>
 		<div id="footertitle">
