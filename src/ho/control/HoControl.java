@@ -75,7 +75,7 @@ public class HoControl extends HttpServlet {
 		
 		// 쇼핑몰 페이지
 		commandMap.put("page-view", new CommandGetInfoById("purchaseView.jsp"));
-		commandMap.put("pay-view", new CommandPay("ShoppingPay.jsp"));
+		commandMap.put("pay-view", new CommandPay("PurchaseOK.jsp"));
 		
 		
 		commandMap.put("go-mypage", new CommandLogin("ShoppingMyPage.jsp"));

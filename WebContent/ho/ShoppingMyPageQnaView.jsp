@@ -3,7 +3,15 @@
 
 <% String projectName = "/HoProject";
 
+	String sessionValue = null;
+	//# 1."yourid"로 저장된 세션값을 얻어온다.
+	//# 2. 값이 null이라면 LoginForm.jsp로 페이지 이동
+	//# 3. null이 아니라면 String 형변환하여 변수에 지정
+	
 	Object sess = session.getAttribute("yourid");
+	if(sess != null){
+		sessionValue = (String)sess;
+	} 
 	HoBoard board = null;
 	Object obj = request.getAttribute("BoardView");
 
@@ -31,6 +39,42 @@
 <script src="<%=projectName%>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%=projectName%>/ho/js/jquery.bxslider.min.js"></script>
 <script src="<%=projectName%>/ho/js/main.js"></script>
+<script type="text/javascript">
+	$(function(){
+		if("<%=sessionValue%>"=="null"){
+			$("#shoplogin").show();
+			$("#shoplogout").hide();
+		}else{
+			$("#shoplogin").hide();
+			$("#shoplogout").show();
+		}
+		
+		$("#shoplogin").click(function(){
+			window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );	
+			
+		}).css('cursor','pointer');
+		
+		
+		$("#shoplogout").click(function() {
+			alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
+
+			window.location = "<%=projectName%>/logout.ho?cmd=logout-page";
+
+			$("#shoplogout").hide();
+			$("#shoplogin").show();
+		
+		}).css('cursor','pointer');
+		
+		$("#searchInput").keypress(function(event){
+			if(event.which == 13){
+				var option = $("#searchCategory").val();
+				var radio = $("input:radio[name=searchRadio]:checked").val();
+				var inputvalue = $("#searchInput").val();
+				window.location.href="<%=projectName%>/list.ho?cmd=search-input&option="+option+"&check="+radio+"&val="+inputvalue;			
+			}
+		});
+	});
+</script>
 </head>
 <body>
 
@@ -39,12 +83,16 @@
 			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="<%=projectName%>/ho/img/logo.png" /></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-					<td><a href="#">LOGIN </a></td>
+				<% if(sess != null){ %> 
+				<td><text id="sessid"><%=sess %>님</text></td>
+				<%} %>	
+				<td><text id="shoplogin" name="login" >LOGIN</text></td>
+				<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
 					<td><a href="#">JOIN</a></td>
 					<td class="gray">l</td>
