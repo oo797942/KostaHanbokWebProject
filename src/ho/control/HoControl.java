@@ -15,6 +15,7 @@ import ho.command.CommandBagInsert;
 import ho.command.CommandBoardList;
 import ho.command.CommandBoardReply;
 import ho.command.CommandBoardView;
+import ho.command.CommandChangeState;
 import ho.command.CommandCheckId;
 import ho.command.CommandCoinPay;
 import ho.command.CommandDelete;
@@ -48,7 +49,7 @@ import ho.command.CommandUpdate;
  */
 public class HoControl extends HttpServlet {
 	
-	private HashMap commandMap;
+	private HashMap<Object, Object> commandMap;
 	private String	jspDir = "/ho/";
 	private String  error = "error.jsp";
 	
@@ -123,7 +124,8 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminGoodsInventory", new CommandNull("adminGoodsInventory.jsp"));
 		commandMap.put("inventoryUpdate", new CommandInventoryUpdate("adminUpdateSuccess.jsp"));
 		
-		
+		commandMap.put("change-state", new CommandChangeState("changeState.jsp"));
+
 		
 		commandMap.put("write-form", new CommandNull("HoWriteForm.jsp"));
 		commandMap.put("login-check", new CommandNull("HoLoginCheck.jsp"));

@@ -387,10 +387,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		rnum, o_no from (select o_no from order_t order by
 		o_no desc))
 		where
-		rnum between #{startrecord} and #{endrecord}) and o_state=0
+		rnum between #{startrecord} and #{endrecord}) and o_state=#{state}
 		order by
 		o_no desc
 	</select>
+	
+	
 
 	<insert id="insertReply" parameterType="hashmap">
 		INSERT INTO REPLY
@@ -407,6 +409,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		</where>
 	</select>
+	
+		<update id="updateState" parameterType="hashmap">
+	
+	UPDATE order_t
+	set o_state=o_state+1
+	where o_no=#{ono}
+	
+	</update>
 
 </mapper>
 

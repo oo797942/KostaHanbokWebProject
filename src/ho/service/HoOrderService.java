@@ -38,6 +38,9 @@ public class HoOrderService {
 		
 		
 	}
+	public void ChangeState(HashMap<String, Object> om){
+		repo.changeState(om);
+	}
 
 
 }
