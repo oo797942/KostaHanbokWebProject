@@ -26,8 +26,9 @@ public class CommandDelete implements Command{
 			  
 			String id = request.getParameter("id");
 
+			System.out.println("id 값  : "+id);
 			String admin = request.getParameter("Goodsdelete");
-
+			System.out.println("admin 값 : " + admin);
 			if(admin.equals("admin")){
 				HashMap<String,Object> map = new HashMap();
 				map.put("id", id);
