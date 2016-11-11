@@ -19,7 +19,7 @@ public class CommandDelete implements Command{
 	public CommandDelete( String _next ){
 		next = _next;
 	}
-	 
+	   
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
 			System.out.println("CommandDelete들어옴");
