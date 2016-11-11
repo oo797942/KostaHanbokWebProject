@@ -23,7 +23,7 @@ public class CommandDelete implements Command{
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
 			System.out.println("CommandDelete들어옴");
-			
+			  
 			String id = request.getParameter("id");
 
 			String admin = request.getParameter("Goodsdelete");
