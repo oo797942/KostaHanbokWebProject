@@ -12,3 +12,4 @@ public class CommandNull implements Command{
 		return next;
 	}
 }
+        
