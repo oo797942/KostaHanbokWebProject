@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import ho.model.HoGoods;
+import ho.model.HoOrder;
 import ho.session.HoBagRepository;
 import ho.session.HoOrderRepository;
 
@@ -24,6 +25,11 @@ public class HoOrderService {
 	
 	public void insertOrder(HashMap map){
 		repo.insertOrder(map);
+	}
+
+	public List<HoOrder> selectOrderList(HashMap<String,Object> id) {
+		System.out.println("selectOrderList에 들어왔음");
+		return repo.selectOrderList(id);
 	}
 
 }

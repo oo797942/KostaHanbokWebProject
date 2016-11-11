@@ -1,9 +1,17 @@
+<%@page import="ho.model.HoOrder"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%
 	String projectName = "/HoProject";
 
 	Object sess = session.getAttribute("yourid");
+	
+	Object obj = request.getAttribute("MyOrderList");
+	List<HoOrder> list = null;
+	if(obj!=null) list = (List<HoOrder>)obj;
+	
+	System.out.println(list);
 %>
 <!DOCTYPE html>
 <html>
@@ -109,7 +117,7 @@
 
 		<table id="orderTableTop" cellspacing="0">
 			<tr>
-				<td width="24%">입금대기: <span style="color: red;">0</span></td>
+				<td width="24%">입금대기: <span style="color: red;">o</span></td>
 				<td class="gray">l</td>
 				<td width="24%">상품준비중: <span style="color: red;">0</span></td>
 				<td class="gray">l</td>
@@ -119,8 +127,7 @@
 			</tr>
 		</table>
 
-		<h2 style="text-align: left; margin-left: 15px; margin-top: 5px;">주문
-			내역</h2>
+		<h2 style="text-align: left; margin-left: 15px; margin-top: 5px;">주문내역</h2>
 
 		<table id="orderListTable" cellspacing="0">
 			<tr id="orderListTableTop">
@@ -129,24 +136,27 @@
 				<td width="20%">결제액</td>
 				<td width="20%">주문상태</td>
 			</tr>
+			
+			<%for(HoOrder order : list){ %>
 			<tr>
-				<td class="orderListTd">2016-04-30</td>
+				<td class="orderListTd"><%= order.getOrderRentDate() %></td>
 				<td class="orderListTd">
 					<table width="100%" cellspacing="0" style="padding: 1px;">
 						<tr>
 							<td class="textLeftAlign" rowspan="2" width="45px"><img
 								id="orderListimg1" class="orderListimg"
-								src="<%=projectName%>/ho/img/banner_image_01.jpeg" /></td>
-							<td class="textLeftAlign">[123123123] AK-123</td>
+								src="<%=projectName%>/ho/upload/<%=order.getOrderImg()%>"/></td>
+							<td class="textLeftAlign">[<%=order.getOrderNo() %>] <%=order.getOrderSangpumName() %></td>
 						</tr>
 						<tr>
-							<td class="textLeftAlign">3개</td>
+							<td class="textLeftAlign"><%= order.getOrderSoo() %>개</td>
 						</tr>
 					</table>
 				</td>
-				<td class="orderListTd">100,000,000원</td>
+				<td class="orderListTd"><%=order.getOrderTotalPrice()%>원</td>
 				<td class="orderListTd">배송 대기중</td>
 			</tr>
+			<% } %>
 		</table>
 
 	</section>

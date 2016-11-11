@@ -231,7 +231,7 @@ if(sess != null){
 					<td class="topTableBtn">
 					<a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">회원정보</a></td>
 					<td class="topTableBtn">
-					<a href="<%=projectName %>/myOrderList.ho?cmd=mypage-orderlist">쇼핑내역</a></td>
+					<a href="<%=projectName %>/myOrderList.ho?cmd=mypage-orderlist&id=<%=sess%>">쇼핑내역</a></td>
 					<td id = "answer" class="topTableBtn">
 					<a href="<%=projectName%>/list.ho?cmd=mypage-list&adid=<%=sess%>">1:1문의내역</a></td> <!--  내가 한거 -->
 					<td width="70%"></td>

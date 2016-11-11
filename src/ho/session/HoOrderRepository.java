@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import ho.model.HoGoods;
+import ho.model.HoOrder;
 
 public class HoOrderRepository {
 
@@ -41,6 +42,17 @@ public class HoOrderRepository {
 		}finally{
 			sess.close();
 		}
+	}
+
+	
+	public List<HoOrder> selectOrderList(HashMap<String,Object> id) {
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try {
+			System.out.println("selectOrderList에 들어왔음");
+			return sess.selectList(namespace + ".MyOrderList", id);
+		} finally {
+			sess.close();
+			}
 	}
 
 }
