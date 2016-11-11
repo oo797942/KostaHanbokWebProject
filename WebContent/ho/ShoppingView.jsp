@@ -139,7 +139,23 @@ $(function(){
 			<% System.out.println("#bagoo 안에 : " +hg.getGoodsId()); %>
 					$("#frm").submit();
 		});
-
+		
+		$("#insertReply").click(function(){
+			$.ajax({         
+		        url : '<%=projectName%>/checkid.ho?cmd=Reply-check&id=<%=sess%>&no=<%=hg.getGoodsId()%>',
+		        type : 'post',
+		        success : function(data){
+		        	if(data==1){
+		        		$("#frm2").submit();
+					}else{
+							alert("후기 못씀");
+					}
+		        },
+		        error : function(){
+		           alert('에러 발생');   
+		        }
+		     });
+		});
 	});
 
 </script>
@@ -395,15 +411,18 @@ $(function(){
 					} %>
 			</tr>
 		</table>
-		<form method="post" action="<%=projectName%>/xx.ho">
+		
+		
+		
+		<form id="frm2" method="post" action= "<%=projectName%>/xx.ho">
 		<input type="hidden" name="cmd" value="GoodsReply">
-		<input type="hidden" name="name" value="<%=hg.getGoodsId()%>">
-		<input type="hidden" name="id" value="<%=sess%>">
+`		<input type="hidden" name="name" value="<%=hg.getGoodsId()%>">
+		<input type="hidden" name="id" value="<%=sess%>">			
 		<input type="hidden" name="name1" value="<%=hg.getGoodsName() %>">
 		<br /> <input type="text" autocomplete="off"
 		
 			placeholder="후기를 입력해 주세요." id="replyInput" name="replyInput" />
-			<input type="submit" value="입력" id="insertReply"><br /> <br />
+			<input type="button" value="입력" id="insertReply"><br /> <br /> 
 		</form>
 	</section>
 	<footer>

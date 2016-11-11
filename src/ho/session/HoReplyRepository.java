@@ -56,4 +56,16 @@ public class HoReplyRepository {
 			sess.close();
 		}
 	}
+	
+
+	public List<HoOrder> ReplyCheck(HashMap map){
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try{
+			System.out.println("ReplyList에 들어옴" + map);
+
+			return sess.selectList(namespace+".MyOrderList",map);
+		}finally{
+			sess.close();
+		}
+	}
 }

@@ -363,6 +363,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <when test="id neq null">
               o_id=#{id}
             </when>
+              <when test="rid neq null and no neq null">
+              o_id=#{rid} and o_sangpumno=#{no}
+            </when>
          </choose>
       </where>
    </select>
@@ -389,6 +392,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </choose>
       </where>
 	</select>
+	
+	
 	
 </mapper>
 

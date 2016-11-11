@@ -23,28 +23,29 @@ public class CommandPay implements Command{
 	
 	public String execute(HttpServletRequest request) throws CommandException {
 		try{
+			request.setCharacterEncoding("UTF-8");
 						
-//			System.out.println("cmd 값 : "+request.getParameter("cmd"));
-//			System.out.println("상품id : "+request.getParameter("GoodsNo"));
-//		//	System.out.println("상품명 : "+request.getParameter("GoodsName"));
-//		//	System.out.println("사이즈 : "+request.getParameter("GoodsSize"));
-//		//	System.out.println("개수 : "+request.getParameter("count"));
-//		//	System.out.println("금액 : "+request.getParameter("GoodsPrice"));
-//		//	System.out.println("배송비 : "+request.getParameter("GoodsRentPrice"));
-//		//	System.out.println("이미지 : "+request.getParameter("Goodsimg"));
-//		//	System.out.println("총금액 : "+request.getParameter("totalprice"));
-//			System.out.println("이름  : "+request.getParameter("name"));
-//			System.out.println("이메일 : "+request.getParameter("email"));
-//			System.out.println("전화번호 : "+request.getParameter("tel"));
-//			System.out.println("주소 : "+request.getParameter("addr"));
-//			System.out.println("상세주소 : "+request.getParameter("addrdetail"));
-//			System.out.println("배송지명 : "+request.getParameter("limdelivery"));
-//			System.out.println("수령자명 : "+request.getParameter("limreceiver"));
-//			System.out.println("전화번호 : "+request.getParameter("limtel"));
-//			System.out.println("주소 : "+request.getParameter("limaddr"));
-//			System.out.println("요구사항 : "+request.getParameter("limdemand"));
-//			System.out.println("결재수단 : "+request.getParameter("od_settle_case"));
-			
+			/*
+			System.out.println("cmd 값 : "+request.getParameter("OrderId"));
+			System.out.println("상품id : "+request.getParameter("OrderSangpumNo"));
+			System.out.println("상품명 : "+request.getParameter("OrderSangpumName"));
+			System.out.println("사이즈 : "+request.getParameter("OrderSize"));
+			System.out.println("개수 : "+request.getParameter("OrderSoo"));
+			System.out.println("금액 : "+request.getParameter("OrderPrice"));
+			System.out.println("배송비 : "+request.getParameter("OrderRentPrice"));
+			System.out.println("이미지 : "+request.getParameter("OrderImg"));
+			System.out.println("총금액 : "+request.getParameter("OrderTotalPrice"));
+			System.out.println("이름  : "+request.getParameter("OrderSName"));
+			System.out.println("이메일 : "+request.getParameter("OrderSEmail"));
+			System.out.println("전화번호 : "+request.getParameter("OrderSTel"));
+			System.out.println("주소 : "+request.getParameter("OrderSAddr"));
+			System.out.println("상세주소 : "+request.getParameter("addrdetail"));
+			System.out.println("수령자명 : "+request.getParameter("OrderRName"));
+			System.out.println("전화번호 : "+request.getParameter("OrderRTel"));
+			System.out.println("주소 : "+request.getParameter("OrderRAddr"));
+			System.out.println("요구사항 : "+request.getParameter("OrderRDemand"));
+			System.out.println("결재수단 : "+request.getParameter("OrderSettleCase"));
+			*/
 			   HashMap<String,Object> order = new HashMap();
 			      
 			  // String a =request.getParameter("OrderNo");
@@ -55,7 +56,6 @@ public class CommandPay implements Command{
 			      System.out.println("OrderId 값 : "+request.getParameter("OrderId"));
 			      order.put("OrderSangpumNo",request.getParameter("OrderSangpumNo"));
 			      order.put("OrderSangpumName",request.getParameter("OrderSangpumName"));
-			      
 			      System.out.println("OrderSoo 앞 ");
 			      order.put("OrderSoo",Integer.parseInt(request.getParameter("OrderSoo")));
 			      System.out.println("OrderSoo 뒤");

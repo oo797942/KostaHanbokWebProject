@@ -33,4 +33,9 @@ public class HoReplyService {
 		System.out.println("ReplyList에 들어왔음");
 		return repo.ReplyList(map);
 	}
+	
+	public List<HoOrder> ReplyCheck(HashMap<String,Object> map){
+		System.out.println("ReplyCheck에 들어왔음");
+		return repo.ReplyCheck(map);
+	}
 }

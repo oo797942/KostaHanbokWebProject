@@ -39,6 +39,7 @@ import ho.command.CommandMyList;
 import ho.command.CommandMyOrderList;
 import ho.command.CommandNull;
 import ho.command.CommandPay;
+import ho.command.CommandReplyCheck;
 import ho.command.CommandSaleList;
 import ho.command.CommandUpdate;
 
@@ -75,6 +76,8 @@ public class HoControl extends HttpServlet {
 		commandMap.put("shop-main", new CommandBag("ShoppingMain.jsp"));
 		commandMap.put("go-store", new CommandBag("ShoppingMain.jsp"));
 		
+		commandMap.put("Reply-check", new CommandReplyCheck("Reply-check.jsp"));
+
 //		commandMap.put(key, value);		
 		
 		// 쇼핑몰 페이지
@@ -92,7 +95,6 @@ public class HoControl extends HttpServlet {
 		commandMap.put("goodsview", new CommandGoodsView("ShoppingView.jsp"));
 		commandMap.put("GoodsReply", new CommandInsertGoodsReply("ShoppingReplySuccess.jsp"));
 		
-		
 		commandMap.put("mypage-list", new CommandMyList("ShoppingMyPageQnaList.jsp"));
 		commandMap.put("Mylist-view", new CommandBoardView("ShoppingMyPageQnaView.jsp"));
 		commandMap.put("mypage-orderlist", new CommandMyOrderList("ShoppingOrderList.jsp"));
@@ -103,10 +105,10 @@ public class HoControl extends HttpServlet {
 		commandMap.put("adminGoodsInList", new CommandInsert("adminInsertSuccess.jsp"));
 		commandMap.put("list-page", new CommandList("adminGoodsList.jsp"));
 		commandMap.put("adminGoodsView", new CommandGoodsView("adminGoodsView.jsp"));
+		commandMap.put("adminGoodsUpdate", new CommandGoodsView("adminGoodsUpdate.jsp"));
 		commandMap.put("adminPageDelete", new CommandNull("adminGoodsDelete.jsp"));
 		commandMap.put("delete", new CommandDelete("adminDeleteSuccess.jsp"));
 		commandMap.put("modifylist", new CommandModify("adminGoodsList.jsp"));
-		commandMap.put("adminGoodsUpdate", new CommandGoodsView("adminGoodsUpdate.jsp"));
 		commandMap.put("adminGoodsimgUpdate", new CommandUpdate("adminGoodsimgUpdate.jsp"));
 		commandMap.put("adminGoodsUpList", new CommandUpdate("adminUpdateSuccess.jsp"));
 		commandMap.put("product-page", new CommandList("ProductData.jsp"));
