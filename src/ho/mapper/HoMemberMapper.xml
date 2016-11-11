@@ -70,6 +70,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result column="shop_price" property="shopPrice" />
    </resultMap>
    
+   <resultMap type="HoOrder" id="HoOrderMap">
+      <id column="o_no" property="OrderNo" />
+      <result column="o_id" property="OrderId" />
+      <result column="o_sangpumno" property="OrderSangpumNo" />
+      <result column="o_sangpumname" property="OrderSangpumName" />
+      <result column="o_soo" property="OrderSoo" />
+      <result column="o_rent_state" property="OrderRentState" />
+      <result column="o_rent_date" property="OrderRentDate" />
+      <result column="o_price" property="OrderPrice" />
+      <result column="o_state" property="OrderState" />
+      <result column="o_size" property="OrderSize" />
+      <result column="o_rent_price" property="OrderRentPrice" />
+      <result column="o_img" property="OrderImg" />
+      <result column="o_totalprice" property="OrderTotalPrice" />
+      <result column="o_rname" property="OrderRName" />
+      <result column="o_rtel" property="OrderRTel" />
+      <result column="o_raddr" property="OrderRAddr" />
+      <result column="o_rdemand" property="OrderRDemand" />
+      <result column="o_settle_case" property="OrderSettleCase" />
+      <result column="o_semail" property="OrderSEmail" />
+      <result column="o_stel" property="OrderSTel" />
+      <result column="o_saddr" property="OrderSAddr" />
+      <result column="o_sname" property="OrderSName" />
+   </resultMap>
+   
 
    <select id="shoppingBag" resultMap="HoShoppingBag"
       parameterType="hashmap">
@@ -308,6 +333,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       where rnum between #{startrecord} and #{endrecord})
       order by
       m_name
+   </select>
+   
+   	<insert id="insertOrder" parameterType="hashmap">
+	INSERT INTO ORDER_T(o_no,o_id,o_sangpumno,o_sangpumname,o_soo,o_rent_state,o_rent_date,
+		o_price,o_state,o_size,o_rent_price,o_img,o_totalprice,o_rname,o_rtel,o_raddr,o_rdemand,
+		o_settle_case,o_semail,o_stel,o_saddr,o_sname)
+		VALUES(SEQ_ORDER.NEXTVAL,#{OrderId},#{OrderSangpumNo},#{OrderSangpumName},#{OrderSoo},0,sysdate,
+		#{OrderPrice},0,#{OrderSize},#{OrderRentPrice},#{OrderImg},#{OrderTotalPrice},#{OrderRName},#{OrderRTel},#{OrderRAddr},#{OrderRDemand},
+		#{OrderSettleCase},#{OrderSEmail},#{OrderSTel},#{OrderSAddr},#{OrderSName})
+	</insert>
+   
+   <select id="MyOrderList" resultMap="HoOrderMap" parameterType="hashmap">
+
+      select * from order_t
+      <where>
+         <choose>
+            <when test="id neq null">
+              o_id=#{id}
+            </when>
+         </choose>
+      </where>
    </select>
 
 </mapper>
