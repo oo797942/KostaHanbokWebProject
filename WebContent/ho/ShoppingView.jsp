@@ -373,9 +373,13 @@ $(function(){
 				<td width="50%">내용</td>
 			</tr>
 		</table>
+		<form method="get" action="">
+		<input type="hidden" name="GoodsName" value="<%=hg.getGoodsId()%>">
+		<input type="hidden" name="id" value="<%=sess%>">
 		<br /> <input type="text" autocomplete="off"
-			placeholder="후기를 입력해 주세요." id="replyInput" name="replyInput" /><a
-			id="insertReply" href="#">입력</a> <br /> <br />
+			placeholder="후기를 입력해 주세요." id="replyInput" name="replyInput" />
+			<input type="submit" value="입력" id="insertReply"><br /> <br />
+		</form>
 	</section>
 	<footer>
 		<div id="footertitle">
