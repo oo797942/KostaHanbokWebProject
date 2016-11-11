@@ -124,7 +124,7 @@
   	
   	    <td><img width="50px" height="50px" src="<%=projectName%>/ho/upload/<%= good.getGoodsImg() %>"></td>
   	
-  		<td width="100"><a href="<%= projectName %>/1.ho?cmd=adminPageDelete&count=<%=good.getGoodsSoo()%>id=<%= good.getGoodsName()%>">
+  		<td width="100"><a href="<%= projectName %>/1.ho?cmd=adminPageDelete&count=<%=good.getGoodsSoo()%>&id=<%= good.getGoodsName()%>">
   		<input type="button" id="tddel" value="삭제하기"/></a>
   		<a href="<%= projectName %>/1.ho?cmd=adminGoodsInventory&id=<%= good.getGoodsName()%>&count=<%=good.getGoodsSoo()%>">
   		<input type="button" id="tdmodify" value="입고"/></a>
