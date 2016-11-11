@@ -251,7 +251,7 @@ $(function(){
 					</tr>
 					<tr>
 						<td>pw &nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td><input type="text" id="adpw" name="adpw" /></td>
+						<td><input type="password" id="adpw" name="adpw" /></td>
 					</tr>
 					<tr>
 						<td></td>

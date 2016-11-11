@@ -42,7 +42,7 @@
 	
 	<section>
 		<div><br/><br/>
-			<img alt="설현" src="/webUI3/ho/img/joinOK.jpg">
+			<img alt="설현" src="<%=projectName %>/ho/img/joinOK.jpg">
 		</div><br/><br/>
 		<div>
 			<a href="<%=projectName%>/kk.ho?cmd=shop-main"><input type="button" value="쇼핑 하러가기" class="btn btn-large btn-block  btn-info" style="font-size: 16pt;"></a>		
