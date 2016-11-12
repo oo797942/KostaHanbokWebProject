@@ -1,3 +1,4 @@
+<%@page import="ho.model.HoMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="ho.model.HoBoard"%>
@@ -15,6 +16,13 @@
 
 	System.out.println(obj);
 	if(obj !=null) boards = (List<HoBoard>)obj;
+	
+	HoMember hm = null;
+
+	if (sess != null) {
+		sessionValue = (String) sess;
+		hm = (HoMember) request.getAttribute("homem");
+	}
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -94,32 +102,54 @@ $(function(){
 </head>
 <body>
 
- 
-	<header>
+ <header>
 		<div id="menu">
-			<img src="<%=projectName %>/ho/img/topMenu.png" />
+			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo"
+				src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-				<% if(sess != null){ %> 
-				<td><text id="sessid"><%=sess %>님</text></td>
-				<%} %>	
-					<td><text id="shoplogin" name="login" >LOGIN</text></td>
+					<%
+						if (sess != null) {
+					%>
+					<td><text id="sessid"><%=hm.getMemName()%>님</text></td>
+					<%
+						}
+					%>
+					<td><text id="shoplogin" name="login">LOGIN</text></td>
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
-					<td><a href="<%=projectName %>/join.ho?cmd=join-form">JOIN</a></td>
+					<td><a href="<%=projectName%>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
-					<td><a href="#">CART</a></td>
+					<%
+						if (sess != null) {
+					%>
+					<td><a href="<%=projectName%>/coin.ho?cmd=coin-charge">COIN</a></td>
+					<%
+						} else {
+					%>
+					<td><a id="NoLoginMyPage">COIN</a></td>
+					<%
+						}
+					%>
 					<td class="gray">l</td>
-					<%if(sess!=null){ %>
-					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
-					<%}else{ %>
+					<%
+						if (sess != null) {
+					%>
+					<td><a
+						href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY
+							PAGE</a></td>
+					<%
+						} else {
+					%>
 					<td><a id="NoLoginMyPage">MY PAGE</a></td>
-					<%} %>
+					<%
+						}
+					%>
 					<td class="gray">l</td>
 					<td><a href="<%=projectName%>/logout.ho?cmd=write-form">Q&A</a></td>
 				</tr>
@@ -128,24 +158,36 @@ $(function(){
 			<div id="topCate">
 				<a id="top-CateItem1">개량한복</a><br /> <br /> <a id="top-CateItem2">생활한복</a><br />
 				<br /> <a id="top-CateItem3">퓨전한복</a><br /> <br /> <a
-					id="top-CateItem4">아동한복</a><br /> <br />
-					<a id="top-CateItem5"  href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
+					id="top-CateItem4">아동한복</a><br /> <br /> <a id="top-CateItem5"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
 			</div>
 			<div id="topCate-Cate1">
-				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남 자</a><br />
-				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate2">
-				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남 자</a><br />
-				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate3">
-				<a class="man"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남 자</a><br />
-				<a class="woman"  href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate4">
-				<a class="man" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남 자</a><br />
-				<a class="woman" href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여
+					자</a>
 			</div>
 			<a id="searchBtn">search</a> <a id="xbutton">X</a>
 			<hr color="#f5f5f5" size="1" noshade="noshade" />
@@ -161,9 +203,10 @@ $(function(){
 				<option value="fu">퓨전 한복</option>
 				<option value="ah">아동 한복</option>
 				<option value="ak">악세서리</option>
-			</select> <input type="radio" id="titleSearch" name="searchRadio" value="title"
-				class="searchRadio" checked="checked"/> <label class="searchLabel" for="titleSearch">상품 이름</label>
-			<input type="radio" id="contentSearch" name="searchRadio" value="content"
+			</select> <input type="radio" id="titleSearch" name="searchRadio"
+				value="title" class="searchRadio" checked="checked" /> <label
+				class="searchLabel" for="titleSearch">상품 이름</label> <input
+				type="radio" id="contentSearch" name="searchRadio" value="content"
 				class="searchRadio" /> <label class="searchLabel"
 				for="contentSearch" class="searchRadio">내용</label>
 		</div>

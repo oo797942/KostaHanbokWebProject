@@ -129,7 +129,7 @@ public class HoControl extends HttpServlet {
 		commandMap.put("change-state", new CommandChangeState("changeState.jsp"));
 
 		
-		commandMap.put("write-form", new CommandNull("HoWriteForm.jsp"));
+		commandMap.put("write-form", new CommandBag("HoWriteForm.jsp"));
 		commandMap.put("login-check", new CommandNull("HoLoginCheck.jsp"));
 		commandMap.put("qna-input", new CommandInputQna("ShoppingMyPage.jsp"));
 

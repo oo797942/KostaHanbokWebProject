@@ -4,13 +4,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import ho.command.CommandException;
 import ho.model.HoException;
 import ho.model.HoMember;
+import ho.service.HoBagService;
 import ho.service.HoMemberService;
 import ho.service.HoOrderService;
 
@@ -87,6 +90,33 @@ public class CommandPay implements Command{
 			
 			System.out.println("성공");
 			
+			
+			int result=0;
+			HashMap<String, Object> memMap= new HashMap<String,Object>();
+			
+			
+			HoMember hm = null;
+			HttpSession sess = request.getSession();
+			String id = (String)sess.getAttribute("yourid");
+			System.out.println("아이디:" + id);
+
+			if(id!=null){
+				memMap.put("id", id);
+				hm =HoMemberService.getInstance().selectHoMemberByPrimaryKey(memMap);
+				System.out.println("아이디는 제대로 넘겼지?? >> " + id);
+			}
+			
+
+
+			if(hm==null){
+				result=2;
+			}else{
+				result=1;
+				request.setAttribute("homem", hm);
+			}
+			request.setAttribute("result", result);
+			
+
 			
 			
 		}catch( Exception ex ){

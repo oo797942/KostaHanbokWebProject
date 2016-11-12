@@ -55,7 +55,6 @@ $(function(){
 	
 	
 	$("#shoplogout").click(function() {
-		alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
 
 		window.location = "<%=projectName%>/logout.ho?cmd=logout-page";
 

@@ -386,6 +386,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</when>
 			</choose>
 		</where>
+		
+		order by o_rent_date desc
 	</select>
 
 	<select id="selectOrder" resultMap="HoOrderMap" parameterType="hashmap">

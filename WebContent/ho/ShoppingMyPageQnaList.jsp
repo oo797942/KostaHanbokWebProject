@@ -57,7 +57,6 @@
 		
 		
 		$("#shoplogout").click(function() {
-			alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
 
 			window.location = "<%=projectName%>/logout.ho?cmd=logout-page";
 
@@ -100,8 +99,7 @@
 					<td class="gray">l</td>
 					<td><a href="#">MY PAGE</a></td>
 					<td class="gray">l</td>
-					<td><a href="#">Q&A</a></td>
-				</tr>
+			<td><a href="<%=projectName%>/logout.ho?cmd=write-form">Q&A</a></td>	</tr>
 			</table>
 
 			<div id="topCate">

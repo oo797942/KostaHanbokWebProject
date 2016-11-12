@@ -72,7 +72,6 @@ $(function(){
 	
 	
 	$("#shoplogout").click(function() {
-		alert("로그아웃클릭하고 세션값 :<%=session.getAttribute("yourid")%>");
 
 		window.location = "<%=projectName%>/logout.ho?cmd=logout-page";
 
@@ -93,6 +92,14 @@ $(function(){
 	});
 	
 	
+	$(".btn_submit").click(function(){
+		if(!$(".OrderSettleCase").is(":checked")){
+			alert("결제방식을 선택해주세요.");	
+		}else{
+			$("#goSubmit").submit();
+		}
+	});
+	
 });
 
 
@@ -103,53 +110,92 @@ $(function(){
 
 </head>
 <body>
- 
-	<header>
+ 	<header>
 		<div id="menu">
-			<img src="<%=projectName %>/ho/img/topMenu.png" />
+			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo" src="<%=projectName %>/ho/img/logo.png" /></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo"
+				src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
 			<table id="smallMenu">
 				<tr>
-				<% if(sess != null){ %>
-				<td><text id="sessid"><%=sess %>님</text></td>
-				<%} %>	
-					<td><text id="shoplogin" name="login" >LOGIN</text></td>
+					<%
+						if (sess != null) {
+					%>
+					<td><text id="sessid"><%=hm.getMemName()%>님</text></td>
+					<%
+						}
+					%>
+					<td><text id="shoplogin" name="login">LOGIN</text></td>
 					<td><text id="shoplogout" name="logout">LOGOUT</text></td>
 					<td class="gray">l</td>
-					<td><a href="<%=projectName %>/join.ho?cmd=join-form">JOIN</a></td>
+					<td><a href="<%=projectName%>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
-					<td><a href="#">CART</a></td>
+					<%
+						if (sess != null) {
+					%>
+					<td><a href="<%=projectName%>/coin.ho?cmd=coin-charge">COIN</a></td>
+					<%
+						} else {
+					%>
+					<td><a id="NoLoginMyPage">COIN</a></td>
+					<%
+						}
+					%>
 					<td class="gray">l</td>
-					<%if(sess!=null){ %>
-					<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
-					<%}else{ %>
+					<%
+						if (sess != null) {
+					%>
+					<td><a
+						href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY
+							PAGE</a></td>
+					<%
+						} else {
+					%>
 					<td><a id="NoLoginMyPage">MY PAGE</a></td>
-					<%} %>
+					<%
+						}
+					%>
 					<td class="gray">l</td>
-					<td><a href="#">Q&A</a></td>
+					<td><a href="<%=projectName%>/logout.ho?cmd=write-form">Q&A</a></td>
 				</tr>
 			</table>
 
 			<div id="topCate">
 				<a id="top-CateItem1">개량한복</a><br /> <br /> <a id="top-CateItem2">생활한복</a><br />
 				<br /> <a id="top-CateItem3">퓨전한복</a><br /> <br /> <a
-					id="top-CateItem4">아동한복</a><br /> <br /> <a id="top-CateItem5">악세서리</a>
+					id="top-CateItem4">아동한복</a><br /> <br /> <a id="top-CateItem5"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
 			</div>
 			<div id="topCate-Cate1">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate2">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate3">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여
+					자</a>
 			</div>
 			<div id="topCate-Cate4">
-				<a class="man">남 자</a><br /> <a class="woman">여 자</a>
+				<a class="man"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남
+					자</a><br /> <a class="woman"
+					href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여
+					자</a>
 			</div>
 			<a id="searchBtn">search</a> <a id="xbutton">X</a>
 			<hr color="#f5f5f5" size="1" noshade="noshade" />
@@ -160,22 +206,22 @@ $(function(){
 				placeholder="Type Here To Search" /> <select id="searchCategory"
 				name="searchCategory">
 				<option value="total">통합검색</option>
-				<option value="ge">개량한복</option>
-				<option value="se">생활한복</option>
-				<option value="fu">퓨전한복</option>
-				<option value="ah">아동한복</option>
+				<option value="ge">개량 한복</option>
+				<option value="se">생활 한복</option>
+				<option value="fu">퓨전 한복</option>
+				<option value="ah">아동 한복</option>
 				<option value="ak">악세서리</option>
-			</select> <input type="radio" id="titleSearch" name="searchRadio" value="제목"
-				class="searchRadio" /> <label class="searchLabel" for="titleSearch">제목</label>
-			<input type="radio" id="contentSearch" name="searchRadio" value="내용"
+			</select> <input type="radio" id="titleSearch" name="searchRadio"
+				value="title" class="searchRadio" checked="checked" /> <label
+				class="searchLabel" for="titleSearch">상품 이름</label> <input
+				type="radio" id="contentSearch" name="searchRadio" value="content"
 				class="searchRadio" /> <label class="searchLabel"
 				for="contentSearch" class="searchRadio">내용</label>
 		</div>
 
 	</header>
-
 	<section>
-	<form action="<%=projectName%>/final.ho" method="get">
+	<form action="<%=projectName%>/final.ho" method="get" id="goSubmit">
 	<input type="hidden" name="cmd" value="pay-view">
 	<input type="hidden" name="OrderId" value="<%=sess %>">
 	<input type="hidden" name="OrderSangpumNo" value="<%=hg.getGoodsId() %>">
@@ -372,9 +418,9 @@ $(function(){
 					</div>
 				<div class="body">
 					<div class="tabl minimal single-row" >
-						<div class="radio"><input type="radio" id="OrderSettleCase" name="OrderSettleCase" value="신용카드"> <label for="od_settle_card">신용카드</label></div>
-						<div class="radio"><input type="radio" id="OrderSettleCase" name="OrderSettleCase" value="무통장"> <label for="od_settle_bank">무통장입금</label></div>
-						<div class="radio"><input type="radio" id="OrderSettleCase" name="OrderSettleCase" value="계좌이체"> <label for="od_settle_iche">에스크로 실시간 계좌이체</label></div>
+						<div class="radio"><input type="radio" id="od_settle_card" name="OrderSettleCase" class ="OrderSettleCase" value="신용카드"> <label for="od_settle_card">신용카드</label></div>
+						<div class="radio"><input type="radio" id="od_settle_bank" name="OrderSettleCase"  class ="OrderSettleCase"  value="무통장"> <label for="od_settle_bank">무통장입금</label></div>
+						<div class="radio"><input type="radio" id="od_settle_iche" name="OrderSettleCase"   class ="OrderSettleCase"  value="계좌이체"> <label for="od_settle_iche">에스크로 실시간 계좌이체</label></div>
 					</div>		
          	   	</div>
          	 <div class="body bottom">
@@ -395,7 +441,7 @@ $(function(){
 	<div>	
 		<div>
 			<div id="display_pay_button" class="btn-group">
-		   		<input type="submit" value="결제하기" class="btn_submit" onclick="">
+		   		<input type="button" value="결제하기" class="btn_submit" onclick=""/>
 			</div>
 			
 			<div id="display_cancle_button" class="btn-group">

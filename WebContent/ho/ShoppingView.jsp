@@ -154,6 +154,14 @@ $(function(){
 					$("#frm").submit();
 		});
 		
+		$("#bagooNoLogin").click(function(){
+			window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );			
+		});
+		
+		$("#jjimNoLogin").click(function(){
+			window.open("<%=projectName%>/shoplogin.ho?cmd=shoplogin-page", '_blank', 'width=290, height=380, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );			
+		});
+		
 		$("#insertReply").click(function(){
 			$.ajax({         
 		        url : '<%=projectName%>/checkid.ho?cmd=Reply-check&id=<%=sess%>&no=<%=hg.getGoodsId()%>',
@@ -388,8 +396,13 @@ $(function(){
 				
 					<table id="btnTable" width="100%" cellspacing="0">
 						<tr>
+						<%if(sess!=null){ %>
 							<td id="bagoo" class="tdBtn" width="50%" style="text-align: center;">바로구매</td>
 							<td id="jjim" class="tdBtn" style="text-align: center;">찜하기</td>
+							<%}else{%>
+							<td id="bagooNoLogin" class="tdBtn" width="50%" style="text-align: center;">바로구매</td>
+							<td id="jjimNoLogin" class="tdBtn" style="text-align: center;">찜하기</td>
+						<%} %>
 						</tr>
 					</table>
 				</td>
