@@ -26,7 +26,8 @@
 	if( result == 1){
 		
       if(hm.getMemId().equals("admin")){
-          response.sendRedirect(projectName+"/main.ho?cmd=admin-page");   
+    	  request.setAttribute("adid", hm.getMemId());
+          response.sendRedirect(projectName+"/main.ho?cmd=shoplogin-page&loginid="+hm.getMemId());   
           return;
        }
 		// #2. 세션에 "id"라는 이름에 변수 user 값을 저장

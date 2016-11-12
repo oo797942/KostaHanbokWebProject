@@ -2,9 +2,16 @@
 <% String projectName = "/HoProject"; %>
 <%
 	Object obj = session.getAttribute("yourid");
+	Object obj2 = request.getAttribute("loginid");
+	System.out.println("obj2="+obj2);
 	String id=null;
+	String id2=null;
 	if(obj != null){
 		id=(String)obj;
+	
+	}
+	if(obj2 !=null){
+		id2=(String)obj2;	
 	}
 %>  
 <!DOCTYPE html>
@@ -35,11 +42,13 @@
     	var result = "<%=request.getParameter("result")%>";
     	var loginid = "<%=request.getAttribute("loginid")%>";
     	var id = "<%=id%>";
-    	
+    	var id2="<%=id2%>";
 
-
-    	if(id!="null"){
-    		if(id=="admin"){
+    
+    	if(id!="null" || id2!="null"){
+    		
+    		if(id2=="admin"){
+    		
         		opener.location.href="<%=projectName%>/log.ho?cmd=admin-page";    			
         		window.close();
     			return;

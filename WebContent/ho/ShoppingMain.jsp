@@ -131,7 +131,7 @@ $(function(){
 			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
 		<div id="Menuimg">
-			<a href="<%=projectName%>/gostore.ho?cmd=go-store"><img id="logo"
+			<a href="<%=projectName%>/gostore.ho?cmd=main-page"><img id="logo"
 				src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
 		<div id="topMenu">
