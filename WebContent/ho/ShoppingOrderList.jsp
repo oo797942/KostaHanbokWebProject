@@ -11,6 +11,11 @@
 	//# 2. 값이 null이라면 LoginForm.jsp로 페이지 이동
 	//# 3. null이 아니라면 String 형변환하여 변수에 지정
 	
+	int ready=0;
+	int ing=0;
+	int done=0;
+	
+	
 	if(sess != null){
 		sessionValue = (String)sess;
 	} 
@@ -156,16 +161,26 @@
 			</table>
 		</div>
 
+<%for(HoOrder order : list){ 
+	switch(Integer.parseInt(order.getOrderState())){
+	case 0 : ready++; break;
+	case 1 : ing++; break;
+	case 2 : done++; break;
+	//default : out.write("<td class='orderListTd'></td>"); break;
+	}
+}%>
+
+
 
 		<table id="orderTableTop" cellspacing="0">
 			<tr>
-				<td width="24%">입금대기: <span style="color: red;">o</span></td>
+				
+				<td width="24%">배송준비: <span style="color: red;"><%=ready %>
+				</span></td>
 				<td class="gray">l</td>
-				<td width="24%">상품준비중: <span style="color: red;">0</span></td>
+				<td width="24%">배송중: <span style="color: red;"><%=ing %></span></td>
 				<td class="gray">l</td>
-				<td width="24%">배송중: <span style="color: red;">0</span></td>
-				<td class="gray">l</td>
-				<td width="24%">배송완료: <span style="color: red;">0</span></td>
+				<td width="24%">배송완료: <span style="color: red;"><%=done %></span></td>
 			</tr>
 		</table>
 
@@ -196,7 +211,14 @@
 					</table>
 				</td>
 				<td class="orderListTd"><%=order.getOrderTotalPrice()%>원</td>
-				<td class="orderListTd">배송 대기중</td>
+				<%
+		switch(Integer.parseInt(order.getOrderState())){
+		case 0 : out.write("<td class='orderListTd'>배송준비</td>"); break;
+		case 1 : out.write("<td class='orderListTd'>배송중</td>"); break;
+		case 2 : out.write("<td class='orderListTd'>배송완료</td>"); break;
+		default : out.write("<td class='orderListTd'></td>"); break;
+		}
+%>
 			</tr>
 			<% } %>
 		</table>
