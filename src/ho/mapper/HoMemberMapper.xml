@@ -317,7 +317,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<update id="GoodsInventory" parameterType="hashmap">
-		UPDATE item SET I_SOO=#{GoodsSoo} WHERE I_NAME=#{GoodsName}
+		UPDATE item SET I_SOO=#{GoodsSoo},I_S=#{GoodsSSize},I_M=#{GoodsMSize},I_L=#{GoodsLSize}
+		 WHERE I_NAME=#{GoodsName}
 	</update>
 
 	<select id="selectCount" resultType="int" parameterType="hashmap">

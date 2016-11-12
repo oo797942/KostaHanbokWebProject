@@ -22,6 +22,39 @@
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+$(function() {
+   $("#GoodsLSize").blur(function() {
+      var LSize = $("#GoodsLSize").val() * 1;
+      var MSize = $("#GoodsMSize").val() * 1;
+      var SSize = $("#GoodsSSize").val() * 1;
+
+      $("#GoodsCount").val(LSize + MSize + SSize);
+   });
+
+   $("#GoodsMSize").blur(function() {
+      var LSize = $("#GoodsLSize").val() * 1;
+      var MSize = $("#GoodsMSize").val() * 1;
+      var SSize = $("#GoodsSSize").val() * 1;
+
+      $("#GoodsCount").val(LSize + MSize + SSize);
+   });
+
+   $("#GoodsSSize").blur(function() {
+      var LSize = $("#GoodsLSize").val() * 1;
+      var MSize = $("#GoodsMSize").val() * 1;
+      var SSize = $("#GoodsSSize").val() * 1;
+
+      $("#GoodsCount").val(LSize + MSize + SSize);
+   });
+   var LSize = $("#GoodsLSize").val() * 1;
+   var MSize = $("#GoodsMSize").val() * 1;
+   var SSize = $("#GoodsSSize").val() * 1;
+
+   $("#GoodsCount").val(LSize + MSize + SSize);
+});
+
+</script>
 
 
 </head>
@@ -47,50 +80,50 @@
 	<section>
 		
 		<!-- 등록 --> 
-		<form action="<%= projectName %>/xxxxx.ho?" method="post">
+		<form action="<%= projectName %>/xxxxx.ho?" method="post" >
 		<input type="hidden" name="cmd" id="cmd" value="inventoryUpdate"/>		
 		<input type="hidden" name="id" id="id" value="<%= request.getParameter("id")%>" >
-		<table width="1000" height="560" >
+		<table width="1000" height="560">
 		
 		<tr>
-			<td style="font-size:15pt">
+			<td style="font-size:15pt; padding-left: 230px;" >
 				<div class="form-group">
 					<label class="col-md-2 control-label"><span aria-hidden="true"></span>수량</label>
 				<div class="col-md-5">
-					<input type="text"value="<%=request.getParameter("count") %>" class= "form-control" name="count" id="count">
+					<input type="text"value="<%=request.getParameter("count") %>" class= "form-control" name="Count" id="GoodsCount">
 				</div>
 				</div>
 			</td>
 		</tr>
 		
 		<tr>
-			<td style="font-size:15pt">
+			<td style="font-size:15pt; padding-left: 230px;">
 				<div class="form-group">
 					<label class="col-md-2 control-label"><span aria-hidden="true"></span>S</label>
 				<div class="col-md-5">
-					<input type="text" value="<%=request.getParameter("SSize") %>" class= "form-control" name="SSize" id="SSize">
+					<input type="text" value="<%=request.getParameter("SSize") %>" class= "form-control" name="SSize" id="GoodsSSize">
 				</div>
 				</div>
 			</td>
 		</tr>
 		
 		<tr>
-			<td style="font-size:15pt">
+			<td style="font-size:15pt; padding-left: 230px;">
 				<div class="form-group">
 					<label class="col-md-2 control-label" ><span aria-hidden="true"></span>M</label>
 				<div class="col-md-5">
-					<input type="text" value="<%=request.getParameter("MSize") %>" class= "form-control" name="MSize" id="MSize">
+					<input type="text" value="<%=request.getParameter("MSize") %>" class= "form-control" name="MSize" id="GoodsMSize">
 				</div>
 				</div>
 			</td>
 		</tr>
 		
 		<tr>
-			<td style="font-size:15pt">
+			<td style="font-size:15pt; padding-left: 230px;">
 				<div class="form-group">
 					<label class="col-md-2 control-label"><span aria-hidden="true"></span>L</label>
 				<div class="col-md-5">	
-					<input type="text" value="<%=request.getParameter("LSize") %>" class= "form-control" name="LSize" id="LSize">
+					<input type="text" value="<%=request.getParameter("LSize") %>" class= "form-control" name="LSize" id="GoodsLSize">
 				</div>
 				</div>
 			</td>	
