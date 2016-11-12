@@ -40,8 +40,19 @@
 		<input type="hidden" name="id" id="id" value="<%= request.getParameter("id")%>" >
 		<table width="1000" height="560">
 		<tr>
-			<td><input type="text" value="<%=request.getParameter("count") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsInventory"></td>
-			<td><input type="submit" id="inventorybtn" value="입  고"/></td>
+<td>수량<input type="text" value="<%=request.getParameter("count") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsCount"></td>
+		</tr>
+		<tr>
+<td>S<input type="text" value="<%=request.getParameter("SSize") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsSSize"></td>
+		</tr>
+		<tr>
+<td>M<input type="text" value="<%=request.getParameter("MSize") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsMSize"></td>
+		</tr>
+		<tr>
+<td>L<input type="text" value="<%=request.getParameter("LSize") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsLSize"></td>
+		</tr>	
+		<tr>
+		<td><input type="submit" id="inventorybtn" value="입  고"/></td>
 		</tr>
 		
 		</table>

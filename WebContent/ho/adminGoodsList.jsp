@@ -126,7 +126,11 @@
   	
   		<td width="100"><a href="<%= projectName %>/1.ho?cmd=adminPageDelete&count=<%=good.getGoodsSoo()%>&id=<%= good.getGoodsName()%>">
   		<input type="button" id="tddel" value="삭제하기"/></a>
-  		<a href="<%= projectName %>/1.ho?cmd=adminGoodsInventory&id=<%= good.getGoodsName()%>&count=<%=good.getGoodsSoo()%>">
+  		<a href="<%= projectName %>/1.ho?cmd=adminGoodsInventory&id=<%= good.getGoodsName() %>&
+																count=<%= good.getGoodsSoo() %>&
+																SSize=<%= good.getGoodsLsize() %>&
+																LSize=<%= good.getGoodsLsize() %>&
+																MSize=<%= good.getGoodsLsize() %>">
   		<input type="button" id="tdmodify" value="입고"/></a>
   		</td>
   	</tr>
