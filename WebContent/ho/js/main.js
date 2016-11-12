@@ -78,6 +78,14 @@ $(function() {
 	$("#slide3").mouseover(function() {
 		mySlider.goToSlide(2);
 	});
+	
+	$("#slide4").mouseover(function() {
+		mySlider.goToSlide(3);
+	});
+	
+	$("#slide5").mouseover(function() {
+		mySlider.goToSlide(4);
+	});
 
 	$("#menu").click(function() {
 		// $("#topMenu").css('display','block');
@@ -122,8 +130,5 @@ $(function() {
 		}
 	});
 
-	$(".hotItem").click(function() {
-		alert($(this).attr('name'));
-	});
 
 });

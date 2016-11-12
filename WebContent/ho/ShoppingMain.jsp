@@ -242,9 +242,13 @@ $(function(){
 				<li><img class="slide"
 					src="<%=projectName%>/ho/img/banner_image_01.jpeg" alt="사진1" /></li>
 				<li><img class="slide"
-					src="<%=projectName%>/ho/img/banner_image_02.png" alt="사진2" /></li>
+					src="<%=projectName%>/ho/img/banner_image_02.jpg" alt="사진2" /></li>
 				<li><img class="slide"
-					src="<%=projectName%>/ho/img/banner_image_03.jpg" alt="사진2" /></li>
+					src="<%=projectName%>/ho/img/banner_image_03.jpg" alt="사진3" /></li>
+				<li><img class="slide"
+					src="<%=projectName%>/ho/img/banner_image_04.jpg" alt="사진4" /></li>
+				<li><img class="slide"
+					src="<%=projectName%>/ho/img/banner_image_05.jpg" alt="사진5" /></li>
 			</ul>
 		</div>
 		<table id="slidefocus">
@@ -255,23 +259,23 @@ $(function(){
 				<td id="slide2">계절 맞춤</td>
 			</tr>
 			<tr>
-				<td id="slide3">어쩌구 저쩌구</td>
+				<td id="slide3">인기 상품</td>
 			</tr>
 			<tr>
-				<td id="slide4">행복하자 우리</td>
+				<td id="slide4">특별 상품</td>
 			</tr>
 			<tr>
-				<td id="slide5">아프지말고</td>
+				<td id="slide5">한정 판매</td>
 			</tr>
 		</table>
 
-		<img src="<%=projectName%>/ho/img/banner_image_01.jpeg"
+		<img src="<%=projectName%>/ho/img/hotimg1.jpg"
 			class="hotItem" name="hot1" /> <img
-			src="<%=projectName%>/ho/img/banner_image_01.jpeg" class="hotItem"
+			src="<%=projectName%>/ho/img/hotimg2.jpg" class="hotItem"
 			name="hot2" /> <img
-			src="<%=projectName%>/ho/img/banner_image_01.jpeg" class="hotItem"
+			src="<%=projectName%>/ho/img/hotimg3.jpg" class="hotItem"
 			name="hot3" /> <img
-			src="<%=projectName%>/ho/img/banner_image_01.jpeg" class="hotItem"
+			src="<%=projectName%>/ho/img/hotimg4.jpg" class="hotItem"
 			name="hot4" />
 
 
