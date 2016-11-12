@@ -6,10 +6,55 @@
 <title>:: HO[好]에 오신 것을 환영합니다 ::</title>
 
 <% String projectName = "/HoProject"; %>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
 <link href="<%= projectName %>/ho/css/jquery.bxslider.css" rel="stylesheet" />
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+$(function() {
+   $("#GoodsLSize").blur(function() {
+      var LSize = $("#GoodsLSize").val() * 1;
+      var MSize = $("#GoodsMSize").val() * 1;
+      var SSize = $("#GoodsSSize").val() * 1;
+
+      $("#GoodsCount").val(LSize + MSize + SSize);
+   });
+
+   $("#GoodsMSize").blur(function() {
+      var LSize = $("#GoodsLSize").val() * 1;
+      var MSize = $("#GoodsMSize").val() * 1;
+      var SSize = $("#GoodsSSize").val() * 1;
+
+      $("#GoodsCount").val(LSize + MSize + SSize);
+   });
+
+   $("#GoodsSSize").blur(function() {
+      var LSize = $("#GoodsLSize").val() * 1;
+      var MSize = $("#GoodsMSize").val() * 1;
+      var SSize = $("#GoodsSSize").val() * 1;
+
+      $("#GoodsCount").val(LSize + MSize + SSize);
+   });
+   var LSize = $("#GoodsLSize").val() * 1;
+   var MSize = $("#GoodsMSize").val() * 1;
+   var SSize = $("#GoodsSSize").val() * 1;
+
+   $("#GoodsCount").val(LSize + MSize + SSize);
+});
+
+</script>
 
 
 </head>
@@ -34,23 +79,56 @@
 	
 	<section>
 		
-		<!-- 등록 -->
-		<form action="<%= projectName %>/xxxxx.ho?" method="post">
+		<!-- 등록 --> 
+		<form action="<%= projectName %>/xxxxx.ho?" method="post" >
 		<input type="hidden" name="cmd" id="cmd" value="inventoryUpdate"/>		
 		<input type="hidden" name="id" id="id" value="<%= request.getParameter("id")%>" >
 		<table width="1000" height="560">
+		
 		<tr>
-<td>수량<input type="text" value="<%=request.getParameter("count") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsCount"></td>
+			<td style="font-size:15pt; padding-left: 230px;" >
+				<div class="form-group">
+					<label class="col-md-2 control-label"><span aria-hidden="true"></span>수량</label>
+				<div class="col-md-5">
+					<input type="text"value="<%=request.getParameter("count") %>" class= "form-control" name="Count" id="GoodsCount">
+				</div>
+				</div>
+			</td>
 		</tr>
+		
 		<tr>
-<td>S<input type="text" value="<%=request.getParameter("SSize") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsSSize"></td>
+			<td style="font-size:15pt; padding-left: 230px;">
+				<div class="form-group">
+					<label class="col-md-2 control-label"><span aria-hidden="true"></span>S</label>
+				<div class="col-md-5">
+					<input type="text" value="<%=request.getParameter("SSize") %>" class= "form-control" name="SSize" id="GoodsSSize">
+				</div>
+				</div>
+			</td>
 		</tr>
+		
 		<tr>
-<td>M<input type="text" value="<%=request.getParameter("MSize") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsMSize"></td>
+			<td style="font-size:15pt; padding-left: 230px;">
+				<div class="form-group">
+					<label class="col-md-2 control-label" ><span aria-hidden="true"></span>M</label>
+				<div class="col-md-5">
+					<input type="text" value="<%=request.getParameter("MSize") %>" class= "form-control" name="MSize" id="GoodsMSize">
+				</div>
+				</div>
+			</td>
 		</tr>
+		
 		<tr>
-<td>L<input type="text" value="<%=request.getParameter("LSize") %>" class= "Goodsinsert" name="GoodsInventory" id="GoodsLSize"></td>
+			<td style="font-size:15pt; padding-left: 230px;">
+				<div class="form-group">
+					<label class="col-md-2 control-label"><span aria-hidden="true"></span>L</label>
+				<div class="col-md-5">	
+					<input type="text" value="<%=request.getParameter("LSize") %>" class= "form-control" name="LSize" id="GoodsLSize">
+				</div>
+				</div>
+			</td>	
 		</tr>	
+		
 		<tr>
 		<td><input type="submit" id="inventorybtn" value="입  고"/></td>
 		</tr>
