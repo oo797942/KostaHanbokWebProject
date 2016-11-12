@@ -182,7 +182,7 @@
 		</tr>
 		
 		<tr>
-			<td colspan="2" align="right">뒤로가기 </td>
+			<td colspan="2" align="right"><a href="<%=projectName%>/list.ho?cmd=mypage-list&adid=<%=sess%>">뒤로가기 </a></td>
 		</tr>
 
 	</tbody>	

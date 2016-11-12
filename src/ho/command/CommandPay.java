@@ -79,6 +79,8 @@ public class CommandPay implements Command{
 			      order.put("OrderSName",request.getParameter("OrderSName"));
 			      
 			      HoOrderService.getInstance().insertOrder(order);
+			      
+			      HoOrderService.getInstance().updatePayGoods(order);
 
 			
 			

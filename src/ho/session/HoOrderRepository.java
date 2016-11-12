@@ -80,8 +80,24 @@ public class HoOrderRepository {
 			}
 		}finally{
 			sess.close();
-		}
-		
+		}	
 	}
 
+	public void updatePayGoods(HashMap<String, Object> om){
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try{
+			System.out.println("updatePayGoods에 들어옴" + om);
+			int result = sess.update(namespace+".updatePayGoods",om);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+				// 커밋해줘야함 이녀석은
+				sess.commit();
+			} else {
+				sess.rollback();
+			}
+		}finally{
+			sess.close();
+		}	
+	}
+	
+	
 }

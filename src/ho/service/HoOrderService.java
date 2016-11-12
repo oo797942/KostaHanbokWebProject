@@ -42,5 +42,8 @@ public class HoOrderService {
 		repo.changeState(om);
 	}
 
+	public void updatePayGoods(HashMap<String, Object> om){
+		repo.updatePayGoods(om);
+	}
 
 }

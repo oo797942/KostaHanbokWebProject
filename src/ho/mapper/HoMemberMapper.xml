@@ -307,6 +307,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		</where>
 	</select>
+	
 
 	<insert id="inputQna" parameterType="hashmap">
 		INSERT
@@ -420,6 +421,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where o_no=#{ono}
 	
 	</update>
+	
+	
+		<update id="updatePayGoods" parameterType="hashmap">
+		<choose>
+			<when test='OrderSize neq null and OrderSize eq "L"'>
+			UPDATE item SET 
+			I_L = I_L-#{OrderSoo},
+			I_SOO = I_SOO-#{OrderSoo}
+			WHERE I_NAME = #{OrderSangpumName}
+			</when>
+			<when test='OrderSize neq null and OrderSize eq "M"'>
+			UPDATE item SET 
+			I_M = I_M-#{OrderSoo},
+			I_SOO = I_SOO-#{OrderSoo}
+			WHERE I_NAME=#{OrderSangpumName}
+			</when>
+			<when test='OrderSize neq null and OrderSize eq "S"'>
+			UPDATE item SET 
+			I_S = I_S-#{OrderSoo},
+			I_SOO = I_SOO-#{OrderSoo}
+			WHERE I_NAME=#{OrderSangpumName}
+			</when>
+		</choose>
+
+		</update>
+	
 
 </mapper>
 
