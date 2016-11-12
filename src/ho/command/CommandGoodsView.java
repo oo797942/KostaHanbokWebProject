@@ -66,18 +66,22 @@ public class CommandGoodsView implements Command {
 
 			HashMap<String, Object> memMap = new HashMap<String, Object>();
 
+			
+			HoMember hms = null;
 			List BagList = null;
 			HttpSession sess = request.getSession();
 			String ids = (String) sess.getAttribute("yourid");
 			System.out.println("아이디:" + ids);
 
-			if (id != null) {
+			if (ids != null) {
 				memMap.put("id", ids);
 				BagList = HoBagService.getInstance().selectShoppingBag(memMap);
-				System.out.println("아이디는 제대로 넘겼지?? >> " + id);
+				hms =HoMemberService.getInstance().selectHoMemberByPrimaryKey(memMap);
+				System.out.println("아이디는 제대로 넘겼지?? >> " + ids);
 				System.out.println("몇 개 넘어갔어?? >> " + BagList.size());
 			}
 
+			request.setAttribute("homem", hms);
 			request.setAttribute("baglist", BagList);
 
 		} catch (Exception ex) {

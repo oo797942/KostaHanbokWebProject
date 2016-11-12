@@ -1,3 +1,4 @@
+<%@page import="ho.model.HoMember"%>
 <%@page import="ho.model.HoBag"%>
 <%@page import="java.util.List"%>
 <%@page import="ho.model.HoReply"%>
@@ -40,13 +41,15 @@
 	
 	
 
+	HoMember hm = null;
 	List bagList = null;
 
 	if (sess != null) {
 		sessionValue = (String) sess;
+		hm = (HoMember) request.getAttribute("homem");
 		bagList = (List)request.getAttribute("baglist");
 	}
-
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -216,7 +219,7 @@ $(function(){
 		</table>
 	</nav>
 <%} %>
-	<header>
+<header>
 		<div id="menu">
 			<img src="<%=projectName%>/ho/img/topMenu.png" />
 		</div>
@@ -230,7 +233,7 @@ $(function(){
 					<%
 						if (sess != null) {
 					%>
-					<td><text id="sessid"><%=sess%>님</text></td>
+					<td><text id="sessid"><%=hm.getMemName()%>님</text></td>
 					<%
 						}
 					%>
@@ -239,7 +242,17 @@ $(function(){
 					<td class="gray">l</td>
 					<td><a href="<%=projectName%>/join.ho?cmd=join-form">JOIN</a></td>
 					<td class="gray">l</td>
-					<td><a href="#">CART</a></td>
+					<%
+						if (sess != null) {
+					%>
+					<td><a href="<%=projectName%>/coin.ho?cmd=coin-charge">COIN</a></td>
+					<%
+						} else {
+					%>
+					<td><a id="NoLoginMyPage">COIN</a></td>
+					<%
+						}
+					%>
 					<td class="gray">l</td>
 					<%
 						if (sess != null) {
