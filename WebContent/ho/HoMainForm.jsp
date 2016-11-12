@@ -128,36 +128,45 @@ $(function(){
 			<img src="<%= projectName %>/ho/img/menu.png">
 		</div>
 
+<div id="topMenu">
+         <div id="Menuimg">
+            <a href="HoMainForm.jsp"><img src="<%= projectName %>/ho/img/logo.jpg"></a>
+         </div>
 
-		<div id="topMenu">
-			<div id="Menuimg">
-				<a href="HoMainForm.jsp"><img src="<%= projectName %>/ho/img/logo.jpg"></a>
-			</div>
-			<div id="topCate">
-				<a id="top-CateItem1">개량한복</a> <br />
-				<br /> <a id="top-CateItem2">생활한복</a> <br />
-				<br /> <a id="top-CateItem3">퓨전한복</a> <br />
-				<br /> <a id="top-CateItem4">아동한복</a> <br />
-				<br /> <a id="top-CateItem5">악세서리</a>
-			</div>
-
-			<div id="topCate-Cate1">
-				<a class="man">남 자</a> <br /> <a class="woman">여 자</a>
-			</div>
-			<div id="topCate-Cate2">
-				<a class="man">남 자</a> <br /> <a class="woman">여 자 </a>
-			</div>
-			<div id="topCate-Cate3">
-				<a class="man">남 자 </a><br /> <a class="woman">여 자 </a>
-			</div>
-			<div id="topCate-Cate4">
-				<a class="man">남 자</a> <br /> <a class="woman">여 자 </a>
-			</div>
-			<a id="topXbutton">X</a>
-		</div>
-		<div id="topimage">
-			<img />
-		</div>
+         <div id="topCate">
+            <a id="top-CateItem1">개량한복</a><br /> <br /> <a id="top-CateItem2">생활한복</a><br />
+            <br /> <a id="top-CateItem3">퓨전한복</a><br /> <br /> <a
+               id="top-CateItem4">아동한복</a><br /> <br /> <a id="top-CateItem5"
+               href="<%=projectName%>/list.ho?cmd=search-category&category=악세서리">악세서리</a>
+         </div>
+         <div id="topCate-Cate1">
+            <a class="man"
+               href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -남">남
+               자</a><br /> <a class="woman"
+               href="<%=projectName%>/list.ho?cmd=search-category&category=개량 한복 -여">여
+               자</a>
+         </div>
+         <div id="topCate-Cate2">
+            <a class="man"
+               href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -남">남
+               자</a><br /> <a class="woman"
+               href="<%=projectName%>/list.ho?cmd=search-category&category=생활 한복 -여">여
+               자</a>
+         </div>
+         <div id="topCate-Cate3">
+            <a class="man"
+               href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -남">남
+               자</a><br /> <a class="woman"
+               href="<%=projectName%>/list.ho?cmd=search-category&category=퓨전 한복 -여">여
+               자</a>
+         </div>
+         <div id="topCate-Cate4">
+            <a class="man"
+               href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -남">남
+               자</a><br /> <a class="woman"
+               href="<%=projectName%>/list.ho?cmd=search-category&category=아동 한복 -여">여
+               자</a>
+         </div>
 
 		<div id="ContentBackground"></div>
 		<div id=newsContent class="Content">
