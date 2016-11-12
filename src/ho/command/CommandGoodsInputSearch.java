@@ -8,12 +8,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import ho.command.CommandException;
 import ho.model.HoException;
 import ho.model.HoGoods;
 import ho.model.HoMember;
+import ho.service.HoBagService;
 import ho.service.HoMemberService;
 
 public class CommandGoodsInputSearch implements Command {
@@ -64,6 +66,38 @@ public class CommandGoodsInputSearch implements Command {
 			List<HoGoods> list = (List<HoGoods>) HoMemberService.getInstance().GoodsInputSearch(hm);
 			System.out.println("list에 몇 개가 들어오나? : " + list.size());
 			request.setAttribute("GoodsSearchFin", list);
+			
+			
+			int result=0;
+			HashMap<String, Object> memMap= new HashMap<String,Object>();
+			
+			
+			HoMember hms = null;
+			List BagList = null;
+			HttpSession sess = request.getSession();
+			String id = (String)sess.getAttribute("yourid");
+			System.out.println("아이디:" + id);
+
+			if(id!=null){
+				memMap.put("id", id);
+				hms =HoMemberService.getInstance().selectHoMemberByPrimaryKey(memMap);
+				BagList = HoBagService.getInstance().selectShoppingBag(memMap);
+				System.out.println("아이디는 제대로 넘겼지?? >> " + id);
+				System.out.println("몇 개 넘어갔어?? >> " + BagList.size());
+			}
+			
+
+
+			if(hms==null){
+				result=2;
+			}else{
+				result=1;
+				request.setAttribute("homem", hms);
+				request.setAttribute("baglist", BagList);
+			}
+			request.setAttribute("result", result);
+			
+			
 			
 		} catch (Exception ex) {
 			throw new CommandException("CommandGoodsInputSearch.java < 입력시 > " + ex.toString());

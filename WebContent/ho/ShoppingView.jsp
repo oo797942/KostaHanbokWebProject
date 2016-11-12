@@ -1,3 +1,4 @@
+<%@page import="ho.model.HoBag"%>
 <%@page import="java.util.List"%>
 <%@page import="ho.model.HoReply"%>
 <%@page import="ho.model.HoGoodsImg"%>
@@ -36,6 +37,16 @@
 	String Ssize = hg.getGoodsSsize();
 
 	System.out.println("37번쨰 줄");
+	
+	
+
+	List bagList = null;
+
+	if (sess != null) {
+		sessionValue = (String) sess;
+		bagList = (List)request.getAttribute("baglist");
+	}
+
 %>
 <!DOCTYPE html>
 <html>
@@ -148,7 +159,7 @@ $(function(){
 		        	if(data==1){
 		        		$("#frm2").submit();
 					}else{
-							alert("후기 못씀");
+						alert("구매가 이루어진 후 후기를 쓰실수 있습니다.");
 					}
 		        },
 		        error : function(){
@@ -156,6 +167,11 @@ $(function(){
 		        }
 		     });
 		});
+		$("#jjim").click(function(){
+			
+			window.location.href="<%=projectName%>/bag.ho?cmd=bag-insert&itemname=<%=hg.getGoodsName()%>&imgs=<%= hg.getGoodsImg()%>&itemno=<%= hg.getGoodsId()%>";
+		});
+
 	});
 
 </script>
@@ -164,7 +180,7 @@ $(function(){
 
 </head>
 <body>
-
+<%if(sess!=null){ %>
 	<nav>
 		<table id="shoppingBag" cellspacing="0">
 			<tr>
@@ -172,28 +188,34 @@ $(function(){
 			</tr>
 			<tr>
 				<td style="background: #696969;"><a href="#"
-					style="color: white;">장바구니</a></td>
+					style="color: white;">찜목록</a></td>
 			</tr>
 			<tr>
 				<td>
 					<table cellspacing="15" width="125px">
+					<%for(int i=0; i<bagList.size(); i++){ %>
+					<%HoBag hbag = (HoBag)bagList.get(i); %>
 						<tr>
-							<td class="shoppingBagItem"><img
-								src="<%=projectName%>/ho/img/banner_image_01.jpeg" width="90px"
-								height="90px" /></td>
+							<td class="shoppingBagItem">
+							<a href="<%=projectName %>/view.ho?cmd=goods-view&id=<%=hbag.getShopNo() %>&name=<%=hbag.getShopName() %>">
+							<img src="<%=projectName%>/ho/upload/<%=hbag.getShopImg() %>" width="90px" height="90px" />
+							</a>
+							<br/>
+							<p style="font-size: 10pt"><%=hbag.getShopName() %></p>
+							</td>
 						</tr>
-						<tr>
-							<td class="shoppingBagItem"></td>
-						</tr>
-						<tr>
-							<td class="shoppingBagItem"></td>
-						</tr>
-					</table>
+					<%} %>
+					<%for(int i=0; i<3-bagList.size();i++){ %>
+					<tr>
+					<td class="shoppingBagItem"></td>
+					</tr>
+					<%} %>
+					</table> 
 				</td>
 			</tr>
 		</table>
 	</nav>
-
+<%} %>
 	<header>
 		<div id="menu">
 			<img src="<%=projectName%>/ho/img/topMenu.png" />
@@ -354,7 +376,7 @@ $(function(){
 					<table id="btnTable" width="100%" cellspacing="0">
 						<tr>
 							<td id="bagoo" class="tdBtn" width="50%" style="text-align: center;">바로구매</td>
-							<td class="tdBtn" style="text-align: center;">장바구니</td>
+							<td id="jjim" class="tdBtn" style="text-align: center;">찜하기</td>
 						</tr>
 					</table>
 				</td>

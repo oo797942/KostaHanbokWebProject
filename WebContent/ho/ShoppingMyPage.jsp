@@ -115,35 +115,7 @@ if(sess != null){
 
 	</head>
 	<body>
-	<nav>
-		<table id="shoppingBag" cellspacing="0">
-			<tr>
-				<td height="10px"></td>
-			</tr>
-			<tr>
-				<td style="background: #696969;"><a href="#"
-					style="color: white;">장바구니</a></td>
-			</tr>
-			<tr>
-				<td>
-					<table cellspacing="15" width="125px">
-						<tr>
-							<td class="shoppingBagItem"><img
-								src="<%=projectName%>/ho/img/banner_image_01.jpeg" width="90px"
-								height="90px" /></td>
-						</tr>
-						<tr>
-							<td class="shoppingBagItem"></td>
-						</tr>
-						<tr>
-							<td class="shoppingBagItem"></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-	</nav>
-
+	
 	 
 		<header>
 			<div id="menu">

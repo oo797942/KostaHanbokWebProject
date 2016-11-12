@@ -66,5 +66,22 @@ public class HoOrderRepository {
 			sess.close();
 		}
 	}
+	public void changeState(HashMap<String, Object> om){
+		SqlSession sess = getSqlSessionFactory().openSession();
+		try{
+			System.out.println("changeState에 들어옴");
+ 
+			int result = sess.update(namespace+".updateState",om);
+			if (result > 0) { // JDBC : AUTO-COMMIT , MYBATIS -> NOT AUTO-COMMIT
+				// 커밋해줘야함 이녀석은
+				sess.commit();
+			} else {
+				sess.rollback();
+			}
+		}finally{
+			sess.close();
+		}
+		
+	}
 
 }

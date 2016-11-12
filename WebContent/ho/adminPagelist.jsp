@@ -15,7 +15,9 @@ Object obj =request.getAttribute("OrderList");
 System.out.println(obj);
 if(obj !=null) orders = (List<HoOrder>)obj;
 
+int osize = orders.size();
 String pagenum = request.getParameter("pagenum");
+String nowState = request.getParameter("state");
 int pageno = 0;
 int totalRecord =0;
 if(pagenum!=null) pageno=Integer.parseInt(pagenum);//현재 눌린번호
@@ -62,10 +64,6 @@ if(pageno<1){//현재 페이지
       next_pageno=total_page/group_per_page_cnt*group_per_page_cnt+1;
    }	
 
-
-
-
-
 %>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -84,7 +82,43 @@ if(pageno<1){//현재 페이지
 <link href="<%= projectName %>/ho/css/common.css" rel="stylesheet" />
 <script src="<%= projectName %>/ho/js/jquery-1.10.2.min.js"></script>
 <script src="<%= projectName %>/ho/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+var kkk=0;
+$(function(){
+	
 
+// for(var j=0;j<;j++){
+// 		$("#changeState"+j).click(function(){
+// 			alert($('#orderNo'+j).attr("value"));
+// 			var temp = $('#orderNo'+j);
+// 			window.location.href="/changeState.ho?cmd=change-state&ono="+temp.val(); 
+// 		});
+// 		kkk++;
+// 	}	
+
+	$('.xxxxx').each(function(){
+		$(this).click(function(){
+			window.location.href="<%=projectName%>/changeState.ho?cmd=change-state&ono="+$(this).attr('gang');
+		})
+	});
+	$("#check").click(function(){
+		if($( "#select option:selected").val()=="배송준비"){
+			window.location.href="<%=projectName%>/refresh.ho?cmd=adminmenu1&state=0";
+		}else if($( "#select option:selected" ).val()=="배송중"){
+			window.location.href="<%=projectName%>/refresh.ho?cmd=adminmenu1&state=1";
+		}else if($( "#select option:selected" ).val()=="배송완료"){
+			window.location.href="<%=projectName%>/refresh.ho?cmd=adminmenu1&state=2";
+		}
+	});
+	if("<%=nowState%>"=="2"){
+		$(".xxxxx").attr("disabled",true);
+	}
+
+});
+
+
+
+</script>
 
 </head>
 <body>
@@ -129,12 +163,12 @@ if(pageno<1){//현재 페이지
 	
 	<section>
 		<select id = "select"> 
-		<option>선택</option>
-		<option>년도별</option>
-		<option>월별</option>
-		<option>제품별</option>
+		<option id='0' value="배송준비" name="ready">배송준비</option>
+		<option id='1' value="배송중" name="ing">배송중</option>
+		<option id='2' value="배송완료" name="done">배송완료</option>
+		
 		</select>
-		<a href="<%= projectName %>/1.ho?cmd=adminPagelist"><input type="button" id="check" value="검색"/></a>
+		<input type="button" id="check" value="검색"/>
 		<br/>	<br/>
 		<table border="1"  width="1000" class="table table-hover table-striped">
   	 
@@ -143,15 +177,31 @@ if(pageno<1){//현재 페이지
     		 <td> 구매자 </td>
   	   		 <td> 총개수 </td>
    		     <td> 총가격 </td>
+   		     <td> 상태 </td>
+   		     <td> 상태수정</td>
  		 </tr>
-   	
+   	<%int k =0; %>
 <% for(HoOrder order : orders){ %>
+     
      <tr>	
- 	  		<td><%= order.getOrderSangpumName() %></a></td>
-  			<td><%= order.getOrderSName() %></a></td>
-   			<td><%= order.getOrderSoo() %></a></td>
-   			<td><%= order.getOrderTotalPrice() %></a></td>
+ 	  		<td><%= order.getOrderSangpumName() %></td>
+  			<td><%= order.getOrderSName() %></td>
+   			<td><%= order.getOrderSoo() %></td>	
+   			<td><%= order.getOrderTotalPrice() %></td>
+			
+<%
+		switch(Integer.parseInt(order.getOrderState())){
+		case 0 : out.write("<td>배송준비</td>"); break;
+		case 1 : out.write("<td>배송중</td>"); break;
+		case 2 : out.write("<td>배송완료</td>"); break;
+		default : out.write("<td></td>"); break;
+		}
+%>
+   			<input type="hidden" id="orderNo<%=k%>" class='xxxxx' value="<%=order.getOrderNo()%>"/>
    			<% sum=Integer.parseInt(order.getOrderTotalPrice())+sum; %>
+   			<td><input type="button" class='xxxxx' id="changeState<%=k %>" name="changeState" value="상태변경" gang='<%=order.getOrderNo()%>' />
+   			</td>
+   			<% k++; %>
  	  </tr>
 	<% } %>
 	

@@ -35,15 +35,15 @@ public class CommandReplyCheck implements Command{
 			String id = request.getParameter("id");
 			String no = request.getParameter("no");
 			
-			System.out.println("1" +id);
-			System.out.println("2" + no);
+			System.out.println("1 - " +id);
+			System.out.println("2 - " + no);
 			
 			HashMap<String,Object> rm = new HashMap();
 			rm.put("rid", id);
 			rm.put("no", no);
 			List<HoOrder> list = HoReplyService.getInstance().ReplyCheck(rm);
 			int result=0;
-			System.out.println(list);
+			System.out.println("list = " +list);
 			if(!(list.isEmpty())){
 				result=1;
 			}else{

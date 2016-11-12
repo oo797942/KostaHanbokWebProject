@@ -27,16 +27,23 @@ private String next;
 			 if(page!=null) nowpagenum = Integer.parseInt(page);
 			 int startRecord = nowpagenum*countPerPage-(countPerPage-1);
 	         int endRecord = nowpagenum*countPerPage;
+	         int state;
+	         if(request.getParameter("state")!=null)
+	        	 {state = Integer.parseInt(request.getParameter("state"));}
+	         else{
+	        	 state=0;
+	         }
 	         
 	         HashMap<String,Integer> om = new HashMap<String,Integer>();
 	            om.put("startrecord", startRecord);
 	            om.put("endrecord", endRecord);
+	            om.put("state", state);
 	         HashMap<String,String> tm = new HashMap<String,String>();
 	         tm.put("tableName", "order_t");
 			
 			
 			System.out.println("CommandSaleList에 들어왔음");
-			List<HoOrder> list =  (List<HoOrder>) HoOrderService.getInstance().AllOrderList(om);  
+			List<HoOrder> list =  (List<HoOrder>) HoOrderService.getInstance().AllOrderList(om);
 			int totalRecord = HoMemberService.getInstance().getTotalCount(tm);
 			System.out.println(list);
 			request.setAttribute("OrderList", list);
