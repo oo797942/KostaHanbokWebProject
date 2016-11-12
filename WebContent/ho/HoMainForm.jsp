@@ -111,7 +111,7 @@ $(function(){
 		</div>
 
 		<div id="logoimg">
-			<a href="HoMainForm.jsp"><img src="<%= projectName %>/ho/img/logo.jpg"></a>
+			<a href="<%=projectName%>/gostore.ho?cmd=main-page"><img src="<%= projectName %>/ho/img/logo.jpg"></a>
 		</div>
 
 

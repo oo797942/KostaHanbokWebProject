@@ -251,10 +251,10 @@ $(function(){
 								height="58" alt=""></td>
 							<td class="nme" rowspan="2"><%=hg.getGoodsName() %></td>
 							<td class="qty" rowspan="2"><%=request.getParameter("size") %> - <%=request.getParameter("cnt") %>개</td>
-							<td class="price" rowspan="2"><%=hg.getGoodsPrice() %>원</td>
-							<td class="td_numbig" rowspan="2">배송비 <%= hg.getGoodsRentPrice() %>원</td>
+							<td class="price" rowspan="2"><%=String.format("%,d", hg.getGoodsPrice()) %>원</td>
+							<td class="td_numbig" rowspan="2">배송비 <%= String.format("%,d", hg.getGoodsRentPrice()) %>원</td>
 							<td class="amt" rowspan="2"><span class="total_price">
-									총 가격:<%=request.getParameter("totalPrice") %>원</span></td>
+									총 가격:<%=String.format("%,d", Integer.parseInt(request.getParameter("totalPrice"))) %>원</span></td>
 						</tr>
 					</tbody>
 				</table>
@@ -388,26 +388,7 @@ $(function(){
 		</div>
 	</div>
 		
-	<div class="alignleft">
-		<div class="panel">
-			<div>
-				<div class="header">
-					<h2 class="num">05</h2>
-					<div class="title" style="text-align: left;">결제 금액</div>
-					<div id="pay-info" class="body">
-              <ul id="pay-list">
-                <li>구매총액<span class="pr" style="color:#000;font-weight:bold">원</span></li>
-                <li>회원등급 할인 (-)<span class="pr" id="level_profit_str">원</span></li>
-                <li>주문쿠폰할인액 (-)<span class="pr" id="od_cp_price">0 원</span></li>
-                <li>배송비 (+)<span class="pr">10,000 원</span></li>
-                <li>추가배송비 (+)<span class="pr" id="od_send_cost2">0 원</span></li>
-              </ul>
-                <div id="total2">총 결제금액  <span class="pull-right" style="font-size:16px;">원</span><span class="pull-right" id="od_tot_price" style="font-size:16px;">72,380</span></div>
-            </div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	
 	<div class="alignright">
 		<div class="panel">
@@ -421,6 +402,7 @@ $(function(){
 						<div class="radio"><input type="radio" id="od_settle_card" name="OrderSettleCase" class ="OrderSettleCase" value="신용카드"> <label for="od_settle_card">신용카드</label></div>
 						<div class="radio"><input type="radio" id="od_settle_bank" name="OrderSettleCase"  class ="OrderSettleCase"  value="무통장"> <label for="od_settle_bank">무통장입금</label></div>
 						<div class="radio"><input type="radio" id="od_settle_iche" name="OrderSettleCase"   class ="OrderSettleCase"  value="계좌이체"> <label for="od_settle_iche">에스크로 실시간 계좌이체</label></div>
+					<div class="radio"><input type="radio" id="od_settle_coin" name="OrderSettleCase"   class ="OrderSettleCase"  value="계좌이체"> <label for="od_settle_coin">코인 결제</label></div>
 					</div>		
          	   	</div>
          	 <div class="body bottom">
