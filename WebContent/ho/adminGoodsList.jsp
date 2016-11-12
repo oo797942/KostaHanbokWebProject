@@ -85,7 +85,7 @@
 <body>
 	<header>
 		<div id="Menuimg">
-			<a href="#"><img id="logo" src="<%= projectName %>/ho/img/logo.png" /></a>
+			<a href="<%= projectName %>/1.ho?cmd=admin-page"><img id="logo" src="<%= projectName %>/ho/img/logo.png" /></a>
 		</div>
 	<div id="admin"> admin 님이 접속하셨습니다.
 		<a href="<%=projectName%>/1.ho?cmd=main-page"><input type="button" value="Logout" id="logoutbtn" name="logoutbtn"></a>

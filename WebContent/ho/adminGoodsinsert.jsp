@@ -55,7 +55,7 @@
 <body>
 	<header>
 		<div id="Menuimg">
-			<a href="#"><img id="logo"
+			<a href="<%= projectName %>/1.ho?cmd=admin-page"><img id="logo"
 				src="<%=projectName%>/ho/img/logo.png" /></a>
 		</div>
 		<div id="admin">
