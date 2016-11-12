@@ -135,8 +135,6 @@ if(sess != null){
 						<td class="gray">l</td>
 						<td><a href="<%=projectName %>/join.ho?cmd=join-form">JOIN</a></td>
 						<td class="gray">l</td>
-						<td><a href="#">CART</a></td>
-						<td class="gray">l</td>
 						<%if(sess!=null){ %>
 						<td><a href="<%=projectName%>/mypage.ho?cmd=go-mypage&adid=<%=sess%>">MY PAGE</a></td>
 						<%}else{ %>

@@ -158,7 +158,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<update id="updateCoin" parameterType="hashmap">
+	 <![CDATA[
 		UPDATE member SET m_coin = m_coin+#{coin} where m_id=#{id}
+		  ]]>
 	</update>
 
 	<update id="UpdateMypage" parameterType="hashmap">
@@ -290,7 +292,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertMember" parameterType="hashmap">
 		INSERT
 		INTO member
-		VALUES(#{userId},#{userPass},#{userName},#{userTel},#{userEmail},#{userBirth},#{userSex},#{userAddr},#{userHeight},#{userChest},#{userShoulder},#{userCoin},#{userEXP})
+		VALUES(#{userId},#{userPass},#{userName},#{userTel},#{userEmail},#{userBirth},#{userSex},#{userAddr},#{userHeight},#{userChest},#{userShoulder},0,#{userEXP})
 	</insert>
 
 	<select id="selectBoard" resultMap="HoBoardMap" parameterType="hashmap">

@@ -19,6 +19,12 @@
 		hm = (HoMember) request.getAttribute("homem");
 		bagList = (List)request.getAttribute("baglist");
 	}
+	
+	int yourCoin = 0;
+	
+if(	hm.getMemCoin() != null ){
+	yourCoin = Integer.parseInt(hm.getMemCoin());
+}
 
 	 
 %>
@@ -250,8 +256,7 @@ $(function(){
 			<p>코인 충전</p>
 		</div>
 		<p style="text-align: left;"  class="TopP"><strong><%=hm.getMemName() %>님</strong>의 보유 코인: 
-		<%=String.format("%,d", Integer.parseInt(hm.getMemCoin())) %>개</p>
-		
+		<%=String.format("%,d", yourCoin) %>개</p>
 		<br/>
 		<input type="text" id="CoinInput" name="CoinInput" value="0" readonly="readonly"/>
 		<br/><br/>

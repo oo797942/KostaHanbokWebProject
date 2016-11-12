@@ -96,8 +96,6 @@
 					<td class="gray">l</td>
 					<td><a href="#">JOIN</a></td>
 					<td class="gray">l</td>
-					<td><a href="#">CART</a></td>
-					<td class="gray">l</td>
 					<td><a href="#">MY PAGE</a></td>
 					<td class="gray">l</td>
 					<td><a href="#">Q&A</a></td>
